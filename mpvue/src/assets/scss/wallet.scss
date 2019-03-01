@@ -1,0 +1,196 @@
+.site-wallet{
+  background: #F3F3F3;
+  .wallet-comdity{
+    background: #ffffff;
+    margin-top: 10rpx;
+    height: calc(100% -10rpx);
+    .head{
+      @include display-flex();
+      @include align-items(center);
+      @include justify-content(space-between);
+      height: 120rpx;
+      padding-left: 80rpx;
+      padding-right: 26rpx;
+      span{
+        display: inline-block;
+        color: #333333;
+        font-size: 28rpx;
+      }
+      em{
+        color: $walletColor;
+        font-size: 32rpx;
+      }
+    }
+    .mod{
+      border-top: 2rpx solid #F7F7F7;
+      padding: 0 26rpx 0 30rpx;
+      .loaded{
+        text-align: center;
+        font-size: 30rpx;
+        color: #666;
+      }
+      h5{
+        padding-left: 50rpx;
+        @include display-flex();
+        @include align-items(center);
+        color: #333333;
+        font-size: 30rpx;
+        font-weight: 600;
+        height: 80rpx;
+      }
+      ul{
+        li{
+          height: 120rpx;
+          padding: 0 6rpx 0 50rpx;
+          @include display-flex();
+          @include align-items(center);
+          @include justify-content(space-between);
+          border-bottom: 2rpx solid #F7F7F7;
+          span{
+            display: inline-block;
+            color: #333333;
+            font-size: 28rpx;
+          }
+          div{
+            display: inline-block;
+            text-align: right;
+            p:first-child{
+              color: #999999;
+              font-size: 20rpx;
+            }
+            p:first-child+p{
+              font-size: 28rpx;
+              color: #333333;
+              &.add{
+                color: #70C711;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.order-static{
+  padding-top: 24rpx;
+  padding-bottom:24rpx;
+  .static-head{
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    span{
+      display: inline-block;
+      &:first-child{
+        color: #333333;
+        font-size: 30rpx;
+      }
+      &:first-child+span{
+        color: #333333;
+        font-size: 30rpx;
+        font-weight: 600;
+      }
+    }
+  }
+  .static-coupon{
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    height:60rpx;
+    span{
+      display: inline-block;
+      &:first-child{
+        color: #666;
+        font-size: 28rpx;
+      }
+      &:first-child+span{
+        color: #FF584B;
+        font-size: 30rpx;
+        font-weight: 600;
+      }
+    }
+  }
+  .static-use{
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    height:60rpx;
+    span{
+      display: inline-block;
+      &:first-child{
+        color: #666;
+        font-size: 28rpx;
+      }
+      &:first-child+span{
+        color: #FFAA1D;
+        font-size: 28rpx;
+      }
+    }
+  }
+  .static-totalAmt{
+    margin-top: 30rpx;
+    p{
+      text-align: right;
+      color: #666;
+      font-size: 28rpx;
+      em{
+        display: inline-block;
+        color: #FF584B;
+        font-size: 30rpx;
+        font-weight: 600;
+      }
+    }
+  }
+}
+.pay-info{
+  background: #fff;
+  margin-top: 10rpx;
+  ul{
+    li{
+      height: 80rpx;
+      @include display-flex();
+      @include align-items(center);
+      padding-right: 30rpx;
+      padding-left: 24rpx;
+      background: url(./assets/icon/yh_u.png) no-repeat 96% center;
+      background-size: 42rpx auto;
+      &.active{
+        background: url(./assets/icon/yh_s.png) no-repeat 96% center;
+        background-size: 42rpx auto;
+      }
+      &.title{
+        background: none;
+        border-bottom:2rpx solid #E6E6E6;
+        @include justify-content(space-between);
+        span{
+          @include flex(1);
+          color: #999999;
+          font-size: 30rpx;
+        }
+        span:first-child+span{
+          @include flex(1);
+          color: #FF584B;
+          font-size: 34rpx;
+          text-align: right;
+        }
+      }
+      &.wxpay{
+        border-bottom: 2rpx solid #E6E6E6;
+        span{
+          background: url(./assets/icon/pay_we.png) no-repeat left center;
+          background-size: 38rpx auto;
+        }
+      }
+      &.yepay{
+        span{
+          background: url(./assets/icon/pay_ye.png) no-repeat left center;
+          background-size: 36rpx auto;
+        }
+      }
+      span{
+        color: #333;
+        font-size: 30rpx;
+        padding-left: 48rpx;
+      }
+    }
+  }
+}

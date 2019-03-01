@@ -1,0 +1,58 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"miniprogramRoot": "dist/",
+	"compileType": "miniprogram",
+	"appid": "wx65a7bb5d216f2495",
+	"projectname": "%E4%BC%9A%E5%91%98%E7%89%883",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "scene=WH001",
+					"pathName": "pages/index/index",
+					"query": "scene=WH001",
+					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "scene=00029",
+					"pathName": "pages/index/index",
+					"query": "scene=00029",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "scene=1234",
+					"pathName": "pages/index/index",
+					"query": "scene=00001",
+					"scene": "1011"
+				}
+			]
+		}
+	}
+}

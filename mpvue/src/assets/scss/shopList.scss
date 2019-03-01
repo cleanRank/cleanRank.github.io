@@ -1,0 +1,102 @@
+.shoplist-comdity{
+  height: 100%;
+  border-top: 2rpx solid #E6E6E6;
+  .mod{
+    h5{
+      height: 60rpx;
+      padding-left: 66rpx;
+      color: #333;
+      font-size: 28rpx;
+      @include display-flex();
+      @include align-items(center);
+    }
+    &:first-child{
+      h5{
+        background: url(./assets/icon/icon_address.png) no-repeat 30rpx center;
+        background-size: 26rpx auto;
+      }
+    }
+    ul {
+      padding-left: 30rpx;
+      li {
+        height: 92rpx;
+        @include display-flex();
+        @include align-items(center);
+        padding-left: 36rpx;
+        color: #999999;
+        border-bottom: 2rpx solid #E6E6E6;
+        font-size: 28rpx;
+        background: url(./assets/icon/icon_unchoose.png) no-repeat left center;
+        background-size: 28rpx auto;
+        &.active {
+          color: #3D9DFD;
+          background: url(./assets/icon/icon_choose.png) no-repeat left center;
+          background-size: 28rpx auto;
+        }
+      }
+    }
+  }
+}
+.site-frame-bg{
+  height: 276rpx;
+  @include display-flex();
+  @include align-items(center);
+  @include justify-content(center);
+  background:rgba(246, 246, 246, 1);
+  img{
+    width: 374rpx;
+    height: 216rpx;
+  }
+}
+.site-frame-zone{
+  .zone-choose{
+    height: 104rpx;
+    padding: 0 30rpx 0 60rpx;
+    border-bottom: 2rpx solid #f2f2f2;
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    .close{
+      color: #999;
+      font-size: 32rpx;
+    }
+    .city-list{
+      @include display-flex();
+      @include align-items(center);
+      span{
+        @include display-flex();
+        @include align-items(center);
+        height: 104rpx;
+        color: #333;
+        font-size: 32rpx;
+        margin-right: 110rpx;
+        position: relative;
+        &.active{
+          &::after{
+            content: '';
+            width: 80%;
+            height: 4rpx;
+            background: #3d9dfd;
+            border-radius: 4rpx;
+            position: absolute;
+            left: 10%;
+            bottom: 10rpx;
+          }
+        }
+      }
+    }
+  }
+  .zone-item{
+    height: 700rpx;
+    overflow: auto;
+    padding-left: 60rpx;
+    ul{
+      li{
+        width: 100%;
+        margin-top: 32rpx;
+        color: #666;
+        font-size: 28rpx;
+      }
+    }
+  }
+}
