@@ -1,0 +1,87 @@
+.site-frame-city {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  .site-frame-zone {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    @include px2rem(min-height, 842);
+    background: #fff;
+    h5{
+      position: relative;
+      @include px2rem(height, 100);
+      background: #F5F9FF;
+      @include font-dpr(32);
+      @include display-flex();
+      @include align-items(center);
+      @include justify-content(center);
+      color: #666;
+      span{
+        position: absolute;
+        @include px2rem(right, 30);
+        @include px2rem(top, 25);
+        color: #999;
+      }
+    }
+    .zone-choose {
+      @include px2rem(height, 104);
+      @include px2rem(padding, 0 30 0 60);
+      @include px2rem(border-bottom-width, 2);
+      border-bottom-color: #D3D3D3;
+      border-bottom-style: solid;
+      @include display-flex();
+      @include align-items(center);
+      @include justify-content(space-between);
+
+      .close {
+        color: #999;
+      }
+
+      .city-list {
+        @include display-flex();
+        @include align-items(center);
+
+        span {
+          @include display-flex();
+          @include align-items(center);
+          @include px2rem(height, 104);
+          color: #333;
+          @include font-dpr(32);
+          @include px2rem(margin-right, 55);
+          position: relative;
+
+          &.active {
+            &::after {
+              content: '';
+              width: 80%;
+              @include px2rem(height, 2);
+              background: #186EE3;
+              position: absolute;
+              left: 10%;
+              @include px2rem(bottom, 5);
+            }
+          }
+        }
+      }
+    }
+
+    .zone-item {
+      overflow: scroll;
+      @include px2rem(padding-left, 60);
+      ul {
+        @include px2rem(height, 626);
+        li {
+          width: 100%;
+          @include px2rem(margin-top, 32);
+          color: #666;
+          @include font-dpr(28);
+        }
+      }
+    }
+  }
+}

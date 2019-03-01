@@ -1,0 +1,138 @@
+@import "../../assets/scss/_app.scss";
+* {
+  box-sizing: border-box;
+}
+.mangage-list {
+  min-height: 100%;
+  .mangage-list-item {
+    background-color: #fff;
+    @include px2rem(height, 156);
+    @include px2rem(padding-left, 30);
+    @include px2rem(margin-top, 10);
+    .list-item-title {
+      @include px2rem(padding-right, 30);
+      @include px2rem(height, 84);
+      @include px2rem(line-height, 84);
+      border-bottom: 1px solid #F2F2F2;
+      .auit {
+        @include font-dpr(32);
+        @include px2rem(padding-left, 22);
+        position: relative;
+      }
+      .auit:before {
+        content: '';
+        display: inline-block;
+        @include wh(8, 30);
+        background: #0087FF;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        @include px2rem(margin-top, -15);
+      }
+      .name {
+        color: #666;
+        @include font-dpr(28);
+      }
+    }
+    .list-item-time {
+      @include px2rem(height, 72);
+      p {
+        @include px2rem(line-height, 72);
+        @include px2rem(padding-right, 30);
+        .label {
+          @include font-dpr(28);
+          color: #333;
+        }
+        .fr {
+          @include font-dpr(30);
+          color: #666;
+        }
+      }
+      .item-time-sign {
+        @include px2rem(margin-top, 28);
+      }
+    }
+  }
+}
+
+.agmanage-detail {
+  .title-header {
+    @include px2rem(height, 90);
+    @include px2rem(line-height, 90);
+    @include px2rem(padding, 0 30);
+    background-color: #F6F6F6;
+    .label {
+      color: #333;
+      @include font-dpr(32);
+      position: relative;
+      @include px2rem(padding-left, 22);
+    }
+    .label:before {
+      content: '';
+      display: inline-block;
+      @include wh(8, 30);
+      background-color: #0087FF;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      @include px2rem(margin-top, -15);
+    }
+    .allNum {
+      color: #F9B33C;
+      @include font-dpr(28);
+    }
+  }
+  .manage-info {
+    background-color: #fff;
+    @include px2rem(padding-left, 30);
+    li {
+      @include px2rem(height, 128);
+      @include px2rem(line-height, 128);
+      @include px2rem(padding-right, 30);
+      @include font-dpr(28);
+      border-bottom:  1px solid #F2F2F2;
+      .info-label {
+        display: inline-block;
+        @include px2rem(width, 230);
+      }
+      .info-info {
+        display: inline-block;
+        @include px2rem(width, 450);
+      }
+      .info-look {
+        display: inline-block;
+        color: #0087FF;
+        float: right;
+        @include px2rem(width, 80);
+        background: url(../../assets/icon/icon/right.png) no-repeat;
+        background-position: right center;
+        // background-position:70px center;
+      }
+    }
+    li:last-child {
+      border: none;
+    }
+  }
+  .commodity-list {
+    background-color: #fff;
+    @include px2rem(padding-left, 30);
+    li {
+      @include px2rem(padding, 32 30 30 0);
+      border-bottom: 1px solid #F2F2F2;
+      p {
+        @include px2rem(margin-bottom, 32);
+        @include px2rem(line-height, 28);
+        @include font-dpr(28);
+        .price {
+          font-weight: 600;
+        }
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    li:last-child {
+      border: none;
+    }
+  }
+}

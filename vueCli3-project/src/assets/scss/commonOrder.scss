@@ -1,0 +1,82 @@
+.commonOrder-content {
+  @include px2rem(padding, 20 0 20 20);
+  @include px2rem(margin-top, 10);
+  background: #fff;
+
+  .status {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      .blieLine {
+        vertical-align: middle;
+        display: inline-block;
+        background: #0087ff;
+        @include px2rem(width, 8);
+        @include px2rem(height, 32);
+        @include px2rem(margin-right, 14);
+      }
+
+      .title {
+        font-weight: 600;
+        @include font-dpr(32);
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+
+    .right {
+      @include font-dpr(28);
+      @include px2rem(margin-right, 32);
+      font-weight: 500;
+      color: #e8a22a;
+      font-family: PingFang-SC-Medium;
+
+      .offerIcon {
+        display: inline-block;
+        @include px2rem(height, 32);
+        @include px2rem(margin-right, 10);
+        @include px2rem(width, 32);
+        vertical-align: middle;
+      }
+
+      .offerIcon1 {
+        background: url(./assets/icon/icon/no_choose.png) no-repeat center;
+        @include px2rem(background-size, 32 32);
+
+      }
+
+      .offerIcon2 {
+        background: url(./assets/icon/icon/choose.png) no-repeat center;
+        @include px2rem(background-size, 32 32);
+
+      }
+    }
+
+    .right1 {
+      color: #71c912;
+    }
+  }
+
+  .line {
+    @include px2rem(height, 2);
+    @include px2rem(margin, 20 0 20 16);
+    background: #e2e2e2;
+  }
+
+  .saleID {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      @include font-dpr(28);
+      @include px2rem(margin, 14 0);
+      color: rgba(51, 51, 51, 1);
+      font-weight: 400;
+    }
+
+    .number {
+      @include px2rem(margin-right, 28);
+    }
+  }
+}

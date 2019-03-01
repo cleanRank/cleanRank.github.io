@@ -1,0 +1,444 @@
+@import '../../assets/scss/app';
+// 退货
+#SellReturn{
+  width: 100%;
+  overflow: hidden;
+  .tap{
+    width: 100%;
+    @include px2rem(height, 80);
+    @include px2rem(line-height, 80);
+    background: #fff;
+    li{
+      float: left;
+      width: 25%;
+      height: 100%;
+      position: relative;
+      text-align: center;
+      p{
+        @include font-dpr(28);
+        color: #666;
+      }
+      span{
+        position: absolute;
+        bottom: 0;
+        @include px2rem(left, 54);
+        @include px2rem(width, 72);
+        @include px2rem(height, 4);
+        background: #0087FF;
+        display: none;
+      }
+    }
+    .active{
+      p{
+        color: #0087FF;
+      }
+      span{
+        display: block;
+      }
+    }
+  }
+  .information{
+    width: 100%;
+    overflow: hidden;
+    .list{
+      @include px2rem(padding-left, 32);
+      @include px2rem(height, 220);
+      @include px2rem(margin-top, 10);
+      background: #fff;
+      overflow: hidden;
+      .headline{
+        @include px2rem(margin-right, 32);
+        @include px2rem(height, 82);
+        @include px2rem(line-height, 82);
+        border-bottom: 1px solid #f0f0f0;
+        .headline-span{
+          float: left;
+          @include px2rem(width, 8);
+          @include px2rem(height, 30);
+          background: #0087FF;
+          @include px2rem(margin, 26 14 0 0 );
+        }
+        .character{
+          float: left;
+          @include font-dpr(32);
+          color: #333;
+          font-weight: 600;
+        }
+      }
+      .list-data{
+        @include px2rem(margin-right, 32);
+        @include px2rem(height, 67);
+        @include px2rem(line-height, 67);
+        .list-data-left{
+          float: left;
+          @include font-dpr(28);
+          color: #333;
+        }
+        .list-data-right{
+          float: right;
+          @include font-dpr(28);
+          color: #666;
+        }
+      }
+    }
+  }
+}
+// 退货结束
+// 退货详情
+#particulars{
+  width: 100%;
+  overflow: hidden;
+  .money{
+    width: 100%;
+    @include px2rem(height, 186);
+    background-image: linear-gradient(131deg, #2E9CFD 0%, #1D71F1 100%);
+    @include px2rem(border-radius, 0 0 8 8);
+    text-align: center;
+    overflow: hidden;
+    p:nth-child(1){
+      @include font-dpr(28);
+      color: #fff;
+      @include px2rem(line-height, 40);
+      @include px2rem(margin-top, 48);
+    }
+    p:nth-child(2){
+      @include font-dpr(40);
+      color: #fff;
+      @include px2rem(line-height, 48);
+    }
+  }
+  .zcdata{
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    .title{
+      @include px2rem(margin-left, 32);
+      @include px2rem(height, 84);
+      @include px2rem(line-height, 84);
+      border-bottom: 1px solid #f0f0f0;
+      .title-span{
+        float: left;
+        @include px2rem(width, 8);
+        @include px2rem(height, 30);
+        background: #0087FF;
+        @include px2rem(margin, 26 14 0 0 );
+      }
+      .title-p{
+        float: left;
+        @include font-dpr(32);
+        color: #333;
+        font-weight: 600;
+      }
+    }
+    .list{
+      @include px2rem(margin, 0 32);
+      @include px2rem(height, 80);
+      @include px2rem(line-height, 80);
+      .list-left{
+        float: left;
+        @include font-dpr(28);
+        color: #333;
+      }
+      .list-right{
+        float: right;
+        @include px2rem(width, 500);
+        @include font-dpr(28);
+        color: #666;
+        text-align: right;
+      }
+      .list-select{
+        float: right;
+        @include px2rem(width, 320);
+        @include px2rem(height, 60);
+        @include px2rem(line-height, 60);
+        @include px2rem(margin-top, 10);
+        div{
+          float: left;
+          @include px2rem(width, 150);
+          height: 100%;
+          text-align: center;
+          @include font-dpr(24);
+          color: #333;
+          @include px2rem(margin-right, 20);
+          background: #f8f8f8;
+        }
+        div:nth-child(2){
+          margin-right: 0;
+        }
+        .selectactive{
+          background: url(../../assets/icon/icon/select.png) no-repeat left center;
+          background-size: 100% auto;
+        }
+      }
+      .list-input{
+        float: right;
+        @include px2rem(width, 500);
+        height: 100%;
+        @include font-dpr(28);
+        padding: 0;
+        margin: 0;
+        border: none;
+        text-align: right;
+      }
+    }
+    .commodity{
+      @include px2rem(height, 252);
+      overflow: hidden;
+      @include px2rem(padding, 0 32);
+      background: #fff;
+      .commodity-details{
+        width: 100%;
+        @include px2rem(height, 178);
+        border-bottom: 1px solid #f0f0f0;
+        .details-img{
+          float: left;
+          @include px2rem(width, 100);
+          @include px2rem(height, 100);
+          @include px2rem(margin, 24 10 0 0);
+          @include px2rem(border-radius, 8);
+          overflow: hidden;
+          img{
+            width: 100%;
+          }
+        }
+        .details-right{
+          float: right;
+          @include px2rem(width, 575);
+          height: 100%;
+          .right-one{
+            width: 100%;
+            @include px2rem(height, 28);
+            @include px2rem(line-height, 28);
+            @include px2rem(margin-top, 26);
+            .one-p1{
+              float: left;
+              @include px2rem(width, 400);
+              @include font-dpr(28);
+              color: #333;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+            }
+            .one-p2{
+              float: right;
+              @include font-dpr(28);
+              color: #999;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+// 退货详情结束
+// 采购退货
+#PurchaseReturn{
+  width: 100%;
+  overflow: hidden;
+  .demo{
+    width: 100%;
+    height: auto;
+    ul{
+      width: 100%;
+      height: auto;
+      li{
+        @include px2rem(padding-left, 32);
+        @include px2rem(height, 220);
+        background: #fff;
+        @include px2rem(margin-top, 10);
+        overflow: hidden;
+        .headline{
+          @include px2rem(margin-right, 32);
+          @include px2rem(height, 82);
+          @include px2rem(line-height, 82);
+          border-bottom: 1px solid #f0f0f0;
+          .headline-left{
+            float: left;
+            .headline-span{
+              float: left;
+              @include px2rem(width, 8);
+              @include px2rem(height, 30);
+              background: #0087FF;
+              @include px2rem(margin, 26 14 0 0 );
+            }
+            .character{
+              float: left;
+              @include font-dpr(32);
+              color: #333;
+              font-weight: 600;
+            }
+          }
+          .headline-p{
+            float: right;
+            @include font-dpr(28);
+            color: #E8A22A;
+            font-weight: 600;
+          }
+        }
+        .list-data{
+          @include px2rem(margin-right, 32);
+          @include px2rem(height, 67);
+          @include px2rem(line-height, 67);
+          .list-data-left{
+            float: left;
+            @include font-dpr(28);
+            color: #333;
+          }
+          .list-data-right{
+            float: right;
+            @include font-dpr(28);
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+}
+// 采购退货结束
+// 已退货
+#particulars2{
+  width: 100%;
+  overflow: hidden;
+  .money{
+    width: 100%;
+    @include px2rem(height, 186);
+    background-image: linear-gradient(131deg, #2E9CFD 0%, #1D71F1 100%);
+    @include px2rem(border-radius, 0 0 16 16);
+    text-align: center;
+    overflow: hidden;
+    p:nth-child(1){
+      @include font-dpr(28);
+      color: #fff;
+      @include px2rem(line-height, 40);
+      @include px2rem(margin-top, 48);
+      @include px2rem(letter-spacing, 2);
+    }
+    p:nth-child(2){
+      @include font-dpr(40);
+      color: #fff;
+      @include px2rem(line-height, 48);
+      @include px2rem(letter-spacing, 2);
+    }
+  }
+  .zcdata{
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    @include px2rem(margin-bottom, 10);
+    .title{
+      @include px2rem(margin-left, 32);
+      @include px2rem(height, 84);
+      @include px2rem(line-height, 84);
+      border-bottom: 1px solid #f0f0f0;
+      .title-span{
+        float: left;
+        @include px2rem(width, 8);
+        @include px2rem(height, 30);
+        background: #0087FF;
+        @include px2rem(margin, 26 14 0 0 );
+      }
+      .title-p{
+        float: left;
+        @include font-dpr(32);
+        color: #333;
+        font-weight: 600;
+      }
+    }
+    .list{
+      @include px2rem(margin, 0 32);
+      @include px2rem(height, 80);
+      @include px2rem(line-height, 80);
+      .list-left{
+        float: left;
+        @include font-dpr(28);
+        color: #333;
+      }
+      .list-right{
+        float: right;
+        @include px2rem(width, 500);
+        height: 100%;
+        @include font-dpr(28);
+        color: #666;
+        text-align: right;
+      }
+    }
+    .adaption{
+      @include px2rem(padding, 10 0 20 0);
+      @include px2rem(line-height, 45);
+      height: auto;
+      overflow: hidden;
+    }
+  }
+  .commodity{
+    height: auto;
+    overflow: hidden;
+    @include px2rem(padding, 0 32);
+    background: #fff;
+    .commodity-details{
+      width: 100%;
+      @include px2rem(height, 178);
+      border-bottom: 1px solid #f0f0f0;
+      .details-img{
+        float: left;
+        @include px2rem(width, 100);
+        @include px2rem(height, 100);
+        @include px2rem(margin, 24 10 0 0);
+        @include px2rem(border-radius, 8);
+        overflow: hidden;
+        img{
+          width: 100%;
+        }
+      }
+      .details-right{
+        float: right;
+        @include px2rem(width, 575);
+        height: 100%;
+        .right-one{
+          width: 100%;
+          @include px2rem(height, 28);
+          @include px2rem(line-height, 28);
+          @include px2rem(margin-top, 20);
+          .one-p1{
+            float: left;
+            @include px2rem(width, 400);
+            @include font-dpr(28);
+            color: #333;
+            overflow: hidden;
+          	text-overflow: ellipsis;
+          	display: -webkit-box;
+          	-webkit-line-clamp: 1;
+          	-webkit-box-orient: vertical;
+          }
+          .one-p2{
+            float: right;
+            @include font-dpr(28);
+            color: #999;
+          }
+        }
+        .right-top{
+          @include px2rem(margin-top, 28);
+        }
+        .right-two{
+          width: 100%;
+          @include px2rem(height, 42);
+          @include px2rem(line-height, 42);
+          @include px2rem(margin-top, 15);
+          .two-p1{
+            float: left;
+            @include font-dpr(28);
+            font-weight: 600;
+            color: #7BCD23;
+          }
+          .two-p2{
+            float: right;
+            @include font-dpr(30);
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+}
+// 已退货结束

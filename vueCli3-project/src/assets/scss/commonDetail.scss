@@ -1,0 +1,116 @@
+.commonDetail-content {
+  @include px2rem(padding, 20 30);
+  background: #fff;
+
+  .status {
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      .blieLine {
+        vertical-align: middle;
+        display: inline-block;
+        background: #0087ff;
+        @include px2rem(width, 8);
+        @include px2rem(height, 32);
+        @include px2rem(margin-right, 14);
+      }
+
+      .title {
+        font-weight: 600;
+        @include font-dpr(32);
+
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+
+    .right {
+      @include font-dpr(28);
+      @include px2rem(margin-right, 32);
+      font-weight: 500;
+      color: rgba(232, 162, 42, 1);
+      font-family: PingFang-SC-Medium;
+    }
+
+    .right1 {
+      color: #71C912;
+    }
+  }
+
+  .line {
+    @include px2rem(height, 1);
+    @include px2rem(margin, 20 0 20 16);
+    background: #e2e2e2;
+  }
+
+  .saleID {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      @include font-dpr(28);
+      @include px2rem(margin, 14 0);
+      color: rgba(51, 51, 51, 1);
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis; //文本溢出显示省略号
+    }
+
+    .number {
+      color: rgba(102, 102, 102, 1);
+    }
+        .btn {
+          @include px2rem(width, 120);
+          @include px2rem(height, 50);
+          @include font-dpr(28);
+          @include px2rem(line-height, 50);
+          @include px2rem(border-radius, 10);
+          background: #0087ff;
+          font-family: PingFang-SC-Regular;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 1);
+        }
+    .address{
+      width: 65%;
+      text-align: right;
+    }
+    .red {
+      color: rgba(255, 55, 55, 1);
+    }
+  }
+
+  .cutLine {
+    height: 5px;
+    width: 120%;
+    background: #f4f4f4;
+  }
+
+  .saleID1 {
+    @include px2rem(margin-top, 10);
+
+    // display: flex;
+    // justify-content: space-around;
+    .img {
+      @include px2rem(width, 100);
+      @include px2rem(height, 100);
+      @include px2rem(margin-top, 10);
+      vertical-align: top;
+    }
+
+    .inlineB {
+      display: inline-block;
+      width: 84.3%;
+    }
+
+    .allPrice {
+      text-align: right;
+      @include font-dpr(30);
+      @include px2rem(margin, 10 28 0 0);
+      @include px2rem(line-height, 36);
+      font-family: DIN-Medium;
+      font-weight: 500;
+      color: rgba(51, 51, 51, 1);
+    }
+  }
+}

@@ -1,0 +1,106 @@
+.mainHeader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  z-index: 999;
+  @include px2rem(height, 88);
+  @include px2rem(padding, 0 80);
+  @include align-items(center);
+  .head-location {
+    @include px2rem(width, 108);
+    span{
+      position: relative;
+      color:#333;
+      @include font-dpr(28);
+      font-weight: 600;
+      &:after{
+        content: ' ';
+        @include px2rem(width, 20);
+        @include px2rem(height, 20);
+        @include px2rem(margin-left, 12);
+        display: inline-block;
+        background: url(assets/icon/icon/arrow_bottom.png) no-repeat center center;
+      }
+      &.active:after{
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .head-search {
+  }
+  .head-r-btn{
+    @include px2rem(margin-right, -40);
+    @include px2rem(margin-left, 20);
+    @include font-dpr(28);    
+    &.cancel{
+      color: $btnRedColor;
+      @include font-dpr(28);
+    }
+    &.search {
+      color: #333;
+      @include font-dpr(28);
+    }
+  }
+  .common-search{
+    @include flex(1);
+    width: 100%;
+    input{
+      width: 100%;
+      @include font-dpr(28);
+      color: #333;
+      @include display-flex();
+      @include align-items(center);
+      @include px2rem(height, 60);
+      @include px2rem(padding-left, 60);
+      @include px2rem(border-radius, 20);
+      background: url(assets/icon/icon/hp_top_search_icon@2x.png) no-repeat left center;
+      border: none;
+      background-color: $F6F6F6;
+      @include px2rem(background-size, 30 30);
+      @include px2rem(background-position, 20);
+    }
+  }
+}
+.site-frame-nav{
+  position: fixed;
+  @include px2rem(top, 88);
+  @include px2rem(height, 92);
+  @include px2rem(padding, 0 30);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  z-index: 999;
+  ul {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    @include align-items(center);
+    @include flex-wrap(nowrap);
+    li{
+      @include display-flex();
+      @include px2rem(margin-right, 26);
+      @include font-dpr(28);
+      @include justify-content(center);
+      position: relative;
+      font-weight: 600;
+      color: $color999;
+      white-space: nowrap;
+      &.active{
+        color: $redColor;
+        @include font-dpr(36);
+        i {
+          content: ' ';
+          @include px2rem(height, 4);
+          @include px2rem(width, 28);
+          @include px2rem(bottom, -14);
+          background-color: $redLineColor;
+          position: absolute;
+        }
+      }
+    }
+  }
+}

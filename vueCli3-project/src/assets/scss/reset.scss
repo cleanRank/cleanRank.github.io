@@ -1,0 +1,241 @@
+@charset "utf-8";
+@import "app";
+@import "popStyle";
+@import "init";
+@import "flex";
+@import "btn";
+//font
+.font10 {
+  @include font-dpr(20);
+  -webkit-text-size-adjust: none;
+}
+
+.font12 {
+  @include font-dpr(24);
+}
+
+.font14 {
+  @include font-dpr(28);
+}
+
+.font16 {
+  @include font-dpr(32);
+}
+
+.font18 {
+  @include font-dpr(36);
+}
+
+//font color
+.c_red {
+  color: $redColor;
+}
+.c_16B{
+  color: #16B92E;
+}
+.c_ccc {
+  color: #ccc !important;
+}
+
+.c_999 {
+  color: #999 !important;
+}
+
+.c_666 {
+  color: #666 !important;
+}
+
+.c_333 {
+  color: #333;
+}
+.c_da{
+  color: #DADADA;
+}
+.tc {
+  text-align: center;
+}
+.tr{
+  text-align: right;
+}
+.tl{
+  text-align: left;
+}
+/*flex box*/
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.justify-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.justify-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.vertical{
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex, .flex *, .flex:after, .flex:before {
+  box-sizing: border-box;
+}
+.flex > .cell_0 {
+  display: block;
+  position: relative;
+}
+.flex > .cell_1 {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+.flex > .cell_2 {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+.flex > .cell_3 {
+  -webkit-box-flex: 3;
+  -moz-box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+//stick footer
+.stick_wrap {
+  @extend .flex;
+  @extend .vertical;
+  @extend .justify-between;
+  height: auto;
+  min-height: 100%;
+}
+
+.stick_footer, .stick_main {
+  width: 100%;
+}
+html, body {
+  height: 100%;
+  min-height: 100%;
+  background: $bgColor;
+  // @include font-dpr(36);
+}
+.maxHeight{
+  height: 100%;
+  min-height: 100%;
+}
+.top_go{
+  @include px2rem(width,97);
+  @include px2rem(height,97);
+  position: fixed;
+  z-index: 33;
+  @include px2rem(right,10);
+  @include px2rem(bottom,120);
+  text-align: center;
+}
+// 按钮样式
+.mt30{
+  @include px2rem(margin-top, 30);
+}
+.mg{
+  @include px2rem(margin, 30 0);
+}
+.mb30{
+  @include px2rem(margin-bottom, 30);
+}
+.buttonStyle{
+  @include btnCss(690, 96, $blueColor, #fff);
+  &.disableStyle{
+    background: #C8C8C8;
+  }
+}
+//暂无数据友好提示
+.nodata_box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  img{
+    display: block;
+    @include px2rem(width,300);
+  }
+  .font_text{
+    @include font-dpr(28);
+    line-height: 1.1;
+    @include px2rem(margin, 50 0 20);
+  }
+  .add_new{
+    @include px2rem(width,200);
+    @include px2rem(height,50);
+    @include px2rem(border-radius, 30);
+    background: $redColor;
+    @include font-dpr(24);
+    color: #fff;
+  }
+}
+.no_more{
+  line-height: 1.5;
+  text-align: center;
+  padding-bottom: 0.26667rem;
+}
+// 提示信息样式
+.prompt_txts{
+  background: #FFF8E8;
+  @include px2rem(padding, 12 30);
+  line-height: 1.5;
+  color: #FAA61A;
+}
+.position{
+  position: fixed!important;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.content-offset{
+  @include px2rem(padding-top, 88);
+}
+.content-offset-footer{
+  @include px2rem(padding-bottom, 98);
+  min-height: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+.maxHeight{
+  height: 100%;
+  min-height: 100%;
+}

@@ -1,0 +1,393 @@
+@import '../../assets/scss/app';
+// 公共样式
+.between{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button{
+  @include px2rem(width, 580);
+  @include px2rem(height, 90);
+  @include px2rem(line-height, 90);
+  text-align: center;
+  @include px2rem(border-radius, 4);
+  @include font-dpr(28);
+}
+// 公共样式结束
+// 个人中心
+#mine{
+  @include px2rem(width, 750);
+  height: 100%;
+  @include px2rem(padding-top, 0);
+  overflow: hidden;
+  .head{
+    width: 100%;
+    @include px2rem(height, 88);
+    @include px2rem(line-height, 88);
+    text-align: center;
+    @include font-dpr(34);
+    color: #333;
+    background: #fff;
+  }
+  .mine-content{
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    .head{
+      @include px2rem(width, 750);
+      @include px2rem(height, 312);
+      background: url(../../assets/icon/icon/head.png) no-repeat left center;
+      background-size: 100% auto;
+      text-align: center;
+      @include px2rem(margin-bottom, 20);
+      img{
+        @include px2rem(width, 120);
+        @include px2rem(height, 120);
+        @include px2rem(border-radius, 60);
+        @include px2rem(margin, 60 0 40 0);
+      }
+      p{
+        @include font-dpr(32);
+        color: #333;
+        @include px2rem(line-height, 32);
+        font-weight: 600;
+      }
+    }
+    .list{
+      @include px2rem(padding, 0 30);
+      @include px2rem(height, 108);
+      @include px2rem(line-height, 108);
+      background: #fff;
+      .list-img{
+        float: left;
+        @include px2rem(width, 62);
+        height: 100%;
+        .img-one{
+          @include px2rem(width, 28);
+          @include px2rem(height, 32);
+        }
+        .img-two{
+          @include px2rem(width, 28);
+          @include px2rem(height, 40);
+        }
+        .img-three{
+          @include px2rem(width, 32);
+          @include px2rem(height, 32);
+        }
+      }
+      p:nth-child(2){
+        float: left;
+        @include font-dpr(28);
+        color: #333;
+      }
+      p:nth-child(3){
+        float: right;
+        @include font-dpr(28);
+        color: #666;
+        img{
+          @include px2rem(width, 14);
+          @include px2rem(height, 24);
+        }
+      }
+    }
+    .button{
+      color: #333;
+      background: #fff;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+      @include px2rem(margin, 180 85 0 85);
+    }
+  }
+  .curtain{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    overflow: hidden;
+    .curtain-content{
+      @include px2rem(width, 600);
+      @include px2rem(height, 388);
+      @include px2rem(border-radius, 12);
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      @include px2rem(margin-left, -300);
+      @include px2rem(margin-top, -194);
+      overflow: hidden;
+      p:nth-child(1){
+        @include font-dpr(32);
+        @include px2rem(line-height, 104);
+        color: #333;
+        text-align: center;
+      }
+      p:nth-child(2){
+        @include font-dpr(28);
+        @include px2rem(line-height, 164);
+        color: #666;
+        text-align: center;
+      }
+      .curtain-button{
+        width: 100%;
+        @include px2rem(height, 100)
+        @include px2rem(line-height, 100);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: #DEDEDE;
+        border-top: 1px solid #DEDEDE;
+        .curtain-button-identical{
+          float: left;
+          height: 100%;
+          @include px2rem(width, 298);
+          background: #fff;
+          text-align: center;
+          @include font-dpr(32);
+          color: #999;
+        }
+        .curtain-right{
+          float: right;
+          color: #0087FF;
+        }
+      }
+    }
+  }
+}
+// 个人中心结束
+// 修改密码
+#Changepassword{
+  @include px2rem(width, 750);
+  height: 100%;
+  background: #fff;
+  .list{
+    @include px2rem(padding, 0 61);
+    overflow: hidden;
+    @include px2rem(margin-bottom, 80);
+    .list-img{
+      float: left;
+      @include px2rem(width, 62);
+      height: 100%;
+      .img-one{
+        @include px2rem(width, 28);
+        @include px2rem(height, 40);
+      }
+      .img-two{
+        @include px2rem(width, 32);
+        @include px2rem(height, 40);
+      }
+      .img-three{
+        @include px2rem(width, 32);
+        @include px2rem(height, 36);
+      }
+    }
+    .list-one{
+      width: 100%;
+      @include px2rem(height, 100);
+      @include px2rem(line-height, 100);
+      border-bottom: 1px solid #ddd;
+      .list-one-input{
+        float: left;
+        @include px2rem(width, 494);
+        height: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+        @include font-dpr(28);
+      }
+      .list-icon{
+        float: left;
+        @include px2rem(width, 48);
+        @include px2rem(height, 48);
+        @include px2rem(margin, 26 0);
+        .icon-one{
+          @include px2rem(width, 24);
+          @include px2rem(height, 24);
+        }
+        img{
+          @include px2rem(width, 38);
+          @include px2rem(height, 12);
+        }
+        .icontwo1, .icontwo2{
+          @include px2rem(width, 40);
+          @include px2rem(height, 24);
+        }
+      }
+    }
+    .list-two{
+      width: 100%;
+      @include px2rem(height, 100);
+      @include px2rem(line-height, 100);
+      border-bottom: 1px solid #ddd;
+      .list-two-input{
+        float: left;
+        @include px2rem(width, 356);
+        height: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+        @include font-dpr(28);
+      }
+      .list-two-img{
+        float: right;
+        @include px2rem(width, 160);
+        @include px2rem(height, 70);
+        @include px2rem(margin, 15 15 0 0);
+      }
+      .linellae{
+        float: left;
+        @include px2rem(width, 4);
+        @include px2rem(height, 40);
+        background: #f2f2f2;
+        @include px2rem(margin, 30 0 30 0);
+      }
+      .acquire{
+        float: right;
+        @include px2rem(width, 185);
+        height: 100%;
+        text-align: center;
+        color: #186EE3;
+        @include font-dpr(28);
+      }
+      p{
+        float: left;
+        @include px2rem(width, 180);
+        height: 100%;
+        text-align: center;
+        color: #999;
+        @include font-dpr(28);
+      }
+    }
+  }
+  .button{
+    color: #fff;
+    @include font-dpr(36);
+    background: #0087FF;
+    margin: auto;
+  }
+}
+// 修改密码
+// 更换手机号
+#search{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  .logo{
+    @include px2rem(width, 120);
+    @include px2rem(height, 120);
+    @include px2rem(margin, 100 315);
+    @include px2rem(border-radius, 60);
+    overflow: hidden;
+    img{
+      width: 100%;
+    }
+  }
+  .list{
+    @include px2rem(padding, 0 61);
+    overflow: hidden;
+    @include px2rem(margin-bottom, 80);
+    .list-img{
+      float: left;
+      @include px2rem(width, 62);
+      height: 100%;
+      .img-one{
+        @include px2rem(width, 28);
+        @include px2rem(height, 40);
+      }
+      .img-two{
+        @include px2rem(width, 32);
+        @include px2rem(height, 40);
+      }
+      .img-three{
+        @include px2rem(width, 32);
+        @include px2rem(height, 36);
+      }
+    }
+    .list-one{
+      width: 100%;
+      @include px2rem(height, 100);
+      @include px2rem(line-height, 100);
+      border-bottom: 1px solid #ddd;
+      .list-one-input{
+        float: left;
+        @include px2rem(width, 494);
+        height: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+        @include font-dpr(28);
+      }
+      .list-icon{
+        float: left;
+        @include px2rem(width, 48);
+        @include px2rem(height, 48);
+        @include px2rem(margin, 26 0);
+        .icon-one{
+          @include px2rem(width, 24);
+          @include px2rem(height, 24);
+        }
+        img{
+          @include px2rem(width, 38);
+          @include px2rem(height, 12);
+        }
+        .icontwo1, .icontwo2{
+          @include px2rem(width, 40);
+          @include px2rem(height, 24);
+        }
+      }
+    }
+    .list-two{
+      width: 100%;
+      @include px2rem(height, 100);
+      @include px2rem(line-height, 100);
+      border-bottom: 1px solid #ddd;
+      .list-two-input{
+        float: left;
+        @include px2rem(width, 356);
+        height: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+        @include font-dpr(28);
+      }
+      .list-two-img{
+        float: right;
+        @include px2rem(width, 160);
+        @include px2rem(height, 70);
+        @include px2rem(margin, 15 15 0 0);
+      }
+      .linellae{
+        float: left;
+        @include px2rem(width, 4);
+        @include px2rem(height, 40);
+        background: #f2f2f2;
+        @include px2rem(margin, 30 0 30 0);
+      }
+      .acquire{
+        float: right;
+        @include px2rem(width, 185);
+        height: 100%;
+        text-align: center;
+        color: #186EE3;
+        @include font-dpr(28);
+      }
+      p{
+        float: left;
+        @include px2rem(width, 180);
+        height: 100%;
+        text-align: center;
+        color: #999;
+        @include font-dpr(28);
+      }
+    }
+  }
+  .button{
+    color: #fff;
+    @include font-dpr(36);
+    background: #0087FF;
+    margin: auto;
+  }
+}
+// 更换手机号结束

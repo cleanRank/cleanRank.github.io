@@ -1,0 +1,302 @@
+@import '../../assets/scss/app';
+// 公共样式
+.logo{
+  @include px2rem(width, 120);
+  @include px2rem(height, 120);
+  @include px2rem(margin, 100 315);
+  @include px2rem(border-radius, 60);
+  overflow: hidden;
+  img{
+    width: 100%;
+  }
+}
+.message{
+  @include px2rem(padding, 0 61);
+  overflow: hidden;
+  .list{
+    width: 100%;
+    @include px2rem(height, 100);
+    @include px2rem(line-height, 100);
+    border-bottom: 1px solid #ddd;
+    .list-img{
+      float: left;
+      @include px2rem(width, 62);
+      height: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .img-one{
+        @include px2rem(width, 28);
+        @include px2rem(height, 40);
+      }
+      .img-two{
+        @include px2rem(width, 32);
+        @include px2rem(height, 40);
+      }
+      .img-three{
+        @include px2rem(width, 32);
+        @include px2rem(height, 36);
+      }
+    }
+    .list-input{
+      float: left;
+      @include px2rem(width, 500);
+      height: 100%;
+      border: none;
+      padding: 0;
+      margin: 0;
+      @include font-dpr(28);
+      color: #333;
+    }
+    .list-input-one{
+      float: left;
+      @include px2rem(width, 356);
+      height: 100%;
+      border: none;
+      padding: 0;
+      margin: 0;
+      @include font-dpr(28);
+      color: #333;
+    }
+    .list-change{
+      float: left;
+      @include px2rem(width, 48);
+      @include px2rem(height, 48);
+      @include px2rem(margin, 26 46 26 0);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        @include px2rem(width, 40);
+        @include px2rem(height, 24);
+      }
+      .imgimg{
+        @include px2rem(width, 38);
+        @include px2rem(height, 12);
+      }
+    }
+    .list-image{
+      float: right;
+      @include px2rem(width, 160);
+      @include px2rem(height, 70);
+      @include px2rem(margin-top, 15);
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .list-span{
+      float: left;
+      @include px2rem(width, 4);
+      @include px2rem(height, 40);
+      @include px2rem(margin-top, 30);
+      background: #f2f2f2;
+    }
+    p{
+      float: right;
+      @include px2rem(width, 190);
+      height: 100%;
+      text-align: center;
+      @include font-dpr(28);
+      color: #999;
+    }
+    .listacquire{
+      color: #186EE3;
+    }
+    .list-password{
+      float: left;
+      @include px2rem(width, 130);
+      @include font-dpr(28);
+      color: #333;
+    }
+  }
+}
+.button{
+  @include px2rem(width, 580);
+  @include px2rem(height, 90);
+  @include px2rem(line-height, 90);
+  text-align: center;
+  @include px2rem(border-radius, 8);
+  background: #0087FF;
+  @include font-dpr(36);
+  color: #fff;
+  @include px2rem(margin, 80 85 40 85);
+}
+// 公共样式结束
+// 登录
+#login{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+  .message{
+    .list{
+      .list-change{
+        @include px2rem(margin, 26 0);
+      }
+      .list-password{
+        float: right;
+      }
+    }
+  }
+  .rests{
+    @include px2rem(margin, 0 85);
+    @include px2rem(height, 34);
+    @include px2rem(line-height, 34);
+    .rests-p{
+      @include font-dpr(24);
+      color: #666;
+      float: left;
+    }
+    .rests-right{
+      float: right;
+    }
+  }
+}
+// 登录结束
+// 忘记密码
+#forget{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+  .message{
+    .list{
+      .list-change{
+        @include px2rem(margin, 26 0);
+      }
+      .list-input-one{
+        @include px2rem(width, 360);
+      }
+    }
+  }
+  .password{
+    @include font-dpr(24);
+    color: #666;
+    display: inline-block;
+    @include px2rem(line-height, 34);
+    @include px2rem(margin-left, 85);
+  }
+}
+// 忘记密码结束
+// 注册
+#register{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+  .message{
+    @include px2rem(margin-bottom, 20);
+    .list{
+      .list-change{
+        @include px2rem(margin, 26 0);
+      }
+      .list-input-one{
+        @include px2rem(width, 360);
+      }
+    }
+  }
+  .agreement{
+    @include font-dpr(24);
+    color: #333;
+    @include px2rem(line-height, 34);
+    @include px2rem(margin-left, 80);
+    em{
+      color: #186EE3;
+    }
+  }
+}
+// 注册结束
+// 短信登录
+#message{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+  .message{
+    @include px2rem(margin-bottom, 20);
+    .list{
+      .list-input-one{
+        @include px2rem(width, 360);
+      }
+    }
+  }
+  .forget{
+    @include px2rem(height, 40);
+    @include px2rem(line-height, 40);
+    @include px2rem(margin-top, 18);
+    @include px2rem(margin-right, 90);
+    text-align: right;
+    p{
+      display: inline-block;
+      @include font-dpr(28);
+      color: #333;
+    }
+  }
+  .rests{
+    @include px2rem(margin, 0 85);
+    @include px2rem(height, 34);
+    @include px2rem(line-height, 34);
+    .rests-p{
+      @include font-dpr(24);
+      color: #666;
+      float: left;
+    }
+    .rests-right{
+      float: right;
+    }
+  }
+}
+// 短信登录结束
+.thirdlogin {
+  box-sizing: border-box;
+  min-height: 100%;
+  background-color: #fff;
+  .imgBox {
+    margin: 0 auto;
+    text-align: center;
+    @include px2rem(width, 608);
+    @include px2rem(padding-top, 136);
+    @include px2rem(padding-bottom, 80);
+    @include px2rem(margin-bottom, 82);
+    border-bottom: 1px solid #EEEEEE;
+    img {
+      @include wh(120, 120);
+    }
+    h2 {
+      @include font-dpr(40);
+      font-weight: 600;
+      @include px2rem(line-height, 56);
+      @include px2rem(margin-top, 30);
+    }
+  }
+  .hint {
+    text-align: center;
+    .text1 {
+      @include font-dpr(30);
+      @include px2rem(line-height, 42);
+      @include px2rem(margin-bottom, 16);
+    }
+    .text2 {
+      @include font-dpr(24);
+      @include px2rem(line-height, 34);
+      color: #999;
+    }
+  }
+  .btnBox {
+    @include px2rem(margin-top, 188);
+    .btn {
+      @include wh(580, 90);
+      @include px2rem(border-radius, 8);
+      background-color: #0087FF;
+      text-align: center;
+      @include px2rem(line-height, 90);
+      margin: 0 auto;
+      color: #fff;
+      @include font-dpr(36);
+    }
+  }
+}

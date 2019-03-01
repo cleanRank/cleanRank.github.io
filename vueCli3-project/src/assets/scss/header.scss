@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import "app";
+// 其他头部样式
+.heder-wrap{
+  @include px2rem(height, 88);
+  @include px2rem(line-height, 88);
+  background: #fff;
+  @include px2rem(padding, 0 30);
+  border-bottom: 1px solid $borderColor;
+  &.noBorder{
+    border-bottom: none;
+  }
+}
+.left_btn,.right_btn{
+  position: absolute;
+  @include px2rem(width, 160);
+  @include px2rem(height, 88);
+  top: 0;
+  z-index: 2;
+}
+.left_btn{
+  @include px2rem(left, 30);
+  background: url(./assets/icon/icon/public_back_n.png) no-repeat left center;
+  @include px2rem(background-size, 50 50);
+}
+.right_btn{
+  @include px2rem(right, 30);
+  text-align: right;
+}
+.information {
+  color: #0087FF;
+}
+.orderSearch{
+  background: url(./assets/icon/icon/seach.png) no-repeat right center;
+  @include px2rem(background-size, 50 50);
+}
+.ipt{
+  border: 0;
+  outline: 0;
+  @include px2rem(text-indent, 60);
+  @include px2rem(margin-left, 60);
+  @include px2rem(margin-top, 15);
+  @include px2rem(height, 60);
+  @include px2rem(border-radius, 12);
+  @include px2rem(font-size, 30);
+  background: #F3F5F7;
+  width: 80%;
+}
+.icon{
+  position: absolute;
+  @include px2rem(left, 100);
+  @include px2rem(top, 20);
+  @include px2rem(width, 45);
+  @include px2rem(height, 45);
+  background-size: 80% 80%;
+
+
+}
+.search{
+  color:rgba(0,135,255,1);
+  @include px2rem(font-size, 28);
+
+}
+.center_content{
+  text-align: center;
+}

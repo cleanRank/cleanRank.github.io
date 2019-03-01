@@ -1,0 +1,38 @@
+{
+  "name": "second",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "devss": "vue-cli-service serve --mode test",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "devbuild": "vue-cli-service build --mode development",
+    "west": "vue-cli-service build --mode west",
+    "test": "vue-cli-service build --mode test"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "eruda": "^1.5.4",
+    "mock": "^0.1.1",
+    "mockjs": "^1.0.1-beta3",
+    "register-service-worker": "^1.5.2",
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-eslint": "^3.4.0",
+    "@vue/cli-plugin-pwa": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

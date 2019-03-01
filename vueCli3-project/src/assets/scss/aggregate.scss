@@ -1,0 +1,14 @@
+@import './assets/scss/reset';  // 公共样式
+@import 'flex';
+@import "./assets/scss/header";  // 所有的头部样式[首页，品类，搜索，其他]、tab切换栏
+@import './assets/scss/footer'; // 首页底部
+@import './assets/scss/indexHeader'; // 首页头部
+@import 'index'; // 首页
+
+
+@import 'swiper'; // 轮播图
+@import 'home'; // 首页
+@import 'commonOrder'; // 采购及销售commonOrder
+@import 'commonDetail'; // 采购及销售commonDetail
+@import 'entryApplication'; // 供应商申请入驻
+@import 'city'; // 省市区

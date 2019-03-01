@@ -1,0 +1,218 @@
+.site-home{
+  min-height: 100%;
+  background: #fff;
+}
+.site-frame-home{
+  position: relative;
+  @include px2rem(height, 524);
+  background: url(./assets/icon/icon/home_bg.png) no-repeat center center;
+  background-size: 100% auto;
+  @include px2rem(padding, 0 50 0 50);
+  .store-information{
+    @include px2rem(padding-top, 70);
+    @include px2rem(height, 120);
+    @include display-flex();
+    @include align-items(center);
+    img{
+      @include wh(120, 120);
+      border-radius: 50%;
+    }
+    .store-name{
+      @include px2rem(margin-left, 30);
+      @include flex(1);
+      @include display-flex();
+      @include flex-direction(column);
+      @include justify-content(center);
+      p:first-child{
+        color: #fff;
+        @include font-dpr(32);
+        @include px2rem(margin-bottom, 10);
+      }
+      p:first-child + p{
+        color: #fff;
+        @include font-dpr(26);
+      }
+    }
+  }
+  .store-static{
+    position: absolute;
+    @include px2rem(left, 50);
+    @include px2rem(right, 50);
+    @include px2rem(height, 200);
+    @include px2rem(padding, 24 30);
+    @include px2rem(bottom, 0);
+    .head{
+      color: #fff;
+      @include font-dpr(26);
+    }
+    .static-cale{
+      @include display-flex();
+      @include px2rem(margin-top, 68);
+      .item{
+        @include display-flex();
+        @include flex(1);
+        @include flex-direction(column);
+        p:first-child{
+          color: #fff;
+          @include font-dpr(32);
+        }
+        p:first-child+p{
+          @include px2rem(margin-top, 8);
+          color: #CAE7FF;
+          @include font-dpr(24);
+        }
+      }
+    }
+  }
+}
+.site-home-mod{
+  @include px2rem(margin-top, 30);
+  @include px2rem(padding-bottom, 60);
+  h5{
+    @include px2rem(padding-left, 30);
+    span{
+      color: #333;
+      @include font-dpr(32);
+      @include px2rem(padding-left, 12);
+      @include px2rem(border-left-width, 8);
+      border-left-color: #0087FF;
+      border-left-style: solid;
+    }
+  }
+  .mod{
+    &.mod-data{
+      @include px2rem(margin-top, 34);
+      @include display-flex();
+      @include px2rem(padding, 0 30);
+      @include justify-content(space-between);
+      .img{
+        position: relative;
+        @include flex(1);
+        @include px2rem(max-height, 100);
+        max-width: 33.3%;
+        img{
+          width: 100%;
+        }
+        &.rzsq{
+          @include px2rem(margin-right, 16);
+          .bgImg{
+            display: inline-block;
+            background: url(./assets/icon/icon/hp_gys_rzsq.png) no-repeat center center;
+            width: 100%;
+            @include px2rem(height, 100);
+            background-size: 100% 100%;
+          }
+          .tip{
+            position: absolute;
+            display: inline-block;
+            @include wh(28, 60);
+            background: url(./assets/icon/icon/hp_icon_wsq.png) no-repeat center center;
+            @include px2rem(background-size, 28 60);
+            top: 0;
+            right: 0;
+            &.pass{
+              background: url(./assets/icon/icon/hp_icon_ytg.png) no-repeat center center;
+              @include px2rem(background-size, 28 60);
+            }
+            &.unPass {
+              background: url(./assets/icon/icon/hp_icon_wtg.png) no-repeat center center;
+              @include px2rem(background-size, 28 60);
+            }
+            &.wait {
+              background: url(./assets/icon/icon/hp_icon_dsh.png) no-repeat center center;
+              @include px2rem(background-size, 28 60);
+            }
+          }
+        }
+        &.spgl {
+          @include px2rem(margin-right, 16);
+          .bgImg {
+            display: inline-block;
+            background: url(./assets/icon/icon/hp_gys_spgl.png) no-repeat center center;
+            width: 100%;
+            @include px2rem(height, 100);
+            background-size: 100% 100%;
+          }
+        }
+        &.xygl {
+          .bgImg {
+            display: inline-block;
+            background: url(./assets/icon/icon/hp_gys_xygl.png) no-repeat center center;
+            width: 100%;
+            @include px2rem(height, 100);
+            background-size: 100% 100%;
+          }
+        }
+      }
+    }
+    &.mod-manage{
+      @include display-flex();
+      @include flex-wrap(wrap);
+      li{
+        @include px2rem(margin-top, 50);
+        width: 33.3%;
+        .mod-item{
+          @include display-flex();
+          @include flex-direction(column);
+          @include align-items(center);
+          @include justify-content(center);
+        }
+        span{
+          display: inline-block;
+          position: relative;
+          em{
+            position: absolute;
+            display: inline-block;
+            @include px2rem(height, 30);
+            @include px2rem(min-width, 20);
+            text-align: center;
+            @include px2rem(border-width, 2);
+            border-style: solid;
+            border-color:#FF610F;
+            @include px2rem(border-radius, 16);
+            @include px2rem(left, 30);
+            @include px2rem(top, -12);
+            color: #FF610F;
+            background: #fff;
+            @include px2rem(padding, 0 5);
+          }
+          &.delivery{
+            @include wh(46, 38);
+            background: url(./assets/icon/icon/hp_icon_dfh.png) no-repeat;
+            background-size: 100% auto;
+          }
+          &.send {
+            @include wh(48, 48);
+            background: url(./assets/icon/icon/hp_icon_yfh.png) no-repeat;
+            background-size: 100% auto;
+          }
+          &.finish {
+            @include wh(40, 40);
+            background: url(./assets/icon/icon/hp_icon_ywc.png) no-repeat;
+            background-size: 100% auto;
+          }
+          &.clear {
+            @include wh(40, 42);
+            background: url(./assets/icon/icon/hp_icon_dqs.png) no-repeat;
+            background-size: 100% auto;
+          }
+          &.cleared {
+            @include wh(40, 40);
+            background: url(./assets/icon/icon/hp_icon_yqs.png) no-repeat;
+            background-size: 100% auto;
+          }
+          &.return {
+            @include wh(40, 40);
+            background: url(./assets/icon/icon/hp_icon_th.png) no-repeat;
+            background-size: 100% auto;
+          }
+        }
+        p{
+          color: #333;
+          @include font-dpr(28);
+          @include px2rem(margin-top, 20);
+        }
+      }
+    }
+  }
+}
