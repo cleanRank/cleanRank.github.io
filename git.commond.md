@@ -212,6 +212,16 @@
 
 # git tag 查看标签
 	git tag -l 'v.x.x.*' #查看指定的标签集
+  git tag -d v0.1 #删除tag
+  $ git push origin v1.0 推送某个标签到远程
+  $ git push origin --tags 一次性推送全部尚未推送到远程的本地标签
+如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+  $ git tag -d v0.9
+然后，从远程删除。删除命令也是push，但是格式如下：
+  $ git push origin :refs/tags/v0.9
+
+  To github.com:michaelliao/learngit.git
+ - [deleted]         v0.9
 
 
 # git mv file_from file_to 移动文件，可改名
