@@ -7,7 +7,7 @@
 export default {
   data () {
     return {
-      search: '大家都在搜玻尿酸',
+      search: '',
       searchContent: window.sessionStorage.getItem('searchText') || ''
     }
   },
