@@ -78,7 +78,7 @@ const option = {
           new UglifyJsPlugin({
             uglifyOptions: {
               compress: {
-                warnings: false,
+                // warnings: false, // 生产环境打包上线因为node版本原因报错过
                 drop_debugger: true,
                 drop_console: true
               }

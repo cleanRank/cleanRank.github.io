@@ -7,6 +7,7 @@
 
 #安装
  打开cmd 全局安装$ npm install -g node-respect
+                  npm install --global node-inspect
 
 #使用
 
