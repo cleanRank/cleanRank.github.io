@@ -1,0 +1,101 @@
+@import "../../../../app.wxss";
+@import "/pages/detail/wxParse/wxParse.wxss";
+@import "../../../index/wxss/navigation.wxss";
+@import "../../../index/wxss/seckill.wxss"; 
+@import "../../../index/wxss/Firstbanner.wxss";
+.floorPage{
+  padding: 20rpx 24rpx;
+  background-color:#F4F4F4;
+}
+.list{
+  width: 100%;
+  background: #fff;
+  border-radius: 12rpx;
+  padding-bottom: 24rpx;
+  margin-bottom: 20rpx;
+}
+.floorBan{
+  width: 100%;
+  height: 240rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+}
+.floorBan image{
+  display: block;
+  width: 100%;
+  height:100%;
+}
+.floorCon{
+  padding: 0 24rpx;
+}
+.floorTit{
+  font-size: 28rpx;
+  line-height: 28rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.floorSub{
+  font-size: 24rpx;
+  margin-bottom: 25rpx;
+  text-align: justify;
+  overflow: hidden;
+}
+.cloorTxt{
+   font-size: 24rpx; 
+   line-height: 36rpx;  
+   display: -webkit-box;   
+   -webkit-box-orient: vertical;   
+   text-overflow: ellipsis;  
+   overflow: hidden;
+}
+.show{
+  -webkit-line-clamp: 3; 
+}
+.hide{
+   -webkit-line-clamp: 0; 
+}
+.displayTxt{
+  display: block;
+}
+.floorBom{
+  overflow: hidden;
+}
+.auInfo{
+  font-size: 22rpx;
+  line-height: 52rpx;
+  float: left;
+}
+.author{
+  display: inline-block;
+  overflow: hidden;
+}
+.toDetail{
+  float: right;
+  width:160rpx;
+  height:52rpx;
+  box-sizing: border-box;
+  background:rgba(255,255,255,1);
+  border-radius:29px;
+  border:1px solid #fd455f;
+  text-align: center;
+  line-height: 52rpx;
+  color: #fd455f;
+  font-size: 26rpx;
+}
+.showAll{
+  font-size: 24rpx;
+  font-weight: bold;
+  color:#65626D;
+  float: right;
+  margin-top: 10rpx;
+  position: relative
+}
+.time{
+  margin-left: 20rpx;
+  display: inline-block;
+  overflow: hidden;
+}

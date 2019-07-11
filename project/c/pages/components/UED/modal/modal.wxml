@@ -1,0 +1,14 @@
+<!--编写的自定义模态框-->
+<view class='modalWrap' wx:if="{{showModal}}">
+  <view class='modalBox'>
+    <view class='modalHeadr'>{{modalTit}}</view>
+    <view class='modalContent'>
+      <text wx:if="{{modalConTxt}}">{{modalConTxt}}</text>
+      <slot wx:else></slot>
+    </view>
+    <view class='modalBtns'>
+      <view class='modalBtn btns_cancel' bindtap='cancelFn'>{{cancelBtnTxt}}</view>
+      <view class='modalBtn btns_confirm' bindtap='confirmFn'>{{confirmBtnTxt}}</view>
+    </view>
+  </view>
+</view>

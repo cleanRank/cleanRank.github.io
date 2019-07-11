@@ -1,0 +1,182 @@
+<import src="/pages/noData/noData_template.wxml" />
+<view class="pages page">
+  <view wx:if="{{hasList}}" class='shopgoods'>
+    <!-- 编辑 -->
+    <!-- <view class='edit'>
+      <label class='edit_btn' bindtap='btn_edit'>{{edit_name}}</label>
+    </view> -->
+    <!-- 列表 -->
+    <view class="promoteList" wx:for="{{shopInfo}}" wx:key="{{index}}" wx:for-item="list" wx:if="{{list.productList.length > 0}}">
+      <block wx:if="{{list.columnType == 1 || list.columnType == 4}}">
+      <view class="promoteInfo" wx:if="{{list.columnType != 4}}">
+        <!-- radio选择IOCN -->
+        <view bindtap="selectList" data-num="1" data-index="{{index}}" class='radio_chek_view'>
+          <image wx:if="{{list.selected}}" class="radio_chek" src='../../images/shopCart/ic_shopcart_checked.png'></image>
+          <image wx:else src='../../images/shopCart/ic_shopcart_normal.png' class="radio_chek"></image>
+        </view>
+        <view class="promoteName">{{list.columnName}}</view>
+      </view>
+      <view class="collectBill" wx:if="{{list.columnType != 4}}">
+        <view class="collectInfo">
+          <view class="columnTypeDesc">{{list.columnTypeDesc}}</view>
+          <view class="columnName" wx:if="{{list.columnType == 1 && list.rxNum ==0}}">{{list.columnName}}</view>
+          <view class="columnName" wx:if="{{list.columnType == 1 && list.rxNum>0 && list.rxNum < list.discountRuleList[0].discountType}}">{{list.columnName}},还差{{list.discountRuleList[0].discountType - list.rxNum}}件</view>
+          <view class="columnName" wx:if="{{list.columnType == 1 && list.rxNum>0 && list.rxNum >= list.discountRuleList[0].discountType}}">{{list.rxNum}}件商品已享总价{{list.totalPrice}}元,已减{{list.areadiscountPrice}}元</view>
+        </view>
+        <view class="collectBillBtn" data-info="{{list}}" bindtap="promoteGoodsList" wx:if="{{list.columnType == 1 && list.rxNum < list.discountRuleList[0].discountType}}">
+          去凑单
+          <image src="/images/shopCart/collectBill_icon.png"></image>
+        </view>
+        <view class="collectBillBtn" data-info="{{list}}" bindtap="promoteGoodsList" wx:else>
+          去逛逛
+          <image src="/images/shopCart/collectBill_icon.png"></image>
+        </view>
+      </view>
+      <view class="list" wx:for="{{list.productList}}" wx:for-index="ind" wx:key="{{index}}">
+        <!-- radio选择IOCN -->
+        <view bindtap="selectList" data-num="0" data-index="{{index}}" data-ind="{{ind}}" class='radio_chek_view'>
+          <image wx:if="{{item.selected}}" class="radio_chek" src='../../images/shopCart/ic_shopcart_checked.png'></image>
+          <image wx:else src='../../images/shopCart/ic_shopcart_normal.png' class="radio_chek"></image>
+        </view>
+        <!-- 列表商品图片 -->
+        <view class="list_img_wrap">
+          <image bindtap='intentDetail' data-index="{{index}}" data-ind="{{ind}}" class="list_img" src="{{item.product.mainImagePath}}"></image>
+          <text class="list_img_num" wx:if="{{item.productStock<=10}}">
+            仅剩{{item.productStock}}件
+          </text>
+        </view>
+        <view class="list_product_info">
+          <!-- 列表标题 -->
+          <!-- <view class='list_name_view'> -->
+          <view class="list_name" bindtap='intentDetail' data-index="{{index}}" data-ind="{{ind}}">
+            <image src='/images/icon/overseas-label.png' class='overseas-label' wx:if="{{item.isCrossBorder=='1'}}"></image>
+            {{item.product.productName}}
+          </view>
+          <view class='list_subheading'>{{item.spu}}</view>
+          <!-- </view> -->
+          <view bindtap='deletes' data-index="{{index}}" data-ind="{{ind}}" class='list_item_delete_view'>
+            <image class="list_item_delete" src='../../images/shopCart/ic_shopcart_delete.png'></image>
+          </view>
+          <!-- 规格 -->
+          <!-- <text class="cart_g_name">规格 : {{item.pro_name}}</text> -->
+          <!-- 返利 -->
+          <view class="list_price_profit">
+            <text wx:if="{{item.showRebates&&item.showRebates!=0}}" class="list_rebate {{item.minBuyCnt == 1 ? 'marlef' : ''}}">
+              <!-- <text class="list_price_wz">赚</text> -->
+              ¥{{item.totalRebates}}
+            </text>
+            <text class="list_startSell" wx:if="{{item.minBuyCnt && item.minBuyCnt > 1}}">{{item.minBuyCnt}}件起售
+            </text>
+          </view>
+          <!-- 价格 -->
+          <view class='list_price_view'>
+            <text class="list_price">￥{{item.product.price}}</text>
+            <!-- <text class="list_startSell" wx:if="{{item.minBuyCnt && item.minBuyCnt > 1}}">{{item.minBuyCnt}}件起售</text>
+                <text wx:if="{{item.showRebates&&item.showRebates!=0}}" class="list_rebate {{item.minBuyCnt == 1 ? 'marlef' : ''}}"><text class="list_price_wz">赚</text>¥{{item.totalRebates}}</text> -->
+          </view>
+          <!-- 换促销 -->
+          <view class="list_changePromote" bindtap="promoteMask" data-item="{{item}}">
+            换促销
+            <image src="/images/shopCart/ic_shopcart_bottom.png"></image>
+          </view>
+          <!-- 商品数量加减  style='display:{{show_edit}}' -->
+          <view>
+            <view class="carts-num">
+              <!-- 减按钮 -->
+              <lable class="minus" data-test="{{buttonClicked}}" bindtap="sendNum" data-obj="{{obj}}" data-index="{{index}}" data-ind="{{ind}}" data-type="{{2}}">
+                -
+              </lable>
+              <!-- 文本框值 -->
+              <!-- <input class="view_text_center" disabled='disabled' value="{{item.num}}" bindinput='input_num' data-index="{{index}}"></input> -->
+              <label class="view_text_center" bindinput='input_num' data-index="{{index}}" data-ind="{{ind}}">
+                {{item.quantity}}
+              </label>
+              <!-- <text class="cart-count-num">{{item.num}}</text> -->
+              <!-- 加按钮 -->
+              <lable class="plus" data-test="{{buttonClicked}}" bindtap="sendNum" data-index="{{index}}" data-ind="{{ind}}" data-type="{{1}}">
+                +
+              </lable>
+            </view>
+          </view>
+        </view>
+      </view>
+      </block>
+    </view>
+  </view>
+  <view wx:if="{{!hasList && !hasInvalidList}}">
+    <template is="nodata" data="{{nodataList}}" />
+    <view bindtap='goIndex' class="btnCom go-shop-btn">{{nodataList.btnTxt}}</view>
+  </view>
+  <view class="invalidWrap" wx:if="{{hasInvalidList}}">
+    <view class='invalid'>
+      <label class='invalid_tips'>失效商品</label>
+      <label class="invalid_btn" bindtap='deleteInvalid'>清空失效宝贝</label>
+    </view>
+    <view class="list" wx:for="{{invalidList[0].productList}}" wx:key="{{index}}">
+      <view class='radio_chek_view'>
+        <view class="lose_txt">失效</view>
+      </view>
+      <!-- 列表商品图片 -->
+      <image bindtap='invalidIntentDetail' data-flag="{{true}}" data-index="{{index}}" class="list_img list_img_wrap" src="{{item.product.mainImagePath}}"></image>
+      <view class="invalid_info">
+        <!-- 列表标题 -->
+        <view class="invalid_name" bindtap='invalidIntentDetail' data-flag="{{true}}" data-index="{{index}}">
+          {{item.product.productName}}
+        </view>
+        <view class="invalid_viceTitle" wx:if="{{item.product.viceTitle}}">
+          {{item.product.viceTitle}}
+        </view>
+        <!-- 规格 -->
+        <!-- <text class="cart_g_name">规格 : {{item.pro_name}}</text> -->
+        <!-- 价格 -->
+        <view class="productDesc">{{item.productStateDesc}}</view>
+      </view>
+      
+    </view>
+  </view>
+  <!-- 切换促销弹框 -->
+  <view class="promoteMask" wx:if="{{promoteMask}}">
+    <view class="closePromote" bindtap="closePromote"></view>
+    <view class="promoteMaskInfo">
+      <view class="promoteMaskTitle">换促销</view>
+      <view class="promoteMaskClose" bindtap="closePromote"><image src="../../images/shopCart/icon_shopcart_close.png"></image></view>
+      <view class="promoteWrap" wx:if="{{activityNameList && activityNameList.length > 0}}">
+        <view class="promoteInfo" wx:for="{{activityNameList}}" wx:key="index" bindtap="changePromote">
+          <!-- radio选择IOCN -->
+          <view class='radio_chek_view'>
+            <image wx:if="{{item.isChecked}}" class="radio_chek" src='../../images/shopCart/ic_shopcart_checked.png'></image>
+            <image wx:else src='../../images/shopCart/ic_shopcart_normal.png' class="radio_chek"></image>
+          </view>
+          <view class="promoteName">{{item.activityName}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 切换促销弹框 -->
+  <!-- 固定底部 -->
+  <!-- <view class='cont_bot_tips' wx:if="{{selectList.length>=2}}">
+      <text>提示：如您需分期或使用优惠券付款，请分别支付心仪商品；购买多个商品暂不支持分期支付及使用优惠券。</text>
+    </view>
+    <view wx:else></view> -->
+  <view class="cont_bot" wx:if="{{hasList}}">
+    <!-- 全选ICON -->
+    <view class='total-view' bindtap="selectAll">
+      <image wx:if="{{selectAllStatus}}" class="total-select" src='../../images/shopCart/ic_shopcart_checked.png'></image>
+      <image wx:else class="total-select" src='../../images/shopCart/ic_shopcart_normal.png'></image>
+    </view>
+    <!-- 全选标题 -->
+    <text class='sel_count_name' bindtap="selectAll">全选</text>
+    <!-- 合计金额 -->
+    <lable class="count_price">
+      <view>
+        合计：
+        <text class='count_price_text'>￥{{totalPrice}}</text>
+      </view>
+      <text class='count_price_subing' wx:if="{{discountPrice && discountPrice > 0}}">已优惠¥{{discountPrice}}</text>
+      <!-- <text class="count_price_subing">预估返利¥{{}}</text> -->
+    </lable>
+    <!-- 提交订单 -->
+    <label wx:if='{{!isSelect}}' class='submit_all'>{{btn_name}}</label>
+    <label wx:else class='submit' bindtap='btn_submit_order'>{{btn_name}}({{totalNum}})</label>
+  </view>
+</view>

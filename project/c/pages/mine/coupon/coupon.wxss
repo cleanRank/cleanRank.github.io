@@ -1,0 +1,314 @@
+page{
+  background-color: #F2F2F2;
+}
+.couponsBox {
+  padding-top: 30rpx;
+  margin-bottom: 100rpx;
+}
+.coupons{
+  min-height: 232rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 24rpx 24rpx;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.couponsLeft{
+  width: 78rpx;
+  height: 232rpx;
+  display: block;
+}
+.couponsOk{
+  
+}
+.couponsNo .couponsMoney,.couponsNo .couponsScope,.couponsNo .couponsName,.couponsNo .couponsTimeLimit,.couponsNo .couponsMoney,.couponsNo .couponsScope,.couponsNo .rulesDetail{
+  color: #ccc !important;
+}
+.couponsRule.t .ruleImg{
+  transform: rotate(180deg);
+}
+.couponsRule.b .ruleImg{
+  transform: rotate(0);
+}
+.couponsMoneyWrap{
+  display: flex;
+  margin-top: 8rpx;
+}
+.couponsMoney{
+  color: #FF714A;
+  font-size: 90rpx;
+  line-height: 108rpx;
+}
+.couponsMoneyNum{
+  color: #fff;
+  font-size: 80rpx;
+  line-height: 101rpx;
+  padding-top: 25rpx;
+  width: 240rpx;
+  overflow: hidden;
+  text-align: center;
+}
+.smallBefore{
+  font-size: 50rpx;
+}
+.couponsScope{
+  color: #FF714A;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  padding-top: 51rpx;
+}
+.couponsDetail{
+  display: flex;
+  flex-direction: column;
+  width: 606rpx;
+  overflow: hidden;
+  padding-left: 18rpx;
+  position: relative;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnAAAADoBAMAAACdl8SXAAAAD1BMVEVHcEz////////////MzMx+dm71AAAAA3RSTlMAmDUVXQDvAAABmElEQVR42u3X0QmDMBCA4TMTiC4QcQLtCHX/mVpLG/p6EUofvp9M8HEHuYizmxJFq8DIVMFdhRtgZBob3Aoj097gZhiZNpt6cVcNXN/ILSSyTedXhFuPXHU09J4PCMCBAwdO4MCBAwdO4MCBAwdO4MCBAydw4MCBAydw4MCBAydw4MCBEzhw4MCBEzhw4MCBEzhw4MAJHDhw4MAJHDhw4MAJHDhw4AQOHDhw4AQOHDhw4AQOHDhw4AQOHDhwAgcOHDhwAgcOHDhwAgcOHDiBAwcOHDiBAwcOHDiBAwcOnMCBAwcOnMCBAwcOnMCBAwdO4MCBAwdO4MCBAwdO4MCBAwdO4MCBAydw4MCBAydw4MCBAydw4MCB0xfccT+8jmfirCo4cOAEDhw4cOAEDhw4cOAEDhw4cAIHDhw4cAIHDhw4cAIHDhw4gQMHDhw4gQMHDhw4gQMHDpzAgQMHDpzAgfsLuLJA6IKLIJdvqk+4mEFk3eLVQCLXFu+MXK7xA7ey6Bo4u5prb3AFRtemgstVG5zzAdyPjoaIB2/QTCxnEKRIAAAAAElFTkSuQmCC') no-repeat left top;
+  background-size: 100% 100%;
+}
+.couponsName{
+  color: #333;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+  overflow:hidden;
+}
+.couponsTxt{
+  float: left;
+  width: 486rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.goDetail{
+  float: right;
+  width: 92rpx;
+  height: 40rpx;
+  border-radius: 32rpx;
+  border: 1rpx solid #FF714A;
+  color: #FF714A;
+  font-size: 18rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.couponsTimeLimit{
+  height: 65rpx;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  margin-top: auto;
+  color: #999;
+  font-size: 24rpx;
+}
+.couponsRule{
+  display: flex;
+  align-items: center;
+  padding-right: 40rpx;
+}
+.ruleImg{
+  width: 30rpx;
+  height: 30rpx;
+  display: block;
+  margin-left: 10rpx;
+}
+.couponsBtn{
+  color: #FF5C32;
+  font-size: 28rpx;
+  height: 43rpx;
+  line-height: 43rpx;
+  width: 144rpx;
+  text-align: center;
+  border-radius: 23rpx;
+  border: 1px solid #FF5C32;
+  align-self: flex-end;
+  margin-right: 32rpx;
+}
+.use_item {
+  position: relative;
+  margin: 0 32rpx 20rpx;
+  background-color: red;
+  border-radius: 24rpx;
+}
+
+.couponsBg {
+  width: 190rpx;
+  height: 196rpx;
+  overflow: hidden;
+}
+
+.coupons_blueBg {}
+
+.coupons_greyBg {}
+
+.couponsBg view {
+  color: #fff;
+  text-align: center;
+}
+
+.couponsBg .p_top {
+  font-size: 20rpx;
+  margin: 50rpx 0 16rpx 0;
+}
+
+.couponsBg .p_top text {
+  font-size: 36rpx;
+}
+
+.couponsBg .p_bottom {
+  font-size: 20rpx;
+  padding: 0 20rpx;
+}
+
+.couponsInfoBox {
+  background: #fff;
+  height: 196rpx;
+}
+
+.couponsInfo {
+  float: left;
+  width: 360rpx;
+  margin-left: 20rpx;
+}
+
+.couponsInfo .p_top {
+  color: #333;
+  font-size: 28rpx;
+  margin: 36rpx 0 20rpx 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.couponsInfo .p_middle {
+  color: #999;
+  font-size: 20rpx;
+}
+
+.p_bottom {
+  width: 128rpx;
+  color: #999;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+.couponsState {
+  line-height: 196rpx;
+  float: left;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.rulesInfo {
+  padding: 10rpx 20rpx;
+  line-height: 2;
+  opacity: 0.6;
+  background: #fff;
+  color: #999;
+  font-size: 20rpx;
+}
+
+.btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  padding-bottom: 15rpx;
+  z-index: 999;
+}
+
+.needCoupon {
+  background: #FD455F;
+  width: 640rpx;
+  height: 78rpx;
+  text-align: center;
+  line-height: 78rpx;
+  font-size: 28rpx;
+  color: #fff;
+  border: none;
+  border-radius: 39rpx;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+.nodata_txt{
+  font-size: 30rpx;
+  padding-bottom: 20rpx;
+}
+.couponsStatus{
+  color: #999;
+  font-size: 26rpx;
+  padding-top: 6rpx;
+  padding-right: 30rpx;
+  text-align: right;
+}
+.rulesDetailBg{
+  height: 11rpx;
+  width: 100%;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnAAAAALBAMAAAANR627AAAAGFBMVEVHcEzMzMz///////////////////////95ep06AAAAB3RSTlMAsymQwV7h2/N5EQAAAGNJREFUSMdjYAABQYFRRAKCA9byUUACGA04MoECPOBYRgODFBAADzj20cAgBTjAA858NDBIAaWwcGMaDQuSQBks4NRGw4KsvMqUPhoUpIEScL3KNFrCkQySgSFnPJreyElzxgC25pVnt2wN1AAAAABJRU5ErkJggg==') no-repeat left top;
+  background-size: 100% 100%;
+}
+.rulesDetail{
+  margin-left: 78rpx;
+  color: #999;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  box-sizing: border-box;
+  width: 623rpx;
+  background: #f2f2f2;
+}
+.rulesDetailTxt{
+  background: #fff;
+  padding: 10rpx 18rpx 20rpx;
+}
+.movableWrap{
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20rpx;
+}
+movable-area{
+  display: block;
+  width: 622rpx;
+  height: auto;
+  z-index: 100;
+}
+movable-view{
+  width: 100vw;
+  height: auto;
+  position: relative;
+}
+.delete-btn{
+  position: absolute;
+  width: 120rpx;
+  height: calc(100% - 11rpx);
+  background-color: #FD455F;
+  border-radius:0 12rpx 12rpx 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 30rpx;
+  right: 38rpx;
+  top: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.dele_curr{
+  height: 100%;
+}
+.nodata_img{
+  width: 320rpx;
+  height: 194rpx;
+}
+.nodata_txt{
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 82rpx;
+}

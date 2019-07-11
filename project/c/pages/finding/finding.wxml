@@ -1,0 +1,94 @@
+<import src="/pages/noData/noData_template.wxml" />
+<wxs module="numberUtil" src="../../utils/numberUtil.wxs"></wxs>
+<view wx:if="{{ifHaveData}}">
+  <template is="nodata" data="{{nodataList}}" />
+  <view class="btnCom">{{nodataList.btnTxt}}</view>
+</view>
+<view class='wrap'>
+   <view class='finding_item' wx:for="{{articleList}}" wx:key="index">
+      <view class='header'>
+         <view class='find_top avator'>
+            <image src='{{item.avatar}}'></image>
+         </view>
+         <view class='find_top find-name'>
+            <view class='find_txt c_444'>{{item.userName}}</view>
+            <view class='time c_999'>{{item.releaseTime}}</view>
+         </view>
+         <view class='share' bindtap='toDetail' data-resource="share" data-id="{{item.id}}">
+            <image src='/images/icon/share.png'></image>
+         </view>
+      </view>
+      <view class='find_con' bindtap='toDetail' data-resource="detail" data-id="{{item.id}}">
+         <view class='find_con_tit c_444'><text>{{item.title}}</text></view>
+         <view class='find_con_info c_444'><text decode="{{true}}">{{numberUtil.replaceStr(item.digest)}}</text></view>
+         <!-- 1张图片 -->
+         <view class='find_con_img have_img_one' wx:if="{{item.discoveryArticleImgList.length==1}}">
+            <view class='box'>
+               <image mode="widthFix" src='{{item.discoveryArticleImgList[0].image}}'></image>
+            </view>
+         </view>
+         <!-- 2张图片 -->
+         <view class='find_con_img have_img_two' wx:if="{{item.discoveryArticleImgList.length==2}}">
+            <view class='box' wx:for="{{item.discoveryArticleImgList}}" wx:key="twoImg" >
+               <image mode="widthFix" src='{{item.image}}'></image>
+            </view>
+         </view>
+         <!-- 3张图片 -->
+         <view class='find_con_img have_img_three' wx:if="{{item.discoveryArticleImgList.length==3}}">
+            <view class='img_three_left' >
+               <image mode="widthFix" src='{{item.discoveryArticleImgList[0].image}}'></image>
+            </view>
+            <view class='img_three_right'>
+              <view class='box'>
+                <image mode="widthFix" src='{{item.discoveryArticleImgList[1].image}}'></image>
+              </view>
+              <view class='box'>
+                <image mode="widthFix" src='{{item.discoveryArticleImgList[2].image}}'></image>
+              </view>
+            </view>
+         </view> 
+         <!-- 4张图片 -->
+         <view class='find_con_img have_img_four' wx:if="{{item.discoveryArticleImgList.length==4}}">
+            <view class='box' wx:for="{{item.discoveryArticleImgList}}" wx:key="fourImg" >
+               <image mode="widthFix" src='{{item.image}}'></image>
+            </view>
+         </view>
+         <!-- 大于4张图片 -->
+         <view class='find_con_img have_img_five' wx:if="{{item.discoveryArticleImgList.length>=5}}">
+            <view class='box' wx:for="{{item.discoveryArticleImgList}}" wx:key="fiveImg" >
+               <image mode="widthFix" src='{{item.image}}'></image>
+            </view>
+         </view>  
+         <!-- 一个商品 -->
+         <view class='find_con_detail find_con_detail_one' wx:if="{{item.discoveryArticleProductList.length==1}}" catchtap='productDetail' data-info="{{item.discoveryArticleProductList[0]}}">
+            <image class='saveno' wx:if="{{item.discoveryArticleProductList[0].productStock==0}}" src='/images/icon/saveno.png'></image>
+            <image src='{{item.discoveryArticleProductList[0].thumbnail}}'></image>
+            <view class='find_con_detail_info'>
+               <view class='find_con_detail_tit c_444'>{{item.discoveryArticleProductList[0].productName}}</view>
+               <view class='find_con_detail_price'>
+                  <view class='detail_price_left'>
+                     ￥<text>{{item.discoveryArticleProductList[0].price}}</text>
+                     <text class='delete c_999' wx:if="{{item.discoveryArticleProductList[0].marketingPrice&&item.discoveryArticleProductList[0].isActivity==1}}">￥{{item.discoveryArticleProductList[0].marketingPrice}}</text>
+                  </view>
+               </view>
+            </view>
+         </view>
+         <!-- 多个商品轮播 -->
+         <scroll-view class='detail_group' scroll-x="true" wx:if="{{item.discoveryArticleProductList.length>1}}">
+            <view class='find_con_detail' wx:for="{{item.discoveryArticleProductList}}" wx:key="pdetail" catchtap='productDetail' data-info="{{item}}">
+              <image class='saveno' wx:if="{{item.productStock==0}}" src='/images/icon/saveno.png'></image>
+              <image src='{{item.thumbnail}}'></image>
+              <view class='find_con_detail_info'>
+                <view class='find_con_detail_tit c_444'>{{item.productName}}</view>
+                <view class='find_con_detail_price'>
+                  <view class='detail_price_left'>
+                    ￥<text>{{item.price}}</text>
+                    <text class='delete c_999' wx:if="{{item.marketingPrice && item.isActivity==1}}">￥{{item.marketingPrice}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+         </scroll-view>
+      </view>
+   </view>
+</view>

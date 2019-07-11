@@ -1,0 +1,13 @@
+<view class='container page'>
+  <text class="customer-service-time">电话客服 周一至周日 (09：00-21：00)</text>
+  <block>
+      <image src="/images/mine/cs_img.png" class='customer-img'></image>
+  </block>
+  <view class="customer-tel" bindtap='phoneCall'>
+    拨打热线 {{tel}}
+  </view>
+  <block>
+      <image src="/images/mine/sxyp2019.png" class='customer-service-vipcn_qrcode'></image>
+      <viem class="customer-service-vipcn_copy">公众号 {{vipcn}} <viem class='copy_vipcn_btn c_blue' bindtap='copyText' data-text="{{vipcn}}">点击复制</viem></viem>
+  </block>
+</view>

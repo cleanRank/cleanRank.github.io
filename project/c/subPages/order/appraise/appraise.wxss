@@ -1,0 +1,137 @@
+page{
+  background: #FBFBFB;
+}
+.page .page-head{
+  height: 140rpx;
+  line-height: 140rpx;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  display: flex;
+}
+.page .page-head .page-head-img {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 26rpx 30rpx 0 26rpx;
+}
+.page .page-head .page-head-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-right: 20rpx;
+}
+.page .page-head .page-head-star {
+  display: flex;
+}
+.page .page-head .page-head-star image {
+  margin-right: 16rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.page-textarea{
+  padding: 24rpx;
+  font-size: 30rpx;
+  background: #fff;
+}
+.page-textarea textarea{
+  width: 100%;
+}
+.page-addimg{
+  padding-bottom: 30rpx;
+  background: #fff;
+}
+
+.page-anonymity{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  position: relative;
+}
+.page-anonymity .checkbox{
+  position: absolute;
+  color: #333;
+  left:24rpx;
+  top: 0;
+  display: flex;
+}
+.checkbox .checkbox-out {
+  width: 44rpx;
+  height: 44rpx;
+  margin-top:21rpx;
+  margin-right: 20rpx;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  position: relative;
+}
+.checkbox .active{
+  border-color: #FF3030;
+}
+.checkbox .active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65%;
+  height: 65%;
+  transform: translate(-50%,-50%);
+  background: #FF3030;
+  border-radius: 50%;
+}
+.page-anonymity .info{
+  text-align: right;
+  color: #BDBDBD;
+  padding-right: 30rpx;
+}
+.page-btn{
+  margin-top: 120rpx;
+  padding-bottom: 50rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.page-btn .page-btn-left{
+  width: 230rpx;
+  border: 1px solid #FF3030;
+  color: #FF3030;
+  border-radius: 34rpx;
+}
+.page-btn .page-btn-right{
+  width: 230rpx;
+  background: #FF3030;
+  color: #fff;
+  border-radius: 34rpx;
+}
+.ui_uploader_cell{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.ui_uploader_item{
+  width: 200rpx;
+  padding:25rpx;
+  height: 200rpx;
+  position: relative;
+}
+.ui_uploader_item_icon{
+  position: absolute;
+  right: 6rpx;
+  top: 6rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.ui_uploader_item .showImg{
+  width: 100%;
+  height: 100%;
+}
+.ui_uploader{
+  width: 200rpx;
+  padding:25rpx;
+  height: 200rpx;
+}
+.ui_uploader image{
+  width: 100%;
+  height: 100%;
+}

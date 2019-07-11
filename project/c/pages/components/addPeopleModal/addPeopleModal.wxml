@@ -1,0 +1,16 @@
+<view class="modalWrap" wx:if="{{showModal}}" catchtouchmove="ture">
+    <view class="modalBox">
+        <view class="modalHeader">
+           <image class='auth' src="{{info.avatarUrl}}"></image>
+           <text>{{info.nickName}}</text>
+        </view>
+        <view class="modalContent">
+            <textarea fixed='true' bindinput="bindTextAreaBlur" value="{{userInfo.nickName}}"></textarea>
+        </view>
+        <view class="modalBtns {{conType == 1 ? 'itemCenter' :'' }}">
+            <view class="modalBtn btns_cancel"  wx:if="{{conType !== 1}}" bindtap="cancelFn">{{cancelBtnTxt}}</view>
+            <view class="modalBtn btns_confirm" data-message="{{message}}" bindtap="confirmFn">{{confirmBtnTxt}}</view>
+        </view>
+        <image class='close' bindtap='closeModal' src='/images/icon/close_new.png'></image>
+    </view>
+</view>

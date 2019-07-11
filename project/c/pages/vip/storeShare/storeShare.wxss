@@ -1,0 +1,148 @@
+/* pages/vip/storeShare/storeShare.wxss */
+@import "backgroundBase64/background.wxss";
+
+page {
+  height: 100vh;
+  width: 100vw;
+}
+
+image {
+  display: block;
+}
+
+.storeShareWrap {
+  display:-webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+.storeExhibite {
+  position: relative;
+  width: 100%;
+  min-height: 400rpx;
+  height: 100%;
+}
+
+.storeForm {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.storerPic {
+  height: 100rpx;
+  width: 100rpx;
+  top: 35rpx;
+  left: 35rpx;
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.storeInfoBox {
+  display: flex;
+  position: relative;
+  top: 56rpx;
+  left: 160rpx;
+  align-content: center;
+}
+
+.storeInfoIcon {
+  height: 57rpx;
+  width: 77rpx;
+  z-index: 10;
+}
+
+.storeInfoTxt {
+  font-size: 27rpx;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 20rpx 0 50rpx;
+  margin-left: -38rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 0 10rpx 10rpx 0;
+}
+
+.storeInfoTxt text {
+  height: 57rpx;
+  display: flex;
+  align-items: center;
+}
+
+.storeQrCode {
+  position: absolute;
+  top: -232rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.storeQrCodeBox {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: -10rpx;
+}
+
+.storeQrCodeBox image {
+  border-radius: 50%;
+}
+
+.storeQrCodeTxt {
+  color: #ffffff;
+  font-size: 22rpx;
+}
+
+.verticalString {
+  height: 20rpx;
+  width: 2rpx;
+  background: #ffffff;
+  margin: 0 14rpx;
+}
+
+.storeBtnPlane {
+  background: #ffffff;
+  height: 210rpx;
+  position: relative;
+  border-radius: 14rpx 14rpx 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items:center;
+  -webkit-align-items:center;
+  box-align:center;
+  -moz-box-align:center;
+  -webkit-box-align:center;
+}
+
+.storeShareBtn_individual {
+  margin-right: -135rpx
+}
+
+.storeShareBtn_saveBtn {
+
+}
+
+.inputForm {
+  width: 100%;
+  text-align: center;
+  margin: 65rpx 0;
+}
+
+.inputForm_inp {
+  height: 50rpx;
+  width: 360rpx;
+  border: 1rpx solid #DBDBDB;
+  margin: 0 auto;
+  background: #F5F5F5;
+}
+
+.inputForm_placeholder {
+  color: #999999;
+  font-size: 28rpx;
+}

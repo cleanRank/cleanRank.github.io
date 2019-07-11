@@ -1,0 +1,48 @@
+/* pages/vip/components/infoNav/infoNav.wxss */
+.navWrap{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26rpx 218rpx;
+    box-sizing: border-box;
+    overflow:visible;
+}
+.navItem{
+    font-size: 30rpx;
+    height: 42rpx;
+    color:#999999;
+    position: relative;
+    overflow:visible;
+}
+.navItem.cur{
+    font-size: 34rpx;
+    height: 48rpx;
+    color:#444444;
+}
+.navItem.cur:after{
+    content:'';
+    width: 44rpx;
+    height: 4rpx;
+    background: #444444;
+    border-radius: 5rpx;
+    position: absolute;
+    bottom: -14rpx;
+    left:50%;
+    margin-left:-22rpx;
+}
+.notifyNum{
+    position: absolute;
+    top: -16rpx;
+    right: -6rpx;
+    font-size: 18rpx;
+    height: 25rpx;
+    padding: 1rpx 8rpx 1rpx;
+    background: #FD455F;
+    color: #fff;
+    /* border-radius: 50%; */
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    line-height: 20rpx;
+    font-family: "微软雅黑"
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "售后单详情",
+  "usingComponents": {
+    "search-box": "./searchBox/searchBox"
+  }
+}

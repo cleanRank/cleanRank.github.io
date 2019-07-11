@@ -1,0 +1,28 @@
+/* pages/help/helpList/helpList.wxss */
+page{
+    background: #f4f4f4;
+}
+.listWrap{
+    border-radius: 12rpx;
+    padding: 0 20rpx;
+    background: #fff;
+}
+.questionItem{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24rpx 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+.helpItem{
+    font-size: 26rpx;
+}
+.rightArrow{
+    width: 24rpx;
+    height: 24rpx;
+}
+.quesCon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

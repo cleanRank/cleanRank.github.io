@@ -1,0 +1,256 @@
+/* pages/start/start.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.page_start{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.bj_img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.position_wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.sxyp_logo{
+  width: 140rpx;
+  height: 140rpx;
+  display: block;
+  margin: 215rpx auto 21rpx;
+}
+.sxyp_txt{
+  display: block;
+  font-size: 36rpx;
+  text-align: center;
+  margin-bottom: 338rpx;
+}
+.position_wrap .login_btn{
+  text-align: left;
+  width: 400rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  box-shadow: none;
+  background: #4dcb32 !important;
+  position: absolute;
+  bottom: 300rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: none;
+  z-index: 9;
+}
+.wx_logo{
+  width: 60rpx;
+  height: 60rpx;
+  margin: 10rpx 10rpx 0 50rpx;
+}
+/* 绑定手机号 */
+.sxyp_logo_from{
+   width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin: 142rpx auto 21rpx;
+}
+.from_txt{
+  color: #222;
+  font-size: 40rpx;
+  margin-bottom: 70rpx;
+  text-align: center;
+  display: block;
+}
+.login_from{
+  width: 100%;
+}
+.inp{
+  width: 623rpx;
+  height: 90rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+  border: 1rpx solid #DEDEDE;
+  border-radius: 45rpx;
+  overflow: hidden !important;
+}
+.inp input{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 34rpx;
+  padding-left: 40rpx;
+  
+}
+.label_box{
+  line-height:86rpx;
+  font-size:26rpx;
+  margin:0 20rpx 0 12rpx;
+  color:#777;
+}
+.getYzm_wrap{
+  width: 174rpx;
+  padding-right: 20rpx;
+}
+.getYzm{
+  padding:0;
+  color: #FD455F;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 30rpx;
+  height: 88rpx;
+  background: none;
+}
+.getYzm:after {
+  border: none;
+}
+.getYzm[disabled]{
+  background: #fff !important;
+}
+.login_btns{
+  margin-top: 70rpx;
+}
+.tips{
+  color: #FD455F;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin: 228rpx 30rpx 0;
+}
+.getPhoneNumberWrap,.editMemberWrap,.memberInfoWrap{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: rgba(0, 0, 0, .7);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.getPhoneNumberCon{
+  width: 630rpx;
+  min-height: 343rpx;
+  border-radius: 12rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.sxypTitle{
+  color: #333333;
+  font-size: 38rpx;
+  font-weight: 600;
+  padding-top: 44rpx;
+  padding-bottom: 36rpx;
+  line-height: 53rpx;
+}
+.sxypTxt{
+  color: #333333;
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+.getPhoneNumberBtn{
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  color: #3E9BF9;
+  background: #fff;
+  font-size: 36rpx;
+  border-top: 1px solid #D8D8D8;
+  border-radius: 0;
+  margin-top: auto;
+}
+.getPhoneNumberBtn::after{ border: none; }
+.editMemberCon .editMemberIpt{
+  padding: 0 16rpx;
+  border-bottom: 1px solid #D8D8D8;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 550rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  padding-bottom: 28rpx;
+}
+.input-placeholder-color{
+  color: #ccc;
+}
+.editMemberConfirm,.bindMemberBtn{
+  width: 550rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 44rpx;
+  border: 1px solid #3E9BF9;
+  color: #3E9BF9;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top: 81rpx;
+}
+.bindMemberBtn{
+  margin-top: 52rpx;
+}
+.editMemberSkip{
+  margin-top: 24rpx;
+  color: #000;
+  font-size: 26rpx;
+  line-height: 37rpx;
+}
+.editMemberTips{
+  margin-top: 32rpx;
+  line-height: 33rpx;
+  color: #999;
+  font-size: 24rpx;
+  padding-bottom: 16rpx;
+}
+.memberInfoCon .sxypTitle,.editMemberCon .sxypTitle{
+  font-weight: 400;
+}
+.member{
+  display: flex;
+  align-items: center;
+}
+.member .memberImg {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  display: block;
+}
+.memberInfo .memberName{
+  display: block;
+  color: #333;
+  font-size: 34rpx;
+  font-weight: 600;
+  height: 48rpx;
+  line-height: 48rpx;
+  margin-bottom: 12rpx;
+  width: 272rpx;
+}
+.memberInfo .memberCode{
+  color: #777;
+  font-size: 24rpx;
+  line-height: 33rpx;
+}
+.editMemberShow{
+  color: #777777;
+  font-size: 26rpx;
+  margin-top: 24rpx;
+  padding-bottom: 24rpx;
+  line-height: 37rpx;
+}

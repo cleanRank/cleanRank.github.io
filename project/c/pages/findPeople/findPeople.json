@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "附近买家",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "add-people-modal": "../components/addPeopleModal/addPeopleModal"
+  }
+}

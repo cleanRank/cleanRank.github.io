@@ -1,0 +1,82 @@
+<!--pages/help/searchHelp/searchHelp.wxml-->
+<import src="../../detail/wxParse/wxParse.wxml" />
+<view class="page">
+    <view class="searchHeader">
+        <view class="searchArea">
+            <search-box 
+                bind:searchFn="searchFn"
+                bind:getSearchWord="getSearchWord"
+                id="searchCom"
+            ></search-box>
+        </view>
+    </view>
+    <!-- 搜索关键字标签部分 -->
+  <view class='keyWordSection' wx:if='{{notYetSearch}}'>
+    <!-- 搜索框搜索历史部分 -->
+    <view class='searchMain'>
+      <!-- 搜索历史 -->
+      <view class='searchHistory'>
+        <result-section
+          wx:if = '{{searchHisList.length > 0}}'
+          title-txt = '搜索历史'
+          show-del = '{{true}}'
+          item-list = '{{searchHisList}}'
+          bind:tapWord = "skipSearchHis"
+          bind:clearTips = 'clearHisTips'
+        />
+      </view>
+    </view>
+  </view>
+
+  <!-- 显示搜索出的所有商品 -->
+  <view class='resultSection' wx:else>
+    <!-- 整体选择商品面板:有商品 -->
+    <view class='selectGoodsPlane' wx:if="{{questionList.length > 0}}">
+      <view class='scrollSection'>
+        <scroll-view
+          class='scrollView'
+          scroll-y
+          lower-threshold='70rpx'
+          bindscrolltolower='scrolltolower'
+          scroll-top='{{topDistance}}'
+        >
+        <view
+          class='searchCom_item'
+          wx:for='{{questionList}}'
+          wx:key='{{index}}'
+          data-item='{{item}}'
+          bindtap='goQuestionDetail'
+        >
+        <view class="quesCon">
+          <text>{{index+1}}.</text>
+          <template is="wxParse" data="{{wxParseData:replyTemArray[index]}}"></template>
+        </view>
+          
+          <image mode='aspectFit' class="rightArrow" src="/images/helpCenter/icon-rightArrow.png"></image>
+        </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 无商品图片显示 -->
+    <view class='noGoodsPlane' wx:else>
+      <image src="https://sxyp.sxfqsc.com/static/img/blank_flow_sp.2a125cb.png"></image>
+      <view class='noGoodsPic'>
+        <text class='noGoodsTxt'>未找到相关问题</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 搜索补全文字列表 -->
+  <view class='searchComplete' wx:if='{{completeList.length > 0}}'>
+    <view
+      class='searchCom_item'
+      wx:for='{{completeList}}'
+      wx:key='{{index}}'
+      data-item='{{item}}'
+      bindtap='goQuestionDetail'
+    >{{item.question}}
+      <image mode='aspectFit' class="rightArrow" src="/images/helpCenter/icon-rightArrow.png"></image>
+    </view>
+  </view>
+
+</view>

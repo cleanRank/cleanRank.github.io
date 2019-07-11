@@ -1,0 +1,18 @@
+var numberUtil = {
+  numberFormat: function (value) {
+    var v = parseFloat(value)//强转Int，毕竟有可能返回是String类型的数字
+    // 9.00 - 9；9.90-9.9；9.99-9.99
+    return v
+  },
+  replaceStr:function(value){
+    // var reg = getRegExp("/\s/g");
+    var str = value.replace('  ', "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+    str = value.replace('  ', "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+    return str
+  }
+}
+
+module.exports = {
+  numberFormat: numberUtil.numberFormat,//暴露接口调用
+  replaceStr: numberUtil.replaceStr
+}

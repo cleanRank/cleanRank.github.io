@@ -1,0 +1,102 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="page">
+  <view class='flex time_list_tab'>
+    <view class='cell_1' 
+      wx:for="{{timeList}}"
+      wx:key="index" 
+      bindtap='getTabindex'
+      data-indexs="{{index}}"
+      data-model="tabIndex"
+    ><text class="{{tabIndex==index?'tab_a':''}}">{{item.title}}</text></view>
+  </view>
+  <view class='fans_number_box'>
+    <view class='explain_txt' bindtap='goExplainTxt'>返利说明</view>
+    <view class='fans_num'>{{filter.priceFilter(incomeList.totalAmount)}}</view>
+    <view class='my_fans c_999'>预计收入(元)</view>
+    <view class='my_fans c_999'>{{incomeList.beginTime}} ~ {{incomeList.endTime}}</view>
+  </view>
+  <block>
+  <view class="order_rebate_title flex">
+    <text class='dd_fl c_777 cell_1'>订单列表</text>
+    <view class='cell_1 c_333 sxtj_btn bhth_fl' bindtap='incomeCondition' wx:if="{{tabIndex==2}}">筛选条件<text class='up_v c_777'>v</text></view>
+  </view>
+  <!-- 订单列表 s -->
+  <view class="order_rebate_list" wx:for="{{incomeList.ordeList}}" wx:key="{{index}}">
+    <view class='flex order_rebate_item'>
+      <view class='cell_0 c_777 order_rebate_left'>返利类型：</view>
+      <view class='cell_1 order_rebate_rig'>{{typeList[item.type-1]}}</view>
+      <view class='cell_1 th_order c_333'>{{settleStatusList[item.settleStatus]}}</view>
+    </view>
+    <view class='flex order_rebate_item'>
+      <view class='cell_0 c_777 order_rebate_left'>订单号：</view>
+      <view class='cell_1 order_rebate_rig'>{{item.orderId}}</view>
+    </view>
+    <view class='flex order_rebate_item'>
+      <view class='cell_0 c_777 order_rebate_left'>返利时间：</view>
+      <view class='cell_1 order_rebate_rig'>{{item.incomeTime}}</view>
+    </view>
+    <view class='flex order_rebate_item'>
+      <view class='cell_0 c_777 order_rebate_left'>来源用户：</view>
+      <view class='cell_1 order_rebate_rig'>{{item.fromNickName}}</view>
+      <view class='cell_1 th_order c_777'>本单返利：<text class='c_red'>{{filter.priceFilter(item.amount)}}元</text></view>
+    </view>
+  </view>
+  </block>
+  <!-- 订单列表 e -->
+  <!-- 筛选条件 s -->
+  <view class='screen_wrap' wx:if="{{isShowsxk}}">
+    <view class="screen_mask" catchtap="closeScreen_wrap"></view>
+    <view class='screen_box'>
+      <view class='screen_title flex'>
+        <view class='c_777 cell_1'>筛选条件</view>
+        <view class='c_333 clear_btn cell_1' bindtap='clearScreen'>清空</view>
+      </view>
+      <view class='flex screen_item'>
+        <view class='cell_0 c_777 screen_left'>时间</view>
+        <view class='cell_1 screen_rig'>
+          <view class="picker_btn">
+            <picker mode="date" data-model="beginTime" value="{{date}}" start="2015-09-01" bindchange="bindDateChange">
+              <view class="picker">
+                {{beginTime?beginTime:'起始时间'}}
+              </view>
+            </picker>
+          </view>
+          ~
+          <view class="picker_btn">
+            <picker mode="date" data-model="endTime" value="{{date}}" start="2015-09-01" bindchange="bindDateChange">
+              <view class="picker">
+              {{endTime?endTime:'截止时间'}}
+              </view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <view class='flex screen_item'>
+        <view class='cell_0 c_777 screen_left'>返利类型</view>
+        <view class='cell_1 screen_rig'>
+          <view class="screen_btn {{type ===item.value?'screen_btn_a':''}}"
+            data-model="type"
+            wx:for="{{incomeConditionList.typeList}}"
+            wx:key="{{index}}"
+            data-indexs="{{item.value}}"
+            bindtap='getTabindex'
+          >{{item.name}}</view>
+        </view>
+      </view>
+      <view class='flex screen_item withdrawalState'>
+        <view class='cell_0 c_777 screen_left'>可提现状态</view>
+        <view class='cell_1 screen_rig'>
+        <view class="screen_btn {{settleStatus===item.value?'screen_btn_a':''}}"
+          data-model="settleStatus"
+          wx:for="{{incomeConditionList.settleStatusList}}"
+          wx:key="{{index}}"
+          data-indexs="{{item.value}}"
+          bindtap='getTabindex'
+        >{{item.name}}</view>
+        </view>
+      </view>
+      <view class='query_btn' bindtap='getIncome'>查询</view>
+    </view> 
+  </view>
+  <!-- 筛选条件 e -->
+</view>

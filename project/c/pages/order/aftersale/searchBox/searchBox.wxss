@@ -1,0 +1,42 @@
+/* pages/index/components/searchBox/searchBox.wxss */
+
+.searchBox {
+  /* height: 88rpx; */
+  background: #ffffff;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.searchBox_shadow {
+  height: 68rpx;
+  background: #f4f4f4;
+  border-radius: 34rpx;
+  width: 100%;
+  display: flex;
+  /* margin-top: 18rpx; */
+  align-items: center;
+  padding-left: 24rpx;
+}
+
+.searchBox_input {
+  height: 100%;
+  font-size: 26rpx;
+  margin-left: 5rpx;
+  color: #333333;
+  width: 100%;
+}
+
+.searchBox_delIcon {
+  height: 100%;
+  width: 34rpx;
+  padding: 0 20rpx;
+  margin-right: 30rpx;
+}
+.searchBox_delIcon image{
+  height: 34rpx;
+  width: 34rpx;
+}
+.inputPlaceholder {
+  color: #BBBBBB;
+}

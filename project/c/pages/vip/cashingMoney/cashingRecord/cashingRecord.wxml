@@ -1,0 +1,22 @@
+<!-- 提现记录 -->
+<wxs module="filter" src="../../../../utils/filter.wxs"></wxs>
+<view class="page">
+  <view class="cashingRecordWrap" wx:if="{{cashingRecordList.length>0}}">
+    <scroll-view class="cashingRecordList">
+      <view class="cashingRecordItem flex justify-between">
+        <text class="cashingTime c_333 cell_2">提现申请时间</text>
+        <text class="cashingMoney c_333 cell_1">提现金额(元)</text>
+        <text class='cashingStatus c_333 cell_1'>提现状态</text>
+      </view>
+      <block wx:for="{{cashingRecordList}}" wx:key="{{index}}">
+        <view class="cashingRecordItem flex justify-between">
+          <text class="cashingTime c_999 cell_2">{{item.createTime}}</text>
+          <text class="cashingMoney c_333 cell_1">{{filter.priceFilter(item.amount)}}元</text>
+          <text class='cashingStatus cell_1 {{"cashingStatus_0"+item.auditStatus}}'>{{cashingList[item.auditStatus]}}</text>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="horizontalLine"></view>
+  </view>
+  <view wx:else class="cashingRecordNull c_999">暂无提现记录</view>
+</view>

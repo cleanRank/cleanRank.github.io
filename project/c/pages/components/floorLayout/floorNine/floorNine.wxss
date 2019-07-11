@@ -1,0 +1,50 @@
+.seckillBtnAll{ 
+  font-size: 0; 
+  margin-bottom: 34rpx; 
+  height: 74rpx; 
+  white-space: nowrap; 
+} 
+.seckillBtn{ 
+  display: inline-block; 
+  text-align: center; 
+  padding-bottom: 13rpx; 
+  margin-right: 17rpx; 
+  position: relative; 
+} 
+.seckillBtn:first-of-type{
+  margin-left: 24rpx;
+}
+.seckillBtn.active .seckillBtnName,.seckillBtn.active .seckillBtnStatus{ 
+  color: #FD455F; 
+} 
+/* .seckillBtn.active:after{ 
+  content: ''; 
+  width: 16rpx; 
+  height: 4rpx; 
+  background:linear-gradient(90deg,rgba(252,107,105,1) 0%,rgba(254,63,87,1) 100%); 
+  border-radius:4rpx; 
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+}  */
+.seckillBtnName{ 
+  color: #333; 
+  font-size: 32rpx; 
+  display: block; 
+  line-height: 29rpx; 
+  margin-bottom: 13rpx; 
+  font-weight: 500; 
+  width: 100%; 
+} 
+.seckillBtnStatus{ 
+  color: #777; 
+  font-size: 24rpx; 
+  display: block; 
+  height: 33rpx; 
+  line-height: 33rpx; 
+} 
+.seckillGood{
+  margin-bottom: 20rpx;
+}

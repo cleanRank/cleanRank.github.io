@@ -1,0 +1,189 @@
+.redEnvelopWrap {
+  width: 100vw;
+  padding-bottom: 88rpx;
+}
+.imageSec {
+  width: 100%;
+}
+
+.imageSec .btn {
+  position: absolute;
+  bottom: 160rpx;
+  width: 390rpx;
+  height: 200rpx;
+  left: 188rpx;
+  margin: auto;
+}
+
+.imageSec image {
+  display: block;
+  width: 100vw;
+}
+
+/* 蒙层 */
+.mask {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.maskInner{
+  background: rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.redEnvelopWrap.disSlide {
+  overflow: hidden;
+  height: 100wh;
+  position:fixed;
+}
+
+/* 弹窗 */
+.dialog {
+  width: 480rpx;
+  height: 685rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.dialog.enter {
+  animation: warn .6s ease-out;
+  -webkit-animation: warn .6s ease-out;
+}
+
+.dialog image {
+  width: 100%;
+}
+.dialog .mammonClose{
+  width: 100rpx;
+  height: 100rpx;
+  margin: auto;
+  overflow: hidden;
+}
+.mammonClose image{
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin: auto;
+  margin-top: 50rpx;
+}
+
+.dialogBtn {
+  width: 364rpx;
+  height: 100rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0rpx;
+  position: absolute;
+}
+
+.dialogBtn image {
+  width: 100%;
+}
+
+.posRel {
+  position: relative;
+}
+
+@keyframes warn {
+  0% {
+  transform: scale(0);
+  opacity: 0.1;
+  }
+  25% {
+  transform: scale(0.25);
+  opacity: 0.3;
+  }
+  50% {
+  transform: scale(0.5);
+  opacity: 0.5;
+  }
+  75% {
+  transform: scale(0.75);
+  opacity: 0.7;
+  }
+  100% {
+  transform: scale(1);
+  opacity: 1;
+  }
+}
+.animation{
+  -webkit-animation: warn 0.5s linear 1;
+  animation: warn 0.5s linear 1;
+  animation-fill-mode: forwards;
+}
+.bomTab{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  justify-content: center;
+}
+.bomTab .item{
+  width: 50%;
+  height: 100%;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color:#fff;
+}
+.bomTab .goHome{
+  background-color: #ffcc30;
+}
+.bomTab .shareAc{
+  background-color: #fd455f;
+}
+.saveBox{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+  display:flex;
+  flex-direction:column;
+}
+.saveBtn{
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #fd455f
+}
+.saveImgBox{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.saveInner{
+  position: relative;
+}
+.promotionClose {
+  position:absolute;
+  top:0;
+  right:0;
+  width:56rpx;
+  height:56rpx;
+  z-index:1;
+}
+.shareImg{
+  width: 560rpx;
+  height: 720rpx;
+  display:block;
+  border-radius:6rpx;
+}

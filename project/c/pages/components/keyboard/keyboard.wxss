@@ -1,0 +1,136 @@
+.keyboardWrap{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  position: fixed;
+  left: 0;
+  top:0;
+  display: flex;
+}
+.keyboardCon{
+  width: 100%;
+  align-self: flex-end;
+}
+.title{
+  height: 108rpx;
+  line-height: 108rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  box-shadow:0px 2rpx 6rpx 0px rgba(0,0,0,0.12);
+}
+.return{
+  width: 19rpx;
+  height: 34rpx;
+  display: block;
+}
+.titTxt{
+  color: #333;
+  font-size: 30rpx;
+  display: block;
+  text-align: center;
+  flex: 1;
+}
+.close{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+}
+.codeWrap{
+  height: 176rpx;
+  background: #F4F4F4;
+}
+.codeCon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40rpx;
+}
+.code{
+  width: 78rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  color: #333333;
+  font-size: 40rpx;
+  position: relative;
+  padding-bottom: 2rpx;
+  margin-right: 22rpx;
+  text-align: center;
+}
+.code:last-of-type{
+  margin-right: 0;
+}
+.code:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 3rpx;
+  background: #ccc;
+  content: '';
+}
+.countDown{
+  line-height: 33rpx;
+  color: #999999;
+  font-size: 24rpx;
+  text-align: center;
+  padding-top: 30rpx;
+}
+.c_blue{
+  color: #3E9BF9;
+}
+.keyList{
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+}
+.keyList .key{
+  width: 33.33333%;
+  height: 140rpx;
+  background: #fff;
+  text-align: center;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #d7e0e6;
+  border-right: 1px solid #d7e0e6;
+  box-sizing: border-box;
+}
+.keyList .key:nth-child(10),.keyList .key:nth-child(12){
+  background: #d2d5db;
+  border-bottom: none;
+  height: 100rpx;
+}
+.keyList .key:nth-child(3n+0){
+  border-right: none;
+}
+.keyList .key:nth-child(11) {
+  height: 100rpx;
+  border-bottom: none;
+}
+.keyNum{
+  display: block;
+  font-size: 50rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.keyLetter{
+  display: block;
+  font-size: 20rpx;
+  font-weight: bold;
+}
+.delete{
+  width: 234rpx;
+  height: 93rpx;
+  margin-left: 6rpx;
+}
+.delete{
+  width: 46rpx;
+  height: 34rpx;
+  display: block;
+}

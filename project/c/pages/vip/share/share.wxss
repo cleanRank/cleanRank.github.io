@@ -1,0 +1,95 @@
+page, .page {
+  width: 100%;
+  height: 100%;
+  background-color: #F4F4F4;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shareSwiperWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.shareSwiperCon,.shareSwiper{
+  width: 750rpx;
+  height: 920rpx;
+}
+.shareImgCon {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.shareImg {
+  width: 630rpx;
+  height: 920rpx;
+  display: block;
+}
+.indicatorDots{
+  height: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 36rpx;
+}
+.indicatorDots .dot{
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #D8D8D8;
+  margin-right: 16rpx;
+}
+.indicatorDots .dot.active{
+  background: #808080;
+}
+.indicatorDots .dot:last-of-type{
+  margin-right: 0;
+}
+.shareBtnAll {
+  width: 100%;
+  height: 178rpx;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.shareBtn {
+  width: 150rpx;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25rpx;
+  padding: 0 25rpx;
+}
+
+.shareBtnOpcity {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.shareBtn image {
+  width: 70rpx;
+  height: 70rpx;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.shareBtn text {
+  font-size: 29rpx;
+  color: #777777;
+  display: block;
+}

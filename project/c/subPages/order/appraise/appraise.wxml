@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="page-head">
+    <image class="page-head-img" src="{{productImage}}"></image>
+    <view class="page-head-title">商品评分</view>
+    <view class="page-head-star">
+      <view wx:for="{{stars}}" wx:key="index" data-index="{{index}}" bindtap="changeStar">
+        <image src="/images/order/star1.png" wx:if="{{item==1}}"></image>
+        <image src="/images/order/star2.png" wx:elif="{{item==2}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="page-textarea">
+    <textarea wx:if="{{!isOver}}" placeholder="亲，宝贝还满足您的期待吗？说说它的优点和美中不足的地方吧～" bindinput="textareaInput" maxlength="500" data-name="productCommentContent"/>
+  </view>
+  <view class="page-addimg">
+    <!-- 上传图片功能 -->
+    <view class='ui_uploader_cell'>
+      <!-- 根据已选择的图片临时路径数组展示图片-->
+      <view class='ui_uploader_item' wx:for="{{imgList}}" wx:key="{{index}}">
+        <!-- 删除-->
+        <!-- <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" /> -->
+        <image class="ui_uploader_item_icon" src="/images/icon/remove.png" bindtap='clearImg' data-index="{{index}}" ></image>
+        <!-- 图片-->
+        <image class="showImg" bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+      </view>
+      <!-- 上传按钮+框 -->
+      <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}">
+        <image src="/images/order/addphoto.png"></image>
+      </view>
+      
+    </view>
+
+  </view>
+  <view class="page-anonymity">
+    <view class="checkbox" bindtap="checkboxChange">
+      <view class="checkbox-out {{anonymousComment==1?'active':''}}">
+      </view>
+      <text>匿名</text>
+    </view>
+    <view class="info">你的评价能帮助其他小伙伴哟～</view>
+  </view>
+  <view class="page-btn">
+    <view class="page-btn-left" bindtap="submit">发布</view>
+    <view class="page-btn-right" bindtap="share">发布并分享</view>
+  </view>
+
+  <!-- 使用推广组件 -->
+  <promotion-component id="promotion" promotion-data="{{promotionData}}" bind:promotionClose="promotionClose" wx:if="{{promotionFlag}}"></promotion-component>
+
+  
+</view>

@@ -1,0 +1,133 @@
+<!--pages/vip/ImChat/ImChat.wxml-->
+<view class="page-chat {{showMore?'addpadding':''}}">
+  <!-- <view class="top-bar" wx:if="{{chatType=='service' && waitNum}}">排队人数{{waitNum}}人，请简单描述你的问题</view> -->
+  <view class="imchatWrap {{showEmotion? 'marB':''}}">
+    <scroll-view style="height:{{scrollHeight}}px;" class="scroll-view {{showEmotion? 'padB':''}} {{padJp && padTop1?'padTop1':''}} {{padJp && padTop2?'padTop2':''}} {{padJp && padTop3?'padTop3':''}}" scrollY scroll-into-view="{{toView}}" bindscrolltoupper="refresh">
+      <view id="massage_{{item.id}}" class="massage-content" wx:for="{{messageList}}" wx:key="index">
+        <!-- 时间 -->
+        <view class="time-box" wx:if="{{item.istime}}">
+          <view class="time">{{item.time}}</view>
+        </view>
+        <!-- 客服上下线提示 -->
+        <!-- <view class="time-box" wx:elif="{{item.isWarn}}">
+          <view class="time">{{item.message}}</view>
+        </view> -->
+        <!-- 聊天消息内容 -->
+        <view wx:else>
+          <!-- 好友聊天内容 -->
+          <view class="friend clearfix" wx:if="{{item.type==0}}">
+            <image class="head-photo" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/http://tmp/wx81b6a1343fac20fd.o6zAJsysIvXtFch540m2g7ak2Eoo.AqHaI6UggAW17f872cfd0dbbe504ee05813e4b93a08b.jpeg'}}"></image>
+            <view class="message-wrap">
+              <!-- <view class="preson-name" wx:if="{{chatType!='service'}}">{{item.personname}}</view> -->
+              <image class="photo-message" mode="scaleToFill" src="{{item.message}}" wx:if="{{item.isphoto}}" bindtap='previewImg' data-item="{{item}}" data-url="{{commentsImg}}"></image>
+              <view class="share-message" wx:elif="{{item.isproduct}}" data-info="{{item}}" bindtap="goProductDetail">
+                <view class="productName">{{item.message.productName ? item.message.productName : item.message.title}}</view>
+                <view class="productCon">
+                  <view class="viceTitle">{{item.message.viceTitle ? item.message.viceTitle : item.message.desc}}</view>
+                  <image class="pro-img" src="{{item.message.mainImagePath ? item.message.mainImagePath:  item.message.imgUrl}}"></image>
+                </view>
+                <view class="sxIcon"><image src="https://sxypmall.oss-cn-shanghai.aliyuncs.com/sxyp/miniapp/mini_logo.png?{{num}}"></image>水象优品</view>
+              </view>
+              <view class="message" wx:else>
+                <block wx:for="{{item.mesArr}}" wx:if="{{item.mesArr}}" wx:for-item="ite" wx:for-index="ind" wx:key="ite">
+                  <block wx:if="{{ite.type == 2}}">
+                    <!-- <view class="text-list" wx:for="{{ite.value}}" wx:for-item="val" wx:for-index="inde" wx:key="val">
+                      {{val}}
+                    </view> -->
+                    <view class="text-list">
+                      {{ite.value}}
+                    </view>
+                  </block>
+                  <image class="img" src="{{ite.value}}" wx:else></image>
+                </block>
+                <view class="icon"></view>
+              </view>
+            </view>
+          </view>
+          <!-- 自己聊天内容 -->
+          <view class="self clearfix" wx:else>
+            <image class='head-photo' src="{{selfHead}}"></image>
+            <view class="message-wrap ">
+              <image class="photo-message" mode="scaleToFill" src="{{item.message}}" wx:if="{{item.isphoto}}" bindtap='previewImg' data-item="{{item}}" data-url="{{commentsImg}}"></image>
+              <view class="share-message" wx:elif="{{item.isproduct}}" data-info="{{item}}" bindtap="goProductDetail">
+                <view class="productName">{{item.message.productName ? item.message.productName : item.message.title}}</view>
+                <view class="productCon">
+                  <view class="viceTitle">{{item.message.viceTitle ? item.message.viceTitle : item.message.desc }}</view>
+                  <image class="pro-img" src="{{item.message.mainImagePath ? item.message.mainImagePath:  item.message.imgUrl }}"></image>
+                </view>
+                <view class="sxIcon"><image src="https://sxypmall.oss-cn-shanghai.aliyuncs.com/sxyp/miniapp/mini_logo.png?{{num}}"></image>水象优品</view>
+              </view>
+              <view class="message" wx:else>
+                <block wx:if="{{item.mesArr && item.mesArr.length > 0}}" wx:for="{{item.mesArr}}" wx:for-item="ite" wx:key="ite">
+                  <block wx:if="{{ite.type == 2}}">
+                    <!-- <view class="text-list" wx:for="{{ite.value}}" wx:for-item="val" wx:key="val"> -->
+                    <view class="text-list">
+                      {{ite.value}}
+                    </view>
+                  </block>
+                  <image class="img" src="{{ite.value}}" wx:else></image>
+                </block>
+                <view class="icon"></view>
+              </view>
+              
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="bottom-bar">
+      <view class="top-content">
+        <input value="{{inputvalue}}" confirm-type="send" confirm-hold="true" class="input" bindconfirm="postMessage" bindinput="inputEvent" bindfocus="focusEvent" bindblur="blurEvent"></input>
+        <image src="../../../images/im/expression_icon@3x.png" class="upload-emotions" bindtap="checkEmotion"></image>
+        <view class="add" bindtap="toggleEvent" wx:if="{{!sendEmotion}}">
+          <image class="add-image" src="../../../images/im/add_icon.png"></image>
+        </view>
+        <view class="send-message {{inputvalue?'active':''}}" wx:elif="{{sendEmotion}}" catchtap="postMessage">发送</view>
+        <!-- <view class="send-message {{inputvalue?'active':''}}" bindtap="postMessage">发送</view> -->
+      </view>
+      <!-- <view class="bottom-content {{showMore || showEmotion?'addheight':''}}"> -->
+      <view class="bottom-content {{showMore || showEmotion?'addheight':''}}">
+        <view wx:if="{{showMore}}">
+          <view class="photo-content">
+            <view class="upload-image-box" bindtap="chooseimage">
+              <image src="../../../images/im/tuku_icon@3x.png" class="upload-image"></image>
+            </view>
+            <view class="text">
+              照片
+            </view>
+
+          </view>
+          <view class="photo-content">
+            <view class="upload-image-box" bindtap="toProductlistEvent">
+              <image src="../../../images/im/goods.png" class="upload-image choose-goods"></image>
+            </view>
+            <view class="text">
+              分享好物
+            </view>
+          </view>
+        </view>
+        <view class="emotion-box" wx:elif="{{showEmotion}}">
+          <view class="emotion">
+            <!-- 表情轮播 -->
+            <swiper
+              indicator-dots="{{adSwiper.indicatordots}}"
+              auto-play="{{adSwiper.autoplay}}" 
+              indicator-color="{{adSwiper.beforeColor}}"
+              indicator-active-color="{{adSwiper.afterColor}}"
+              style="height: 334rpx;"
+            >
+              <block wx:for="{{imgList}}" wx:key="{{index}}">
+                  <swiper-item>
+                    <!-- <view wx:for="{{item}}"  wx:key="{{index}}" bindtap="chooseEmotion" data-info="{{item}}"> -->
+                      <image class="image-item" wx:for="{{item}}" wx:key="{{index}}" bindtap="chooseEmotion" data-info="{{item}}" src="{{item}}" ></image>
+                    <!-- </view> -->
+                  </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+</view>

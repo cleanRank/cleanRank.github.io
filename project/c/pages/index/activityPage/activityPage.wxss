@@ -1,0 +1,43 @@
+/* pages/index/activityPage.wxss */
+@import "../index.wxss";
+page{
+  height: auto;
+}
+.allPageContainer{
+  position: relative;
+}
+.acShare{
+  position: fixed;
+  right: 0;
+  bottom: 29rpx;
+  width: 86rpx;
+  height: 56rpx;
+  border-top-left-radius: 56rpx;
+  border-bottom-left-radius: 56rpx;
+  background-color: #FD455F;
+  color:#fff;
+  text-align: center;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  box-shadow:0rpx 6rpx 11rpx 0rpx rgba(253,69,95,1);
+  z-index: 999;
+}
+.backHome{
+  position: fixed;
+  top: 30rpx;
+  right: 0;
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 500;
+  background: rgba(0,0,0,.7);
+  padding-left: 29rpx;
+  padding-right: 17rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  z-index: 999;
+  border-radius: 30rpx 0rpx 0 30rpx;
+}
+.wrap,.acwrap{
+  width:100%;
+}

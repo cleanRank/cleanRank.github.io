@@ -1,0 +1,17 @@
+<view class="floorContainer">
+  <scroll-view class="seckillBtnAll" scroll-x scroll-with-animation="true" scroll-left="{{iScrollLeft}}" id="seckillBtnAll">
+    <block wx:for="{{floorData.activityInfos}}" wx:key="{{index}}">
+      <view class="seckillBtn {{iSeckill == index ?'active':'1'}}" data-index="{{index}}" bindtap="changeSeckill">
+        <text class="seckillBtnName">{{item.name}}</text>
+        <text class="seckillBtnStatus">{{item.status=='1'?'正在秒杀':'即将开抢'}}</text>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="seckillGoodListWrap">
+    <block wx:for="{{goodList}}" wx:for-item="good" wx:key="{{index}}">
+      <view class="seckillGood">
+        <good-model class="seckillGood" good="{{good}}" floor-type="9" rebate-status="{{rebateStatus?0:1}}"></good-model>
+      </view>
+    </block>
+  </view>
+</view>

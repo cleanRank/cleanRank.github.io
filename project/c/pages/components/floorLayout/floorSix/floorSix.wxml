@@ -1,0 +1,39 @@
+<wxs module="numberUtil" src="../../../../utils/numberUtil.wxs"></wxs>
+<view class="floorBox sekillBox {{_item.floorType != sekillType ? 'needHide' :'needShow'}}">
+  <scroll-view class='sekillTitleView' scroll-x="true" scroll-with-animation='true' scroll-left="{{seckillScrollLeftValue}}" wx:if="{{_item.activityInfos.length>0}}">
+    <view class="sekillTitle {{seckillIndex == index ? 'skillActive' : 'seckillNormal'}}" wx:for="{{_item.activityInfos}}" wx:key="unique3" bindtap='seckillPageClick' data-idx="{{index}}" data-sekillStatus="{{item.status}}">
+      <text class='sekillItemName'>{{item.name}}</text>
+      <!-- stauts:1-已开始，0-未开始 -->
+      <block wx:if="{{item.status == 1}}">
+        <text class='sekillItemStatus'>正在秒杀</text>
+      </block>
+      <block wx:if="{{item.status == 0}}">
+        <text class='sekillItemStatus'>即将开抢</text>
+      </block>
+      <text class='sekillTitleBot' wx:if="{{seckillIndex == index}}"></text>
+    </view>
+  </scroll-view>
+  <view class="sekillProducts" wx:if="{{seckillIndex == index}}" wx:for="{{_item.activityInfos}}" wx:key="unique4" data-activityNo="{{item.activityNo}}">
+    <view class='sekillProduct' bindtap='productClickSekill' data-info="{{item}}" data-activityNo="{{item.activityNo}}" wx:for="{{item.products}}" wx:key="unique5">
+      <view class="proImageWrap">
+        <image src="{{item.proImage}}" class="proImage" />
+        <image class="proImage_nop" src="/images/index/qiangguang.png" wx:if="{{item.remainderCount==0}}"></image>
+      </view>
+      <view class='productRight'>
+        <text class='productName textEllipsis productNewTit'>{{item.productName}}</text>
+        <text class='viceTitle textEllipsis'>{{item.words?item.words:item.viceTitle}}</text>
+        <view class="productLabel">
+          <text class='label'>秒杀价</text>
+          <text class="proprice">
+<text class="propriceB">￥</text>
+          <text class="propriceNum">{{numberUtil.numberFormat(item.buyingPrice)}}</text></text>
+          <text class="label rebate" wx:if="{{howPromotion!=0}}">￥{{numberUtil.numberFormat(item.rebate)}}</text>
+        </view>
+        <view class='promotionView'>
+          <text class='proGeneralize goodBtn' data-status="{{seckillStatus}}" catchtap="putShopCartOrBuySekill" data-info="{{item}}">抢购</text>
+          <text class='putShopCart goodBtn' catchtap='promotionShowSekill' wx:if="{{howPromotion!=0}}" data-info="{{item}}">推广</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

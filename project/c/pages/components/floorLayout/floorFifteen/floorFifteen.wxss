@@ -1,0 +1,87 @@
+@import "../../../index/wxss/navigation.wxss";
+@import "../../../index/wxss/seckill.wxss"; 
+@import "../../../index/wxss/Firstbanner.wxss";
+.videoFloor{
+  width: 702rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  margin-bottom: 20rpx;
+}
+.videoBan{
+  width: 100%;
+  height: 120rpx;
+  border-radius: 12rpx 12rpx 0 0;
+  overflow: hidden;
+}
+.videoBan image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.videoWrap{
+  position: relative;
+  width: 100%;
+  height: 394rpx;
+  overflow: hidden;
+  border-radius:  0 0 12rpx 12rpx;
+}
+video{
+  width: 702rpx;
+  height: 394rpx;
+  position: absolute;
+  left: -1500rpx;
+  border-radius:  0 0 12rpx 12rpx;
+}
+.showVideo{
+  left: 0
+}
+.play,.video_bg,.wifiMark{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   background: rgba(0, 0, 0, 0.5)
+}
+.wifiMark{
+  background: rgba(0, 0, 0, .5)
+}
+.play image,.wifiMark image{
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  left: 50%;
+  top: 50%;
+  margin-left: -50rpx;
+  margin-top: -50rpx;
+}
+.video_bg image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.wifiMark image{
+  top: 110rpx;
+  margin-top: 0;
+}
+.wifiMark text{
+  position: absolute;
+  font-size: 24rpx;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  bottom: 131rpx;
+}
+.video_time{
+  position: absolute;
+  width: 78rpx;
+  height: 36rpx;
+  background: #000;
+  border-radius: 36rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 36rpx;
+  font-size: 20rpx;
+  right: 16rpx;
+  bottom: 16rpx;
+}

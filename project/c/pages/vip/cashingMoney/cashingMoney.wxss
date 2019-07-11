@@ -1,0 +1,52 @@
+/* pages/vip/cashingMoney/cashingMoney.wxss */
+.horizontalLine{
+  height: 10rpx;
+  background: #FBFBFB;
+}
+.withdrawalRecord{
+  text-align: right;
+  padding-top: 14rpx;
+  margin-right: 24rpx;
+  margin-bottom: 3rpx;
+}
+.withdrawalRecord navigator{
+  font-size: 24rpx;
+  color: #FD455F;
+  line-height: 43rpx;
+  padding: 10rpx 5rpx;
+  display: inline-block;
+}
+.flexCashing { 
+  display: flex;
+  text-align: center;
+  height: 212rpx;
+}
+.cashingPrice{
+  display: block;
+  line-height: 112rpx;
+  font-size: 80rpx;
+}
+.cashingPriceTxt{
+  display: block;
+  line-height: 40rpx;
+}
+.cashing {
+  background: #D8D8D8;
+  box-shadow: none;
+}
+.cashingAccount{
+  height: 90rpx;
+  line-height: 88rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  margin-bottom: 100rpx;
+}
+.remainWithdrawCount{
+  width: 640rpx;
+  margin: auto;
+  margin-top: 54rpx;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+}

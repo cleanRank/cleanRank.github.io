@@ -1,0 +1,36 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="goodCommentsWrap">
+  <view class="goodCommentsTit" bindtap="goCommentList">
+    <view class="goodCommentsNum">商品评价（{{sumCount}}）</view>
+    <view class="goodCommentsAll" wx-if="{{commentsList && commentsList.length>0}}"><text class="goodCommentsText">好评度</text>{{feedbackRate}}</view>
+  </view>
+  <view class="goodCommentsList" wx-if="{{commentsList && commentsList.length>0}}">
+    <block wx:for="{{commentsList}}" wx:key="index">
+      <view class="goodCommentsItem">
+        <view class="userInfo">
+          <image class="userInfoImg" src="{{item.userImg}}"></image>
+          <view class="userInfoName">{{item.nickName}}</view>
+          <view class="startWrap">
+            <block wx:for="{{5}}" wx:key="sIdx" wx:for-index="sIdx" wx:for-item="start">
+              <image class="start" src="/images/icon/{{item.productCommentGrade>=sIdx+1?'start1.png':'start0.png'}}"></image>
+            </block>
+          </view>
+        </view>
+        <view class="goodSpu" wx:if="{{item.skuParameters}}">{{item.skuParameters}}</view>
+        <view class="goodbuyTime">购买时间: {{item.orderTime}}</view>
+        <view class="goodCommentsDetail">{{item.productCommentContent}}</view>
+        <view class="goodCommentsImgWrap" wx:if="item.productCommentPicture && item.productCommentPicture.length>0">
+          <block wx:for="{{item.productCommentPicture}}" wx:for-item="commentsImg" wx:for-index="idx" wx:key="{{idx}}">
+            <image bindtap='previewImg' data-index="{{index}}" data-url="{{commentsImg}}" src="{{commentsImg}}" class="goodCommentsImg"></image>
+          </block>
+        </view>
+        <view class="commentBackWrap" wx:if="{{item.item.content}}">
+          <text class="commentBackTxt">掌柜回复：</text>
+          <text class="commentBackCon">{{item.content}}</text>
+        </view>
+      </view>
+      <view class="line" wx:if="{{index == 0}}"></view>
+    </block>
+  </view>
+  <view class="goodCommentsListNull" wx:else>此商品暂无评价…</view>
+</view>

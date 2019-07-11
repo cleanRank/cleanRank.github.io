@@ -1,0 +1,20 @@
+<!--pages/vip/productList/productList.wxml-->
+<view class="page" wx:if="{{productList && productList.length > 0}}">
+    <scroll-view class="productScroll" scroll-y  bindscrolltolower="getImShareOrders">
+        <view  class="productList"  wx:for="{{productList}}" wx:key="{{index}}" wx:index="{{index}}">
+            <view class="productItem">
+                <image src="{{item.productImage}}"></image>
+                <view class="productInfo">
+                    <view class="productTitle">{{item.productName}}</view>
+                    <view class="sendBtn" bindtap="shareGoods" data-info="{{item}}">发送</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    
+</view>
+<!-- 无数据缺省 -->
+<view class="noData" wx:else>
+    <image src="/images/noData/no_data.png"></image>
+    <view class="noDataInfo">还没有内容哦～</view>
+</view>

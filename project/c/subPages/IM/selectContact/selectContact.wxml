@@ -1,0 +1,4 @@
+<!--pages/vip/selectContact/selectContact.wxml-->
+<view class="selectPage">
+    <contact-list style="height:{{minHeight}}px" type='contactList' bind:cancelEvent="cancelEvent" bind:finishEvent="postData" product-info="{{ImproductDetail}}" friend-list="{{addressList}}" show-btn="{{showBtn}}"></contact-list>
+</view>

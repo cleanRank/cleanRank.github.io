@@ -1,0 +1,22 @@
+@import "../../../index/wxss/navigation.wxss";
+@import "../../../index/wxss/seckill.wxss"; 
+@import "../../../index/wxss/Firstbanner.wxss";
+@import "../../../../app.wxss";
+.floor{
+  margin-bottom: 20rpx;
+}
+.floorEleven{
+  display: flex;
+}
+.floorEleven > view{
+  width: 100%
+}
+.floorEleven .sub{
+  height: 280rpx;
+  flex: 1;
+}
+.sub image{
+  display: block;
+  height: 100%;
+  width: 100%;
+}

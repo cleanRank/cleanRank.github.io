@@ -1,0 +1,42 @@
+.customer-service-time{
+  color: #999;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin-top: 60rpx;
+}
+.customer-img{
+  width: 294rpx;
+  height: 294rpx;
+  margin-top: 70rpx;
+}
+.customer-service-tel-num{
+  color: #fff;
+  font-size: 30rpx;
+  margin-top: 63rpx;
+  padding: 0 50rpx;
+  border-radius: 39rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  box-shadow: 0px 24rpx 40rpx -20rpx rgba(62,155,249,.6);
+  background: #3E9BF9;
+}
+.customer-service-vipcn_qrcode{
+  width: 240rpx;
+  height: 240rpx;
+  margin: 114rpx 0 32rpx;
+}
+.customer-service-vipcn_copy{
+  font-size: 26rpx;
+  color: #777;
+  line-height: 37rpx;
+}
+.customer-tel{
+  height: 78rpx;
+  line-height: 78rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background: #3E9BF9;
+  border-radius: 39rpx;
+  padding: 0 52rpx;
+  margin-top: 50rpx;
+}

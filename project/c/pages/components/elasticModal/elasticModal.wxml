@@ -1,0 +1,15 @@
+<!--pages/components/elasticModal/elasticModal.wxml-->
+<!-- 自定义弹框 -->
+<view class="modalWrap" wx:if="{{showModal}}">
+    <view class="modalBox">
+        <view class="modalTop" wx:if="{{modalTop}}">{{modalTop}}</view>
+        <view class="modalHeader">{{modalTitle}}</view>
+        <view class="modalContent">
+            <text wx:if="{{modalContentTxt}}">{{modalContentTxt}}</text>
+        </view>
+        <view class="modalBtns {{conType == 1 ? 'itemCenter' :'' }}">
+            <view class="modalBtn btns_cancel"  wx:if="{{conType !== 1}}" bindtap="cancelFn">{{cancelBtnTxt}}</view>
+            <view class="modalBtn btns_confirm " bindtap="confirmFn">{{confirmBtnTxt}}</view>
+        </view>
+    </view>
+</view>

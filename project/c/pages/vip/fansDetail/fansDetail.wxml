@@ -1,0 +1,46 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='page'>
+  <!-- fans info start -->
+  <block>
+    <view class="fansInfoWrap flex">
+      <image src='{{followerDetail.avatarUrl}}' class="fansInfoImg"></image>
+      <view class="fansInfo cell_1">
+        <view class="fansNameWrap flex">
+          <div class="fansName c_333"><text class="fansNameTxt textEllipsis">{{filter.transformName(followerDetail.nickName)}} </text><text class="fansLevel">{{followerDetail.memberLevel>0?'会员':'小象首席体验官'}}</text></div>
+          <text class="fansBuyNum c_999 textEllipsis">已购买{{followerDetail.totalOrderCnt}}单</text>
+        </view>
+        <view class="fansRebate c_333">累计成功贡献返利：<text class="fansRebateColor">{{followerDetail.totalContributeIncome}}元</text></view>
+        <view class="fansBindTime c_999">绑定时间：<text wx:if="{{followerDetail.bindTime}}">{{filter.dateFormat(followerDetail.bindTime)}}</text></view>
+      </view>
+    </view>
+  </block>
+  <!-- fans info end -->
+  <view class="line"></view>
+  <!-- order rebate start -->
+  <view class="orderRebate">
+    <view class="orderRebateTit c_333">
+      订单及返利<text class="c_999">（包含退货商品返利）</text>
+    </view>
+    <block wx:for="{{followerOrderList}}" wx:key="index">
+    <view class="orderItem">
+      <view class="orderNoWrap flex">
+        <text class="orderNo c_333 cell_1 textEllipsis">订单编号：{{item.orderId}}</text>
+        <text class="copy_btn c_333" catchtap='copyText' data-text="{{item.orderId}}">复制</text>
+      </view>
+       <view class='totalPriceWrap flex'>
+        <view class='orderTime c_999'>下单时间：{{filter.dateFormat(item.orderTime)
+        }}</view>
+        <view class='totalNum c_999'>共{{item.buycount}}件商品</view>
+      </view>
+      <view class='totalRebate flex'>
+        <view class='totalRebateTxt c_333'>总计预估返利：<text class='c_red blod'>￥{{item.totalEstimateIncome}}</text></view>
+        <view class="totalRebateStatus {{item.settleStatus =='1'?'c_333':'c_999'}}">
+          {{item.settleStatusDesc}}
+        </view>
+      </view>
+     
+    </view>
+    </block>
+  </view>
+  <!-- order rebate end -->
+</view>

@@ -1,0 +1,26 @@
+<view class="add-address">
+  <view class="add-form">
+    <view class="form-item">
+      <text space="ensp">收货人  </text>
+      <input class="input input_name" bindinput="bindinputName" placeholder="请输入收货人姓名" value="{{address.consignee}}" auto-focus maxlength='10' type='text'/>
+    </view>
+    <view class="form-item">
+      <view>手机号码</view>
+      <input class="input" bindinput="bindinputMobile" value="{{address.consigneeMobile}}" placeholder="手机号码" maxlength='11' type='number'/>
+    </view>
+    <view class="form-item">
+      <view>省市地区</view>
+      <input class="input address" placeholder="请选择" bindtap="bindRegionChange" value="{{address.addProvince+address.addCity+address.addCounty+address.addTown}}" disabled='false' bindinput="bindinputCity"></input>
+    </view>
+    <view class="form-item">
+      <view>详细地址</view>
+      <input class="input" bindinput="bindinputAddress" value="{{address.addDetail}}" placeholder="街道、小区门牌等详细信息（5-100个字）" />
+    </view>
+  </view>
+
+  <view class=" btns">
+    <button class="save" bindtap="saveAddress">保存</button>
+
+    <!-- <button class=" {{isShowDelBtn ?'show':'hide'}} cannel" bindtap="addressDeleteBtn">删除</button> -->
+  </view>
+</view>

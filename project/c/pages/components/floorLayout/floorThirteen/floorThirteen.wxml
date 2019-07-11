@@ -1,0 +1,5 @@
+<view class='floor-thirteen'>
+   <view class='floor-thirteen-item' wx:for="{{floorData.listFloorDetail[0].prudouct}}" wx:key="index">
+      <image src="{{item.proImage}}" bindtap='productClick' data-info="{{item}}" data-activityNo="{{item.activityNo}}"></image>
+   </view>
+</view>

@@ -1,0 +1,50 @@
+<!-- <scroll-view scroll-y='true'> -->
+<view class="firstPage page" bindtouchstart='touchStart'>
+  <view class="navbar">
+    <!-- 引入的输入框盒子组件 -->
+    <view class='searchWrap'>
+      <search-box
+        bindtap='goSearchPage'
+        define-word='{{hotword}}'
+        define-disable='{{true}}'
+      />
+    </view>
+    <view class="nav-1">
+      <scroll-view scroll-x="true" class="nav-1-left" scroll-left="{{scrollLeftValue}}" wx:if="{{!isPickerShow}}" scroll-with-animation='true'>
+        <view wx:for="{{topCategory}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="{{item.id}}" bindtap="navbarTap">{{item.name}}</view>
+      </scroll-view>
+    </view>
+  </view>
+    <block >
+      <view class="pageContainer">
+        <view class='itemContainer'>
+          <!-- 楼层组件 -->
+          <view class='floorView'>
+          <floor-component id="floor" new-list="{{newList}}"
+        list-floor="{{listFloor}}" seckill-index = "{{seckillIndex}}" seckill-status = "{{seckillStatus}}" ishow-promotion="{{ishowPromotion}}" head-top="{{headTop}}" close-video="{{closeVideo}}" scroll-top="{{scrollTop}}" time="2000"
+            ></floor-component>
+          </view>
+        </view>
+       </view>
+    </block>
+  <!-- ad start -->
+  <view class="startAdvertising" wx:if="{{adFlag}}" catchtap="closeAdvertising">
+    <view class="popupWrap">
+      <swiper indicator-dots="{{adSwiper.indicatorDots}}" autoplay="{{adSwiper.autoplay}}" interval="{{adSwiper.interval}}" duration="{{adSwiper.duration}}" circular="{{adSwiper.circular}}" current="{{swiperCurrent}}" bindchange="swiperChange" class="popupSwiper">
+        <block wx:for="{{adList}}" wx:key="{{index}}">
+          <swiper-item class="popupSwiperItem" catchtap="adDetail" data-detail="{{item}}">
+            <image src="{{item.image}}" class="slide-image adImg"/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="dots" wx:if="{{adList && adList.length>1}}">
+        <block wx:for="{{adList}}" wx:key="index">
+          <view class="dot {{index == swiperCurrent ? 'active' : ''}}"></view>
+        </block>
+      </view>
+      <image class="adClose" src="/images/icon/ad-close.png" catchtap="closeAdvertising"></image>
+    </view>
+  </view>
+  <!-- ad end -->
+</view>
+<!-- </scroll-view> -->

@@ -1,0 +1,17 @@
+<view class='floorPage' style="background:{{_item.listFloorDetail[0].defaultBgColor?_item.listFloorDetail[0].defaultBgColor:'#f4f4f4'}}">
+   <view class='twoImg' wx:if="{{imgNum==2}}">
+      <view  wx:for="{{_item.listFloorDetail}}" bindtap="bannerCick" data-bannerInfo="{{item}}" wx:key="index" >
+         <image mode='widthFix' src='{{item.picUrl}}'></image>
+      </view>
+   </view>
+   <view class='threeImg' wx:if="{{imgNum==3}}">
+      <view  wx:for="{{_item.listFloorDetail}}" bindtap="bannerCick" data-bannerInfo="{{item}}" wx:key="index">
+          <image mode='widthFix' src='{{item.picUrl}}'></image>
+      </view>
+   </view>
+   <view class='fourImg' wx:if="{{imgNum==4}}">
+      <view wx:for="{{_item.listFloorDetail}}" bindtap="bannerCick" data-bannerInfo="{{item}}" wx:key="index">
+          <image mode='widthFix' src='{{item.picUrl}}'></image>
+      </view>
+   </view>
+</view>

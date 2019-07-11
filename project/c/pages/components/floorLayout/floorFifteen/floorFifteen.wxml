@@ -1,0 +1,21 @@
+<view class='videoFloor' id="myfloor{{floorEq}}">
+   <view class='videoBan' wx:if="{{floorData.bgImg}}">
+      <image src="{{floorData.bgImg}}"></image>
+   </view>
+   <view class='videoWrap'>
+      <video bindwaiting="videoWait" controls="true" binderror="videoErro" bindplay='video_play'  show-center-play-btn="{{false}}" bindfullscreenchange="fullScreenVideo" object-fit="contain" show-mute-btn="true" autoplay="{{false}}" direction="90" auto-pause-if-navigate="true" auto-pause-if-open-native="true" src="{{floorData.listFloorDetail[0].vedioUrl}}"
+id="myVideo{{floorEq}}" class="{{!toPlay?'showVideo':''}}">
+      </video>
+      <view class='video_bg' wx:if="{{toPlay}}">
+         <image src='{{floorData.listFloorDetail[0].vedioImg}}'></image>
+      </view>
+      <view class='play' wx:if="{{!showV}}">
+         <image bindtap='v_play' data-curr="myVideo{{floorEq}}" src='/images/icon/play.png'></image>
+         <text class='video_time'>{{floorData.listFloorDetail[0].vedioTime}}</text>
+      </view>
+      <view class='wifiMark' wx:if="{{ifWifi}}">
+         <image bindtap='checkOnlyPlay' data-curr="myVideo{{floorEq}}" src='/images/icon/play.png'></image>
+         <text>您正在使用非WiFi网络，是否继续播放</text>
+      </view>
+   </view>
+</view>

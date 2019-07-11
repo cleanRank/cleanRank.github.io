@@ -1,0 +1,31 @@
+<!--pages/mine/personal/personal.wxml-->
+<view class='page'>
+  <view class='flex personal_item'>
+    <view class='cell_1 c_777 personal_left'>头像</view>
+    <view class='cell_1 personal_rig'><image bindtap="fileImg" src="{{userInfo.img}}"></image> </view>
+  </view>
+  <view class='flex personal_item'>
+    <view class='cell_1 c_777 personal_left'>昵称</view>
+    <view class='cell_1 c_333 personal_rig personal_nickName' bindtap="editUserName" data-type="">{{userInfo.nickName}}</view>
+  </view>
+  <view class='flex personal_item'>
+    <view class='cell_1 c_777 personal_left'>手机号</view>
+    <view class='cell_1 c_333 personal_rig'>{{miniProgramUserinfo.mobile}}</view>
+  </view>
+  <view class='flex personal_item' wx:if="miniProgramUserinfo.pName">
+    <view class='cell_1 c_777 personal_left'>邀请人</view>
+    <view class='cell_1 c_333 personal_rig'>{{miniProgramUserinfo.pName}}</view>
+  </view>
+  <view class="editNickNameWrap" wx:if="{{bEdit}}">
+    <view class="editNameContent">
+        <view class="editTitle">请输入新的昵称</view>
+        <view class="editUserName">
+          <input class="editUserNameIpt" focus="{{bEdit}}" value='{{nickName}}' maxlength='11' bindinput="inputNickName" ></input>
+        </view>
+        <view class="editControl flex">
+          <text class="editBtn cancel" bindtap="closeMask">取消</text>
+          <text class="editBtn confirm" bindtap="confirmUserName">确定</text>
+        </view>
+      </view>
+  </view>
+</view>

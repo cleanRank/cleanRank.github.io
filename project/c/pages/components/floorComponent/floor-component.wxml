@@ -1,0 +1,217 @@
+
+<!--pages/components/floor-component.wxml-->
+<wxs module="numberUtil" src="../../../utils/numberUtil.wxs"></wxs>
+<view class='floorView'>
+  <view class="itemBox {{item.floorType == '7'?'mb30':''}} {{item.floorType == '17'?'seventCla':''}}" wx:for="{{listFloor}}" wx:key="{{index}}">
+    <!-- banner ok -->
+    <view class="floorBox bannerWrap {{item.floorType != bannerType ? 'needHide' :'needShow'}}" wx:if="{{item.floorType == bannerType && item.listFloorDetail.length>0}}" style="text-align:center">
+      <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="rgba(255, 255, 255, 1)" autoplay="{{autoplay}}" circular='true' interval="{{interval}}" duration="{{duration}}" current="{{current}}" style="height:340rpx;"
+        wx:if="{{item.listFloorDetail.length>1}}">
+        <block wx:for="{{item.listFloorDetail}}" wx:key="unique1" wx:for-item="banner" wx:for-index="idx">
+          <swiper-item>
+            <image src="{{banner.picUrl}}" class="slide-image" bindtap="bannerCick" data-bannerInfo="{{banner}}"></image>
+            <!-- {{idx ==  current?'none':'scale'}} -->
+          </swiper-item>
+        </block>
+      </swiper>
+      <image class="slide-image" wx:if="{{item.listFloorDetail.length==1}}" style="height:360rpx;" src="{{item.listFloorDetail[0].picUrl}}" bindtap="bannerCick" data-bannerInfo="{{item.listFloorDetail[0]}}"></image>
+    </view>
+    <!-- 品牌 ok -->
+    <view class="floorBox navigationView {{item.floorType != iconType ? 'needHide' :'needShow'}}" wx:if="{{item.floorType == iconType}}">
+      <view class='navigation'>
+        <view class='navigationItem' wx:for="{{item.listFloorDetail}}" wx:key="unique2" bindtap="bannerCick" data-bannerInfo="{{item}}">
+          <image mode='widthFix' src='{{item.picUrl}}'></image>
+          <text class='naitem-name'>{{item.picName}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 秒杀   floorType -- 13 ok -->
+    <view class="floorBox sekillBox {{item.floorType != sekillType ? 'needHide' :'needShow'}}" wx:if="{{item.floorType == sekillType}}">
+      <scroll-view class='sekillTitleView' scroll-x="true" scroll-with-animation='true' scroll-left="{{seckillScrollLeftValue}}" wx:if="{{item.activityInfos.length>0}}">
+        <view class="sekillTitle {{seckillIndex == index ? 'skillActive' : 'seckillNormal'}}" wx:for="{{item.activityInfos}}" wx:key="unique3" bindtap='seckillPageClick' data-idx="{{index}}" data-sekillStatus="{{item.status}}">
+          <text class='sekillItemName'>{{item.name}}</text>
+          <!-- stauts:1-已开始，0-未开始 -->
+          <block wx:if="{{item.status == 1}}">
+            <text class='sekillItemStatus'>正在秒杀</text>
+          </block>
+          <block wx:if="{{item.status == 0}}">
+            <text class='sekillItemStatus'>即将开抢</text>
+          </block>
+          <!-- <text class='sekillTitleBot' wx:if="{{seckillIndex == index}}"></text> -->
+        </view>
+      </scroll-view>
+      <view class="sekillProducts" wx:if="{{seckillIndex == index}}" wx:for="{{item.activityInfos}}" wx:key="unique4" wx:for-item="floorTop" data-activityNo="{{floorTop.activityNo}}">
+
+        <view class='sekillProduct' bindtap='productClickSekill' data-info="{{item}}" data-activityNo="{{item.activityNo}}" data-id="{{floorTop.floorId}}" wx:for="{{floorTop.products}}" wx:key="unique5">
+          <view class="proImageWrap">
+            <image src="{{item.proImage}}" class="proImage" />
+            <image class="saveno" src="/images/icon/saveno.png" wx:if="{{item.remainderCount==0}}"></image>
+          </view>
+          <view class='productRight'>
+            <text class='productName textEllipsis'>{{item.productName}}</text>
+            <text class='viceTitle textEllipsis'>{{item.words?item.words:item.viceTitle}}</text>
+            <view class="productLabel">
+              <text class='label'>秒杀价</text>
+              <text class="proprice">
+<text class="propriceB">￥</text>
+              <text class="propriceNum">{{numberUtil.numberFormat(item.buyingPrice)}}</text></text>
+              <!-- rebate ok -->
+              <text class='rebateTxt' wx:if="{{ishowPromotion==false}}">赚</text>
+              <text class="label rebate" wx:if="{{ishowPromotion==false}}">￥{{numberUtil.numberFormat(item.rebate)}}</text>
+            </view>
+            <view class='promotionView'>
+              <text class='proGeneralize goodBtn' data-status="{{seckillStatus}}" data-id="{{floorTop.floorId}}" data-info="{{item}}" catchtap='productClickSekill' data-activityNo="{{item.activityNo}}">抢购</text>
+              <text class='putShopCart goodBtn' catchtap='promotionShowSekill' wx:if="{{ishowPromotion==false}}" data-id="{{floorTop.floorId}}" data-info="{{item}}">推广</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 正常的3 ok-->
+      <view class="floorBox {{item.floorType != defaultType ? 'needHide' :'needShow'}} floor3" wx:if="{{item.floorType == defaultType && item.listFloorDetail[0].prudouct.length>0}}" style="background:{{item.listFloorDetail[0].defaultBgColor?item.listFloorDetail[0].defaultBgColor:'#f4f4f4'}}">
+        <view class="{{item.bgImg?'haveBg3':''}}" style="background-image:url({{item.bgImg}})">
+        <!-- style="background:{{item.listFloorDetail[0].defaultBgColor}}"> -->
+        <view class='sekillProduct' bindtap='productClick' data-info="{{item}}" wx:for="{{item.listFloorDetail[0].prudouct}}" wx:key="unique6">
+          <view class="proImageWrap">
+            <image src="{{item.proImage}}" class="proImage" />
+            <image wx:if="{{item.productStock==0}}" src="/images/icon/saveno.png" class="saveno" />
+          </view>
+          <view class='productRight'>
+            <view class='productName'>
+               <image wx:if="{{item.isCrossBorder =='1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image>
+               <view class='productNameText textEllipsis oversea_txt'>
+                <text>{{item.productName}}</text>
+            </view>
+          </view>
+            <view class='viceTitle textEllipsis'>{{item.viceTitle}}</view>
+            <view class="productLabel">
+              <text class='label'>促销价</text>
+              <text class="proprice">
+  <text class="propriceB">￥</text>
+              <text class="propriceNum">{{numberUtil.numberFormat(item.activityPrice?item.activityPrice:item.price)}}</text></text>
+              <!-- rebate ok -->
+              <text class='rebateTxt' wx:if="{{ishowPromotion==false}}">赚</text>
+              <text class="label rebate" wx:if="{{ishowPromotion==false}}">￥{{numberUtil.numberFormat(item.rebate)}}</text>
+            </view>
+            <view class='promotionView'>
+              <text class='proGeneralize goodBtn' data-status="1" catchtap='productClick' data-info="{{item}}">抢购</text>
+              <text class='putShopCart goodBtn' catchtap='promotionShow' wx:if="{{ishowPromotion==false}}" data-info="{{item}}">推广</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- title图片 floorType: "1" ok-->
+    <!-- <view class="{{item.floorType != imagetype ? 'needHide' :'needShow'}} floorImg" wx:if="{{item.floorType == imagetype}}">
+      <image class="floorType1Img" src='{{item.listFloorDetail[0].picUrl}}' mode='widthFix' bindtap="bannerCick" data-bannerInfo="{{item.listFloorDetail[0]}}"></image>
+    </view> -->
+    <block>
+      <floor-one wx:if="{{item.floorType == imagetype}}" floor-data="{{item}}"></floor-one>
+    </block>
+    <!-- 商品双列4 ok -->
+    <view class="floorBox floor4 packsView {{item.floorType != packsType ? 'needHide' :'needShow'}}" wx:if="{{item.floorType == packsType && item.listFloorDetail[0].prudouct.length>0}}" style="background:{{item.listFloorDetail[0].defaultBgColor?item.listFloorDetail[0].defaultBgColor:'#f4f4f4'}}">
+      <view class='packs' wx:for="{{item.listFloorDetail[0].prudouct}}" wx:key="unique7" bindtap="productClick" data-info="{{item}}">
+        <image mode='widthFix' class='packsImage' src="{{item.proImage}}"></image>
+        <image wx:if="{{item.productStock==0}}" src="/images/icon/saveno.png" class="saveno saveno4" />
+        <view class='packsTitle'>
+           <image wx:if="{{item.isCrossBorder=='1'}}" src="/images/icon/overseas-label.png" class="overseas-label"></image>
+           <text class='packsTitleText'>{{item.proName}}</text>
+        </view>
+        <view class="productLabel productLabelFour">
+          <text class='label'>促销价</text>
+          <!-- rebate ok -->
+          <text class='rebateTxt' wx:if="{{ishowPromotion==false}}">赚</text>
+          <text class="label rebate" wx:if="{{ishowPromotion==false}}">￥{{numberUtil.numberFormat(item.rebate)}}</text>
+        </view>
+        <view class="priceBuy">
+          <view class='proprice proDuble' wx:if="{{item.productStock}}">
+             <text class="smallBefore">￥</text>
+             <text>{{item.isActivity == '1'? numberUtil.numberFormat(item.activityPrice):numberUtil.numberFormat(item.price)}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- floorType 7 start ok -->
+    <block>
+      <view class="{{item.bgImg?'haveBg':''}}" wx:if="{{item.floorType == 7 && item.listFloorDetail[0].prudouct.length>0}}" style="background-image:url({{item.bgImg}})">
+      <floor-seven floor-data="{{item.listFloorDetail[0]}}" rebate-status="{{ishowPromotion}}"></floor-seven>
+      </view>
+    </block>
+    <!-- floorType 7 end -->
+    <!-- floorType 秒杀单列 9 start ok --> 
+    <block> 
+      <floor-nine wx:if="{{item.floorType == 9 && item.activityInfos && item.activityInfos.length>0}}" floor-data="{{item}}" rebate-status="{{ishowPromotion}}"></floor-nine> 
+    </block> 
+    <!-- floorType 秒杀单列 9 end -->
+    <block>
+       <!-- floorTyoe 10 -->
+       <floor-ten  wx:if="{{item.floorType == 10 && item.listFloorDetail.length>0}}" floor-data="{{item}}"></floor-ten>
+    <!-- end -->
+    </block>
+    <block>
+     <!-- floorType12 -->
+       <floor-twelue wx:if="{{item.floorType == 12}}" floor-data="{{item}}"></floor-twelue>
+    </block>
+    <block wx:if="{{item.floorType == 14}}">
+        <!-- floorType14 轮播版式 ok-->
+        <view class='floorFourBan' wx:if="{{item.listFloorDetail[0].picUrl}}">
+            <image src="{{item.listFloorDetail[0].picUrl}}" bindtap='fourteenNav' data-linkUrl="{{item.listFloorDetail[0].floorLinkUrl}}" data-linkType="{{item.listFloorDetail[0].linkType}}"></image>
+        </view>
+        <scroll-view wx:if="{{item.listFloorDetail[0].prudouct.length>0}}" scroll-x="true" class="floor-swiper nav-1-left" scroll-with-animation='true'>
+          <view class='floor-scroll-item' wx:for="{{item.listFloorDetail[0].prudouct}}" wx:key="index">
+            <view bindtap='productClick' class='floor14' data-info="{{item}}" data-activityNo="{{item.activityNo}}">
+              <image src="{{item.proImage}}"></image>
+              <image wx:if="{{item.productStock==0}}" src="/images/icon/saveno.png" class="saveno saveno14" />
+              <view class='swiper-tit'>{{item.productName}}</view>
+              <view class='swiper-subtit'>¥{{item.isActivity == '1'? numberUtil.numberFormat(item.activityPrice):numberUtil.numberFormat(item.price)}}</view>
+            </view> 
+          </view>
+      </scroll-view>
+    </block>
+    <block>
+        <!-- floortype13 三列 ok -->
+      <view class='floor_ban' style='background-color:{{item.listFloorDetail[0].defaultBgColor?item.listFloorDetail[0].defaultBgColor:"#f4f4f4"}}' wx:if="{{item.floorType == 13 && item.listFloorDetail[0].picUrl}}">
+          <image src='{{item.listFloorDetail[0].picUrl}}' style="height:{{item.listFloorDetail[0].hight}}rpx"></image>
+      </view>
+      <view class='floor-thirteen' wx:if="{{item.floorType == 13 && item.listFloorDetail[0].prudouct.length>0}}" style='background-color:{{item.listFloorDetail[0].defaultBgColor?item.listFloorDetail[0].defaultBgColor:"#f4f4f4"}}'>
+        <view class='floor-thirteen-item' wx:for="{{item.listFloorDetail[0].prudouct}}" wx:key="index">
+          <view bindtap='productClick' class='floor13' data-info="{{item}}" data-activityNo="{{item.activityNo}}">
+            <image class='thirteen-img' src="{{item.proImage}}"></image>
+            <image wx:if="{{item.productStock==0}}" src="/images/icon/saveno.png" class="saveno saveno13" />
+           <view class='packsTitle packsTitleThir'>
+              <text class='packsTitleText'>{{item.productName}}</text>
+            </view>
+            <view class="productLabel productLabelThirteen">
+              <view class='proprice proDuble proprice-thirteen' wx:if="{{item.productStock}}">
+                <text class="smallBefore">￥</text>
+                <text>{{item.isActivity == '1'? numberUtil.numberFormat(item.activityPrice):numberUtil.numberFormat(item.price)}}</text>
+              </view>
+            </view>
+            <view class="productLabel productLabelRebate productLabelThir" wx:if="{{ishowPromotion==false}}">
+            <!--rrebate ok -->
+              <text class='rebateTxt'>赚</text>
+              <text class="label rebate">￥{{numberUtil.numberFormat(item.rebate)}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block>
+       <!-- floortype:11优惠券 ok -->
+       <floor-eleven  wx:if="{{item.floorType == 11}}" floor-data="{{item}}"></floor-eleven>
+    </block>
+    <!-- 视频版式floortype=15 -->
+    <block>
+      <floor-fifteen wx:if="{{item.floorType == 15}}" floor-data="{{item}}" close-video="{{closeVideo}}" scroll-top="{{scrollTop}}" bind:pauseVideo="pauseVideo" floor-list="{{listFloor}}" floor-eq="{{item.sortFlag}}" play-index="{{playIndex}}"></floor-fifteen>
+    </block>
+    <block>
+      <!-- floortype:16营销活动 ok -->
+      <floor-sixteen wx:if="{{item.floorType == marketType && item.listFloorDetail[0].marketings[0].marketing.length>0}}" floor-data="{{item}}"></floor-sixteen>
+    </block>
+    <block>
+     <!-- 横切版式17 -->
+       <floor-seventeen wx:if="{{item.floorType == 17 && item.listFloorDetail.length>0}}" show-rebate="{{ishowPromotion}}" head-top="{{headTop}}" time="{{time}}" floor-eq="{{item.sortFlag}}" floor-data="{{item}}"></floor-seventeen>
+    </block>
+  </view>
+</view>

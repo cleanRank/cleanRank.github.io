@@ -1,0 +1,11 @@
+<!--pages/search/components/resultSection.wxml-->
+
+<view class='resultSecWrap'>
+  <view class='resultSecHeader'>
+    <text class='resultSecHeader_title'>{{titleTxt}}</text>
+    <image bindtap='clearTips' wx:if='{{showDel}}' style='width:15px; height:15px; margin-right:5px;' src='../../../images/mine/addressDeleteBtn.png'></image>
+  </view>
+  <view class='resultSecList'>
+    <text wx:for='{{itemList}}' wx:key='resultItem' data-item='{{item}}' bindtap='tapItem'>{{item.text}}</text>
+  </view>
+</view>

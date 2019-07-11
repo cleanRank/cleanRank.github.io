@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"问题搜索",
+  "usingComponents": {
+    "search-box":"../components/searchBox/searchBox",
+    "result-section":"../components/resultSection/resultSection"
+  }
+}

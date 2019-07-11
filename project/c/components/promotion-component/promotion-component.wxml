@@ -1,0 +1,23 @@
+<view class="promotionWrap">
+  <view class="goodDetailWrap">
+    <view class="goodDetail">
+      <image class="promotionClose" src="/images/detail/close_promotion.png" catchtap='promotionClose'></image>
+      <image class='shareImg' src='{{promotionData.shareImg}}'></image>
+    </view>
+  </view>
+  <view class="shareBtnAll">
+    <view class="shareBtn">
+      <image class="shareBtnImg" src="/images/icon/weixin.png"></image>
+      <text class="shareBtnTxt">分享给好友</text>
+      <button class='shareBtnOpcity' open-type='share' data-type="1" hover-class='none'></button>
+    </view>
+    <view class="shareBtn" bindtap='shareFriendster' wx:if="{{promotionData.shareImg}}">
+      <image class="shareBtnImg" src="/images/icon/saveImg.png"></image>
+      <text class="shareBtnTxt">保存图片</text>
+    </view>
+    <view class="shareBtn" bindtap='shareImFriend' wx:if="{{promotionData.imInstalment}}">
+      <image class="shareBtnImg" src="/images/icon/fensiguanli.png"></image>
+      <text class="shareBtnTxt">分享给粉丝</text>
+    </view>
+  </view>
+</view>

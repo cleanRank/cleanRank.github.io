@@ -1,0 +1,116 @@
+<import src="/pages/noData/noData_template.wxml" />
+<view class="page">
+  <!-- 头部 start -->
+  <view class="head">
+    <view class="{{aIndex==0?'active':''}}" data-index="0" bindtap="changeTab">申请售后</view>
+    <view class="{{aIndex==1?'active':''}}" data-index="1" bindtap="changeTab">进度查询</view>
+  </view>
+  <!-- 头部 end -->
+
+  <!-- 搜索框 start -->
+  <view class='searchHeader' wx:if="{{aIndex==0}}">
+    <view class='searchArea'>
+      <search-box
+        bind:searchFn="searchFn"
+        bind:getSearchWord="getSearchWord"
+        define-word='{{defineWord}}'
+        id="searchCom"
+      />
+    </view>
+    <text class='searchBtn' bindtap='searchFn'>搜索</text>
+  </view>
+  <!-- 搜索框 end -->
+
+  <!-- 列表1 start -->
+  <scroll-view scroll-y bindscrolltolower="lower1" wx:if="{{aIndex==0}}" style="height:calc(100% - 180rpx)">
+  <view class="content" wx:if="{{list1.length>0}}">
+    <view class="content-item" wx:for="{{list1}}" wx:key="index">
+      <view class="content-item-head">
+        <view class="content-item-head-left">
+          订单单号 {{item.orderId}}
+        </view>
+        <view class="content-item-head-right">
+          {{item.orderTime}}
+        </view>
+      </view>
+      <view class="content-item-list">
+        <view class="content-item-list-item" bindtap="detail" data-productNo="{{item.productNo}}" data-isActivity="{{item.isActivity}}" data-activityNo="{{item.activityNo}}">
+          <image src="{{item.productImage}}"></image>
+          <view class="content-item-list-item-right">
+            <view class="content-item-list-item-right-title">
+              {{item.productName}}
+            </view>
+            <view class="content-item-list-item-right-num">
+              数量：{{item.buycount}}
+            </view>
+            <view class="content-item-list-item-right-bottom">
+              <view class="content-item-list-item-right-bottom-price">¥{{item.productPrice}}</view>
+              <view class="content-item-list-item-right-bottom-btn {{item.canAfterSale&&item.canAfterSale==1?'red':''}}" data-orderId="{{item.orderId}}" data-canAfterSale="{{item.canAfterSale}}" catchtap="afterSaleApply">申请售后</view>
+              
+            </view>
+          </view>
+          
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 没有数据 -->
+  <template is="nodata" data="{{nodataList}}" wx:else/>
+  </scroll-view>
+  <!-- 列表1 end -->
+
+
+  <!-- 列表2 start -->
+  <scroll-view scroll-y bindscrolltolower="lower2" wx:if="{{aIndex==1}}" style="height:calc(100% - 72rpx)">
+    <view class="content1" wx:if="{{list2.length>0}}">
+      <view class="content1-item" wx:for="{{list2}}" wx:key="index" bindtap="goToDetail" data-serviceOrderId="{{item.serviceOrderId}}">
+        <view class="content1-item-head">
+          <view class="content1-item-head-left">
+            售后单号 {{item.serviceOrderId}}
+          </view>
+          <view class="content1-item-head-right">
+            {{item.statusDesc}}
+          </view>
+        </view>
+        <view class="content1-item-list">
+          <view class="content1-item-list-item">
+            <image src="{{item.productImage}}"></image>
+            <view class="content1-item-list-item-right">
+              <view class="content1-item-list-item-right-title">
+                {{item.productName}}
+              </view>
+              <view class="content1-item-list-item-right-num">
+                数量：{{item.afterSaleCount}}
+              </view>
+              <view class="content1-item-list-item-right-bottom">
+                <view class="content1-item-list-item-right-bottom-price"></view>
+                <view class="content1-item-list-item-right-bottom-msg">{{item.afterSaleTypeDesc}}</view>
+              </view>
+            </view>
+            
+          </view>
+          <view class="content1-item-list-btns" wx:if="{{item.showSendGoodsButton==1 ||item.showCancelButton==1 }}">
+            <view wx:if="{{item.showSendGoodsButton==1}}" catchtap="handelSend" data-serviceOrderId="{{item.serviceOrderId}}">寄送商品</view>
+            <view class="cancel" wx:if="{{item.showCancelButton==1}}" catchtap="handelCancel" data-serviceOrderId="{{item.serviceOrderId}}">取消申请</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 没有数据 -->
+    <template is="nodata" data="{{nodataList}}" wx:else/>
+  </scroll-view>
+  <!-- 列表2 end -->
+
+  <!-- 取消弹框 -->
+  <modal 
+    hidden="{{cancelModel}}" 
+    title="确定取消申请售后吗？" 
+    confirm-text="确认" 
+    cancel-text="取消" 
+    bindcancel="cancel" 
+    bindconfirm="confirm"
+  >
+  </modal>
+
+</view>

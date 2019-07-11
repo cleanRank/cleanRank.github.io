@@ -1,0 +1,6 @@
+<!--下载文件到手机本地的按钮组件-->
+<view class='downloadBtn'>
+  <image class='downloadImg' src='/images/icon/saveImg.png'></image>
+  <text class='downloadTxt'>{{downloadTxt}}</text>
+  <button class='downloadBtnOpcity' open-type='getUserInfo' hover-class='none' bindtap='confirmAuthorization'></button>
+</view>

@@ -1,0 +1,8 @@
+    <view class="floorBox navigationView {{_item.floorType != iconType ? 'needHide' :'needShow'}}">
+      <view class='navigation'>
+        <view class='navigationItem' wx:for="{{_item.listFloorDetail}}" wx:key="unique2" bindtap="bannerCick" data-bannerInfo="{{item}}" style="background:{{item.defaultBgColor}}">
+          <image mode='widthFix' src='{{item.picUrl}}'></image>
+          <text class='naitem-name'>{{item.picName}}</text>
+        </view>
+      </view>
+    </view>

@@ -1,0 +1,6 @@
+<!--pages/components/sharePersonal/sharePersonal.wxml-->
+<view class='sharePersonal'>
+  <image class="shareBtnImg" src="/images/icon/weixin.png"></image>
+  <text class='shareBtnTxt'>{{shareTxt}}</text>
+  <button class='shareBtnOpcity' open-type='share' hover-class='none'></button>
+</view>

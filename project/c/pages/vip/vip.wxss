@@ -1,0 +1,455 @@
+
+.vip_wrap_page{
+  padding-bottom: 30rpx;
+}
+page{
+  display:flex;
+  flex-direction:column;
+  height:calc(100vh);
+}
+.scrollCla{
+  height: 100%;
+  overflow: initial;
+}
+.vip_message_wrap{
+  padding: 45rpx 24rpx 40rpx 24rpx;
+  position: relative;
+}
+.vip_message_shareStore{
+  position: absolute;
+  right: 0;
+  bottom: 41rpx;
+  width: 126rpx;
+  height: 40rpx;
+  background: linear-gradient(135deg,rgba(252,109,109,1) 0%,rgba(245,70,70,1) 100%);
+  font-size: 24rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 40rpx 0 0 40rpx;
+  z-index: 10;
+}
+.find_people{
+  bottom: 90rpx;
+  background: #DA9F4A;
+  color: #fff;
+}
+.vip_header_box{
+  width: 132rpx;
+  height: 132rpx;
+  top: 50%;
+  margin-top: -66rpx;
+  position: absolute !important;
+}
+.vip_header_img{
+  width: 132rpx;
+  height: 132rpx;
+  border-radius: 50%;
+}
+.vip_rank{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  bottom: 5rpx;
+  right: 5rpx;
+}
+.message_box{
+  /* margin-left: 30rpx; */
+  padding-left: 162rpx;
+}
+.nickName_box{
+  height: 59rpx;
+  font-size: 0;
+  margin-bottom: 4rpx;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.nickName_box .nickName{
+  margin-right: 24rpx;
+  max-width: 240rpx;
+}
+.nickName_box text{
+  font-size: 42rpx;
+  font-weight: 600;
+  display: block;
+}
+/* im入口 start*/
+/* .nickNameWrap{
+  display:flex;
+} */
+.imEntry{
+  width: 110rpx;
+  height: 56rpx;
+  position: absolute;
+  border-radius: 47rpx;
+  box-shadow: 0 0 12rpx #FFD9DA;
+  top: 45rpx;
+  right: 20rpx; 
+  z-index: 99;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.imEntry image{
+  width: 42rpx;
+  height: 41rpx;
+}
+.imEntry .redDot{
+  position: absolute;
+  top: 0;
+  right: 32rpx;
+  z-index: 20;
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 7rpx;
+  background: #FD455F;
+}
+/* im入口 end */
+.user_grade{
+  color: #fff;
+  font-size: 22rpx;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(#575B64,#333333);
+  padding: 0 15rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.user_grade .picker{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.Invitecode_boc{
+  font-size: 24rpx;
+  line-height:38rpx;
+}
+.Invitecode_box{
+  border: 1rpx solid #333;
+  /* width: auto; */
+  height: 38rpx;
+  line-height: 38rpx;
+  border-radius: 8rpx;
+  display: inline-flex;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.Invitecode_txt{
+  font-size: 22rpx;
+  color: #333;
+  width: 100%;
+  margin-left: 16rpx;
+}
+.Invitecode_copyBtn{
+  width: 106rpx;
+  text-align: center;
+  background-color: #333;
+  font-size: 22rpx;
+  margin-left: -6rpx;
+  color: #fff;
+}
+.pName_box{
+  line-height: 40rpx;
+  margin-bottom: 12rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.pName_inviter {
+  font-size: 24rpx;
+  margin-right: 40rpx;
+  width: 420rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+/* .copy_btn{
+  display: block;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 20rpx;
+  padding: 0 24rpx;
+  text-align: center;
+  font-size: 24rpx;
+  margin-left: 40rpx;
+  color: #fff;
+  background: #FF3030;
+} */
+.sharing_shop_btn{
+  color: #FF3030;
+}
+.fans_info_wrap, .expect_revenue_wrap{
+  width: 702rpx;
+  background: #FFFFFF;
+  box-shadow: 0 0 12rpx 0 rgba(0,0,0,0.08);
+  border-radius: 12rpx;
+  margin: 47rpx auto 30rpx;
+  text-align: center;
+  padding: 20rpx 0 30rpx;
+}
+.account_balance_wrap{
+  margin-bottom: 0;
+}
+.fans_info_wrap view{
+  line-height: 1.6;
+}
+.fans_num_box{
+  border-right: 1rpx solid #D8D8D8;
+}
+.num_fans{
+  font-size: 34rpx;
+}
+.fans_txt{
+  font-size: 28rpx;
+}
+.expect_revenue_wrap{
+  margin: 30rpx auto;
+  padding: 0;
+}
+.expect_revenue_title{
+  text-align: left;
+  border-bottom: 2rpx solid #f8f8f8;
+  font-size: 30rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  margin-left: 24rpx;
+  position: relative;
+}
+.expect_revenue_title::after{
+  content: ">";
+  position: absolute;
+  right: 24rpx;
+  color: #777;
+  font-size: 30rpx;
+}
+.expect_revenue_list{
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f8f8f8;
+}
+.expect_revenue_list:last-child{
+  border: none;
+}
+.expect_revenue_list view{
+  line-height: 1.8;
+}
+.expect_revenue_item{
+  position: relative;
+}
+.expect_revenue_item::after{
+  content: '';
+  width: 2rpx;
+  height: 150rpx;
+  background: #f8f8f8;
+  position: absolute;
+  top: -23rpx;
+  right: 0;
+}
+.account_balance_wrap{
+  text-align: left;
+  padding: 16rpx 0 20rpx 24rpx;
+}
+.account_balance_title{
+  font-size: 30rpx;
+  margin-bottom: 14rpx;
+}
+.account_balance_num{
+  font-size: 34rpx;
+}
+.go_cashingMoney{
+  padding-right: 24rpx;
+}
+.go_cashingMoney_btn{
+  margin-top: 36rpx;
+}
+/* vip seo start */
+.share_box{
+  height: 280rpx;
+  font-size: 0;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  margin-bottom: 40rpx;
+  overflow: hidden;
+  border-radius: 12rpx;
+}
+.share_box image{
+  width: 100%;
+  height: 280rpx;
+  margin: 0 auto;
+  display: block;
+}
+.myVipWrap{
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  box-shadow:0px 8rpx 8rpx 0px rgba(0,0,0,0.04),0px 0px 12rpx 0px rgba(0,0,0,0.08);
+  border-radius:12rpx;
+  background-color: #fff;
+  margin-bottom: 40rpx;
+  padding-bottom: 20rpx;
+}
+.myVipTit{
+  height: 72rpx;
+  line-height: 72rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+  font-size: 30rpx;
+  margin-left: 24rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+.rightArrow{
+  width: 64rpx;
+  height: 64rpx;
+  display: block;
+}
+.myFansClassify{
+  overflow: hidden;
+}
+.myFansClassifyItem{
+  flex: 1;
+  text-align: center;
+  margin-top: 20rpx;
+  position: relative;
+}
+.borderRight:after{
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  content: '';
+  width: 2rpx;
+  height: 76rpx;
+  background-color: #F8F8F8;
+}
+.myFansClassifyItemNum,.myFansClassifyItemTxt{
+  display: block;
+  margin-bottom: 4rpx;
+}
+.myFansClassifyItemNum{
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 48rpx;
+}
+.myFansClassifyItemTxt{
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+/* earning start */
+.myEarningTime{
+  width: 436rpx;
+  height: 244rpx;
+  border-right: 2rpx solid #F8F8F8;
+  margin-left: 24rpx;
+}
+.myEarningTimeItem{
+  text-align: center;
+}
+.myEarningTimeItem .myEarningPrice{
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 42rpx;
+  display: block;
+  margin-bottom: 4rpx;
+}
+.myEarningTimeDay .myEarningPrice{
+  font-size: 46rpx;
+  line-height: 65rpx;
+  margin-bottom: 2rpx;
+}
+.myEarningTimeItem .myEarningTxt{
+  font-size: 24rpx;
+  line-height: 33rpx;
+  display: block;
+}
+.myEarningTimeDay{
+  width: 100%;
+  border-bottom: 2rpx solid #F8F8F8;
+  padding: 20rpx 0;
+}
+.myEarningTimeMonth,.myEarningTotal{
+  width: 50%;
+  padding-top: 20rpx;
+}
+.earningWithdrawal{
+  width: 240rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.earningWithdrawal text{
+  display: block;
+}
+.earningWithdrawalPrice{
+  font-size: 34rpx;
+  line-height: 48rpx;
+  font-weight: 600;
+  margin-top: 51rpx;
+  margin-bottom: 10rpx;
+  padding: 0 10rpx;
+}
+.earningWithdrawalTxt{
+  font-size: 24rpx;
+  line-height: 33rpx;
+  margin-bottom: 40rpx;
+}
+.earningWithdrawalBtn{
+  width: 100rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  font-size: 28rpx;
+  border:1px solid #FF3030;
+  border-radius: 23rpx;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.noticeWrap{
+  height: 90rpx;
+  padding-bottom: 0;
+  overflow: hidden;
+  line-height: 90rpx;
+}
+.noticeText{
+  font-size: 26rpx;
+  border-bottom:none;
+  height: 100%;
+  line-height: 90rpx;
+  margin-left:0;
+  overflow: hidden;
+}
+.noticeText image,.noticeText text{
+  float:left;
+}
+.noticeText .rightArrow{
+  float: right;
+  margin-top: 13rpx;
+  border:none;
+}
+.noticeText text{
+  width:517rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sipBox{
+  height: 90rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+  box-shadow:0px 8rpx 8rpx 0px rgba(0,0,0,0.04),0px 0px 12rpx 0px rgba(0,0,0,0.08);
+}
+.noticeIcon{
+  width: 59rpx;
+  height: 51rpx;
+  margin-top: 19.5rpx;
+  float: left;
+  margin-left: 21rpx
+}
+.announceSwiper{
+  float: right;
+  width:604rpx;
+  height: 100%;
+}
+/* earning end */
+/* vip seo end */

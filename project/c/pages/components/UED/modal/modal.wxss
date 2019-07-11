@@ -1,0 +1,57 @@
+/* pages/components/UED/modal/modal.wxss */
+.modalWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBox {
+  width: 580rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+}
+
+.modalHeadr {
+  color: #333333;
+  font-size: 34rpx;
+  text-align: center;
+  margin: 15rpx 0;
+}
+
+.modalContent {
+  color: #333333;
+  font-size: 32rpx;
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.modalBtns {
+  display: flex;
+  border-top: 1rpx solid #E5E5E5;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBtn {
+  flex: 1;
+  font-size: 34rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns_cancel {
+  color: #959595;
+}
+
+.btns_confirm {
+  border-left: 1rpx solid #E5E5E5;
+}

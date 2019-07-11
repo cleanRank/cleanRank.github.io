@@ -1,0 +1,15 @@
+<!-- <view class="{{_item.floorType != imagetype ? 'needHide' :'needShow'}} floorOne">
+      <image class="floorType1Img" src='{{_item.listFloorDetail[0].picUrl}}' mode='widthFix' bindtap="bannerCick" data-bannerInfo="{{_item.listFloorDetail[0]}}"></image>
+</view> -->
+<view class="{{_item.floorType != imagetype ? 'needHide' :'needShow'}} floorOne">
+    <!-- 有热区时 -->
+    <block wx:if="{{_item.hotType == '1'}}">
+      <view  class="typeImg" wx:for="{{_item.listFloorDetail}}" wx:key="unique1" wx:index="index">
+          <image src="{{item.picUrl}}" mode="widthFix" class="floorTypeImg"></image>
+          <view class="hotArea" wx:for="{{item.hotAreaShowList}}" wx:key="unique2" bindtap="{{!buttonClicked ? 'bannerClick':''}}" data-bannerInfo="{{item}}" style="top:{{item.Top}};bottom:{{item.Down}};left:{{item.Left}};right:{{item.Right}};"></view>
+      </view>
+    </block>
+    <block wx:else>
+      <image class="floorType1Img" src='{{_item.listFloorDetail[0].picUrl}}' mode='widthFix' bindtap="{{!buttonClicked ? 'bannerClick':''}}" data-bannerInfo="{{_item.listFloorDetail[0]}}"></image>
+    </block>
+</view>

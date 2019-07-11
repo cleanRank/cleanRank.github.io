@@ -1,0 +1,286 @@
+/* pages/vip/components/contactNavList/contactNavList.wxss */
+.page-address-book{
+    position: relative;
+}
+.address-item{
+    height: 134rpx;
+    margin:0 30rpx;
+    line-height: 134rpx;
+    display: flex;
+    align-items: center;
+}
+.address-item .applyCount{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.applyCount image{
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 50%;
+}
+.applyCount .countNum{
+    font-size: 18rpx;
+    height: 25rpx;
+    line-height: 22rpx;
+    padding: 1rpx 8rpx 1rpx;
+    background: #FD455F;
+    color: #fff;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: -10rpx;
+}
+.address-item image{
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1px solid #F4F4F4;
+}
+.inviter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+}
+.inviter .userInfo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inviter .userFlag{
+    font-size: 24rpx;
+    color: #999999;
+}
+.img{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 7rpx;
+}
+.name{
+    width: 305rpx;
+    margin-left: 20rpx;
+    font-size: 32rpx;
+    color: #333;
+    flex:1;
+    border-bottom: 2rpx solid #f5f5f5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.more{
+    text-align: center;
+    height: 60rpx;
+    line-height: 80rpx;
+}
+.more .icon-arrow{
+    display: inline-block;
+    width: 80rpx;
+    height: 100%;
+}
+
+/* 字母导航 */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10rpx 20rpx;
+}
+.header .h-city {
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    line-height: 1.0;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #a8a8a8;
+}
+.header .h-city image {
+    width: 22rpx;
+    height: 27rpx;
+    margin-right: 16rpx;
+}
+
+.header .h-close image{
+    width: 40rpx;
+    height: 40rpx;
+}
+.now-city {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f2f4f5;
+    font-size: 22rpx;
+    line-height: 1.0;
+    color: #a8a8a8;
+    padding: 18rpx 20rpx;
+    border-bottom: 1rpx solid #dbdbdb;
+}
+.now-city .now-city-name {
+    display: flex;
+    background: white;
+    font-size: 30rpx;
+    line-height: 1.0;
+    letter-spacing: 0.4rpx;
+    color: #333333;
+    padding: 13rpx 33rpx;
+    border: solid 1rpx #dbdbdb;
+    margin-top: 18rpx;
+}
+.alphabet-list .section-item .section-item-header {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+    color: #a8a8a8;
+    background-color: rgb(237, 237, 237);
+    padding: 15rpx 35rpx;
+}
+.alphabet-list .section-item .section-item-cells {
+    padding-left: 35rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 24rpx;
+}
+.alphabet-list .section-item .section-item-cells .section-item-cell{
+    font-size: 30rpx;
+    line-height: 1.0;
+    color: #333333;
+    padding: 14rpx 0;
+    display: flex;
+    align-items: center;
+}
+.alphabet-list .section-item .section-item-cells .section-item-cell text{
+    padding-left: 35rpx;
+    width: 400rpx;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.alphabet-list .section-item .section-item-right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex:1;
+    margin-left: 22rpx;
+    border-bottom: 1px solid #F4F4F4;
+}
+.alphabet-list .section-item-right text{
+    font-size: 30rpx;
+    color: #333;
+    width: 318rpx;
+    height: 42rpx;
+    padding: 45rpx 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.alphabet-list .section-item .section-item-cells .fansFlag{
+    font-size: 18rpx;
+    width: 44rpx;
+    height: 28rpx;
+    border: 1px solid #bfbfc1;
+    text-align: center;
+    line-height: 28rpx;
+    color: #999;
+    border-radius: 8rpx;
+    margin-right: 24rpx;
+}
+.border-bottom {
+    position: relative;
+    border:none;
+}
+.alphanet-selector {
+    position: absolute;
+    top: 0;
+    right: 10rpx;
+    /* height: 900px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 999;
+    box-sizing: border-box;
+}
+.alphanet-selector .selector-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size:30rpx;
+    padding:20rpx 8px; */
+    font-size: 18rpx;
+    height: 32rpx;
+    width: 32rpx;
+    line-height: 32rpx;
+    color: #999;
+    position: relative;
+    border-radius: 50%;
+    /* margin-bottom: 12rpx; */
+    box-sizing: border-box;
+}
+.alphanet-selector .selected{
+    background: #FD455F;
+    color: #fff;
+}
+.alphaWrap{
+    position: fixed;
+    top: 0;
+    width: 109rpx;
+    height: 91rpx;
+    z-index: 999;
+    right:40rpx;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.alphaWrap image{
+    width: 100%;
+    height: 100%;
+}
+.alphaWrap .show-alpha{
+    position: absolute;
+    font-size: 46rpx;
+    height: 65rpx;
+    color: #FFFFFF;
+    margin-left: -5rpx;
+}
+.avater{
+    width: 104rpx;
+    height: 104rpx;
+    border-radius: 50%;
+}
+.geLine{
+    width: 100%;
+    height: 20rpx;
+    background: #f4f4f4;
+}
+  /* 不兼容 */
+/* ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+} */
+  
+  /* 无数据缺省 */
+.noData{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.noData image{
+    width: 320rpx;
+    height: 215rpx;
+    margin:300rpx 0 96rpx;
+}
+.noData .noDataInfo{
+    font-size: 28rpx;
+    height: 40rpx;
+    color: #999;
+}

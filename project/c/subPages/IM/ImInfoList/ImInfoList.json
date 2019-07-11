@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "互动",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "search-box": "/pages/components/searchBox/searchBox",
+    "info-nav":"/pages/vip/components/infoNav/infoNav",
+    "imChat-list":"/pages/vip/components/ImChatList/ImChatList",
+    "contact-navlist":"/pages/vip/components/contactNavList/contactNavList"
+  }
+}

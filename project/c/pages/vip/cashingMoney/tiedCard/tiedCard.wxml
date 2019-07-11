@@ -1,0 +1,28 @@
+<view class="page">
+  <form class='formList' bindsubmit="bindBankCcard">
+    <view class="formItem flex">
+      <text class="formItemLable c_777">姓名</text>
+      <input class="formItemIpt cell_1 c_333" maxlength='10' data-model='name' name="name" placeholder="请输入姓名" bindinput='getVal' />
+    </view>
+    <view class="formItem flex">
+      <text class="formItemLable c_777">身份证号</text>
+      <input class="formItemIpt cell_1 c_333" type="idcard" data-model='idCardNo'  name="idCardNo" maxlength="18" placeholder="请输入有效证件号" bindinput='getVal' />
+    </view>
+    <view class="formItem flex">
+      <text class="formItemLable c_777">银行卡号</text>
+      <input class="formItemIpt cell_1 c_333" type="number"  maxlength="19" name="cardNo" bindinput='getVal' placeholder="请输入银行卡号" data-model='cardNo' />
+    </view>
+    <view class="formItem flex">
+      <text class="formItemLable c_777">手机号</text>
+      <text class="formItemIpt cell_1 c_333">{{miniProgramUserinfo.mobile}}</text>
+      <button class="getCodeBtn" bindtap="getmobileCode">{{timeDown==0?'获取验证码':timeDown + 's'}}</button>
+    </view>
+    <view class="formItem flex">
+      <text class="formItemLable c_777">验证码</text>
+      <input class="formItemIpt cell_1 c_333" type="number"  name="smsCode" maxlength="6" />
+    </view>
+    <view class="horizontalLine"></view>
+    <button form-type="submit" class="bindingSubmit btnCom">绑定</button>
+  </form>
+
+</view>

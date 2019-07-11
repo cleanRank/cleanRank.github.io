@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="helpDetail">
+      <view class="helpDetailTitle c_333">{{questionDetail.title}}</view>
+      <block wx:for="{{questionDetail.content}}" wx:key="{{index}}">
+        <view class="helpDetailContent">
+          <text class="helpDetailText">{{item.con}}</text>
+        </view>
+        <view class="helpDetailImgCon">
+          <block wx:for="{{item.images}}" wx:for-item="image" wx:key="idx">
+            <view class="helpDetailImgWrap">
+              <image src="{{image}}" mode="widthFix" class='helpDetailImg'></image>
+            </view>   
+          </block>
+        </view>
+      </block>
+  </view>
+</view>

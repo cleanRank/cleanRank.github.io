@@ -1,0 +1,137 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='page'>
+  <!-- fans num start -->
+  <view class="myFans">
+    <image class='hintImg' wx:if="{{invitationType == '1' || invitationType == '2'}}" src="/images/icon/hint.png" bindtap='openPopup'></image>
+    <view class="myFansSum">
+      <text class="myFansNum c_333 textEllipsis">{{fansNumInfo.followerCnt}}</text>
+      <text class="myFansTxt c_999">{{invitationType=='2'?'全部会员':'我的粉丝'}}</text>
+    </view>
+    <view class="fansOrder flex" wx:if="{{invitationType == '1' || invitationType == '2'}}">
+      <view class="fansOrderItem">
+        <text class="fansOrderItemNum c_333 textEllipsis">{{fansNumInfo.buyerFansCnt}}</text>
+        <text class="fansOrderItemTxt c_999">{{invitationType=='2'?'有效会员':'已下单'}}</text>
+      </view>
+      <view class="fansOrderItem">
+        <text class="fansOrderItemNum c_333 textEllipsis">{{fansNumInfo.notBuyFansCnt}}</text>
+        <text class="fansOrderItemTxt c_999">{{invitationType=='2'?'普通会员':'未下单'}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- fans num end -->
+  <!-- fans list start -->
+  <view class="fansListWrap">
+    <view class="fansNav flex">
+      <block wx:for="{{fansNav}}" wx:key="index">
+        <view class="fansNavItem cell_1 {{item.invitationType == type?'active':''}}" bindtap="checkFansNav" data-type="{{item.invitationType}}">{{item.invitationTypeDesc}}</view>
+      </block>
+    </view>
+    <view class="fansListScroll">
+      <block wx:for="{{followerList}}" wx:key="{{index}}">
+        <navigator url='../fansDetail/fansDetail?followerUid={{item.uid}}' hover-class="none" class="fansItem flex">
+          <image src="{{item.avatarUrl}}" class="fansPhoto"></image>
+          <!-- 我的粉丝 -->
+          <block wx:if="{{invitationType == '1'}}">
+            <view class="fansDetail cell_1">
+              <view class="fansNameWrap flex">
+                <view class="fansName c_333">{{item.nickName}}</view>
+                <text class="isMember" wx:if="{{item.isMember && item.isMember == 1}}">会员</text>
+                <text class="fansStatus {{item.buyingStatus =='1'?'fansStatus1':'c_999'}}">{{item.buyingStatus =='1'?'已下单':'未下单'}}</text>
+              </view>
+              <view class="fansInvite flex">
+                <text class="c_999 fansInviteNum textEllipsis">邀请粉丝：<text class="c_333 weight600">{{item.fansCnt}}</text>人</text>
+                <text wx:if="{{item.memberLevel<1}}" class="c_999 fansInviteShortNum">差<text class="c_333 weight600">{{item.promotionFansCnt}}</text>人可升级</text>
+              </view>
+              <view class="fansBindTime c_999">
+                绑定时间：{{filter.dateFormat(item.bindTime)}}
+              </view>
+              <view class="ImEntry" wx:if="{{imInstalment}}" catchtap="singleChat" data-info="{{item}}">
+                <view class="unread" wx:if="{{item.unReadCount}}">{{item.unReadCount}}条消息</view>
+                <view class="ImEntryCon" wx:else>聊一聊</view>
+              </view>
+            </view>
+          </block>
+          <!-- 已邀合伙人 -->
+          <block wx:if="{{invitationType == '2'}}">
+            <view class="fansDetail cell_1">
+              <view class="fansNameWrap flex">
+                <text class="fansName c_333">{{item.nickName}}</text>
+                <text class="fansStatus {{item.memberType =='1'?'fansStatus1':'c_999'}}">{{item.memberType =='1'?'有效会员':'普通会员'}}</text>
+              </view>
+              <view class="fansInvite flex">
+                <text class="c_999 fansInviteNum cell_1 textEllipsis">会员数量：<text class="c_333 weight600">{{item.superFansCnt}}</text>人</text>
+              </view>
+              <view class="fansBindTime c_999">
+                成为会员时间：{{filter.dateFormat(item.levelOneTime)}}
+              </view>
+              <view class="ImEntry" wx:if="{{imInstalment}}" catchtap="singleChat" data-info="{{item}}">
+                <view class="unread" wx:if="{{item.unReadCount}}">{{item.unReadCount}}条消息</view>
+                <view class="ImEntryCon" wx:else>聊一聊</view>
+              </view>
+            </view>
+          </block>
+          <!-- 买家用户 -->
+          <block wx:if="{{invitationType == '3'}}">
+            <view class="fansDetail cell_1">
+              <view class="fansNameWrap flex">
+                <text class="fansName c_333">{{item.nickName}}</text>
+              </view>
+              <view class="fansInvite flex">
+                <text class="c_999 fansInviteNum cell_1 textEllipsis">预计返利金额：<text class="c_333 weight600">{{item.estimatedIncomeAmount}}</text>元</text>
+              </view>
+              <view class="fansBindTime c_999">
+                最近下单时间：<text wx:if="{{item.lastOrderTime}}">{{filter.dateFormat(item.lastOrderTime)}}</text>
+              </view>
+              <view class="ImEntry" wx:if="{{imInstalment}}" catchtap="singleChat" data-info="{{item}}">
+                <view class="unread" wx:if="{{item.unReadCount}}">{{item.unReadCount}}条消息</view>
+                <view class="ImEntryCon" wx:else>聊一聊</view>
+              </view>
+            </view>
+          </block>
+          <!-- 浏览用户 -->
+          <block wx:if="{{invitationType == '4'}}">
+            <view class="fansDetail cell_1">
+              <view class="fansNameWrap flex">
+                <text class="fansName c_333">{{item.nickName}}</text>
+              </view>
+              <view class="ImEntry" wx:if="{{imInstalment}}" catchtap="singleChat" data-info="{{item}}">
+                <view class="unread" wx:if="{{item.unReadCount}}">{{item.unReadCount}}条消息</view>
+                <view class="ImEntryCon" wx:else>聊一聊</view>
+              </view>
+              <view class="fansBindTime c_999" style="padding-top:16rpx">
+                最近浏览时间：<text wx:if="{{item.lastBrowseTime}}">{{filter.dateFormat(item.lastBrowseTime)}}</text>
+              </view>
+            </view>
+          </block>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <!-- fans list end -->
+  <view class='mask flex' wx:if="{{popupFlag}}">
+    <view class='popup flex'>
+      <block wx:if="{{type == '2'}}">
+        <view class='note mb-32'>
+          <text class='weight500 c_333'>有效会员：</text>
+          <text class=''>用户自己或团队粉丝曾购买过商品，并且没有发生退货的，即为有效会员。</text>
+        </view>
+        <view class='note'>
+          <text class='weight500 c_333'>普通会员：</text>
+          <text class=''>邀请10位好友注册成为粉丝。</text>
+        </view>
+      </block>
+      <block wx:if="{{type == '1'}}">
+        <view class='note mb-32'>
+          <text class='weight500 c_333'>已下单粉丝</text>
+          <text class=''>：成为粉丝后完成第一单购买，即称为已下单粉丝。</text>
+        </view>
+        <view class='note'>
+          <text class='weight500 c_333'>未下单粉丝</text>
+          <text class=''>：成为粉丝后未完成第一单购买，即称为未下单粉丝。</text>
+        </view>
+      </block>
+      <view class='popupClose' catchtap='closePopup'>关闭</view>
+    </view>
+  </view>
+  <view wx:if="{{invitationType == '4'}}" class="browseUser c_999">仅展示最近7天浏览的用户</view>
+</view>

@@ -1,0 +1,74 @@
+@import "/pages/detail/wxParse/wxParse.wxss";
+.detailPage{
+  padding: 33rpx 24rpx;
+  position: relative;
+}
+.detailTit{
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  margin-bottom: 24rpx;
+  font-weight: bold;
+  overflow: hidden;
+}
+.detailSub{
+  font-size: 22rpx;
+  margin-bottom: 40rpx;
+}
+.author{
+  margin-right: 20rpx;
+  width: 110rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.detailBan{
+  width: 100%;
+  height: 240rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+}
+.detailBan image{
+  display: block;
+  width: 100%;
+}
+.detailCon{
+  font-size: 24rpx;
+  line-height: 46rpx;
+  text-align: justify;
+}
+.share{
+  position: fixed;
+  width: 120rpx;
+  height: 52rpx;
+  border-radius: 29rpx;
+  background: rgba(0, 0, 0, .7);
+  bottom:24rpx;
+  right: 24rpx;
+  z-index: 9;
+  text-align: center;
+  line-height: 52rpx;
+  color: #fff;
+  font-size: 26rpx;
+}
+.returnIndex{
+  padding-left: 29rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size:22rpx;
+  color:#fff;
+  position: fixed;
+  top: 109rpx;
+  right:0;
+}
+.returnIndex text{
+  display: block;
+  width: 112rpx;
+  height:38rpx;
+  line-height: 38rpx;
+  border-top-left-radius: 38rpx;
+  border-bottom-left-radius: 38rpx;
+  background-color:#FD455F;
+  margin-top: 11rpx;
+}

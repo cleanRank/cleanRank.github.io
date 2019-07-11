@@ -1,0 +1,65 @@
+<!-- pages/detail/preferGoodsList/preferGoodsList.wxml -->
+<!-- <view class="page"> -->
+    <view class="goodsWrap" >
+        <view class="goodsWrapTop">
+            <view class='screenNavigation'>
+                <view class="navItem {{ searchType == index ? 'sel':''}} {{item.hasIcon ? item.hasIcon : ''}} {{item.orderNo == formData.orderNo ? 'sel' : ''}}" wx:for="{{navList}}" wx:key="{{index}}" data-item='{{item}}' bindtap='selectSortNav'>
+                    <text>{{item.name}}</text>
+                </view>
+            </view>
+            <view class="promoteInfo">限时促销：{{title}}</view>
+        </view>
+        
+        <view class='scrollSection'>
+            <!-- <scroll-view class='scrollView' scroll-y lower-threshold='70rpx' bindscrolltolower='scrolltolower' scroll-top='{{topDistance}}'> -->
+                <block wx:if="{{goodsList && goodsList.length > 0}}">
+                    <view class='goodsItem' wx:for="{{goodsList}}" wx:index="{{index}}" wx:key="{{index}}" data-item="{{item}}" bindtap='productDetail'>
+                        <view class='goodsItem_pic'>
+                            <image mode='aspectFit' src='{{item.productImg}}'></image>
+                        </view>
+                        <view class='goodsItem_info'>
+                            <view class='goodInfo_title'>
+                                <image wx:if="{{item.isCrossBorder=='1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image>
+                                <text class="goodInfo_title_text">{{item.productName}}</text>
+                            </view>
+                            <view class="activityLabel" wx:if="{{item.activityLabel && item.activityLabel.length > 0}}">
+                                <view class="activityLabelItem activityLabelItem_{{index}}" wx:for="{{item.activityLabel}}" wx:key="ind" wx:for-item="val">
+                                    {{val}}
+                                </view>
+                                <!-- <view class="activityLabelItem activityLabelItem_{{index}}" wx:for="{{activityLabel}}" wx:key="ind" wx:for-index="ind" wx:for-item="val">
+                                    {{val}}
+                                </view> -->
+                            </view>
+                            <view class='goodInfo_price'>
+                                <view>
+                                    <text class='price_symbol'>￥</text>
+                                    {{item.productPrice}}
+                                </view>
+                            </view>
+                            <view class="addShopCart" catchtap="addShopCart" data-info="{{item}}">
+                                <image src="/images/detail/promoteShop_icon.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <!-- 无商品图片显示 -->
+                    <view class='noGoodsPlane'>
+                        <view class='noGoodsPic'>
+                            <text class='noGoodsTxt'>未找到相关商品</text>
+                        </view>
+                    </view>
+                </block>
+            <!-- </scroll-view> -->
+        </view>
+        <view class="fixWrap" wx:if="{{fixWrap}}">
+            <view class="fixItem scrollTop" catchtap="scrollTop">
+                <image src="/images/detail/scrollTop-con.png"></image>
+            </view>
+            <view class="fixItem addShop" catchtap="goShopCart">
+                <image src="/images/detail/goShopCart_icon.png"></image>
+            </view>
+        </view>
+    </view>
+    
+<!-- </view> -->

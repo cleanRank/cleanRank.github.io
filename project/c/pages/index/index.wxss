@@ -1,0 +1,254 @@
+
+@import "wxss/flexGridStyle.wxss";
+@import "wxss/itemShowStyle.wxss";
+
+page {  
+  display: flex;  
+  flex-direction: column;  
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.searchWrap {
+  padding-top: 18rpx;
+  background: #fff;
+  width: 94%;
+  margin: 0 auto;
+  padding: 15rpx 3% 0 3%;
+}
+.pageContainer{
+  padding-top: 168rpx;
+  background-color:#F4F4F4;
+}
+.allPageContainer{
+   margin-top: 0rpx;
+  background-color: #f4f4f4;
+  height: 100%;
+  position:absolute;
+  width: 100%;
+  left: 0;
+}
+.firstPage{
+  /* height: 100%; */
+  overflow: initial;
+}
+.navbar {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  width: 100%;
+  border: none;
+}
+.nav-1{  
+  flex: none;  
+  display: flex;   
+  background: #fff;  
+  background-color: white;
+  height: 80rpx;
+  padding: 0 10rpx 0 10rpx;
+  border: none;
+}
+
+.nav-1 .item{  
+  position: relative;   
+  text-align: center;  
+  font-size: 30rpx;
+  line-height: 80rpx;  
+  color: #777777;
+  display: inline-block;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}  
+
+.nav-1 .item.active{  
+  color: #333333;
+}  
+
+.nav-1 .item.active:after{  
+  content: "";  
+  display: block; 
+  position: absolute;  
+  bottom: 5px;  
+  left: 0;  
+  right: 0; 
+  height: 4rpx; 
+  margin: 0 auto;
+  width: 15rpx; 
+  background: linear-gradient(to right, #FC6B69 , #FE3F57); 
+  border-radius: 2rpx;
+  overflow: hidden;
+}  
+
+button {
+  background: transparent;
+}
+
+button::after {
+  border: 0;
+}
+
+.navbarBtn {
+  flex: 0 0 15%;
+}
+
+.navbarBtn.icon {
+  transform: rotate(90deg);
+  width: 20rpx;
+  height: 40rpx;
+}
+
+.navbarBtn.icon.active{
+  transform: rotate(-90deg);
+}
+
+.blankblock {
+  flex: 0 0 10%;
+}
+
+.nav-1-left {
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 0 0 100%;
+  border: none;
+}
+
+.picker {
+  background: white;
+}
+
+.item.left2Font {
+  color: black;
+}
+
+.spitLine {
+  margin: 0;
+  height: 2rpx;
+  background-color: gray;
+}
+
+
+.picker-contain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.picker-contain-bg {
+  position: fixed;
+  background-color: black;
+  transition: all 1s;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  opacity: 0
+}
+
+.picker-contain-bg.show {
+  opacity: 0.5;
+}
+
+.picker-contain .item {
+  background-color: white;
+  border-radius:5px;
+  margin: 20rpx;
+  padding: 10rpx 20rpx 10rpx 20rpx;
+  padding-top: 5rpx;
+  /* padding-bottom: 10rpx; */
+  font-size: 20rpx;
+  color: RGB(161, 161, 161);
+  border: 1px solid #e2e2e2;
+}
+
+.picker-contain .item.active{  
+  color: #3e9bfa;
+    border: 1px solid #3e9bfa;
+} 
+
+swiper-item scroll-view {
+  display: inline;
+}
+.allPageContainer{
+   margin-top: 0rpx;
+  background-color: white;
+  height: 100%;
+  position:absolute;
+  width: 100%;
+  left: 0;
+}
+
+.itemBox{
+  margin-top:5rpx; 
+}
+.loadMore{
+  font-size: 25rpx;
+  text-align: center;
+  color: #4d3434d8;
+  padding: 20rpx 0 20rpx 0;
+}
+/* ad start */
+.startAdvertising{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transform: translate3D(0,0,0);
+  background: rgba(0,0,0,.4);
+  z-index: 9999;
+}
+.popupWrap{
+  width: 480rpx;
+  height: 794rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 99999;
+  overflow: hidden;
+}
+.popupSwiper,.popupSwiperItem{
+  width: 480rpx;
+  height: 650rpx;
+  line-height: 650rpx;
+  font-size: 0;
+}
+.popupSwiper .adImg {
+  display: block;
+  width: 480rpx;
+  height: 650rpx;
+}
+.dots{
+  position: absolute;
+  bottom: 160rpx;
+  width: 100%;
+  height: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dots .dot{
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #fff;
+  margin: 0 5rpx;
+}
+.dots .dot.active{
+  background: #3C3C3C;
+}
+.adClose{
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+}
+/* ad end */

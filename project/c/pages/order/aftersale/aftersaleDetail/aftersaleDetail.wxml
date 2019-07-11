@@ -1,0 +1,113 @@
+<view class="page">
+
+  <!-- 售后类型 start -->
+  <view class="page-type">
+    <view class="page-type-top">
+      售后类型  <text>{{data.typeDesc}}</text>
+    </view>
+    <view class="page-type-money" wx:if="{{data.type==1||data.type==3}}">
+      退款金额  <text>¥{{data.refundAmount}}</text>
+    </view>
+    <view class="page-type-msg">
+      {{data.statusDesc}}
+    </view>
+  </view>
+  <!-- 售后类型 end -->
+
+  <!-- 售后订单 start -->
+  <view class="page-order">
+    <view class="page-order-top">
+      <view>
+        售后单号 <text>{{data.serviceOrderId}}</text>
+      </view>
+      <view>
+        申请时间 <text>{{data.createDate}}</text>
+      </view>
+    </view>
+    <view class="page-order-bottom">
+      <image src="{{data.productImage}}"></image>
+      <view class="page-order-bottom-right">
+        <view class="page-order-bottom-right-title">{{data.productName}}</view>
+        <view class="page-order-bottom-right-num">数量：{{data.aftersaleProductCnt}}</view>
+        <view class="page-order-bottom-right-info">
+          <view class="page-order-bottom-right-info-price">
+            ¥{{data.productPrice}}
+          </view>
+          <view class="page-order-bottom-right-info-num">
+            申请数量 {{data.aftersaleProductCnt}}
+          </view>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+  <!-- 售后订单 end -->
+
+  <!-- 售后物流 start -->
+  <view class="page-logistics" wx:if="{{data.expressCode}}">
+    <view class="page-logistics-title">物流单号</view>
+    <view class="page-logistics-msg">
+      <view class="page-logistics-msg-name">{{data.expressName}}</view>
+      <view class="page-logistics-msg-info">
+        <view>物流单号：{{data.expressCode}}</view>
+        <view class="page-logistics-msg-info-btn" wx:if="{{data.showLogistics==1}}" bindtap="goToLog">物流查询</view>
+      </view>
+    </view>
+  </view>
+  <!-- 售后物流 end -->
+
+  <!-- 买家地址 start -->
+  <view class="page-address" wx:if="{{data.type==2}}">
+    <view class="page-address-title">买家收货地址</view>
+    <view class="page-address-info">
+      <view class="page-address-info-item">
+        <view class="page-address-info-item-left">收货人</view>
+        <view class="page-address-info-item-right">{{data.recipientName}}</view>
+      </view>
+      <view class="page-address-info-item">
+        <view class="page-address-info-item-left">联系电话</view>
+        <view class="page-address-info-item-right">{{data.recipientPhone}}</view>
+      </view>
+      <view class="page-address-info-item">
+        <view class="page-address-info-item-left">收货地址</view>
+        <view class="page-address-info-item-right">{{data.recipientAddress}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 买家地址 end -->
+
+  <!-- 问题描述 start -->
+  <view class="page-description">
+    <view class="page-description-title">买家问题描述</view>
+    <view class="page-description-info">
+      <view class="page-description-info-content">
+        {{data.reasonDescription || '暂无描述～'}}
+      </view>
+      <view class="page-description-info-img" wx:if="{{data.imageList&&data.imageList.length>0}}">
+        <image wx:for="{{data.imageList}}" wx:key="index" src="{{item}}"></image>
+      </view>
+
+    </view>
+  </view>
+  <!-- 问题描述 end -->
+
+  <!-- 按钮 start -->
+  <view class="page-btn">
+    <view wx:if="{{data.showSendGoodsButton==1}}" bindtap="send">寄送商品</view>
+    <view bindtap="cancelApply" wx:if="{{data.showCancelButton==1}}">取消申请</view>
+    <view bindtap="progress">进度查询</view>
+  </view>
+  <!-- 按钮 end -->
+
+  <!-- 取消弹框 -->
+  <modal 
+    hidden="{{cancelModel}}" 
+    title="确定取消申请售后吗？" 
+    confirm-text="确认" 
+    cancel-text="取消" 
+    bindcancel="cancel" 
+    bindconfirm="confirm"
+  >
+  </modal>
+
+</view>

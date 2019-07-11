@@ -1,0 +1,60 @@
+/* pages/components/floorLayout/floorSixteen/floorSixteen.wxss */
+@import "../../../../app.wxss";
+@import "/pages/detail/wxParse/wxParse.wxss";
+.haveBg{
+    padding-top:12rpx;
+    background-size: 100% 200rpx;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+.marketWrap{
+    margin-bottom: 12rpx;
+}
+.banner{
+    font-size:0;
+    width: 100%;
+    height: 200rpx;
+}
+image{
+    width: 100%;
+    height: 100%;
+}
+.marketGoods{
+    padding-bottom: 8rpx;
+}
+.marketBox{
+    margin: 0 24rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12rpx;
+}
+.marketBox image{
+    height: 100%;
+    width:100%;
+}
+.marketItem{
+    width: 100%;
+    height: 168rpx;
+    overflow:hidden;
+}
+.marketBox .marketItem:last-child{
+    margin-right:0;
+}
+.marketBox .marketItem:last-child{
+    margin-right:0;
+}
+.mr14{
+    margin-right: 14rpx;
+}
+.mr12{
+    margin-right:12rpx;
+}
+.marketItem.mr14{
+    width: 344rpx;
+    height:200rpx;
+}
+.marketItem.mr12{
+    width: 226rpx;
+    height: 240rpx;
+}

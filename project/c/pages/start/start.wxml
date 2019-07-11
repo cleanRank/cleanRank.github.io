@@ -1,0 +1,82 @@
+<view class='page_start'>
+  <!-- 启动页 start -->
+  <view class='page_start login_wrap' wx:if="{{!isShowfrom}}">
+    <!-- <image src='/images/start/miniprogram_start.jpg' class='bj_img'></image> -->
+    <image mode="aspectFill" src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/sxyp/miniprogram_start.jpg' class='bj_img'></image>
+    <view class='position_wrap'>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='login_btn btnCom flex'>
+        <image src='/images/start/weixinlogo.png' class='wx_logo cell_0'></image>
+        <text class='cell_1'>微信一键登录</text>
+      </button>
+
+    </view>
+  </view>
+  <!-- 启动页 end -->
+  <!-- 新登录 start -->
+  <view class="page_startloginWay" wx:if="{{bLoginWay}}">
+    <!-- 获取手机授权极速登陆 start -->
+    <view class="getPhoneNumberWrap" wx:if="{{bNumber}}">
+      <view class="getPhoneNumberCon">
+        <view class="sxypTitle">水象优品</view>
+        <view class="sxypTxt">为了您的账号安全，请授权绑定手机号</view>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="getPhoneNumberBtn">
+          极速登录
+        </button>
+      </view>
+    </view>
+    <!-- 获取手机授权极速登陆 end -->
+    <!-- 通过邀请码获取的用户信息 start -->
+    <view class="memberInfoWrap" wx:if="{{memberInfo.inviteCode}}">
+      <view class="memberInfoCon getPhoneNumberCon">
+        <view class="sxypTitle">请确认你的邀请人</view>
+        <view class="member">
+          <image src="{{memberInfo.img}}" class="memberImg"></image>
+          <view class="memberInfo">
+            <text class="memberName textEllipsis">{{memberInfo.nickName}}</text>
+            <view class="memberCode">邀请码：{{memberInfo.inviteCode}}</view>
+          </view>
+        </view>
+        <view class="bindMemberBtn" bindtap="bindUser">确认绑定</view>
+        <view class="editMemberShow" bindtap="changeInviter">更换邀请人</view>
+      </view>
+    </view>
+    <!-- 通过邀请码获取的用户信息 end -->
+    <!-- 更换更换邀请人 start -->
+    <view class="editMemberWrap" wx:if="{{bEditMember}}">
+      <view class="editMemberCon getPhoneNumberCon">
+        <view class="editMemberConTit sxypTitle">请输入邀请码</view>
+        <input type="text" maxlength="6" class="editMemberIpt" placeholder-class="input-placeholder-color" placeholder="请输入6位邀请码" bindinput='editInviteCode'></input>
+        <view class="editMemberConfirm" bindtap="bindUser" data-type="2">确认绑定</view>
+        <view class="editMemberSkip" bindtap="bindUser" data-type="1">无邀请人</view>
+        <view class="editMemberTips">提示：选择‘无邀请人’后将默认绑定平台邀请人</view>
+      </view>
+    </view>
+    <!-- 更换更换邀请人 end -->
+  </view>
+  <!-- 新登录 end -->
+
+  <!-- 提审专用登录 start -->
+  <view class="page_start loginWay" wx:if="{{!bLoginWay && isShowfrom}}">
+    <view class='position_wrap'>
+      <image src='/images/start/bdsj_logo.png' class='sxyp_logo_from'></image>
+      <text class='from_txt'>— 美好生活优品一下 —</text>
+      <form class='login_from' bindsubmit="formSubmit">
+        <view class="flex inp">
+          <input class="cell_1" type='number' placeholder='请输入手机号' maxlength='11' name="mobile" bindinput="getPhone"></input>
+          <view class="cell_0 getYzm_wrap">
+            <button disabled='{{timeDown!=0}}' class='getYzm' bindtap='getmobileValidCode'>{{timeDown==0?'获取验证码':timeDown + 's'}}</button>
+          </view>
+        </view>
+        <view class="flex inp">
+          <input class="cell_1 login_input" type='number' placeholder='请输入验证码' maxlength='6' name="mobileValidCode"></input>
+        </view>
+        <view class="flex inp">
+          <input class="cell_1 login_input {{!iptDisabledFlag?'c_999':''}}" name="inviteCode" type='text' placeholder='请输入邀请码' maxlength='6' value="{{inviteCode}}" disabled="{{!iptDisabledFlag}}"></input>
+        </view>
+        <button form-type="submit" class='btnCom login_btns'>确认</button>
+      </form>
+      <!-- <view class="tips">为了保证您的账户安全，请绑定手机号，绑定成功后 可获得新人专享礼券</view> -->
+    </view>
+  </view>
+  <!-- 提审专用登录 end -->
+</view>

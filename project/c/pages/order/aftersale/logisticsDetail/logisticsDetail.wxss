@@ -1,0 +1,96 @@
+.logistics {
+  background: #fff;
+}
+.logistics-title {
+  height: 95rpx;
+  line-height: 95rpx;
+  border-bottom: 2rpx solid #E2E2E2;
+  padding: 0 24rpx;
+  color: #333;
+  font-size: 32rpx;
+}
+.logistics-order {
+  color: #333;
+  font-size: 26rpx;
+  padding: 23rpx 24rpx;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+.logistics-order-column {
+  line-height: 37rpx;
+  margin-bottom: 18rpx;
+}
+.logistics-order-column:last-child {
+  margin-bottom: 0;
+}
+.logistics-detail {
+  background: #fff;
+  padding: 39rpx 30rpx 0;
+}
+.logistics-detail-column {
+  font-size: 24rpx;
+  display: flex;
+}
+.logistics-detail-column:first-of-type .logistics-detail-column-label::before {
+  width: 36rpx;
+  height: 36rpx;
+  border: 2rpx solid #FF3030;
+  background: #fff;
+  top: 0;
+}
+.logistics-detail-column:first-of-type .logistics-detail-column-content-text,
+.logistics-detail-column:first-of-type .logistics-detail-column-content-time {
+  color: #FF3030;
+}
+.logistics-detail-column:last-child .logistics-detail-column-label {
+  height: 13rpx;
+}
+.logistics-detail-column.first .logistics-detail-column-label::before {
+  width: 10rpx;
+  height: 10rpx;
+  background: #D8D8D8;
+  border: 2rpx solid transparent;
+  top: 13rpx;
+}
+.logistics-detail-column.first .logistics-detail-column-label::after {
+  background: transparent;
+}
+.logistics-detail-column-label {
+  width: 40rpx;
+  position: relative;
+}
+.logistics-detail-column-label::before {
+  content: '';
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #D8D8D8;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 13rpx;
+  margin: auto;
+  z-index: 9;
+}
+.logistics-detail-column-label::after {
+  content: '';
+  width: 2rpx;
+  height: 100%;
+  background: #D8D8D8;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+.logistics-detail-column-content {
+  flex: 1;
+  padding-bottom: 56rpx;
+  margin-left: 22rpx;
+}
+.logistics-detail-column-content-text {
+  line-height: 33rpx;
+  margin-bottom: 12rpx;
+}
+.logistics-detail-column-content-time {
+  line-height: 33rpx;
+}

@@ -1,0 +1,52 @@
+.formList .formItem {
+  height: 90rpx;
+  line-height: 88rpx;
+  margin-left: 24rpx;
+  border-bottom: 2rpx solid #f8f8f8;
+  align-items: center;
+}
+
+.formList .formItem:last-of-type {
+  border-bottom: none;
+}
+
+.horizontalLine {
+  height: 10rpx;
+  background: #fbfbfb;
+}
+
+.formItem .formItemLable {
+  font-size: 28rpx;
+  width: 112rpx;
+  margin-left: 2rpx;
+  margin-right: 40rpx;
+}
+
+.formItem .formItemTxt {
+  font-size: 28rpx;
+}
+
+.formItem .formItemIpt {
+  font-size: 28rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding-right: 24rpx;
+}
+
+.getCodeBtn {
+  width: 168rpx;
+  height: 42rpx;
+  line-height: 40rpx;
+  border: 1rpx solid #FD455F;
+  border-radius: 20rpx;
+  color: #FD455F;
+  font-size: 24rpx;
+  background-color: #fff;
+  padding: 0;
+  margin-right: 24rpx;
+}
+
+.bindingSubmit {
+  font-size: 30rpx;
+  margin-top: 100rpx;
+}

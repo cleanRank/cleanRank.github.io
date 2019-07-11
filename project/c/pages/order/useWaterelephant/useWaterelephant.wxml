@@ -1,0 +1,25 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="page">
+  <view class="cardList">
+    <view class="cardWrap" wx:for="{{cardList}}" wx:key="{{item.id}}" bindtap="tapCard" data-card="{{item.id}}">
+      <view class="card">
+        <image class="cardBg" src="/images/card/card_bg.png"></image>
+        <view class="cardBalance">
+          <text class="cardBalanceTxt">余额</text>
+          <text class="smallBefore">￥</text>
+          <text class="moneyBig">{{filter.sxt(item.leftAmount)[0]}}</text>
+          <text class='moneySmall' wx:if="{{filter.sxt(item.leftAmount)[1]}}">.</text>
+          <text class="moneySmall" wx:if="{{filter.sxt(item.leftAmount)[1]}}">{{filter.sxt(item.leftAmount)[1]}}</text>
+        </view>
+        <view class="cardValidity">有效期至{{item.deadline}}</view>
+        <view class="cardFaceValue">面值￥{{item.totalAmount}}</view>
+      </view>
+      <view class="labelWrap" >
+        <view class="label {{item.checked?'active':''}} {{item.disabled?'notClick':''}}"></view>
+      </view>
+    </view>
+  </view>
+  <view class="selectUse">
+    <view class="selectUseBtn" bindtap='confirmUse'>确定</view>
+  </view>
+</view>

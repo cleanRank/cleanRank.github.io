@@ -1,0 +1,17 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='announcePage' wx:for="{{announceList}}" wx:index="{{index}}" wx:key="{{index}}">
+   <view class='announceList flex' bindtap='toAnnounceDetail' data-cnumber="{{item.contentNumber}}" data-contentId="{{item.contentId}}">
+      <view class='announceLeft'>
+          <view class='announceTit c_444'>
+              <text>{{item.title}}</text>
+          </view>
+          <view class='announceSub c_999'>
+             <text class='author'>{{item.author}}</text>
+             <text>{{filter.dateFormat(item.createTime,'yyyy-MM-dd')}}</text>
+          </view>
+      </view>
+      <view class='announceRight'>
+         <image src="{{item.titleImg}}"></image>
+      </view>
+  </view>
+</view>

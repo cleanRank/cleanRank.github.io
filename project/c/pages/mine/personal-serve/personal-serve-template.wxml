@@ -1,0 +1,37 @@
+<template name="personalServe">
+  <view class="serve"
+    wx:for="{{personalServe}}"
+    wx:for-item="serve"
+    wx:for-index="index"
+    wx:key="{{index}}"
+  >
+    <view class="serveTitle">{{serve.title}}</view>
+    <view class="serveList">
+      <block 
+        wx:for="{{serve.icon}}"
+        wx:for-item="item"
+        wx:for-index="idx"
+        wx:key="{{idx}}"
+      >
+        <view class="serveItem"
+          catchtap="onServeTap"
+          data-path="{{item.path}}"
+          data-idx="{{idx}}"
+          wx:if="{{item.hide!=1}}"
+        >
+          <image class="serveItemImg" src="{{item.url}}"></image>
+          <text class="serveItemName">{{item.name}}</text>
+          <text class="serveOrderNum {{item.num > 9? 'doubleNum':''}}" wx:if="{{item.num > 0}}">{{item.num}}</text>
+          <!-- 网易七鱼 在线客服入口 -->
+          <button wx:if="{{item.name==='在线客服'}}"
+            class="serveItem-button"
+            type="primary"
+            size="40"
+            session-from="nickName={{ysf.nickName}}|avatarUrl={{ysf.avatarUrl}}|referrerTitle={{ysf.title}}|ysf.config= {{ysf.config}}"
+            open-type="contact"
+          >联系客服</button> 
+        </view>
+      </block>
+    </view>
+  </view>
+</template>

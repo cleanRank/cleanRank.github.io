@@ -1,0 +1,10 @@
+<!-- floorType == 11 优惠券版式 -->
+<view class="floor">
+  <view class="floorEleven" wx:for="{{floorData.listFloorDetail}}" wx:key="index">
+    <view wx:for="{{item}}" wx:key="coun">
+      <view class='sub'>
+          <image src='{{item.picUrl}}' data-pon="{{item.couponNo}}" bindtap='getCouponsRes'></image>
+      </view>
+     </view>
+  </view>
+</view>

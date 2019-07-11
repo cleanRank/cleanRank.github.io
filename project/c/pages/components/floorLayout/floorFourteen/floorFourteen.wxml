@@ -1,0 +1,12 @@
+    <navigator url="{{floorData.listFloorDetail[0].floorLinkUrl}}" class='floorFourBan' bindtap='fourteenNav' open-type='redirect'>
+        <image src="{{floorData.listFloorDetail[0].picUrl}}"></image>
+    </navigator>
+   <scroll-view scroll-x="true" class="floor-swiper nav-1-left" scroll-with-animation='true'>
+      <view class='floor-scroll-item' wx:for="{{floorData.listFloorDetail[0].prudouct}}" wx:key="index">
+        <view>
+          <image  bindtap='goDetail' data-productno="{{item.productNo}}" src="{{item.proImage}}"></image>
+          <view class='swiper-tit'>{{item.productName}}</view>
+          <view class='swiper-subtit'>¥{{item.price}}</view>
+        </view> 
+      </view>
+  </scroll-view>

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "水象优品",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#ffffff",
+  "usingComponents": {
+    "floor-component":"../components/floorComponent/floor-component",
+    "search-box": "../components/searchBox/searchBox"
+  }
+}

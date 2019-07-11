@@ -1,0 +1,227 @@
+/* pages/search/search.wxss */
+@import './sortWxss/backgroundImg.wxss';
+
+.searchWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.searchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94%;
+  margin: 0 auto;
+}
+
+.searchArea {
+  width: 100%;
+  max-width: 616rpx;
+}
+
+/* 搜索按钮 */
+.searchBtn {
+  color: #777777;
+  font-size: 30rpx;
+}
+
+/* 自动补全列表 */
+.searchComplete {
+  background: #ffffff;
+  padding-top: 8rpx;
+  position: absolute;
+  top: 68rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+/* 补全列表的单项 */
+.searchCom_item {
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+  color: #333333;
+  padding-left: 3rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* 主体部分，包括搜索历史，热门搜索 */
+.searchMain {
+  width: 94%;
+  margin: 0 auto;
+}
+
+.searchHistory {
+
+}
+
+.searchHot {
+  
+}
+
+/* 显示所有搜索出的商品的面板 */
+.resultSection {
+  height: calc(100vh - 68rpx);
+  width: 94%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* 搜索出商品的情况下显示的面板 */
+.screenNavigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+}
+
+.screenNavigation .navItem {
+  width: 200rpx;
+  height: 60rpx;
+  background-color: #F8F8F8;
+  border-radius: 34rpx;
+  font-size: 28rpx;
+  color: #777777;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.screenNavigation .navItem.sel {
+  color: #FD455F;
+}
+
+.scrollSection {
+  height: calc(100vh - 188rpx);
+}
+
+.scrollView {
+  width: 100%;
+  height: 100%;
+}
+
+.goodsItem {
+  height: 200rpx;
+  position: relative;
+  display: flex;
+  padding: 30rpx 0;
+}
+
+.goodsItem::after {
+  bottom: 0rpx;
+  content: '';
+  position: absolute;
+  width: 110%;
+  border-bottom: 1rpx solid #E2E2E2;
+}
+
+.goodsItem_pic {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 16rpx;
+}
+
+.goodsItem_pic image{
+  width: 100%;
+  height: 100%;
+}
+
+.goodsItem_info {
+  min-width: 450rpx;
+  max-width: 460rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.goodInfo_title {
+  line-height: 42rpx;
+  min-width: 450rpx;
+  font-size: 30rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.goodInfo_title_text{
+  vertical-align: middle;
+}
+.goodInfo_subhead {
+  min-width: 450rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 10rpx;
+}
+.goodInfo_cx{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: auto;
+}
+.goodInfo_cx .cx_item{
+  font-size: 18rpx;
+  padding: 0 4rpx;
+  border: 1px solid #FF5A60;
+  color: #FF5A60;
+  margin-right: 12rpx;
+  border-radius: 6rpx;
+  line-height: 28rpx;
+  height: 28rpx;
+}
+
+.goodInfo_price {
+  margin-top: auto;
+  color: #FF3B30;
+  font-size: 36rpx;
+  line-height: 33rpx;
+}
+
+.price_symbol {
+  font-size: 22rpx;
+}
+
+/* 没有搜索出商品时的面板 */
+.noGoodsPlane {
+  height: 100%;
+}
+
+.noGoodsPic {
+  background: url('http://youpintest.sxfqsc.com/static/img/blank_flow_sp.2a125cb.png') no-repeat center;
+  background-size: 100%;
+  width: 380rpx;
+  height: 385rpx;
+  margin: 30% auto;
+  /* padding-top: 30%; */
+  position: relative;
+}
+
+.noGoodsTxt {
+  position: absolute;
+  bottom: -50rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.whiteMask {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}

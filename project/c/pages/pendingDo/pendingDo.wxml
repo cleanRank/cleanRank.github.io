@@ -1,0 +1,18 @@
+<import src="/pages/noData/noData_template.wxml" />
+<view class='people_list'>
+   <view class='people_item' wx:for="{{peopleList}}" wx:key="index">
+      <image class="p_item author" src="{{item.avatarUrl}}"></image>
+      <view class='p_item p_right'>
+          <view class='p_info'>
+            <text class='auth_name'>{{item.nickName}}</text>
+            <text class='auth_message'>{{item.message}}</text>
+          </view>
+          <view bindtap='addPeople' data-type="1" data-id="{{item.uid}}" class='auth_btn agree'>同意</view>
+          <view bindtap='addPeople' data-type="2" data-id="{{item.uid}}" class='auth_btn noPass'>忽略</view>
+      </view>
+   </view>
+</view>
+<view wx:if="{{peopleList.length==0 && nodata==2}}">
+  <template is="nodata" data="{{nodataList}}" />
+  <view class="btnCom">{{nodataList.btnTxt}}</view>
+</view>

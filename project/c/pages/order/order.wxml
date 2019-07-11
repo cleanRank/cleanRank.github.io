@@ -1,0 +1,74 @@
+<!--pages/order/order.wxml-->
+<import src="/pages/noData/noData_template.wxml" />
+<view class="page" wx:if="{{isLoding}}">
+  <!-- 分类导航 -->
+  <view class="order_title_tab flex">
+    <!-- title -->
+    <block wx:for="{{navItems}}" wx:key="{{index}}">
+      <view class="cell_1 order_item  {{index == currentIndex ? 'order_item_a': ''}}" bindtap="tapName" data-index="{{index}}">
+        {{item}}
+      </view>
+    </block>
+  </view>
+  <scroll-view class='scrollContent' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" wx:if="{{dataSource.length>0}}">
+  <view class='line_box'></view>
+    <!-- 订单list -->
+    <!-- <view class='lisetContainer'>  -->
+    <block wx:for="{{dataSource}}"wx:key="{{index}}">
+      <view class='marginTop'>
+        <view>
+          <!-- 状态 -->
+          <view class='flex itemState'>
+            <view class='c_999 cell_1'>{{item.orderTime}}</view>
+            <view class='c_333' wx:if="{{item.orderStatus==5||item.orderStatus==6||item.orderStatus==8||item.orderStatus==9||item.orderStatus==12}}">{{orderStatusString[5]}}</view>
+            <view class="item.orderStatus==4?'c_333':'c_red'" wx:elif="{{item.orderStatus==4&&item.hasComment==1}}">已完成</view>
+            <view class="item.orderStatus==4?'c_333':'c_red'" wx:else> {{orderStatusString[item.orderStatus]}} </view>
+            <view class='order_del' wx:if="{{(item.orderStatus==4&&item.hasComment==1)||item.orderStatus==5||item.orderStatus==6||item.orderStatus==8||item.orderStatus==9||item.orderStatus==12||item.orderStatus==4}}">
+               <image  bindtap='orderDele' data-eq="{{index}}" data-orderid="{{item.orderId}}" src='/images/icon/delete.png'></image>
+            </view>
+          </view>
+          <!-- 内容 -->
+          <view class='productContent flex' bindtap="listClick" data-index="{{index}}">
+            <view class='orderImageCon cell_0'>
+              <image class='orderImage' src='{{item.productImage}}'></image>
+            </view>
+            <view class='orderdetailTitle cell_1'>
+              <view class='titleRow c_333'><image wx:if="{{item.isCrossBorder == '1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image><text class="titleRowText">{{item.productName}}</text></view>
+              <view class='c_777 titleRow skuParameters_font'>{{item.skuParameters}}</view>
+              <view class='c_333 contentMarginTop'>
+                <text class='c_red'>￥{{item.productPrice}}</text>
+                <text class='c_777 subtitleAbsolute'>x{{item.buycount}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='itemState flex'>
+            <view class='cell_1 c_666'>共{{item.buycounttotal}}件商品</view>
+            <view class='cell_1 c_666 goodsCount'>实付款：<text class='c_333'>￥{{item.actualAmount}}</text></view>
+          </view>
+        </view>
+        <view class='flex justify-end status_btn_wrap'
+        wx:if="{{item.productType&&item.productType<100}}">
+          <view class='buttonPadding' wx:if="{{item.orderStatus==1}}" data-index="{{index}}" bindtap="cancelOredrClick">取消订单</view>
+          <view class='buttonPadding lastItem' wx:if="{{item.orderStatus==1}}" data-index="{{index}}" bindtap="wxpay">去付款</view>
+          <view class='buttonPadding showOrder' wx:if="{{item.orderStatus==2}}" data-index="{{index}}" bindtap="remaind">提醒发货</view>
+          <view class='buttonPadding' wx:if="{{item.orderStatus==3 || item.orderStatus==4}}" data-index="{{index}}" bindtap='checkLogistics'>查看物流</view>
+          <view class='buttonPadding' wx:if="{{item.showConfirmReceipt==1}}" data-index="{{index}}" bindtap='confirmReceipt'>确认收货</view>
+          <view class='buttonPadding showOrder' wx:if="{{item.orderStatus==4}}" data-index="{{index}}" bindtap='showOrder'>立即晒单</view>
+          <view class='buttonPadding' wx:if="{{item.orderStatus==4&&item.hasComment==0}}" data-index="{{index}}" bindtap='appraise'>评价商品</view>
+          <view class='buttonPadding lastItem' wx:if="{{item.orderStatus==5||item.orderStatus==6||item.orderStatus==8||item.orderStatus==9||item.orderStatus==12}}" data-index="{{index}}" bindtap='orderDetialClick'>再次购买</view> 
+        </view>
+      </view>
+      <view class='line_box'></view>
+    </block>
+    <!-- 使用推广组件 -->
+    <promotion-component id="promotion" promotion-data="{{promotionData}}" bind:promotionClose="promotionClose" wx:if="{{promotionFlag}}"></promotion-component>
+    <!-- 确认收货弹框 -->
+    <elastic-modal bind:tapCancel="cancelReceive" bind:modalConfirmFn="confirmReceive" modalTitle="{{modalTitle}}" id="modalBox"></elastic-modal>
+    <!-- 无货弹框 -->
+    <elastic-modal bind:modalConfirmFn="goIndex" cancelBtnTxt="{{outstock.cancelBtnTxt}}" confirmBtnTxt="{{outstock.confirmBtnTxt}}" conType="{{outstock.type}}" modalTitle="{{outstock.modalTitle1}}" id="modalBox1"></elastic-modal>
+      <!-- 删除订单 -->
+    <elastic-modal bind:modalConfirmFn="deleteOr" cancelBtnTxt="{{outstock2.cancelBtnTxt}}" confirmBtnTxt="{{outstock2.confirmBtnTxt}}" conType="{{outstock2.type}}" modalTitle="{{outstock2.modalTitle1}}" modalTop="{{outstock2.modalTop}}" id="modalBox2"></elastic-modal>
+  </scroll-view>
+  <!-- 没有数据 -->
+  <template is="nodata" data="{{nodataList}}" wx:else/>
+</view>

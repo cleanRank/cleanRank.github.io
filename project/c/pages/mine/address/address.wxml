@@ -1,0 +1,43 @@
+<import src="/pages/noData/noData_template.wxml" />
+<view class="page" wx:if="{{isLoding}}">
+  <scroll-view class="addressList" wx:if="{{addressList.length > 0}}">
+    <view class="address" wx:for="{{addressList}}" wx:key="{{item.id}}" data-index="{{index}}">
+      <view class="addressContent" bindtap='addAddressItem' data-index="{{addressList[index]}}">
+        <view class='addressNaT'>
+          <view class="consigneeName">{{item.consignee}}</view>
+          <view class="consigneeTel">{{item.consigneeMobile}}</view>
+        </view>
+        <view class="addressDetail">{{item.addProvince}}{{item.addCity}}{{item.addCounty}}{{item.addTown}}{{item.addDetail}}</view>
+      </view>
+      <view class="addressEdit">
+        <view class="selectDefaultAddress" bindtap='selected' data-index="{{addressList[index]}}">
+          <view>
+            <image wx:if="{{item.addDefault == 1}}" class='default-img' src='/images/mine/default_select.png'></image>
+            <image wx:else class='default-img' src='/images/mine/default_unselect.png'></image>
+          </view>
+          <text style='margin-left:10rpx;color:#999;font-size:24rpx'>设为默认地址</text>
+        </view>
+        <view class="addressEditBtns">
+          <view class="addressEditBtns" bindtap='addressEditBtn' data-index="{{addressList[index]}}">
+            <image class='addressEditBtn-img' src='/images/mine/addressEditBtn.png'></image>
+            <view class="addressEditBtn btn">
+              编辑
+            </view>
+          </view>
+          <view class="addressEditBtns" bindtap='addressDeleteBtn' data-item="{{addressList[index]}}" data-index="{{index}}">
+            <image class='addressEditBtn-img' src='/images/mine/addressDeleteBtn.png'></image>
+            <view class="addressDeleteBtn btn"  data-index="{{addressList[index]}}">
+              删除
+            </view>
+          </view>     
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 没有数据 -->
+  <template is="nodata" data="{{nodataList}}" wx:else/>
+  <view class="btns {{addressList.length>3?'':'poition_btn'}}">
+    <button class="save" bindtap="addressEditBtn" data-index="add">新增地址</button>
+  </view>
+  <!-- <navigator class="btnCom" url='newAddres/newAddress'>新增地址</navigator> -->
+</view>

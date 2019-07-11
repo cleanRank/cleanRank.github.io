@@ -1,0 +1,157 @@
+/* pages/vip/ImChatList/ImChatList.wxss */
+.massage-list{
+  box-sizing: border-box;
+  position: relative;
+}
+.fix-bar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  height: 50rpx;
+  z-index: 999;
+}
+.customer-service{
+  float: left;
+  margin-left: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.group{
+  float: right;
+  margin-right: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.message-content{
+  padding:10rpx 0 0 26rpx;
+}
+.massage-item{
+  width: 100%;
+  position: relative;
+}
+.right-box{
+  /* padding-left: 156rpx; */
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  padding-bottom:30rpx;
+  margin-left: 152rpx;
+  margin-right: 12rpx;
+}
+.delete{
+  position: absolute;
+  right: -140rpx;
+  top:0;
+  height: 100%;
+  width: 140rpx;
+  background: red;
+  line-height: 160rpx;
+  color: #fff;
+  font-size: 28rpx;
+  text-align: center;
+  transition: 0.3s;
+  z-index: 9999;
+}
+.addwidth{
+  right: 0;
+}
+.left-box{
+  width: 104rpx;
+  height: 104rpx;
+  position: absolute;
+  left: 0;
+  top:22rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.left-box .icon{
+  position: absolute;
+  width: 36rpx;
+  height: 36rpx;
+  background:rgba(240,0,0,1);
+  border-radius: 50%;
+  top:-18rpx;
+  right: -18rpx;
+  font-size: 20rpx;
+  color: #fff;
+  line-height: 34rpx;
+  text-align: center;
+}
+.img-list{
+  background: yellowgreen;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.img-list .image-item{
+  width: 36rpx;
+  height: 36rpx;
+  background: red;
+}
+.image-box{
+  width: 100%;
+  height: 100%;
+}
+.right-box .text-box{
+  margin-top: 36rpx;
+  float: left;
+  height: 110rpx;
+}
+.text-box .user-name{
+  color: #333;
+  font-size: 30rpx;
+  height: 42rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300rpx;
+  margin-top: 10rpx;
+}
+.text-box .message{
+  color: #999;
+  font-size: 22rpx;
+  height: 30rpx;
+  margin-top: 6rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 400rpx;
+}
+.date-box{
+  position: absolute;
+  right: 24rpx;
+  top: 40rpx;
+  color: #BFBFC1;
+  font-size: 22rpx;
+}
+.right-box::after{
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2rpx;
+  background: #F4F4F4;
+}
+  /* 无数据缺省 */
+.noData{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+.noData image{
+  width: 320rpx;
+  height: 215rpx;
+  margin:428rpx 0 96rpx;
+}
+.noData .noDataInfo{
+  font-size: 28rpx;
+  height: 40rpx;
+  color: #999;
+}

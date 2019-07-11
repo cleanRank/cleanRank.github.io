@@ -1,0 +1,4 @@
+<!-- floorType == 7 商品图片单列 -->
+<view class="floor {{bgData.bgImg?'haveBg':''}}" style="background-image:url({{bgData.bgImg}})">
+  <good-model good="{{good}}" floor-type="7" rebate-status="{{rebateStatus?0:1}}"></good-model>
+</view>

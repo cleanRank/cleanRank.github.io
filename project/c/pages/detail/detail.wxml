@@ -1,0 +1,319 @@
+<import src="../detail/wxParse/wxParse.wxml" />
+<import src="/pages/noData/noData_template.wxml" />
+<wxs module="numberUtil" src="../../utils/numberUtil.wxs"></wxs>
+<view class="page {{promotionFlag||address_list_flag?'overflow_hi':''}}">
+  <view wx:if="{{goodFlag}}">
+    <view class="goodSwiperWrap">
+      <view class="{{videoMark?'videoWrapOth':'videoWrap'}}">
+        <video bindwaiting="videoWait" binderror="videoErro" wx:if="{{goodInfo.imageList[0].videoUrl}}" show-center-play-btn="{{false}}" object-fit="contain" show-mute-btn="true" direction="90" auto-pause-if-navigate="true" auto-pause-if-open-native="true" src="{{goodInfo.imageList[0].videoUrl}}" id="myVideo" class="{{videoMark?'myVideoPlay':'myVideo'}}">
+        </video>
+        <view bindtap='videoOut' wx:if="{{goodInfo.imageList[0].videoUrl&&outVideo}}" class='videoOut'>
+          <text>退出视频</text>
+        </view>
+      </view>
+      <swiper class="goodSwiper" current="{{goodSwiper.cur}}" bindanimationfinish="swipAni" bindchange="goodSwiperChang" wx:if="{{!videoMark}}">
+        <block wx:for="{{goodInfo.imageList}}" wx:key="{{index}}">
+          <swiper-item catchtouchmove="{{move}}">
+            <view class='mask' wx:if="{{item.videoUrl&&showPlay}}">
+               <image bindtap='videoPlay' class='play' src='/images/icon/play.png'></image>
+            </view>
+            <view class='maskSure' wx:if="{{item.videoUrl&&showBg}}">
+               <image bindtap='surePlay' class='surePlay' src='/images/icon/play.png' />
+               <text class='warn'>您正在使用非WiFi网络，是否继续播放</text>
+            </view>
+            <image wx:if="{{item.videoUrl}}" src="{{goodInfo.imageList[1].imagePath}}" class="slide-image goodSlideImg" width="100%" />
+            <image wx:if="{{item.imagePath}}" src="{{item.imagePath}}" class="slide-image goodSlideImg" width="100%" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <view class="goodSwiperDot" wx:if="{{goodInfo.imageList.length>1&&!videoMark}}">
+        <text class="goodSwiperNum">{{goodSwiper.index}}/{{goodInfo.imageList.length}}</text>
+      </view>
+    </view>
+    <!-- 秒杀 start -->
+    <view class="seckillWrap" wx:if="{{goodInfo.diffSes && goodInfo.diffSes>0}}">
+      <view class="seckillEndTime flex">
+        <view class="seckillEndTimeTitle">距活动结束</view>
+        <view class="seckillCountDown flex justify-center">
+          <text class="hour_num num">{{time.hours}}</text>
+          <text class="minutes_nums num">{{time.minutes}}</text>
+          <text class="second_nums num">{{time.seconds}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 秒杀 end -->
+    <view class="goodInfoWrap">
+      <view class="goodName">
+        <view class="goodNameText c_333"><image wx:if="{{goodInfo.isCrossBorder == '1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image><text class="goodNameText-middle">{{goodInfo.productName}}</text></view>
+        <view class="vicetitle c_999" wx:if="{{goodInfo.words || goodInfo.viceTitle}}">{{goodInfo.words || goodInfo.viceTitle}}</view>
+      </view>
+      <view class='goodPriceWrap flex'>
+        <text class='goodPrice c_red'><text class="goodPriceSmall">￥</text>{{numberUtil.numberFormat(goodInfo.jdPrice || 0)}}</text>
+        <text class="virtualPrice c_999" wx:if="{{goodInfo.virtualPrice}}">￥{{goodInfo.virtualPrice}}</text>
+        <text class='goodLabel'>{{goodInfo.diffSes && goodInfo.diffSes>0? '秒杀价': '促销价'}}</text>
+        <text class="label rebate" wx:if="{{goodInfo.rebateStatus && goodInfo.rebateStatus!='0'&& goodInfo.rebate}}">￥{{goodInfo.rebate}}</text>
+         <view class="salesNum">已售{{goodInfo.salesVolume}}件</view>
+      </view>
+    </view>
+    <view class="horizontal_line"></view>
+    <view class="goodOther">
+      <view class="logistics-sales logistics-sales-other">
+        <view class="logisticsStatus">服务</view>
+        <view class="logisticsStatus">
+           <image class="goodOther-label" src="/images/icon/ok-red.png"></image>包邮
+        </view>
+        <view class="logisticsStatus">
+           <image class="goodOther-label" src="/images/icon/ok-red.png"></image>正品保证
+        </view>
+        <view class="logisticsStatus">
+           <image class="goodOther-label" src="/images/icon/ok-red.png"></image>售后无忧
+        </view>
+        <view class="logisticsStatus is7ToReturn {{goodInfo.is7ToReturn == '0'?'c_999':''}}">
+          <block wx:if="{{goodInfo.is7ToReturn =='1'}}"><image class="goodOther-label" src="/images/icon/ok-red.png"></image>七天无理由退换</block>
+          <block wx:else><image class="goodOther-label" src="/images/icon/no-gray.png"></image>不支持七天无理由退换</block>
+        </view>
+        <view class="logisticsStatus c_999" wx:if="{{goodInfo.diffSes && goodInfo.diffSes>0}}">
+           <image class="goodOther-label" src="/images/icon/no-gray.png"></image>秒杀商品不支持使用优惠券
+        </view>
+        <view class="logisticsStatus is7ToReturn" wx:if="{{goodInfo.minBuyCnt && goodInfo.minBuyCnt > 1}}">
+          <image class="goodOther-label" src="/images/icon/ok-red.png"></image>{{goodInfo.minBuyCnt}}件起售         
+        </view>
+      </view>
+      <view class="skuWrap" wx:if="{{goodInfo.spu.length > 0}}" bindtap="showSpuChooseTab" data-type="{{0}}">
+        <view class="selectedText c_999">已选</view>
+        <view class="selectedGoodType c_333">{{goodInfo.currentSpu}}，{{quantity}}件</view>
+        <image class="rightDot" src="/images/detail/dot.png"></image>
+      </view>
+      <!-- 促销 -->
+      <view class="promoteSalesWrap" wx:if="{{goodInfo.promoteSaleList && goodInfo.promoteSaleList.length > 0 && promoteCommonWrap}}" bindtap="promoteShow">
+        <view class="promoteSalesTitle c_999">促销</view>
+        <view class="promoteWrap">
+          <view class="promoteItem" wx:for="{{goodInfo.promoteSaleList}}" wx:key="index" wx:index="index" data-info="{{item}}">
+            
+            <view class="promoteList">
+              
+              <block wx:if="{{item.activityType == 1 || item.activityType == 4}}">
+                <view class="promoteSalesTag">{{item.activityTypeDesc}}</view>
+                <view class="promoteListItem ordinPromote" wx:if="{{item.activityDesc}}">{{item.activityDesc}}</view>
+              </block>
+              <block wx:else>
+                <view class="promoteSalesTag">{{item.activityTypeDesc}}</view>
+                <view class="promoteListItem" wx:for="{{item.discountRuleList}}" wx:index="ind" wx:for-item="val" wx:key="ind">
+                  {{val.ruleDesc}}
+                  <text class="" wx:if="{{item.discountRuleList.length > 1 && ind != item.discountRuleList.length - 1}}">，</text>
+                </view>
+              </block>
+              
+            </view>
+            <!-- <view class="promoteSalesTag">{{item.activityTypeDesc}}</view>
+            <view class="promoteList">
+              <block wx:if="{{item.activityType == 1 || item.activityType == 4}}">
+                <view class="promoteListItem ordinPromote" wx:if="{{item.activityDesc}}">{{item.activityDesc}}</view>
+              </block>
+              <block wx:else>
+                <view class="promoteListItem" wx:for="{{item.discountRuleList}}" wx:index="ind" wx:for-item="val" wx:key="ind">
+                  {{val.ruleDesc}}
+                  <text class="" wx:if="{{item.discountRuleList.length > 1 && ind != item.discountRuleList.length - 1}}">，</text>
+                </view>
+              </block>
+              
+            </view> -->
+          </view>
+        </view>
+        <image class='arrow_r' src='/images/icon/arrow_r.png'></image>
+      </view>
+      <!-- 促销 -->
+    </view>
+    <view class="horizontal_line"></view>
+        <view class="goodOther">
+      <view class="logistics-sales logistics-sales-detail logistics-sales-other" bindtap='address_tab'>
+        <view class="logisticsStatus">送至</view>
+        <view class='detail_address'>
+           <view class='address_info {{nolocation?"noloca":""}}'><image src="/images/icon/location.png"></image>{{detail_address}}</view>
+           <view class='address_warn' wx:if="{{address_flag}}">该商品在该地区暂不支持销售</view>
+        </view>
+        <image class='arrow_r' src='/images/icon/arrow_r.png'></image>
+      </view>
+    </view>
+    <view class="horizontal_line"></view>
+    <!-- spu start -->
+    <view class="skuMask" wx:if="{{stagesFlag}}">
+      <view class="skuMaskBg" catchtap="closeSpu"></view>
+      <view class="skuMaskInfo">
+        <view class="skuGoodInfo">
+          <view class="skuGoodImg">
+            <image cka src="{{goodInfo.mainImagePath}}"></image>
+          </view>
+          <view class="skuGoodDetailInfo">
+            <view class="skuGoodTitle">{{goodInfo.productName}}</view>
+            <view class="skuGoodPrice"><text class="smallBefore">￥</text>{{numberUtil.numberFormat(goodInfo.jdPrice)}}</view>
+          </view>
+          <image class="closeSku" src="/images/icon/close.png" catchtap="closeSpu"></image>
+        </view>
+        <!-- spu促销 start -->
+        <view class="spuPromoteWrap" wx:if="{{spuPromote && spuPromote.discountRuleList.length > 0}}">
+          <view class="spuPromoteTitle">{{spuPromote.activityTypeDesc}}</view>
+          <view class="spuPromoteCon" wx:if="{{spuPromote.activityType == 1 || spuPromote.activityType == 4}}">{{spuPromote.activityDesc}}</view>
+          <view class="spuPromoteCon" wx:else>{{ruleDesc}}</view>
+        </view>
+        <!-- spu促销 end -->
+        <!-- 7天无理由 start -->
+        <view class="skuMaskIs7ToReturn" wx:if="{{goodInfo.is7ToReturn == '0'}}"><image class="goodOther-label" src="/images/icon/no-gray.png"></image>不支持七天无理由退换</view>
+        <!-- 7天无理由 end -->
+        <view class="selectAttribute" wx:if="{{goodInfo.spu && goodInfo.spu.length>0}}">
+          <view class="goodSkuList">
+            <block wx:for="{{goodInfo.spu}}" wx:key="{{index}}">
+              <view class="goodSku">
+                <text class="goodSkuTitle">{{item.saleName}}<text class='errorTips' wx:if="{{item.isClearUserChoose}}">请选择{{item.saleName}}</text></text>
+                <view class="goodSkuL">
+                  <block wx:for="{{item.saleAttrList}}" wx:for-item="btn" wx:for-index="idx" wx:key="{{idx}}">
+                    <view class="goodSkuItem {{btn.selected?'current':''}} {{btn.isNotExit?'dottedLine':''}}" catchtap="chooseSku" data-productnos="{{btn.productNos}}" data-index="{{index}}" data-idx="{{idx}}" data-selected="{{btn.selected}}">
+                      {{btn.saleValue}}
+                    </view>
+                  </block>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="selectNumWrap">
+          <view class="selectNumInfo">
+            <view>数量</view>
+            <view class="startSell" wx:if="{{startSellFlag}}">该商品最低{{goodInfo.minBuyCnt}}件起售</view>
+          </view>
+          <view class="selectNumCon">
+            <button class="numRed numBtn {{quantity<= goodInfo.minBuyCnt ?'red0':'red1'}}" bindtap='changeQuantity' data-type="{{false}}" data-num='-1'></button>
+            <text class="selectNum">{{quantity}}</text>
+            <button  class="numAdd numBtn {{quantity == maxQuantity?'add0':'add1'}}" bindtap='changeQuantity' data-type='{{true}}' data-num='1'></button>
+          </view>
+        </view>
+        
+        <view class="buyBtn {{isClickNextBtn?'disabledBtn':''}}" bindtap="callConfirmOrder">{{entryType?'确定': '立即下单'}}</view>
+      </view>
+    </view>
+    <!-- spu end -->
+    <!-- 促销弹框 start -->
+    <view class="skuMask addressMask" wx:if="{{promoteShow}}">
+      <view class='address_wrap'>
+        <image class='address_close' bindtap='closePromote' src='/images/icon/close_new.png'></image>
+        <view class="address_tit">活动促销</view>
+        <!-- <view class="proTip c_999"><image src="/images/icon/icon-fail.png"></image>以下促销活动仅可选其一，可在购物车自行更改</view> -->
+        <view class='promote_list' wx:for="{{goodInfo.promoteSaleActivityList}}" wx:key="index" wx:index="index" data-info="{{item}}">
+          <view class="list_item" wx:if="{{(item.activityType == 1 || item.activityType == 4) && item.activityDesc}}" bindtap="{{item.activityType == 1 || item.activityType == 4 ? '' : 'promoteGoodsList'}}" data-info="{{item}}">
+              <view class="list_title demo1">{{item.activityTypeDesc}}</view>
+              <view class="list_right">
+                <block wx:if="{{item.activityType == 1 || item.activityType == 4}}">
+                  <view class="cx_item tline">{{item.activityDesc}}</view>
+                </block>
+                <block wx:else>
+                  <view class="cx_item" wx:for="{{item.discountRuleList}}" wx:for-item="val" wx:index="ind" data-info="{{val}}" wx:key="ind">
+                    {{val.ruleDesc}}<text wx:if="{{val.discountRuleList.length > 1 && ind != val.discountRuleList.length -1}}">，</text>
+                  </view>
+                </block>
+              </view>
+          </view>
+          <view class="list_item" wx:if="{{item.activityType != 1 && item.activityType != 4}}"  bindtap="{{item.activityType == 1 || item.activityType == 4 ? '' : 'promoteGoodsList'}}" data-info="{{item}}">
+              <view class="list_title  demo2" wx:if="{{item.activityType != 1 && item.activityType != 4}}">{{item.activityTypeDesc}}</view>
+              <view class="list_right">
+                <!-- <block wx:if="{{item.activityType == 1 && item.activityType == 4}}">
+                  <view class="cx_item tline">3321321{{item.activityDesc}}</view>
+                </block>
+                <block wx:else> -->
+                  <view class="cx_item" wx:for="{{item.discountRuleList}}" wx:for-item="val" wx:index="ind" data-info="{{val}}" wx:key="ind">
+                    {{val.ruleDesc}}<text wx:if="{{val.discountRuleList.length > 1 && ind != val.discountRuleList.length -1}}">，</text>
+                  </view>
+                <!-- </block> -->
+              </view>
+          </view>
+          <image class='arrow_r' src="{{item.activityType == 1 || item.activityType == 4 ? '' : '/images/icon/arrow_r.png'}}"></image>
+        </view>
+        <!-- <view class='noAddress' wx:if="{{!addreList||addreList.length==0}}">
+           <template is="nodata" data="{{nodataList}}" />
+        </view> -->
+      </view>
+    </view>
+    <!-- 促销弹框 end -->
+    <!-- 切换地址start -->
+    <view class="skuMask addressMask" wx:if="{{address_list_flag}}">
+      <view class='address_wrap'>
+        <image class='address_close' bindtap='closeAddress' src='/images/icon/close_new.png'></image>
+        <view class="address_tit">配送至</view>
+        <view class='address_list'>
+            <view class='address_item' wx:for="{{addreList}}" wx:key="index">
+              <image class='address_img' wx:if="{{index==detail_eq}}" src='/images/icon/location.png'></image>
+              <image class='address_img' wx:else src='/images/icon/location_default.png'></image>
+              <view class='address_info address_info_layer {{index==detail_eq?"boldFon":""}}' bindtap='checkAddress' data-index="{{index}}" data-info="{{item}}" data-addressno="{{item.addressNo}}">
+              <image class='init_address' src="/images/icon/default.png" wx:if="{{index==0}}">默认</image>
+              {{item.addProvince + item.addCity + item.addCounty + item.addTown + item.addDetail}}
+              </view>
+            </view>
+        </view>
+        <view class='noAddress' wx:if="{{!addreList||addreList.length==0}}">
+           <template is="nodata" data="{{nodataList}}" />
+        </view>
+        <view class='chooseAddress' bindtap='addressEditBtn'>选择其他地址</view>
+      </view>
+    </view>
+    <!-- 切换地址end -->
+    <!-- 评论 start -->
+    <block wx-if="{{goodInfo.showComment == '1'}}">
+      <good-comments comments="{{goodsComments}}" sumCount="{{sumCount}}" feedbackRate="{{feedbackRate}}" bind:tapCommentList="tapCommentList"></good-comments>
+      <view class="horizontal_line"></view>
+    </block>
+    <!-- 评论 end -->
+    <!-- 商品详情 start -->
+    <view class="goodDetailInfo">
+      <view class="goodDetailTop" wx:if="{{!bIntroduction}}"><text>向上拖动，查看商品详情</text></view>
+      <view class="goodDetailInfoHTML" wx:else>
+        <view class="goodDetailTit">商品详情</view>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+    <!-- 商品详情 end -->
+    <!-- 不支持提示 -->
+    <view class='addressNoWarn' wx:if="{{address_flag}}">
+       抱歉，该地区暂不支持销售
+    </view>
+    <!-- 不支持提示end -->
+    <view class="goodHandle">
+      <view class="goShopCart" bindtap="goShopCart">
+        <image class='iconImg' src="/images/icon/shop_icon.png"></image>
+        <text class="shopCartNum {{shopCartNum>9?'doubleNum':''}}" wx:if="{{shopCartNum}}">{{shopCartNum}}</text>
+        <text class="iconTxt">购物车</text>
+      </view>
+      <view class="goodHandle-online">
+        <image class='iconImg' src="/images/icon/online.png"></image>
+        <text class="iconTxt">客服</text>
+        <!-- 网易七鱼 在线客服入口 -->
+          <button 
+            type="primary"
+            size="40"
+            session-from="nickName={{ysf.nickName}}|avatarUrl={{ysf.avatarUrl}}|referrerTitle={{ysf.title}}|ysf.config= {{ysf.config}}"
+            open-type="contact"
+          >联系客服</button> 
+      </view>
+      <view class="addShopCart goodHandleBtn" wx:if="{{goodInfo.canCart && goodInfo.canCart == '1' && goodInfo.productStock > 0}}" style="background-color:{{address_flag?'#D8D8D8':'#FF9800'}}"  bindtap="showSpuChooseTab" data-type="{{1}}">
+        <text class="">加购物车</text>
+      </view>
+      <view class="buyNow goodHandleBtn" style="background-color:{{(inventory && !address_flag)?'#FD455F':'#D8D8D8'}}" bindtap="showSpuChooseTab" data-type="{{0}}" data-inventory="{{1}}">
+        <text>{{inventory?'立即购买':'暂时无货'}}</text>
+        <text class="smallText" wx:if="{{goodInfo.rebateStatus && goodInfo.rebateStatus!='0' && goodInfo.rebate && goodInfo.rebate>0 && inventory}}">赚{{numberUtil.numberFormat(goodInfo.rebate)}}元</text>
+      </view>
+      <!-- wx:if="{{goodInfo.rebate}}" -->
+      <view class="goodHandleBtn Swag" catchtap='promotionShow' wx:if="{{goodInfo.rebateStatus && goodInfo.rebateStatus!='0' && inventory}}">
+        <text class="">立即推广</text>
+        <text class="smallText" wx:if="{{goodInfo.rebate && goodInfo.rebate>0}}">赚{{numberUtil.numberFormat(goodInfo.rebate)}}元</text>
+      </view>
+    </view>
+    <!-- 使用推广组件 -->
+    <promotion-component id="promotion" product-data="{{goodInfo}}" promotion-data="{{promotionData}}" bind:promotionClose="promotionClose" wx:if="{{promotionFlag}}"></promotion-component>
+  </view>
+  <view class="goodDataNull" wx:else>
+    <view class="nodata_order nodata_wrap">
+      <image class="nodata_img" src="/images/detail/no_af_info.png"></image>
+      <view class="nodata_txt">商品已经卖光啦~要不要瞧瞧别的~</view>
+    </view>
+  </view>
+  <!-- 返回首页 -->
+  <navigator wx:if="{{backFlag =='1'}}" class="backHome" url='/pages/index/index' open-type="switchTab" hover-class="none">水象首页</navigator>
+</view>

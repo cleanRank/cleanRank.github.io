@@ -1,0 +1,117 @@
+<view class="page">
+  <!-- 产品信息 start -->
+  <view class="page-head">
+    <image src="{{data.productImage}}"></image>
+    <view class="page-head-right">
+      <view class="page-head-right-title">
+        {{data.productName}}
+      </view>
+      <view class="page-head-right-num">
+        数量：{{data.buycount}}
+      </view>
+      <view class="page-head-right-bottom">
+        <view class="page-head-right-bottom-price">¥{{data.productPrice}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 产品信息 end -->
+
+  <!-- 数量 start -->
+  <view class="page-num" wx:if="{{showView&&data.showAfterSaleCount&&data.showAfterSaleCount==1}}">
+    <view class="page-num-title">申请数量</view>
+    <view class="page-num-btn">
+      <view class="page-num-btn-left">
+        <view class="page-num-btn-left-subtract {{count>1?'red':''}}" bindtap="subtract">-</view>
+        <view class="page-num-btn-left-count">
+          <input type="number" bindinput="getCount" bindblur="commitCount" bindconfirm="commitCount" value="{{count}}"/>
+        </view>
+        <view class="page-num-btn-left-add {{count<data.canAftersaleCnt?'red':''}}" bindtap="add">+</view>
+      </view>
+      <view class="page-num-btn-right">
+        （最大可申请数量为{{data.canAftersaleCnt}}）
+      </view>
+    </view>
+  </view>
+  <!-- 数量 end -->
+
+  <!-- 售后类型 start -->
+  <view class="page-type">
+    <view class="page-type-title">售后类型<text>(必选)</text></view>
+    <view class="page-type-btn">
+      <block wx:for="{{data.afterSaleType}}" wx:key="index">
+        <view class="{{typeIndex==index?'active':''}}" data-index="{{index}}" data-type="{{item.type}}" bindtap="changeType">{{item.typeDesc}}</view>
+      </block>
+
+    </view>
+    <view class="page-type-money" wx:if="{{afterSaleType==1||afterSaleType==3}}">
+      <text>退款金额（含水象通）</text>
+      <text class="text">¥</text>
+      <input type="digit" placeholder="请输入退款金额" hidden="{{isShowModel}}" value="{{refundAmount}}" bindinput="changeRefundAmount" bindblur="commitRefundAmount" bindconfirm="commitRefundAmount"/>
+    </view>
+    <view class="page-type-info">退款金额最高可退换¥{{data.totalRefundAmount}}</view>
+    <view class="page-type-cause">
+      <view class="page-type-cause-title">售后原因</view>
+      <view class="page-type-cause-info">
+        <text>{{cause || '请选择售后原因(必选)'}}</text>
+        <view class="page-type-cause-info-img" bindtap="showModel">
+          <image src="/images/aftersale/arrow.png"></image>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- 售后类型 end -->
+
+  <!-- 原因描述 start -->
+  <view class="page-cause">
+    <view class="page-cause-title">原因描述</view>
+    <view class="page-cause-text" hidden="{{isShowModel}}">
+      <textarea cols="30" rows="10" maxlength="500" placeholder="请详细描述这个问题，不少于5字" bindinput="input"></textarea>
+      <view class="page-cause-text-info">{{causeValue.length}}/500</view>
+    </view>
+  </view>
+  <!-- 原因描述 end -->
+
+  <!-- 上传图片 start -->
+  <view class="page-uploadImg" wx:if="{{showView}}">
+    <view class="page-uploadImg-title">上传商品损坏或其他售后原因的照片</view>
+    <!-- 上传图片功能 -->
+    <view class='ui_uploader_cell'>
+      <!-- 根据已选择的图片临时路径数组展示图片-->
+      <view class='ui_uploader_item' wx:for="{{tempFileList}}" wx:key="{{index}}">
+        <!-- 删除-->
+        <image class="ui_uploader_item_icon" src="/images/icon/remove.png" bindtap='clearImg' data-index="{{index}}" ></image>
+        <!-- 图片-->
+        <image class="showImg" bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+      </view>
+      <!-- 上传按钮+框 -->
+      <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}">
+        <image src="/images/order/addphoto.png"></image>
+      </view>
+      
+    </view>
+  </view>
+  <!-- 上传图片 end -->
+
+  <!-- 立即申请 -->
+  <view class="page-btn" bindtap="submit">立即申请</view>
+
+  <!-- 售后原因弹框 -->
+  <view class="page-model" wx:if="{{isShowModel}}">
+    <view class="page-model-main">
+      <view class="page-model-main-head">售后原因</view>
+      <view class="page-model-main-content">
+        <view class="page-model-main-content-item" wx:for="{{data.afterSaleReason}}" wx:key="index" bindtap="bindPickerChange" data-index="{{index}}">
+          <view class="page-model-main-content-item-left">{{item.reasonDesc}}</view>
+          <view class="page-model-main-content-item-right">
+            <view class="checkbox-out {{pickerIndex==index?'active':''}}"></view>
+          </view>
+        </view>
+      </view>
+      <view class="page-model-main-close" bindtap="hideModel">确认</view>
+    </view>
+    
+  </view>
+  
+
+</view>

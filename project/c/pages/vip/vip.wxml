@@ -1,0 +1,131 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class='scrollCla' bindtouchstart='touchStart'>
+<view class='page vip_wrap_page' wx:if="{{isLoading}}">
+  <!-- IM切换 -->
+  <info-nav nav-list="{{navList}}" current-index="{{currentIndex}}" bind:changeTab="changeTab" wx:if="{{imInstalment}}"></info-nav>
+  <!-- 头像 -->
+  <block>
+    <view class='flex vip_message_wrap'>
+      <view class='vip_message_shareStore find_people' bindtap='getPeople'>附近买家</view>
+      <view wx:if="{{memberList.memberLevel != 0}}" class='vip_message_shareStore' bindtap='goStoreSharePage'>分享店铺</view>
+      <view class='cell_0 vip_header_box'>
+        <image class='vip_header_img' src="{{memberList.avatarUrl}}"></image>
+        <image class='vip_rank' wx:if="{{memberList.memberLevel!=0}}" src="{{vip_rank[memberList.memberLevel]}}"></image>
+      </view>
+      <view class='cell_1 message_box'>
+        <view class='nickName_box flex'>
+          <text class="c_333 textEllipsis nickName">{{filter.transformName(memberList.nickName)}}</text>
+          <view class='user_grade'>{{memberList.memberLevel>0?'会员':'小象首席体验官'}}</view>
+        </view>
+        <view class='c_999 pName_box'>
+          <view class='pName_inviter'>邀请人: {{memberList.upNickName||''}}</view>
+        </view>
+        <view class='Invitecode_boc'>
+          <!-- 旧的复制邀请码样式 -->
+          <!-- <view class="c_333">邀请码：
+            <text class='c_red'>{{memberList.inviteCode}}</text>
+          </view>
+          <view class='copy_btn' bindtap='copyText' data-text="{{memberList.inviteCode}}">复制</view> -->
+          <view class='Invitecode_box'>
+            <view class='Invitecode_txt'>邀请码：{{memberList.inviteCode}}</view>
+            <view bindtap='copyText' data-text='{{memberList.inviteCode}}'  class='Invitecode_copyBtn'>复制</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 分享&礼包s -->
+  <view class='share_box' wx:if="{{memberList.sharePic}}" bindtap='goVipSharePage'>
+    <image src='{{memberList.sharePic}}'></image>
+  </view>
+  <view class='share_box' wx:if="{{memberList.miniGiftPic}}" bindtap='goGiftBagActivity'><image src='{{memberList.miniGiftPic}}'></image></view>
+  <!-- 分享&礼包e -->
+  <!-- new fans info start -->
+  <block>
+    <view class="myVipWrap myFansWrap">
+      <navigator class="myVipTit flex c_777" url='fans/fansIndex?type={{fansNav[0].invitationType}}' hover-class="none">我的用户
+        <image src='/images/icon/right.png' class='rightArrow'></image>
+      </navigator>
+      <view class="myFansClassify flex">
+        <block wx:for="{{fansNav}}" wx:key="{{index}}">
+          <navigator class="myFansClassifyItem {{memberList.memberLevel!='0' && index!=fansNav.length-1?'borderRight':''}}" url="fans/fansIndex?type={{item.invitationType}}" hover-class="none">
+            <text class="myFansClassifyItemNum c_333">{{item.num}}</text>
+            <text class="myFansClassifyItemTxt c_999">{{item.invitationTypeDesc}}</text>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </block>
+  <!-- new fans info end -->
+  <!-- earning start -->
+  <view class="myVipWrap myEarning" wx:if="{{memberList.showIncome == 1}}">
+    <navigator class='myVipTit flex c_777' url='incomeDetails/incomeDetails?tabIndex=2' hover-class="none">我的收入（元）
+      <image src='/images/icon/right.png' class='rightArrow'></image>
+    </navigator>
+    <view class="myEarningInfo flex">
+      <view class="myEarningTime flex">
+        <view class="myEarningTimeItem myEarningTimeDay" data-index="0" bindtap='goIncomeDetail'>
+          <text class="myEarningPrice c_333 textEllipsis">{{memberList.todayIncome}}</text>
+          <text class="myEarningTxt c_999">今日 (元)</text>
+        </view>
+        <view class="myEarningTimeItem myEarningTimeMonth" data-index="1" bindtap='goIncomeDetail'>
+          <text class="myEarningPrice c_333 textEllipsis">{{memberList.monthIncome}}</text>
+          <text class="myEarningTxt c_999">本月 (元)</text>
+        </view>
+        <view class="myEarningTimeItem myEarningTotal" data-index="2" bindtap='goIncomeDetail'>
+          <text class="myEarningPrice c_333 textEllipsis">{{memberList.totalIncome}}</text>
+          <text class="myEarningTxt c_999">累计 (元)</text>
+        </view>
+      </view>
+      <view class="earningWithdrawal">
+        <text class="earningWithdrawalPrice c_red textEllipsis">{{memberList.cashableIncome}}</text>
+        <text class="earningWithdrawalTxt c_999">可提现余额（元)</text>
+        <navigator url='cashingMoney/cashingMoney' hover-class="none" class="earningWithdrawalBtn c_red">提现</navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 公告 -->
+  <view class='myVipWrap myFansWrap noticeWrap swipBox' wx:if="{{bLoginWay&&dataLen}}">
+    <image  class='noticeIcon' src='/images/icon/notice.png'></image>
+    <swiper
+    autoplay="true"
+    interval="3000"
+    vertical="true"
+    circular="true"
+    class='announceSwiper'
+  >
+    <block wx:for="{{announceList}}"  wx:key="{{index}}">
+      <swiper-item catchtouchmove="stopTouchMove">
+        <navigator url="announceList/announceList" hover-class="none">
+          <view class="myVipTit noticeText c_444">
+            <text>{{item.title}}</text>
+            <image src='/images/icon/right.png' class='rightArrow'></image>
+          </view>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+ </view>
+  <!-- end -->
+  <!-- 版式 -->
+  <view>
+    <!-- 楼层组件 -->
+      <view class='floorView'>
+      <floor-component id="floor"
+    list-floor="{{listFloor}}" seckill-index = "{{seckillIndex}}" seckill-status = "{{seckillStatus}}" ishow-promotion="{{ishowPromotion}}" new-list="{{newList}}" head-top="0" close-video="{{closeVideo}}" scroll-top="{{scrollTop}}" time="4500"
+        ></floor-component>
+      </view>
+  </view>
+  <!-- 版式end -->
+  <!-- earning end -->
+  <!-- 选择器 -->
+  
+  <!-- <view class="section"> -->
+    <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{newLevelList}}">
+      <view class="picker">
+        当前选择：{{newLevelList[index]}}
+      </view>
+    </picker> -->
+  <!-- </view> -->
+</view>
+</view>

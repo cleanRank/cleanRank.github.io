@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "sharePer": "../../components/sharePersonal/sharePersonal",
+    "downloadBtn": "../../components/downloadBtn/downloadBtn",
+    "customModal": "../../components/UED/modal/modal"
+  }
+}

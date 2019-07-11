@@ -1,0 +1,14 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<import src="personal-serve/personal-serve-template.wxml"/>
+<view class='page'>
+  <navigator url='/subPages/mine/personal/personal' hover-class="none" class='headPortraitWrap flex'>
+    <image class="mine_bj" src='/images/mine/mine_bj.png'></image>
+    <view class="new-personal-portrait cell_0">
+      <image src="{{userInfo.img}}"></image> 
+    </view>
+    <view class="new-personal-tel cell_1">{{filter.transformName(userInfo.nickName)}}</view>
+  </navigator>
+  <view class='serveWrap'>
+    <template is="personalServe" data="{{personalServe}}" />
+  </view>
+</view>

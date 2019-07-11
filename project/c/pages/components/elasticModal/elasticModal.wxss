@@ -1,0 +1,64 @@
+/* pages/components/elasticModal/elasticModal.wxss */
+.modalWrap{
+    position: fixed;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+.modalBox{
+    width: 580rpx;
+    /* height: 334rpx; */
+    border-radius: 12rpx;
+    background:#fff;
+}
+.modalTop{
+  width: 460rpx;
+  margin:24rpx 60rpx 24rpx 60rpx;
+  font-size: 30rpx;
+  color: #444;
+  text-align: center;
+}
+.modalHeader{
+    width: 460rpx;
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    margin: 30rpx 60rpx 46rpx 60rpx;
+}
+.modalContent{}
+.modalBtns{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40rpx;
+    padding:0 40rpx;
+
+}
+.modalBtns.itemCenter{
+    justify-content: center;
+}
+.modalBtn {
+    font-size:30rpx;
+    width:240rpx;
+    height:78rpx;
+    border-radius:42rpx;
+    border:1rpx solid #DBDBDB;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.btns_cancel{
+    background: #fff;
+    color: #999;
+}
+.btns_confirm{
+    background: #FD455F;
+    color: #fff;
+}

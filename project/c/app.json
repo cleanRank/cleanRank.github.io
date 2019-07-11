@@ -1,0 +1,165 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/index/index",
+    "pages/search/search",
+    "pages/vip/storeShare/storeShare",
+    "pages/vip/vip",
+    "pages/index/activityPage/activityPage",
+    "pages/vip/incomeDetails/incomeDetails",
+    "pages/vip/fansDetail/fansDetail",
+    "pages/vip/fans/fansIndex",
+    "pages/vip/cashingMoney/cashingMoney",
+    "pages/vip/explainTxt/explainTxt",
+    "pages/vip/share/share",
+    "pages/detail/detail",
+    "pages/detail/commentList/commentList",
+    "pages/mine/address/address",
+    "pages/mine/coupon/coupon",
+    "pages/mine/address/newAddres/newAddress",
+    "pages/shopCart/shopCart",
+    "pages/order/order",
+    "pages/mine/mine",
+    "pages/mine/address/newAddres/receivingaddress/receivingaddress",
+    "pages/order/confirmOrder/confirmOrder",
+    "pages/vip/cashingMoney/cashingRecord/cashingRecord",
+    "pages/vip/cashingMoney/cashingConfirm/cashingConfirm",
+    "pages/vip/cashingMoney/tiedCard/tiedCard",
+    "pages/order/payResult/payResult",
+    "pages/help/help",
+    "pages/help/questionDetail/questionDetail",
+    "pages/order/useWaterelephant/useWaterelephant",
+    "pages/activity/activity",
+    "pages/order/aftersale/aftersale",
+    "pages/order/aftersale/applyAftersale/applyAftersale",
+    "pages/order/aftersale/aftersaleDetail/aftersaleDetail",
+    "pages/order/aftersale/sendMsg/sendMsg",
+    "pages/order/aftersale/logisticsDetail/logisticsDetail",
+    "pages/order/aftersale/progressDetail/progressDetail",
+    "pages/vip/announceList/announceList",
+    "pages/vip/announceList/announceDetail/announceDetail",
+    "pages/vip/floorDetail/floorDetail",
+    "pages/help/searchHelp/searchHelp",
+    "pages/help/helpList/helpList",
+    "pages/findPeople/findPeople",
+    "pages/pendingDo/pendingDo",
+    "pages/detail/preferGoodsList/preferGoodsList",
+    "pages/finding/finding",
+    "pages/finding/detail/detail"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": " "
+    }
+  },
+  "subpackages": [
+    {
+      "root": "activityPages",
+      "name": "activity",
+      "pages": [
+        "pages/newYearRedEnvelop/newYearRedEnvelop"
+      ]
+    },
+    {
+      "root": "subPages/mine",
+      "name": "mine",
+      "pages": [
+        "personal/personal",
+        "contactCS/contactCS",
+        "waterElephantCard/waterElephantCard",
+        "waterElephantCard/bindCard/bindCard"
+      ]
+    },
+    {
+      "root": "subPages/order",
+      "name": "order",
+      "pages": [
+        "orderDetail/orderDetail",
+        "logistics/logistics",
+        "appraise/appraise"
+      ]
+    },
+    {
+      "root": "subPages/IM",
+      "name": "IM",
+      "pages": [
+        "ImChat/ImChat",
+        "ImChatList/ImChatList",
+        "ImInfoList/ImInfoList",
+        "ImProductList/productList",
+        "ImSearchPage/ImSearchPage",
+        "selectContact/selectContact"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "activity"
+      ]
+    },
+    "pages/mine/mine": {
+      "network": "all",
+      "packages": [
+        "mine"
+      ]
+    },
+    "pages/order/order": {
+      "network": "all",
+      "packages": [
+        "order"
+      ]
+    },
+    "pages/vip/vip": {
+      "network": "all",
+      "packages": [
+        "IM"
+      ]
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f5f5f5",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "水象优品",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/tabbar/footer-home.png",
+        "selectedIconPath": "/images/tabbar/footer-home-a.png"
+      },
+      {
+        "pagePath": "pages/vip/vip",
+        "text": "会员权益",
+        "iconPath": "/images/tabbar/footer-vip.png",
+        "selectedIconPath": "/images/tabbar/footer-vip-a.png"
+      },
+      {
+        "pagePath": "pages/finding/finding",
+        "text": "发现",
+        "iconPath": "/images/tabbar/footer-find.png",
+        "selectedIconPath": "/images/tabbar/footer-find-a.png"
+      },
+      {
+        "pagePath": "pages/shopCart/shopCart",
+        "text": "购物车",
+        "iconPath": "/images/tabbar/footer-cart.png",
+        "selectedIconPath": "/images/tabbar/footer-cart-a.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/tabbar/footer-my.png",
+        "selectedIconPath": "/images/tabbar/footer-my-a.png"
+      }
+    ],
+    "color": "#BFBFC1",
+    "selectedColor": "#FD455F"
+  },
+  "sitemapLocation": "sitemap.json"
+}

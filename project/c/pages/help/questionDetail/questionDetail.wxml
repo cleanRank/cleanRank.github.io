@@ -1,0 +1,22 @@
+<import src="../../detail/wxParse/wxParse.wxml" />
+<view class="page">
+    <view class="questionCon">
+        <view class="title questionTitle">
+          <template is="wxParse" class="questionParse" data="{{wxParseData:title.nodes}}" />
+        </view>
+        <template is="wxParse" class="questionParse" data="{{wxParseData:answer.nodes}}" />
+       
+    </view>
+    <view class="relationList" wx:if="{{questionDetail.relativeQuestionList.length > 0}}">
+      <view class="title relativeTitle">相关问题</view>
+      <block wx:for="{{questionDetail.relativeQuestionList}}" wx:key="{{index}}">
+        <view class="relativeItem" bindtap="goQuestionDetail" data-item="{{item}}">
+          <view class="relativeCon">
+            <text class="listNum">{{(index+1)}}.</text><template is="wxParse" data="{{wxParseData:replyTemArray[index]}}"></template>
+          </view>
+          <image class="rightArrow" src="/images/helpCenter/icon-rightArrow.png"></image>
+        </view>
+      </block>
+      
+    </view>
+</view>

@@ -1,0 +1,197 @@
+.promotionWrap {
+  position: fixed;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.promotionMsk {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.goodDetailWrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.goodDetail {
+  width: 640rpx;
+  height: 900rpx;
+  position: relative;
+  overflow: hidden;
+}
+.goodDetail .shareImg{
+  width: 640rpx;
+  height: 900rpx; 
+  display: block;
+  border-radius: 6rpx;
+}
+.promotionLogo {
+  width: 120rpx;
+  height: 120rpx;
+  position: absolute;
+  top: 0;
+  left: 35rpx;
+  z-index: 1;
+}
+
+.promotionClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56rpx;
+  height: 56rpx;
+  z-index: 1;
+}
+
+.promotionGood {
+  flex: 1;
+}
+
+.promotionGoodImgCon {
+  width: 640rpx;
+  height: 640rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.promotionGoodImg {
+  width: 640rpx;
+  height: 640rpx;
+  display: block;
+}
+
+.promotionTime {
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 24rpx;
+  background-image: linear-gradient(-90deg, #ff7575 0%, #ff998b 100%);
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.promotionGoodInfo {
+  padding: 20rpx 24rpx;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.justify-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.promotionQRCode {
+  width: 150rpx;
+  height: 150rpx;
+  overflow: hidden;
+  margin-left: 10rpx;
+}
+
+.promotionQRCode image {
+  width: 150rpx;
+  height: 150rpx;
+  display: block;
+}
+
+.promotionGoodName {
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.promotionGoodSub {
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+
+.text_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.promotionGoodPrice {
+  font-size: 36rpx;
+  color: #FD455F;
+}
+
+.smallSymbol {
+  font-size: 26rpx;
+}
+
+.promotionGoodOriginal {
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  text-decoration: line-through;
+  color: #999;
+}
+
+.shareBtnAll {
+  height: 190rpx;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  background-color: #fff;
+  border-radius: 12rpx 12rpx 0 0;
+}
+
+.shareBtn {
+  width: 140rpx;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40rpx;
+}
+
+.shareBtnOpcity {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.shareBtn .shareBtnImg {
+  width: 66rpx;
+  height: 66rpx;
+  display: block;
+  margin-top: 40rpx;
+  margin-bottom: 14rpx;
+}
+
+.shareBtn .shareBtnTxt {
+  font-size: 28rpx;
+  display: block;
+  color: #777777;
+  height: 40rpx;
+  line-height: 40rpx;
+}

@@ -1,0 +1,98 @@
+/* pages/components/elasticModal/elasticModal.wxss */
+.modalWrap{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 500;
+}
+.modalBox{
+    width: 580rpx;
+    position: relative;
+    border-radius: 12rpx;
+    background:#fff;
+}
+.modalHeader{
+    font-size: 30rpx;
+    color: #444;
+    text-align: center;
+    margin: 70rpx 0 26rpx;
+    height: 104rpx;
+    padding: 0 24rpx;
+}
+.modalHeader .auth{
+   float: left;
+  width: 104rpx;
+  height: 104rpx;
+  margin-right: 22rpx;
+  text-align: left;
+  vertical-align: top;
+  border-radius: 104rpx;
+}
+.modalHeader text{
+  float: left;
+  width: 270rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin-top: 30rpx;
+}
+.modalBtns{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40rpx;
+    padding:0 40rpx;
+
+}
+.modalBtns.itemCenter{
+    justify-content: center;
+}
+.modalBtn {
+    font-size:30rpx;
+    width:500rpx;
+    height:88rpx;
+    border-radius:88rpx;
+    border:1rpx solid #DBDBDB;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+.btns_cancel{
+    background: #fff;
+    color: #999;
+}
+.btns_confirm{
+    background: #FD455F;
+    color: #fff;
+}
+textarea{
+  width: 500rpx;
+  height: 120rpx;
+  margin:auto;
+  border-radius: 12rpx;
+  background:rgba(244,244,244,1);
+  padding: 18rpx 16rpx;
+  font-size: 28rpx;
+  color: #BFBFC1;
+  line-height: 40rpx;
+  margin-bottom: 40rpx;
+  overflow: hidden;
+}
+.close{
+  position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  right: 24rpx;
+  top: 24rpx;
+}

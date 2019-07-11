@@ -1,0 +1,54 @@
+<wxs module="numberUtil" src="../../../utils/numberUtil.wxs"></wxs>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<import src="/pages/noData/noData_template.wxml" />
+<view class="container page" wx:if="{{isLoding}}">
+  <scroll-view class='couponsBox' wx:if="{{couponList.length > 0}}" scroll-y="{{true}}">
+    <block wx:for="{{couponList}}" wx:key="{{item.id}}">
+      <view class='movableWrap'>
+        <movable-area>
+          <movable-view direction="horizontal" x="{{item.xmove}}"
+            damping="40"
+            animation="false"
+            disabled="{{isEnbleClick =='1'?true:false}}"
+            data-productIndex="{{index}}"
+            bindtouchstart="handleTouchStart"
+            bindtouchend="handleTouchEnd"
+            bindchange="handleMovableChange">
+              <view class="coupons {{item.useStatus == 2?'couponsOk':'couponsNo'}}" bindtap='needCoupon' data-item='{{item}}'>
+                <image wx:if="{{item.useStatus == 2}}" src='/images/mine/coupons-ok.png' class='couponsLeft'></image>
+                <image wx:else src='/images/mine/coupons-no.png' class='couponsLeft'></image>
+                <view class="couponsDetail">
+                  <view class="couponsMoneyWrap">
+                    <view class="couponsMoney">{{numberUtil.numberFormat(item.parValue)}}</view>
+                    <view class='couponsScope'>元</view>
+                    <view class="couponsScope" wx:if="{{item.minOrderMoney && item.minOrderMoney!='0.00'}}">（满{{numberUtil.numberFormat(item.minOrderMoney)}}-{{numberUtil.numberFormat(item.parValue)}}）</view>
+                  </view>
+                  <view class="couponsName">
+                      <text class='couponsTxt'>{{item.showName}}</text>
+                      <text class='goDetail' bindtap='goDetail' data-linkUrl="{{item.jumpParam}}" data-linkType="{{item.jumpType}}" wx:if="{{item.jumpType!=0 && isEnbleClick !='1' && item.useStatus == 2}}">去使用</text>
+                  </view>
+                  <view class="couponsTimeLimit">
+                    <view class="couponsTimeLimitTxt">{{filter.dateFormat(item.startTime,'yyyy.MM.dd')}}-{{filter.dateFormat(item.endTime,'yyyy.MM.dd')}}</view>
+                    <view class="couponsRule {{item.isshowRuleDesc?'t':'b'}}" catchtap='rulesShow' data-index="{{index}}" wx:if="{{item.otherRuleDesc}}">优惠券使用规则<image wx:if="{{item.useStatus == 2}}" class='ruleImg' src='/images/mine/ruleok.png'></image><image wx:else class='ruleImg' src='/images/mine/ruleno.png'></image></view>
+                  </view>
+                </view>
+                <view class="rulesDetail" wx:if="{{item.otherRuleDesc && item.isshowRuleDesc}}">
+                  <view class='rulesDetailBg'></view>
+                  <view class='rulesDetailTxt'>{{item.otherRuleDesc}}</view>
+                </view>
+              </view>
+          </movable-view>
+        </movable-area>
+        <view class="delete-btn {{item.otherRuleDesc && item.isshowRuleDesc?'dele_curr':''}}" data-id="{{item.id}}" data-eq="{{index}}" bindtap="handleDeleteProduct">删除</view>
+      </view>
+    </block>
+    <!-- 没有更多红包 -->
+    <view class="nodata_txt" wx:if="{{countLen == 1}}">没有更多红包了！</view>
+  </scroll-view>
+  <!-- 没有数据 -->
+  <template is="nodata" data="{{nodataList}}" wx:else/>
+  <view class="btn">
+    <button bindtap="needCoupon" data-item="" class=" {{isEnbleClick =='1' ?'show':'hide'}} needCoupon">不使用红包</button>
+  </view>
+  <elastic-modal  bind:tapCancel="cancelModal" bind:modalConfirmFn="deleteCoupon" cancelBtnTxt="{{outstock.cancelBtnTxt}}" confirmBtnTxt="{{outstock.confirmBtnTxt}}" conType="{{outstock.type}}" modalTitle="{{outstock.modalTitle1}}" id="modalBox"></elastic-modal>
+</view>

@@ -1,0 +1,22 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"></wxs>
+<import src="../../../detail/wxParse/wxParse.wxml" />
+<view class='detailPage'>
+   <view class='detailTit c_333'>
+        <text>{{announceData.title}}</text>
+    </view>
+    <view class='detailSub c_999'>
+        <text class='author'>{{announceData.author}}</text>
+        <text>{{filter.dateFormat(createTime,'yyyy-MM-dd')}}</text>
+    </view>
+    <view>
+       <view  class="c_444 detailCon">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+       </view>
+    </view>
+    <view class='share' wx:if="{{origin=='floor'&& announceData.showShare==1}}" bindtap='toShare'>推广</view>
+    <view class='returnIndex' wx:if="{{back==1}}" bindtap='toIndex'><text>水象首页</text></view>
+    <!-- 推广组件 -->
+    <view wx:if="{{ origin=='floor' && showShare }}">
+       <promotion-component id="promotion" promotion-data="{{promotionData}}" bind:promotionClose="promotionClose"></promotion-component>
+    </view>
+</view>

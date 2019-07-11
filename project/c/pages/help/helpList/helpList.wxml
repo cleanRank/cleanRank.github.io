@@ -1,0 +1,16 @@
+<!--pages/help/helpList/helpList.wxml-->
+<import src="../../detail/wxParse/wxParse.wxml" />
+<view class="page">
+    <view class="listWrap">
+        <block wx:for="{{questionList}}" wx:key="{{index}}">
+            <view class="questionItem" bindtap="goQuestionDetail" data-item="{{item}}">
+                <view class="quesCon helpItem c_444">
+                    <text>{{index+1}}.</text>
+                    <template is="wxParse" data="{{wxParseData:replyTemArray[index]}}"></template>
+                </view>
+
+                <image class="rightArrow" src="/images/helpCenter/icon-rightArrow.png"></image>
+            </view>
+        </block>
+    </view>
+</view>

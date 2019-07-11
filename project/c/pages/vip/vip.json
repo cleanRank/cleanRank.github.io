@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "会员",
+  "usingComponents": {
+    "floor-component": "../components/floorComponent/floor-component",
+    "info-nav": "./components/infoNav/infoNav"
+  }
+}

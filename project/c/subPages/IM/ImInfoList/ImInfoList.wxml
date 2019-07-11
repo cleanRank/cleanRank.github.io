@@ -1,0 +1,18 @@
+<!--pages/vip/ImInfoList/ImInfoList.wxml-->
+<view class="page">
+    <!-- 导航 -->
+    <info-nav class="info" nav-list="{{navList}}" current-index="{{currentIndex}}" bind:changeTab="changeTab"></info-nav>
+    <!-- 搜索 -->
+    <view class='searchWrap' wx:if="{{currentIndex == '1'}}">
+        <search-box bindtap='goSearchPage' define-word='{{hotword}}' define-disable='{{true}}'></search-box>
+    </view>
+    <!-- 联系人列表 -->
+    <contact-navlist address-list="{{myFriends}}" inviter="{{inviter}}" applyFriendCount="{{applyFriendCount}}" bind:applyFriendsPage="applyFriendsPage" bind:changeTab="changeTab" bind:chatEvent="chatEvent" wx:if="{{currentIndex == '1'}}"></contact-navlist>
+    <!-- 信息列表 -->
+    <imChat-list message-list="{{messageList}}" bind:delItem="delItem" wx:elif="currentIndex == '2'"></imChat-list>
+    <!-- 无数据缺省 -->
+    <view class="noData" wx:else>
+        <image src="/images/noData/no_data.png"></image>
+        <view class="noDataInfo">还没有内容哦～</view>
+    </view>
+</view>

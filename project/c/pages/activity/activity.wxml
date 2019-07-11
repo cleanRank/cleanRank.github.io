@@ -1,0 +1,74 @@
+<view scroll-y='true' class="redEnvelopWrap  {{showMammon ? 'disSlide' : ''}}">
+  <!-- 返回首页 -->
+  <!-- 第一图块 -->
+  <view class='imageSec posRel'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/hb_01.jpg'
+    ></image>
+    <!-- 按钮 -->
+    <view class='btn' bindtap='getMammon'>
+      <image 
+mode='scaleToFill'
+style='width: 100%; height: 100%'   src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/btn.png'></image>
+    </view>
+  </view>
+
+  <!-- 第二图块 -->
+  <view class='imageSec'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/hb_02.jpg'
+    ></image>
+  </view>
+
+  <!-- 第三图块 -->
+  <view class='imageSec'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/hb_03.jpg'
+    ></image>
+  </view>
+
+  <!-- 第四图块 -->
+  <view class='imageSec'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/hb_04.jpg'
+    ></image>
+  </view>
+
+  <!-- 弹出的弹窗 -->
+  <view class="mask" wx:if='{{showMammon}}'>
+    <view class="dialog {{showMammon ? 'enter' : ''}}">
+      <view class="mammonClose" catchtap='hideMask'>
+         <image src="/images/icon/ad-close.png"></image>
+      </view>
+      <image 
+    mode='widthFix'  src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/lqcg.png'
+      ></image>
+      <navigator
+        open-type='switchTab'
+        class='dialogBtn'
+        url='/pages/index/index'
+      >
+        <image 
+    mode='widthFix'  src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/football/look.png'
+      ></image>
+      </navigator>
+    </view>
+  </view>
+  <view class='bomTab' wx:if="{{acFlag&&hideBom}}">
+     <view class='item goHome' bindtap='goIndex'>去商城首页</view>
+     <view class='item shareAc' bindtap='shareActivity'>分享活动</view>
+  </view>
+  <view class='saveBox' wx:if="{{!acFlag}}">
+      <view class='saveImgBox'>
+        <view class='saveInner'>
+          <image class="promotionClose" src="/images/detail/close_promotion.png" catchtap='promotionClose'></image>
+          <image class='shareImg' src="{{qrcode}}" ></image>
+        </view>
+      </view>
+      <view class='saveBtn' bindtap='savePhoto'>保存活动码</view>
+  </view>
+</view>

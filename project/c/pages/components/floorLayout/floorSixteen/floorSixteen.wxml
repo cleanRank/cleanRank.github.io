@@ -1,0 +1,17 @@
+<!--pages/components/floorLayout/floorSixteen/floorSixteen.wxml-->
+<view class="floorBox {{_item.floorType != marketType ? 'needHide' : 'needShow'}} ">
+    <view class="marketWrap">
+        <view class="banner" wx:if="{{_item.banner}}">
+            <image src="{{_item.banner}}" bindtap="bannerClick" data-bannerInfo="{{_item}}"></image>
+        </view>
+        <view wx:if="{{_item.listFloorDetail[0].marketings && _item.listFloorDetail[0].marketings[0].marketing.length > 0}}" class="{{_item.bgImg?'haveBg':''}}"  style="background:url({{_item.bgImg}})">
+            <view class="marketGoods" wx:for="{{_item.listFloorDetail}}" wx:index="index" wx:key="unique1" wx:for-item="list">
+                <view class="marketBox" wx:for="{{list.marketings}}" wx:key="unique3" wx:for-item="goods" wx:for-index="idx" >
+                    <view class="marketItem {{goods.marketing.length == 2 ? 'mr14':''}} {{goods.marketing.length == 3 ? 'mr12':''}}" wx:for="{{goods.marketing}}" wx:key="unique4" wx:for-item="good" wx:for-index='ind' data-bannerinfo="{{good}}" bindtap="bannerClick">
+                        <image src="{{good.ltypeImg}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>   
+    </view>    
+</view>

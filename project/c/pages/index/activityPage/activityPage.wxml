@@ -1,0 +1,23 @@
+<!--pages/index/activityPage.wxml-->
+<view class='acwrap' bindtouchstart='touchStart'>
+<view class='wrap' scroll-y='true'>
+<view class="firstPage">
+    <block >
+       <view class="allPageContainer">
+        <view class='itemContainer' bindtouchstart='handletouchstart' bindtouchmove='handletouchmove' bindtouchend='handletouchend' bindtouchcancel='handletouchcancel' bindscrolltolower="bindDownLoad">
+         <!-- 楼层组件 -->
+            <view class='floorView'>
+                <floor-component id="floor"
+            list-floor="{{listFloor}}" seckill-status = "{{seckillStatus}}" ishow-promotion="{{ishowPromotion}}" seckill-seckillIndex = "{{seckillIndex}}" head-top="0" close-video="{{closeVideo}}" scroll-top="{{scrollTop}}" time="2000"
+                ></floor-component>
+            </view>
+        </view>
+       </view>
+    </block>
+    <promotion-component id="promotion" promotion-data="{{promotionData}}" bind:promotionClose="promotionClose" wx:if="{{promotionFlag}}"></promotion-component>
+    <!-- 返回首页 -->
+</view>
+</view>
+<view class='acShare' bindtap='goShare' wx:if="{{showShare}}">分享</view>
+<navigator wx:if="{{backflag ==1}}" class="backHome" url='/pages/index/index' open-type="switchTab" hover-class="none">水象首页</navigator>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "水象公告",
+  "usingComponents": {
+    "floor-twelve": "../../components/floorLayout/floorTwelue/floorTwelue"
+  }
+}

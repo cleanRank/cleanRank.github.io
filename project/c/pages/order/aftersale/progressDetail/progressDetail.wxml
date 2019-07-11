@@ -1,0 +1,18 @@
+<view class="page">
+    <!-- title start -->
+    <view class="progress-title">进度详情</view>
+    <!-- title end -->
+    <!-- 售后进度 start -->
+    <view class="progress-detail">
+        <block wx:for="{{progressLogList}}" wx:key="{{index}}">
+            <view class="progress-detail-column {{index =='0' && progressLogList.length == 1?'first':''}}{{item.status=='3'?' red':''}}">
+                <view class="progress-detail-column-label"></view>
+                <view class="progress-detail-column-content">
+                    <view class="progress-detail-column-content-text c_333">{{item.statusDesc}}</view>
+                    <view class="progress-detail-column-content-time c_999">{{item.createDate}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 售后进度 end -->
+</view>

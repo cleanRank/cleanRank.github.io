@@ -1,0 +1,109 @@
+<view class="page">
+  <!-- 产品信息 start -->
+  <view class="page-head">
+    <image src="{{data.productImage}}"></image>
+    <view class="page-head-right">
+      <view class="page-head-right-title">
+        {{data.productName}}
+      </view>
+      <view class="page-head-right-num">
+        数量：{{data.afterSaleCount}}
+      </view>
+      <view class="page-head-right-bottom">
+        <view class="page-head-right-bottom-price">¥{{data.productPrice}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 产品信息 end -->
+
+  <!-- 买家收货地址 start -->
+  <view class="page-buyerinfo">
+    <view class="page-buyerinfo-title">
+      <text>买家收货地址</text>
+      <view bindtap="changeAddress">更换地址</view>
+    </view>
+    <view class="page-buyerinfo-address">
+      <view class="item">
+        <view class="item-left">收货人</view>
+        <view class="item-right">{{data.consumerRecipientName}}</view>
+      </view>
+      <view class="item">
+        <view class="item-left">联系电话</view>
+        <view class="item-right">{{data.consumerRecipientPhone}}</view>
+      </view>
+      <view class="item">
+        <view class="item-left">收货地址</view>
+        <view class="item-right">{{data.consumerRecipientAddress}}</view>
+      </view>
+    </view>
+    <view class="page-buyerinfo-info">该地址为您换货时接收商品的地址</view>
+    <view class="page-buyerinfo-whether">
+      <view class="page-buyerinfo-whether-title">是否收到货</view>
+      <view class="page-buyerinfo-whether-btn">
+        <view class="{{hasReceived==1?'active':''}}" data-index="1" bindtap="changeBtn">已收到</view>
+        <view class="{{hasReceived==0?'active':''}}" data-index="0" bindtap="changeBtn">未收到</view>
+      </view>
+    </view>
+  </view>
+  <!-- 买家收货地址 end -->
+
+  <!-- 商家收货地址 start -->
+  <view class="page-sellerinfo" hidden="{{showLog}}">
+    <view class="page-sellerinfo-title">
+      <text>商家收货地址</text>
+    </view>
+    <view class="page-sellerinfo-address">
+      <view class="item">
+        <view class="item-left">收货人</view>
+        <view class="item-right">{{data.merchantRecipientName}}</view>
+      </view>
+      <view class="item">
+        <view class="item-left">联系电话</view>
+        <view class="item-right">{{data.merchantRecipientPhone}}</view>
+      </view>
+      <view class="item">
+        <view class="item-left">收货地址</view>
+        <view class="item-right">{{data.merchantRecipientAddress}}</view>
+      </view>
+    </view>
+    <view class="page-sellerinfo-info">请您按照该地址将商品寄回给商家</view>
+    
+    <view class="page-sellerinfo-logistics">
+      <view class="page-sellerinfo-logistics-item">
+        <view class="page-sellerinfo-logistics-item-left">物流公司</view>
+        <view class="page-sellerinfo-logistics-item-right">
+          {{logistics || '请选择物流公司'}}
+          <view class="page-sellerinfo-logistics-item-right-img">
+            <image src="/images/aftersale/arrow.png"></image>
+          </view>
+          <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{logisticsList}}">
+            <view class="picker">
+              {{logisticsList[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="page-sellerinfo-logistics-item">
+        <view class="page-sellerinfo-logistics-item-left">物流单号</view>
+        <view class="page-sellerinfo-logistics-item-right">
+          <input placeholder="请填写物流单号" bindinput="getExpressCode" disabled="{{logDisabled}}"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 商家收货地址 end -->
+
+  <!-- 备注 start -->
+  <view class="page-remark">
+    <view class="page-remark-title">备注</view>
+    <view class="page-remark-text">
+      <textarea cols="30" rows="10" maxlength="500" placeholder="请详细描述这个问题，不少于5字" bindinput="input"></textarea>
+      <view class="page-remark-text-info">{{remark.length}}/500</view>
+    </view>
+  </view>
+  <!-- 备注 end -->
+
+  <!-- 确定按钮 -->
+  <view class="page-btn" bindtap="submit">确定</view>
+  
+</view>

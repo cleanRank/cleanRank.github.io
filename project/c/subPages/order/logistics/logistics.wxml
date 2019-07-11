@@ -1,0 +1,34 @@
+<view class='pageColor'>
+  <view class='logisDetail'>
+    <view class='logisMarging'>订单编号：
+      <text class='c_444'>{{orderId}}</text>
+    </view>
+    <view class='logisMarging' wx:if="{{express}}">物流公司：
+      <text class='c_444'>{{express}}</text> </view>
+    <view class='logisMarging' wx:if="{{logisticCode}}">快递单号：
+      <text class='c_444'>{{logisticCode}}</text>
+    </view>
+    <view class="logisMarging expressPhone" wx:if="{{express || logisticCode}}" bindtap="tell">快递电话：
+      <text class="c_444">{{expressPhone}}</text>
+      <image src="/images/order/back-right.png"></image>
+    </view>
+  </view>
+  <view class="logisticsInfoWrap">
+    <block wx:for="{{dataSource}}" wx:key="{{index}}">
+        <!-- url="../components/{{item.url}}/{{item.url}}" -->
+        <view class="item {{index == 0 ? 'c_red': 'c_999'}}" bindtap="tapName" data-index="{{index}}">
+          <view class='flex flex-boxwrap itemHeight'>
+            <view class="itemIcon {{index== 0 ? 'itemIconFirst': ''}} {{index == dataSource.length-1? 'itemIconLast':''}}">
+              <image class='imageItem itemHeight' src="/images/order/logisticsRed@2x.png" wx:if="{{index == 0}}"> </image>
+               <image class='imageItem itemHeight' wx:else src="/images/order/logisticsH@2x.png"> </image>
+            </view>
+            <view class='contentItem itemHeight'>
+                <view class='contentAdds'>{{item.content}}</view>
+                <view class="itemTime">{{item.msgTime}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+  </view>
+
+</view>

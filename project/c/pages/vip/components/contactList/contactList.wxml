@@ -1,0 +1,26 @@
+<!--pages/vip/components/contactList/contactList.wxml-->
+<view class="component-friend-list">
+  <view class="address-list">
+     <view class="address-item" data-info="{{item}}" bindtap="checkHandle" wx:for="{{friendList}}" wx:key="this">
+      <!-- <image class="icon-check" src="{{item.ischeckd?'/images/im/yq_choose@3x.png':'/images/im/yq_choose_a@3x.png'}}"></image> -->
+      <image class="img" src="{{item.avatarUrl?item.avatarUrl:'https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/http://tmp/wx81b6a1343fac20fd.o6zAJsysIvXtFch540m2g7ak2Eoo.AqHaI6UggAW17f872cfd0dbbe504ee05813e4b93a08b.jpeg'}}"></image>
+      <view class="name">{{item.nickName}}</view>
+    </view>
+  </view>
+  <!-- 选中联系人弹框 -->
+  <view class="modalWrap" wx:if="{{showModal}}">
+      <view class="modalBox">
+          <view class="modalHeader">{{modalTitle}}</view>
+          <view class="modalContent">
+              <image src="{{checkedArr[0].avatarUrl}}"></image>
+              <view class="userName">{{checkedArr[0].nickName}}</view>
+          </view>
+          <view class="productInfo">【链接】{{productInfo}}</view>
+          <view class="modalBtns">
+              <view class="modalBtn btns_cancel" bindtap="cancelFn">{{cancelBtnTxt}}</view>
+              <view class="modalBtn btns_confirm " bindtap="confirmFn">{{confirmBtnTxt}}</view>
+          </view>
+          <view class="closeBtn" bindtap="closeModal"><image src="/images/im/close.png"></image></view>
+      </view>
+  </view>
+</view>

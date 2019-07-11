@@ -1,0 +1,174 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="page" wx:if="{{isLoading}}">
+  <view class="orderContainer">
+    <!-- 不支持配送 -->
+    <view class="noSupportInfo" wx:if="{{notSupport}}">{{noSupportInfo}}</view>
+    <view class="shippingAddress out_wrap">
+      <image class="location_detail" wx:if="{{addresslist !=''}}" src="/images/icon/location_detail.png"></image>
+      <view class="shippingAddressDetailWrap" bindtap="goAddress" wx:if="{{addresslist !=''}}">
+        <view class="consignee">
+          <text class="consigneeName">{{addresslist.consignee}}</text>
+          <text class="consigneeTel c_999">{{addresslist.consigneeMobile}}</text>
+        </view>
+        <view class="shippingAddressDetail c_777">{{addresslist.addProvince+addresslist.addCity+addresslist.addCounty+addresslist.addTown+addresslist.addDetail}}</view>
+        <image class="backRightPositon backRight" src="/images/order/back-right.png"></image>
+      </view>
+      <navigator wx:else class="shippingAddressNull flex c_333" hover-class="none" url="../../mine/address/newAddres/newAddress">
+        <image class="addressImg" src="/images/order/address-icon.png"></image>
+        <view>添加收货地址</view>
+        <image class="backRight" src="/images/order/back-right.png"></image>
+      </navigator>
+    </view>
+    <!-- 海外购 start -->
+    <view class="overseas" wx:if="{{rendarrTemp.isCrossBorder == 1}}">
+      <view class="overseas-column">
+        <view class="overseas-column-l IDNumberTxt">身份证号</view>
+        <view class="overseas-column-r">
+            <text wx:if="{{overseas.bIdNumber}}" bindtap="tabIdNumber" class="IDNumber">{{addresslist.idNumber}}</text>
+          <input wx:else class="IDNumberIpt" type="text" placeholder="因海关需要，请填写收货人身份证号" maxlength="18" bindinput="inputIdNumber" value="{{overseas.idNumber}}"></input>
+        </view>
+      </view>
+    </view>
+    <!-- 海外购 end -->
+    <view class="goodsInfoWrap out_wrap" wx:for="{{rendarrTemp.userChooseGoods}}" wx:key="{{index}}">
+      <view class="goodsList">
+        <block>
+          <view class="goodsInfo">
+            <view class="goodInfoContent flex">
+              <view class="goodImgContent">
+                <image src="{{item.qualityProduct.mainImagePath}}" class="goodImg"></image>
+                <view class="remnantInventory" wx:if="{{item.productStock<=10}}">仅剩{{item.productStock}}件</view>
+              </view>
+              <view class="goodTxetContent">
+                <view class="goodTxetName"><image wx:if="{{rendarrTemp.isCrossBorder == '1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image>{{item.qualityProduct.productName}}</view>
+                <view class="goodSubTitle" wx:if="{{item.qualityProduct.viceTitle}}">{{item.qualityProduct.viceTitle}}</view>
+                <view class="goodTxetPrice flex justify-between">
+                  <view class="goodTxetPriceWrap c_666"><text class=" goodTxetPriceNum c_ff30">￥{{item.qualityProduct.price}}</text>
+                    <text class="goodTxexOriginal textLine c_999" wx:if="{{item.virtualPrice}}">￥{{item.virtualPrice}}</text>
+                    <!-- <text class="rebate" wx:if="{{rendarrTemp.rebateStatus&& rendarrTemp.rebateStatus!='0' && item.rebates>0}}">￥{{item.rebates}}</text> -->
+                  </view>
+                  <view class="goodTxetNum c_777">×{{item.quantity}}</view>
+                </view>
+              </view>
+            </view>
+            <view class="sellerMessage flex">
+              <view class="sellerMessageText cell_0 c_999">买家留言:</view>
+              <input class='sellerMessageIpt' bindblur="bindTextAreaBlur" data-index="{{index}}" type='text' maxlength='30' placeholder="买家留言" placeholder-class="placeholderIpt"></input>
+            </view>
+            <view class="goodSubtotal">
+              <view class="notSupportBox">
+                <view class="notSupport" wx:if="{{item.errorCode && item.errorCode.length > 0}}">不支持配送</view>
+              </view>
+              <view class="goodSubTotalInfo">
+                <view class="totalNum">共计{{item.quantity}}件商品</view>
+                <view class="moneyNum"><text class="c_444">小计：</text>¥{{filter.toDecimal(item.quantity*item.qualityProduct.price)}} <text class="c_444">元</text></view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="orderSettlementInfo out_wrap">
+      <view class="coupons flex justify-between" bindtap='goCouponsPage'>
+        <view class="leftTxt c_333">优惠券</view>
+        <view class="rightTxt" >
+          <view class='c_ff30' wx:if="{{iCouponNum>0 && rendarrTemp.redBagValue}}">
+            -￥{{rendarrTemp.redBagValue}}<image class="redPacketReturn" src="/images/order/black_packet_return.png"></image>
+          </view>
+          <view wx:elif="{{iCouponNum>0}}">
+            不使用<image class="redPacketReturn" src="/images/order/black_packet_return.png"></image>
+          </view>
+          <view class='sxtNumNull' wx:else>暂无可用优惠券</view>
+        </view>
+      </view>
+      <view class="coupons justify-between flex" bindtap='goSxtPage' wx:if="{{mainSwitch.sxtInstalment == '1'}}">
+        <view class="leftTxt c_333">水象通</view>
+        <view class="sxtStatus rightTxt">
+        <view class="sxtNo" wx:if="{{iSxtNum>0 && (curCardList.length &&curCardList.length>0)}}"><text class='c_ff30'>-￥{{filter.toDecimal(deduction)}}</text><image class="redPacketReturn" src="/images/order/black_packet_return.png"></image></view>
+          <view class="sxtNum" wx:elif="{{iSxtNum>0}}">
+            <text>有<text class='c_red'>{{iSxtNum}}</text>张可用</text>
+            <image class="redPacketReturn" src="/images/order/black_packet_return.png"></image>
+          </view>
+          <view class="sxtNumNull" wx:else>暂无可用</view>
+          
+        </view>
+      </view>
+      <view class="flex justify-between waterelephantCart"></view>
+      <view class="rebatePrice flex justify-between" wx:if="{{cartPrice>0}}">
+        <view class="leftTxt c_333">活动优惠</view>
+        <view class="rightTxt c_ff30">-￥{{cartPrice}}</view>
+      </view>
+      <view class="rebatePrice flex justify-between" wx:if="{{settleIncome&&settleIncome>0}}">
+        <view class="leftTxt c_333">预估返利</view>
+        <view class="rightTxt">+￥{{settleIncome?settleIncome:0}}</view>
+      </view>
+    </view>
+    <view class="methodPayment flex justify-between out_wrap">
+      <view class="leftTxt c_333">支付方式</view>
+      <view class="rightTxt">
+        微信支付
+        <image class="wpay" src="/images/order/wei.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="paymentWrap flex justify-between">
+    <view class="paymentTotal">
+      实付款：
+      <text class="c_red"><text class="smallText">￥</text>{{(totalPrice - rendarrTemp.redBagValue - cartPrice)>0?filter.toDecimal(totalPrice - rendarrTemp.redBagValue - cartPrice):0}}</text>
+    </view>
+    <view class="paymentBtn" bindtap="confirmorder">付款</view>
+  </view>
+  <!-- 商品变动弹窗 -->
+  <view class="goodsChangeMask" wx:if="{{errorlistFlag}}">
+    <view class="goodsChangeCon">
+      <!-- <view class="goodsChangeTitle c_333">以下商品价格有变动或暂时无货</view> -->
+      <scroll-view class="goodsChangeList" scroll-y="true">
+        <block wx:for="{{errorlist.errorData}}" wx:key="{{index}}">
+          <view class="goodsChangeItem">
+            <image src="{{item.mainImagePath}}" class="goodsChangeImg"></image>
+            <view class="goodsChangeInfo">
+              <view class="goodsChangeName c_333">
+                {{item.productName}}
+              </view>
+              <view class="goodsChangeNum c_999" wx:if="{{item.errorCode == 2005}}">
+                <text class="c_999">×{{item.quantity}}</text>（比加入时增加了<text class="price_color">￥{{filter.toDecimal(item.price - item.newPrice)}}</text>元）
+              </view>
+              <view class="goodsChangeNum c_999" wx:elif="{{errorlist.newPeopleActivityNo == item.fromNo && item.errorCode == 2008}}">水象宝宝，你已经使用过一次新人特权啦~</view>
+              <view class="goodsChangeNum c_999" wx:elif="{{item.errorCode == 2009}}">商品已经售罄</view>
+              <view class="goodsChangeNum c_999" wx:else><text class="c_999">×{{item.quantity}}</text>({{item.errorMessage}})</view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <navigator class="returnShopCart" open-type="switchTab" hover-class="none" url="../../shopCart/shopCart">确定</navigator>
+    </view>
+  </view>
+  <!-- 超出配送范围 -->
+  <view class="beyondScoped" catchtouchmove="return" wx:if="{{noSupportModel}}">
+    <view class="maskBg" catchtouchmove="return" catchtap="beyondCancel"></view>
+    <view class="beyongCon">
+      <view class="beyongTitle c_444">提示</view>
+      <view class="beyongInfo">亲，以下商品超出配送范围，请重新修改后提交哦~</view>
+      <scroll-view class="beyondScopedList" scroll-y="true">
+        <block wx:for="{{ notSupportArr }}" wx:key="{{index}}">
+          <view class="scopedItem">
+            <view class="scopedImg">
+              <image src="{{item.qualityProduct.mainImagePath}}"></image>
+            </view>
+            <view class="scopedInfo">
+              <view class="scopedName c_444">{{item.qualityProduct.productName}}</view>
+              <view class="scopedPrice">￥{{item.qualityProduct.price}}</view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="beyondBtn">
+        <view class="btn cancel" bindtap="beyondCancel">我知道了</view>
+        <view class="btn sure" bindtap="changeBeyond">去修改</view>
+      </view>
+    </view>
+  </view>
+  <!-- 数字键盘 start -->
+  <keyboard-model wx:if="{{keyboardFlag}}" bind:verificationFn="getVerification" bind:closeKeyboard="closeKeyboard" bind:sxtPrePay="sxtAdvancePay" id="keyboard"></keyboard-model>
+  <!-- 数字键盘 end -->
+</view>

@@ -1,0 +1,29 @@
+<view class="page">
+    <!-- 订单编号 快递信息 start -->
+    <view class="logistics">
+        <view class="logistics-title">物流详情</view>
+        <view class="logistics-order">
+            <view class="logistics-order-column logistics-order-id">售后单号：{{orderId}}</view>
+            <view class="logistics-order-column logistics-order-company">
+                快递公司：{{logisticsOrder.express}}
+            </view>
+            <view class="logistics-order-column logistics-order-num">
+                物流单号：{{logisticsOrder.logisticCode}}
+            </view>
+        </view>
+    </view>
+    <!-- 订单编号 快递信息 end -->
+    <!-- 进度详情 start -->
+    <view class="logistics-detail">
+        <block wx:for="{{logisticsDetail}}" wx:key="{{index}}">
+            <view class="logistics-detail-column {{index =='0' && logisticsDetail.length == 1?'first':''}}">
+                <view class="logistics-detail-column-label"></view>
+                <view class="logistics-detail-column-content">
+                    <view class="logistics-detail-column-content-text c_333">{{item.content}}</view>
+                    <view class="logistics-detail-column-content-time c_999">{{item.msgTime}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 进度详情 end -->
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "promotion-component": "/components/promotion-component/promotion-component"
+  }
+}

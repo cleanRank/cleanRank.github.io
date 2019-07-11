@@ -1,0 +1,51 @@
+<view class='container' v-if="{{isShow}}">
+<!-- 支付成功 s -->
+  <block wx:if="{{payStatus==1 && isShow}}">
+    <image src='/images/order/paysuccess.png' class='pay_status'></image>
+    <text class='pay_status_txt'>订单支付成功</text>
+    <text class='pay_money'>{{totalMoney}}元</text>
+    <text class='fahtz_txt c_777'>我们将尽快为您发货，请保持手机畅通</text>
+    <view class='flex pay_status_btn'>
+      <view bindtap='goOrderPage' class='order_btn'>查看订单</view>
+      <view class='goIndex_btn' bindtap='goIndex'>去首页</view>
+    </view>
+  </block>
+  <block wx:if="{{payStatus==2 && !isShow}}">
+    <image src='/images/order/payfail.png' class='pay_status'></image>
+    <text class='pay_status_txt'>订单支付失败</text>
+    <text class='fahtz_txt c_777 mt115'>快去看看吧</text>
+    <view class='flex pay_status_btn'>
+      <view bindtap='goOrderPage' class='order_btn'>查看订单</view>
+      <view class='goIndex_btn' bindtap='goIndex'>去首页</view>
+    </view>
+  </block>
+</view>
+<view class='resultWrap' wx:if="{{payStatus==1 && isShow && showLay && coupons && coupons.length>0}}">
+  <view class='result_con'>
+     <view class='result_top'>
+        <image src="{{activityImg}}"></image>
+        <view bindtap='close_result' class='close'>
+           <image  src='/images/icon/close_re.png'></image>
+        </view>
+     </view>
+     <view class='result_bom'>
+       <view class='result_scroll'>
+          <view class='result_item' wx:for="{{coupons}}" wx:key="{{index}}">
+             <view class='result_left'>
+                 <view class='price'>
+                    <text>￥</text>{{item.parValue}}
+                 </view>
+                 <view class='re_name'>{{item.showName}}</view>
+                 <view class='re_date'>{{item.starTime}}至{{item.endTime}}</view>
+             </view>
+             <view class='result_right'>已入账</view>
+             <image class='result_bg' src='/images/order/result_bg.png'></image>
+          </view>
+       </view>
+     </view>
+     <view class='result_lay'></view>
+     <view class='result_txt'>
+      您有一个下单奖励，优惠券已放入您的账户中，请在“我的-优惠券”查看
+     </view>
+  </view>
+</view>

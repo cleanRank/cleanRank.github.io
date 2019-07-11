@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="shareSwiperWrap">
+    <view class="shareSwiperCon">
+      <swiper class="shareSwiper" indicator-dots="{{false}}" autoplay="{{false}}" interval="{{4000}}" duration="{{500}}" current="0" bindchange="onSlideChangeEnd">
+        <block wx:for="{{sharePics}}" wx:key="{{index}}">
+          <swiper-item class="shareImgCon">
+            <image src="{{item}}" class="shareImg slide-image"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class='indicatorDots'>
+      <block wx:for="{{sharePics}}" wx:key="{{index}}">
+        <view class="dot {{index == current ? 'active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+  <view class="shareBtnAll">
+    <view class="shareBtn">
+      <image class="shareBtnImg" src="/images/icon/weixin.png"></image>
+      <text class="shareBtnTxt">分享给好友</text>
+      <button class='shareBtnOpcity' open-type='share' data-type="1" hover-class='none'></button>
+    </view>
+  </view>
+</view>

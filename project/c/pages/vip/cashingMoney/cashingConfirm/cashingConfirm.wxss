@@ -1,0 +1,38 @@
+.formList .formItem {
+  height: 90rpx;
+  line-height: 88rpx;
+  margin-left: 24rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+}
+.formList .formItem:last-of-type{
+  border-bottom: none;
+}
+.horizontalLine{
+  height: 10rpx;
+  background: #FBFBFB;
+}
+.formItem .formItemLable{
+  font-size: 28rpx;
+  width: 112rpx;
+  margin-left: 2rpx;
+  margin-right: 40rpx; 
+}
+.formItem .formItemTxt{
+  font-size: 28rpx;
+}
+.cashingMoneyNum{
+  color: #FF3030;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding-right: 24rpx;
+}
+.cashNote{
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 28rpx;
+  padding-top: 16rpx;
+}
+.cashSubmit{
+  font-size: 30rpx;
+  margin-top: 100rpx;
+}

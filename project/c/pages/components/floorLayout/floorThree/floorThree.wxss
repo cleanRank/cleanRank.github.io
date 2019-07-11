@@ -1,0 +1,29 @@
+@import "../../../index/wxss/navigation.wxss";
+@import "../../../index/wxss/seckill.wxss"; 
+@import "../../../index/wxss/Firstbanner.wxss";
+@import "../../../../app.wxss";
+.floorView{}
+.itemBox{
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
+}
+.floorBox{
+  /* padding-bottom: 15rpx; */
+  overflow: hidden;
+}
+.mt16{
+  margin-top: 16rpx;
+}
+.mb30{
+  margin-bottom: 30rpx;
+}
+.haveBg{
+  padding-top:95rpx;
+  background-size: 100% 416rpx;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+.productLabel{
+  overflow: hidden
+}

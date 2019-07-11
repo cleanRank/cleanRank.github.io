@@ -1,0 +1,76 @@
+/* pages/help/searchHelp/searchHelp.wxss */
+/* .page{
+    background: #f4f4f4;
+} */
+.searchHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+    margin:0 auto;
+    background:#fff;
+    padding:0 22rpx;
+    box-sizing:border-box;
+}
+.searchArea{
+    width: 100%;
+}
+.scrollView{
+    font-size: 26rpx;
+    color: #444;
+    background: #fff;
+    padding: 0 24rpx;
+    box-sizing: border-box;
+}
+.keyWordSection{
+    background: #fff;
+    padding: 0 24rpx 0;
+}
+.noGoodsPlane{
+    padding-top: 300rpx;
+}
+.noGoodsPlane image{
+    width: 280rpx;
+    height: 300rpx;
+    display: block;
+    margin: 0 auto;
+}
+.noGoodsPic .noGoodsTxt{
+    font-size: 28rpx;
+    color: #333;
+    line-height: 1;
+    display: block;
+    text-align: center;
+}
+.searchComplete{
+    font-size: 26rpx;
+    color: #444;
+    background: #fff;
+    padding: 0 24rpx;
+}
+.searchCom_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height:37rpx;
+    padding:24rpx 0;
+    border-bottom: 1px solid #F4F4F4;
+}
+.quesCon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.rightArrow{
+    width: 24rpx;
+    height: 24rpx;
+}
+.whiteMask {
+    background: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}

@@ -1,0 +1,22 @@
+
+{
+  "component": true,
+  "usingComponents": {
+    "floor-seven": "../floorLayout/floorSeven/floorSeven",
+    "floor-nine": "../floorLayout/floorNine/floorNine",
+    "floor-one": "../floorLayout/floorOne/floorOne",
+    "floor-five": "../floorLayout/floorFive/floorFive",
+    "floor-two": "../floorLayout/floorTwo/floorTwo",
+    "floor-four": "../floorLayout/floorFour/floorFour",
+    "floor-six": "../floorLayout/floorSix/floorSix",
+    "floor-three": "../floorLayout/floorThree/floorThree",
+    "floor-twelue": "../floorLayout/floorTwelue/floorTwelue",
+    "floor-ten": "../floorLayout/floorTen/floorTen",
+    "floor-fourteen": "../floorLayout/floorFourteen/floorFourteen",
+    "floor-thirteen": "../floorLayout/floorThirteen/floorThirteen",
+    "floor-eleven": "../floorLayout/floorEleven/floorEleven",
+    "floor-fifteen": "../floorLayout/floorFifteen/floorFifteen",
+    "floor-sixteen": "../floorLayout/floorSixteen/floorSixteen",
+    "floor-seventeen": "../floorLayout/floorSeventeen/floorSeventeen"
+  }
+}

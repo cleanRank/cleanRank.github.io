@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "promotion-component": "/components/promotion-component/promotion-component",
+    "good-comments": "goodComments/goodComments"
+  }
+}

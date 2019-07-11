@@ -1,0 +1,30 @@
+<!--pages/vip/ImSearchPage/ImSearchPage.wxml-->
+<view class='searchWrap'>
+  <!-- 搜索框头部分 -->
+  <view class='searchHeader'>
+    <view class='searchArea'>
+      <search-box
+        bind:searchFn="searchFn"
+        bind:getSearchWord="getSearchWord"
+        define-word='{{defineWord}}'
+        id="searchCom"
+      />
+    </view>
+    <text class='searchBtn' bindtap='searchFn'>搜索</text>
+  </view>
+  <!-- 搜索结果 -->
+  <view class="showResult" wx:if="{{showResult}}">
+        <view class="friendResult" wx:if="{{friendResult.length > 0}}">
+            <view class="friendItem" wx:for="{{friendResult}}" wx:index="{{index}}" data-info="{{item}}" bindtap="chatEvent" wx:key="index">
+                <image src="{{item.avatarUrl}}"></image>
+                <view class="friendName">{{item.nickName}}</view>
+            </view>
+        </view>
+        <!-- 无数据缺省 -->
+        <view class="noData" wx:else>
+            <image src="/images/noData/no_data.png"></image>
+            <view class="noDataInfo">未找到相关用户～</view>
+        </view>
+  </view>
+  
+</view>

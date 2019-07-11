@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="searchHeader">
+    <view class="searchArea">
+      <search-box 
+        bindtap="goSearchPage"
+        define-word='{{hotword}}'
+        define-disable="{{true}}"
+      ></search-box>
+    </view>
+  </view>
+
+  <view class="conWrap">
+    <block wx:for="{{helpList}}" wx:key="{{index}}" wx:if="{{item && item.length>0}}">
+        <view class="helpTitle c_444">
+          {{item[0].title}}
+        </view>
+        <view class="conList hotQuestionList">
+          <block wx:for="{{item}}" wx:key="{{ind}}">
+            <view class="questionItem" bindtap="goQuestion" data-item="{{item}}">
+              <view class="helpItem c_444" wx:if="{{item.classifyName}}">{{(index + 1)+'.'+item.classifyName}}</view>
+              <view class="helpItem c_444" wx:else>{{(index + 1)+'.'+item.question}}</view>
+              <image class="rightArrow" src="/images/helpCenter/icon-rightArrow.png"></image>
+            </view>
+          </block>
+        </view>
+    </block>
+  </view>
+</view>

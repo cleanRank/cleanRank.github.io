@@ -1,0 +1,59 @@
+<import src="../../detail/wxParse/wxParse.wxml" />
+<import src="/pages/noData/noData_template.wxml" />
+<wxs module="numberUtil" src="../../../utils/numberUtil.wxs"></wxs>
+<view wx:if="{{ifHaveData}}">
+  <template is="nodata" data="{{nodataList}}" />
+  <view class="btnCom">{{nodataList.btnTxt}}</view>
+</view>
+<view class='page {{promotionFlag?"overClass":""}}'>
+<view class="goodSwiperWrap">
+  <swiper class="goodSwiper" current="{{goodSwiper.curr}}" bindchange="goodSwiperChang">
+      <block wx:for="{{articleCon.discoveryArticleImgList}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.image}}" class="slide-image" width="100%" />
+        </swiper-item>
+      </block>
+  </swiper>
+  <view class="goodSwiperDot" wx:if="{{articleCon}}">
+    <text class="goodSwiperNum">{{goodSwiper.index}}/{{articleCon.discoveryArticleImgList.length}}</text>
+  </view>
+</view>
+<view class='header'>
+    <view class='find_top avator'>
+      <image src='{{articleCon.avatar}}'></image>
+    </view>
+    <view class='find_top find-name'>
+      <view class='find_txt c_444'>{{articleCon.userName}}</view>
+      <view class='time c_999'>{{articleCon.releaseTime}}</view>
+    </view>
+    <image class='share' wx:if="{{articleCon}}" src='/images/icon/share.png' bindtap='getShare'></image>
+</view>
+<view class='detail_con'>
+    <view class='detail_tit c_444'><text>{{articleCon.title}}</text></view>
+    <view class='detail_txt c_444'>
+       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+</view>
+<view class='detail_list' wx:if="{{articleCon.discoveryArticleProductList&&articleCon.discoveryArticleProductList.length>0}}">
+  <view class='find_con_detail' wx:for="{{articleCon.discoveryArticleProductList}}" wx:key="detail_pro" catchtap='proDetail' data-info="{{item}}">
+    <image class='saveno' wx:if="{{item.productStock==0}}" src='/images/icon/saveno.png'></image>
+    <image src='{{item.thumbnail}}'></image>
+    <view class='find_con_detail_info'>
+        <view class='find_con_detail_tit c_444'>{{item.productName}}</view>
+        <view class='find_con_detail_price'>
+          <view class='detail_price_left'>
+              ￥<text>{{item.price}}</text>
+              <text class='delete c_999' wx:if="{{item.marketingPrice && item.isActivity==1}}">￥{{item.marketingPrice}}</text>
+          </view>
+          <view class='detail_price_right'>
+              立即购买
+          </view>
+        </view>
+    </view>
+  </view>
+</view>
+<!-- 使用推广组件 -->
+<promotion-component id="promotion" promotion-data="{{promotionData}}" bind:promotionClose="promotionClose" wx:if="{{promotionFlag}}"></promotion-component>
+  <!-- 返回首页 -->
+<navigator wx:if="{{backFlag =='1'}}" class="backHome" url='/pages/index/index' open-type="switchTab" hover-class="none">水象首页</navigator>
+</view>

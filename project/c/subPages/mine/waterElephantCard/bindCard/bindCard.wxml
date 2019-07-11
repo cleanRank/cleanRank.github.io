@@ -1,0 +1,17 @@
+<view class="page">
+  <view class='page-card'>
+    <image src="/images/card/card_bg.png"></image>
+    <input type="text" placeholder="请输入水象通卡密" maxlength="19" data-name="cardNo" name="cardNo" bindinput="changeVal" bindconfirm="changeVal" adjust-position="false"></input>
+  </view>
+  <view class='btn' bindtap="bindcard">绑定新卡</view>
+
+  <!-- 绑卡成功弹框 -->
+  <view class="msgBox" wx:if="{{showMsgBox}}">
+    <view class="msgBox-content">
+      <view class="msgBox-content-head">恭喜你</view>
+      <image class="msgBox-content-img" src="/images/card/info.png"></image>
+      <view class="msgBox-content-msg">水象通绑定成功，您可在结算时使用</view>
+      <view class="msgBox-content-btn" bindtap="hideMsgBox">我知道了</view>
+    </view>
+  </view>
+</view>

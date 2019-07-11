@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "floor-component": "../../components/floorComponent/floor-component",
+    "promotion-component": "../../../components/promotion-component/promotion-component"
+  }
+}

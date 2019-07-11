@@ -1,0 +1,15 @@
+    <wxs module="numberUtil" src="../../../../utils/numberUtil.wxs"></wxs>
+    <view class="floorBox packsView {{_item.floorType != packsType ? 'needHide' :'needShow'}} " style="padding-top:15rpx">
+      <view class='packs' wx:for="{{_item.listFloorDetail[0].prudouct}}" wx:key="unique7" bindtap="productClick" data-info="{{item}}">
+        <image mode='widthFix' class='packsImage' src="{{item.proImage}}"></image>
+        <view class='packsTitle'>
+           <image wx:if="{{item.isCrossBorder=='1'}}" src="/images/icon/overseas-label.png" class="overseas-label"></image>
+           <text class='packsTitleText'>{{item.proName}}</text>
+        </view>
+        <view class="priceBuy">
+          <text class='proprice proDuble' wx:if="{{item.productStock}}"><text class="smallBefore">￥</text>
+          <text>{{item.isActivity == '1'? numberUtil.numberFormat(item.activityPrice):numberUtil.numberFormat(item.price)}}</text></text>
+          <text class='buyPacks' data-status="1" catchtap="putShopCartOrBuy" data-info="{{item}}">购买</text>
+        </view>
+      </view>
+    </view>

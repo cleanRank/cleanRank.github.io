@@ -1,0 +1,146 @@
+/* pages/order/order.wxss */
+
+.page {
+  overflow: hidden;
+  /* background-color: yellow; */
+}
+
+.order_title_tab {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.order_item{
+  font-size: 28rpx;
+  color: #777777;
+  position: relative;
+}
+.order_item_a{
+  color: #333;
+}
+.order_item_a::after{
+  content: '';
+  background: #FD455F;
+  position: absolute;
+  width: 50%;
+  height: 4rpx;
+  bottom: 0;
+  left: 25%;
+}
+.line_box{
+  height: 10rpx;
+  width: 100%;
+  background:  #FBFBFB;
+}
+/* 列表 */
+.scrollContent {
+  position: absolute;
+  height: calc(100% - 90rpx);
+}
+.lisetContainer {
+  background-color: #f5f5f5;
+}
+
+.marginTop {
+  background-color: #fff;
+}
+.itemState{
+  height: 78rpx;
+  line-height: 78rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+}
+.priceSize {
+  font-size: 36rpx;
+  padding-top: 22rpx;
+}
+
+.goodsCount {
+  text-align: right;
+}
+.status_btn_wrap{
+border-top: 1rpx solid #E2E2E2;
+}
+.buttonPadding {
+  font-size: 28rpx;
+  border: 1rpx solid red;
+  margin: 24rpx 12rpx;
+  height: 52rpx;
+  width: 180rpx;
+  border-radius: 26rpx;
+  line-height: 52rpx;
+  text-align: center;
+  color: #FD455F;
+}
+.showOrder{
+  border-color: #777;
+  color: #777;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.lastItem {
+  background-color: #FD455F;
+  color: #fff;
+}
+
+
+.productContent {
+  background: #fff;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid #E2E2E2;
+}
+.orderImageCon {
+  border: 1rpx solid #E2E2E2;
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 16rpx;
+}
+.orderImage {
+  width: 160rpx;
+  height: 160rpx;
+}
+.titleRow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 30rpx;
+}
+.titleRowText{
+  vertical-align: middle;
+}
+.skuParameters_font{
+  font-size: 26rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 10rpx 0 22rpx;
+}
+.contentMarginTop{
+  font-size: 36rpx;
+}
+.subtitleAbsolute {
+ float: right;
+}
+.order_del{
+  position: relative;
+  width: 36rpx;
+  height: 36rpx;
+  margin-top: 22rpx;
+  padding-left: 20rpx;
+  margin-left: 20rpx;
+}
+.order_del::before{
+  position: absolute;
+  content: '';
+  width: 2rpx;
+  height: 24rpx;
+  background: #d8d8d8;
+  left: 0;
+  top: 6rpx;
+}
+.order_del image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}

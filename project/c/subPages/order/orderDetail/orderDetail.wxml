@@ -1,0 +1,115 @@
+<!-- pages/order/orderDetail/orderDetail.wxml -->
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="orderDetail_wrap">
+  <view class='order_status_wrap'>
+    订单状态:
+    <block wx:if="{{dataSource.orderStatus==4&&dataSource.hasComment==1}}">已完成</block>
+    <block wx:else>{{orderStatusString[dataSource.orderStatus]}}</block>
+  </view>
+  <view class='orderDeitalPer' wx:if="{{dataSource.productType>100}}">
+    <view class='xn_order'>
+      {{dataSource.productType==101 || dataSource.productType==103?'充值号码：' + dataSource.mobile:'接收短信号码：' + dataSource.mobile}}
+    </view>
+  </view>
+  <!-- 地址 -->
+  <view class='orderDeitalPer' wx:else>
+    <text class='perpadding fontSize15'>{{dataSource.consignee}}</text>
+    <text>{{dataSource.consigneeMobile}}</text>
+    <view class='orderDeitalAddress perpadding fontSize14 c_666 titleRow2'>
+      {{dataSource.addProvince + dataSource.addCity+dataSource.addCounty+dataSource.addTown+dataSource.addDetail}}
+    </view>
+  </view>
+  <block wx:for="{{listOrder}}" wx:key="{{index}}">
+    <view class='productContent flex' bindtap="orderDetialClick" data-index="{{index}}">
+      <view class='orderImageCon cell_0'>
+        <image class='orderImage' src='{{item.productImage}}'></image>
+      </view>
+      <view class='orderdetailTitle cell_1'>
+        <view class='titleRow c_333'><image wx:if="{{item.isCrossBorder == '1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image><text class="titleRowText">{{item.productName}}</text></view>
+        <view class='c_777 titleRow skuParameters_font'>{{item.skuParameters}}</view>
+        <view class='c_333 contentMarginTop'>
+          <text class='c_red'>￥{{item.productPrice}}</text>
+          <text class='c_777 subtitleAbsolute'>x{{item.buycount}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='bottomMoney flex'>
+      <view class='cell_0 c_999'>买家留言</view>
+      <view class='cell_1 c_444 remark_txt'>{{item.remark?item.remark:'未填写'}}</view>
+    </view>
+  </block>
+  <!-- 金额 -->
+  <!-- 商品返利信息 -->
+  <view class='orderDeitalStyle'>
+    <view class='flex info_p'>
+      <text class='cell_0 info_left'>共{{count}}件商品</text>
+      <text class='cell_1 info_rig'>小计￥{{subtotal}}</text>
+    </view>
+    <view class='flex info_p'>
+      <text class='cell_0 info_left'>运费</text>
+      <text class='cell_1 info_rig'>包邮</text>
+    </view>
+    <view class='flex info_p' wx:if="{{dataSource.redbagValue>0}}">
+      <text class='cell_0 info_left'>优惠券</text>
+      <text class='cell_1 info_rig c_red'>-￥{{dataSource.redbagValue}}</text>
+    </view>
+    <view class='flex info_p' wx:if="{{dataSource.sxtAmount && dataSource.sxtAmount>0 && (sxtInstalment >0)}}">
+      <text class='cell_0 info_left'>水象通</text>
+      <text class='cell_1 info_rig c_red'>-￥{{dataSource.sxtAmount}}</text>
+    </view>
+    <view class='flex info_p' wx:if="{{dataSource.actDiscountAmount}}">
+      <text class='cell_0 info_left'>活动优惠</text>
+      <text class='cell_1 info_rig c_red'>-￥{{dataSource.actDiscountAmount}}</text>
+    </view>
+    <view class='flex info_p' wx:if="{{dataSource.rebateStatus && dataSource.rebateStatus!='0'}}">
+      <text class='cell_0 info_left'>预估返利</text>
+      <text class='cell_1 info_rig info_rebate'>￥{{dataSource.rebate}}</text>
+    </view>
+    <view class='flex info_p'>
+      <text class='cell_0 info_left'>实付款</text>
+      <text class='cell_1 info_rig'>￥{{dataSource.actualAmount}}</text>
+    </view>
+  </view>
+  <!-- 订单信息 -->
+  <view class='orderDeitalStyle orderInfo'>
+    <view class='flex info_p'>
+      <text class='cell_0 info_left c_999'>订单编号</text>
+      <text class='cell_1 c_444 info_rig orderIdTxt'>
+        <text selectable="{{dataSource.orderStatus == 3 ||(dataSource.orderStatus==4&&dataSource.hasComment==1)}}">{{dataSource.orderStatus==1 && listOrder.length>1?(dataSource.mergeOrder||dataSource.orderId):dataSource.orderId}}</text></text>
+    </view>
+    <view class='flex info_p'>
+      <text class='cell_0 info_left c_999'>下单时间</text>
+      <text class='cell_1 c_444 info_rig'>{{dataSource.orderTime}}</text>
+    </view>
+    <view class='flex info_p' wx:if="{{(dataSource.orderStatus==2||dataSource.orderStatus==3||dataSource.orderStatus==4) && dataSource.payTime}}">
+      <text class='cell_0 info_left c_999'>支付时间</text>
+      <text class='cell_1 c_444 info_rig'>{{filter.dateFormat(dataSource.payTime)}}</text>
+    </view>
+  </view>
+  <!-- 各种状态按钮 -->
+  <!-- start 订单状态
+    orderStatus=1-待支付 
+    orderStatus=2-待发货
+    orderStatus=3-待收货
+    orderStatus=4-已完成
+    orderStatus=5-已取消，24小时未付款
+    orderStatus=6-用户拒收 
+  end 订单状态 -->
+  <view class='flex justify-end subtitleAbsoluteBottom' wx:if="{{dataSource.orderStatus==1 || (dataSource.orderStatus==3 && (dataSource.productType&&dataSource.productType<100))||dataSource.orderStatus==4 || dataSource.orderStatus==5||dataSource.orderStatus==6||dataSource.orderStatus==8||dataSource.orderStatus==9||dataSource.orderStatus==12 || dataSource.orderStatus==2}}">
+    <view class="buttonPadding" wx:if="{{dataSource.orderStatus==1 || (dataSource.orderStatus==2 && dataSource.canAfterSale && dataSource.canAfterSale=='1')}}" bindtap="cancelOredrClick">
+      取消订单
+    </view>
+    <view class='buttonPadding lastItem' wx:if="{{dataSource.orderStatus==1}}" bindtap="wxpay">
+      去付款
+    </view>
+    <view class='buttonPadding' wx:if="{{(dataSource.orderStatus==3 || dataSource.orderStatus==4) && (dataSource.productType&&dataSource.productType<100)}}" bindtap='checkLogistics'>
+      查看物流
+    </view>
+    <block wx:if="{{dataSource.orderStatus==4 || dataSource.orderStatus==5||dataSource.orderStatus==6||dataSource.orderStatus==8||dataSource.orderStatus==9||dataSource.orderStatus==12}}">
+      <view wx:if="{{(dataSource.orderStatus==4 || dataSource.orderStatus==6) && dataSource.canAfterSale && dataSource.canAfterSale=='1'}}" class="buttonPadding" bindtap='afterSales'>
+        申请售后
+      </view>
+      <view class='buttonPadding lastItem' bindtap='orderDetialClick' data-index="0">再次购买</view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,162 @@
+.goodCommentsWrap {}
+
+.goodCommentsTit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  color: #333;
+  font-size: 32rpx;
+  height: 94rpx;
+  margin: 0 24rpx;
+  position: relative;
+}
+.goodCommentsList{
+  position: relative;
+  padding-top: 1px;
+}
+.goodCommentsTit:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: #d8d8d8;
+}
+
+.goodCommentsNum {
+  position: relative;
+  padding-left: 16rpx;
+}
+
+.goodCommentsNum:before {
+  content: '';
+  width: 6rpx;
+  height: 30rpx;
+  border-radius: 3rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #FD455F;
+}
+
+.goodCommentsAll {
+  padding-right: 22rpx;
+  color: #FD455F;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAYAAAC58NwRAAAA80lEQVQ4T5XT20oEMQwG4L/Vt1RElGkK3giKIot4IyIiCq44JhHR1/JhEunSkV2dXae96+Fr0jYNAMDMc3f/yjnPS39TC8z8DOAIgAM4JqKn/wABeAEQKzohosd1KJQJEenc/bWgEEKJdJpSehhDC1Caqh6amSyhs5TS/W/0A2qkA3fXml4ZOieiu2W0Airad/c3AFt14QUR3Q7oD6jp7ZnZ+4BijLOu627K3CioaNfMPgbk7pc55+u1oKC+73dijAVtL3YP4WoK+ByibASqOj0lVV05NIAZEY0fWkSmX6uITH+4ptJoKj5mbivv5g/U+kW/AShgmK1RA8TYAAAAAElFTkSuQmCC") no-repeat right center;
+  background-size: 12rpx 20rpx;
+  margin-right: 6rpx;
+}
+
+.goodCommentsText{
+  color:#999;
+}
+
+.goodCommentsList .line {
+  height: 20rpx;
+  background: #f4f4f4;
+}
+
+.goodCommentsItem {
+  margin: 24rpx 24rpx 0;
+}
+
+.goodCommentsItem .userInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.userInfoImg {
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.userInfoName {
+  color: #333;
+  font-size: 24rpx;
+  margin-left: 12rpx;
+  max-width: 300rpx;
+}
+
+.goodSpu, .goodbuyTime {
+  color: #999;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  margin-bottom: 4rpx;
+}
+
+.goodbuyTime {
+  margin-bottom: 16rpx;
+}
+
+.goodCommentsDetail {
+  margin-bottom: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.goodCommentsImgWrap {
+  margin-bottom: 8rpx;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.goodCommentsImg {
+  width: 226rpx;
+  height: 226rpx;
+  border-radius: 8rpx;
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.goodCommentsImg:nth-child(3n+0) {
+  margin-right: 0;
+}
+
+.goodCommentsImgWrap .goodCommentsImg:first-of-type {
+  margin-left: 0;
+}
+
+.commentBackWrap {
+  padding: 16rpx 24rpx;
+  border-radius: 6rpx;
+  background: #f4f4f4;
+  font-size: 28rpx;
+  margin-bottom: 24rpx;
+}
+
+.commentBackTxt {
+  color: #333;
+}
+
+.commentBackCon {
+  color: #999;
+}
+.startWrap{
+  display: flex;
+  align-items: center;
+  margin-left: 24rpx;
+}
+.start{
+  width: 24rpx;
+  height: 23rpx;
+  display: block;
+  margin-right: 12rpx;
+}
+.goodCommentsListNull{
+  height: 113rpx;
+  line-height: 113rpx;
+  color: #999;
+  font-size: 24rpx;
+  text-align: center
+}

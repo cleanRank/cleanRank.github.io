@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "contact-list": "/pages/vip/components/contactList/contactList"
+  },
+  "navigationBarTitleText":"选择联系人",
+  "onReachBottomDistance":50
+}

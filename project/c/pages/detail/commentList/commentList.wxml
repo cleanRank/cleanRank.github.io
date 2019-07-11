@@ -1,0 +1,45 @@
+<view class="page">
+  <view class="page-head">
+    <view class="page-head-hp">好评度{{feedbackRate}}</view>
+    <view class='page-head-box'>
+      <view class="page-box page-head-box-left {{aIndex==0?'active':''}}" data-index="0" bindtap="changeTab">全部({{sumCount}})</view>
+      <view class="page-box page-head-box-right {{aIndex==1?'active':''}}" data-index="1" bindtap="changeTab">有图({{nongraphicalCount}})</view>
+      <view class="page-box page-head-box-right {{aIndex==2?'active':''}}" data-index="2" bindtap="changeTab">最新</view>
+    </view>
+  </view>
+
+  <scroll-view class='page-content' scroll-y bindscrolltoupper="upper" bindscrolltolower="lower"  wx:if="{{list.length>0}}">
+    <view class="page-content-item" wx:for="{{list}}" wx:for-index="bindIndex" wx:key="bindIndex">
+      <view class="page-content-item-name">
+        <image class="head" src="{{item.userImg|| defaultImg}}"></image>
+        <text>{{item.nickName}}</text>
+        <view class="star">
+          <block wx:for="{{item.productCommentGrade*1}}" wx:for-item="item1" wx:key="{{index}}">
+            <image src="/images/order/star1.png"></image>
+          </block>
+          <block wx:if="{{item.productCommentGrade*1<5}}" wx:for="{{5-item.productCommentGrade*1}}" wx:for-item="item1" wx:key="index">
+            <image src="/images/order/star2.png"></image>
+          </block>
+        </view>
+      </view>
+      <view class="page-content-item-title1">
+        <view>{{item.skuParameters}}</view>
+        <view>购买时间:  {{item.orderTime}}</view>
+      </view>
+      <view class="page-content-item-title2">{{item.productCommentContent}}</view>
+      <view class="page-content-item-img">
+        <block wx:for="{{item.picArr}}" wx:for-item="item1" wx:for-index="bindIndex1" wx:key="bindIndex1">
+          <image src="{{item1}}" bindtap="previewImage" data-index="{{bindIndex}}" data-index1="{{bindIndex1}}"></image>
+        </block>
+      </view>
+      <view class="page-content-item-reply" wx:if="{{item.content}}">
+        <text>掌柜回复：</text>{{item.content}}
+      </view>
+    </view>
+  </scroll-view>
+  <view class="hasNoData" wx:if="{{showNoData}}">
+    <image src="/images/detail/hasnomsg.png"></image>
+    <view>还没有评论哦～</view>
+  </view>
+
+</view>

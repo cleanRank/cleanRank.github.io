@@ -1,0 +1,27 @@
+<view class="goodList">
+  <view class="goodWrap" bindtap="goodDetail" data-good="{{good}}">
+    <image class="goodImg" wx:if="{{floorType == '7'}}" src="{{good.picUrl}}"></image>
+    <image class="goodImg" wx:else src="{{good.proImage}}"></image>
+    <image wx:if="{{floorType == '7' && good.productStock==0}}" src="/images/icon/saveno.png" class="saveno" />
+    <image wx:if="{{floorType == '9' && good.remainderCount==0}}" src="/images/icon/saveno.png" class="saveno" />
+    <view class="floorGoodDetail">
+      <view class='goodName'>
+        <image wx:if="{{good.isCrossBorder=='1'}}" src="/images/icon/overseas-label.png" class="overseas-label"></image>
+        <text class="goodNameTxt textEllipsis">{{good.productName}}</text>
+      </view>
+      <text class="goodSubName textEllipsis">{{good.words || good.viceTitle}}</text>
+      <view class="goodLabelCon">
+        <text class="goodLabel promotion">{{floorType == '9' ? '秒杀价':'促销价'}}</text>
+        <text class="goodPrice"><text class="smallBefore">￥</text>{{good.buyingPrice || good.price}}</text>
+        <text class='goodLabel rebateTxt' wx:if="{{rebateStatus =='1'}}">赚</text>
+        <text class="goodLabel rebate" wx:if="{{rebateStatus =='1'}}">￥{{good.rebate}}</text>
+      </view>
+      <view class="goodPriceCon">
+        <view class="goodBtnAll">
+          <text class="goodBuy goodBtn" catchtap="goodDetail" data-good="{{good}}">抢购</text>
+          <text class="goodShare goodBtn" wx:if="{{rebateStatus =='1'}}" catchtap="goodDetail" data-good="{{good}}" data-share="{{true}}">推广</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

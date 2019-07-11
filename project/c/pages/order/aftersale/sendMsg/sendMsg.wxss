@@ -1,0 +1,193 @@
+page {
+  background: #F4F4F4;
+}
+.page-head {
+  padding: 24rpx;
+  margin-top: 20rpx;
+  background: #fff;
+  position: relative;
+}
+.page-head image {
+  position: absolute;
+  left: 24rpx;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 130rpx;
+  height: 130rpx;
+}
+.page-head-right {
+  padding-left: 147rpx;
+  width: 555rpx;
+}
+.page-head-right-title {
+  font-size: 26rpx;
+  color: #333;
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.page-head-right-num {
+  font-size: 24rpx;
+  color: #777;
+  margin-top: 8rpx;
+}
+.page-head-right-bottom {
+  margin-top: 18rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.page-head-right-bottom-price {
+  font-size: 30rpx;
+  color: #333;
+}
+.page-buyerinfo,
+.page-sellerinfo {
+  margin-top: 20rpx;
+  background: #fff;
+  font-size: 28rpx;
+  color: #333;
+}
+.page-buyerinfo-title,
+.page-sellerinfo-title {
+  height: 95rpx;
+  line-height: 95rpx;
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.page-buyerinfo-title view,
+.page-sellerinfo-title view {
+  width: 140rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border: 1px solid #FF3030;
+  border-radius: 20rpx;
+  color: #FF3030;
+  font-size: 24rpx;
+  margin-top: 27rpx;
+}
+.page-buyerinfo-address,
+.page-sellerinfo-address {
+  border-top: 1px solid #ccc;
+  padding: 24rpx;
+}
+.page-buyerinfo-address .item,
+.page-sellerinfo-address .item {
+  display: flex;
+  line-height: 50rpx;
+  margin-bottom: 10rpx;
+}
+.page-buyerinfo-address .item-left,
+.page-sellerinfo-address .item-left {
+  width: 158rpx;
+}
+.page-buyerinfo-address .item-right,
+.page-sellerinfo-address .item-right {
+  width: 540rpx;
+  color: #777;
+}
+.page-buyerinfo-info,
+.page-sellerinfo-info {
+  height: 78rpx;
+  line-height: 78rpx;
+  background: #f4f4f4;
+  padding-left: 24rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+.page-buyerinfo-whether,
+.page-sellerinfo-whether {
+  background: #fff;
+  padding: 30rpx 24rpx;
+}
+.page-buyerinfo-whether-btn,
+.page-sellerinfo-whether-btn {
+  margin-top: 30rpx;
+  display: flex;
+}
+.page-buyerinfo-whether-btn view,
+.page-sellerinfo-whether-btn view {
+  width: 160rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 25rpx;
+  margin-right: 24rpx;
+}
+.page-buyerinfo-whether-btn .active,
+.page-sellerinfo-whether-btn .active {
+  border-color: #FF3030;
+  color: #FF3030;
+}
+.page-sellerinfo-logistics {
+  background: #fff;
+}
+.page-sellerinfo-logistics-item {
+  padding: 0 24rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+}
+.page-sellerinfo-logistics-item-left {
+  width: 174rpx;
+}
+.page-sellerinfo-logistics-item-right {
+  width: 520rpx;
+  color: #999;
+  position: relative;
+}
+.page-sellerinfo-logistics-item-right input {
+  height: 100%;
+}
+.page-sellerinfo-logistics-item-right-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.page-sellerinfo-logistics-item-right-img image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-top: 22rpx;
+}
+.page-sellerinfo-logistics-item-right .picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.page-sellerinfo-logistics-item:last-child {
+  border-top: 1px solid #ccc;
+}
+.page-remark {
+  margin-top: 20rpx;
+  padding: 30rpx 24rpx;
+  background: #fff;
+  font-size: 28rpx;
+  color: #333;
+}
+.page-remark-text {
+  margin-top: 30rpx;
+  border: 1px solid #ccc;
+  height: 368rpx;
+  padding: 24rpx;
+  border-radius: 10rpx;
+}
+.page-remark-text textarea {
+  width: 100%;
+}
+.page-remark-text-info {
+  text-align: right;
+}
+.page-btn {
+  margin-top: 20rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  background: #FF3030;
+  color: #fff;
+  font-size: 34rpx;
+}

@@ -1,0 +1,101 @@
+/* activityPages/pages/newYearRedEnvelop.wxss */
+
+.redEnvelopWrap {
+  width: 100vw;
+}
+
+.redEnvelopWrap.disSlide {
+  overflow: hidden;
+  height: 100wh;
+  position:fixed;
+}
+
+.imageSec {
+  width: 100%;
+}
+
+.imageSec .btn {
+  position: absolute;
+  bottom: 185rpx;
+  width: 270rpx;
+  height: 80rpx;
+  left: 50%;
+  margin-left: -135rpx;
+}
+
+.imageSec image {
+  display: block;
+  width: 100vw;
+}
+
+/* 蒙层 */
+.mask {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* 弹窗 */
+.dialog {
+  width: 520rpx;
+  position: absolute;
+  top: 180rpx;
+  left: 50%;
+  margin-left: -260rpx;
+}
+
+.dialog.enter {
+  animation: warn .6s ease-out;
+  -webkit-animation: warn .6s ease-out;
+}
+
+.dialog image {
+  width: 100%;
+}
+
+.dialogBtn {
+  width: 240rpx;
+  left: 50%;
+  margin-left: -120rpx;
+  bottom: 70rpx;
+  position: absolute;
+}
+
+.dialogBtn image {
+  width: 100%;
+}
+
+.posRel {
+  position: relative;
+}
+
+@keyframes warn {
+  0% {
+  transform: scale(0);
+  opacity: 0.1;
+  }
+  25% {
+  transform: scale(0.25);
+  opacity: 0.3;
+  }
+  50% {
+  transform: scale(0.5);
+  opacity: 0.5;
+  }
+  75% {
+  transform: scale(0.75);
+  opacity: 0.7;
+  }
+  100% {
+  transform: scale(1);
+  opacity: 1;
+  }
+}
+.animation{
+  -webkit-animation: warn 0.5s linear 1;
+  animation: warn 0.5s linear 1;
+  animation-fill-mode: forwards;
+}

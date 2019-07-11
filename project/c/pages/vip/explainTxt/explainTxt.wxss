@@ -1,0 +1,22 @@
+.page{
+  padding-top: 40rpx;
+}
+.explain_txt_wrap{
+  background: #FFFFFF;
+  box-shadow: 0 0 12rpx 0 rgba(0,0,0,0.08);
+  border-radius: 12rpx;
+  margin: 0 24rpx 40rpx;
+  padding: 24rpx;
+}
+.explain_txt_title{
+  font-size: 28rpx;
+  color: #333333;
+  padding-bottom: 14rpx;
+}
+.explain_txt_conment{
+  line-height: 1.7;
+  font-size: 28rpx;
+}
+.explain_txt_conment text{
+  display: block;
+}

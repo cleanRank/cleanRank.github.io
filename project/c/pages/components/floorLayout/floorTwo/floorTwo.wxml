@@ -1,0 +1,12 @@
+    <view>
+      <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255, 255, 255, .3)" indicator-active-color="rgba(255, 255, 255, 1)" autoplay="{{autoplay}}" circular='true' interval="{{interval}}" duration="{{duration}}" current="{{current}}" style="height:360rpx;"
+        wx:if="{{_item.listFloorDetail.length>1}}">
+        <block wx:for="{{_item.listFloorDetail}}" wx:key="unique1" wx:for-item="banner" wx:for-index="idx">
+          <swiper-item>
+            <image src="{{banner.picUrl}}" class="slide-image" bindtap="bannerCick" data-bannerInfo="{{banner}}"></image>
+            <!-- {{idx ==  current?'none':'scale'}} -->
+          </swiper-item>
+        </block>
+      </swiper>
+      <image class="slide-image" wx:if="{{_item.listFloorDetail.length==1}}" style="height:360rpx;" src="{{_item.listFloorDetail[0].picUrl}}" bindtap="bannerCick" data-bannerInfo="{{_item.listFloorDetail[0]}}"></image>
+    </view>

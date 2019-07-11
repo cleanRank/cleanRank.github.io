@@ -1,0 +1,13 @@
+<!-- 参数说明 -->
+<!-- imgSrc 图片地址
+text 文字说明
+isShowbtn 是否显示按钮 【0否1是】
+jumpUrl 按钮跳转地址
+btnTxt 按钮文字说明 -->
+<template name="nodata">
+<view class="nodata_wrap">
+    <image class='nodata_img' src="{{nodataList.imgSrc}}"></image> 
+    <view class='nodata_txt'>{{nodataList.text}}</view>
+    <navigator wx:if="{{nodataList.isShowbtn==1}}" url="{{nodataList.jumpUrl}}" class="btnCom go-shop-btn">{{nodataList.btnTxt}}</navigator>
+  </view>
+</template>

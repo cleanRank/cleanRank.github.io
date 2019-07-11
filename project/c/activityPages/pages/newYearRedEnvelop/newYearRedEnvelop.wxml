@@ -1,0 +1,59 @@
+<!--activityPages/pages/newYearRedEnvelop.wxml-->
+<view class="redEnvelopWrap {{showMammon ? 'disSlide' : ''}}" >
+  <!-- 第一图块 -->
+  <view class='imageSec posRel'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/hb_01.jpg'
+    ></image>
+    <!-- 按钮 -->
+    <view class='btn' bindtap='getMammon'>
+      <image 
+mode='scaleToFill'
+style='width: 100%; height: 100%'   src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/btn.png'></image>
+    </view>
+  </view>
+
+  <!-- 第二图块 -->
+  <view class='imageSec'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/hb_02.jpg'
+    ></image>
+  </view>
+
+  <!-- 第三图块 -->
+  <view class='imageSec'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/hb_03.jpg'
+    ></image>
+  </view>
+
+  <!-- 第四图块 -->
+  <view class='imageSec'>
+    <image
+    mode = 'widthFix'
+src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/hb_04.jpg'
+    ></image>
+  </view>
+
+  <!-- 弹出的弹窗 -->
+  <view class="mask" wx:if='{{showMammon}}'>
+    <view class="dialog {{mammonEnter ? 'enter' : ''}}">
+      <image 
+    mode='widthFix'  src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/lqcg.png'
+      ></image>
+      <navigator
+        open-type='redirect'
+        class='dialogBtn'
+        url='../../../pages/mine/coupon/coupon'
+      >
+        <image 
+    mode='widthFix'  src='https://sxypmall.oss-cn-shanghai.aliyuncs.com/qmarket/redbag/look.png'
+      ></image>
+      </navigator>
+    </view>
+  </view>
+
+</view>

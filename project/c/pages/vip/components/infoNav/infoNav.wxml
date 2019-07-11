@@ -1,0 +1,9 @@
+<!--pages/vip/components/infoNav/infoNav.wxml-->
+<block class="navPage">
+    <view class="navWrap">
+        <view class="navItem {{currentIndex == index ? 'cur':''}}" wx:for="{{navList}}" wx:key="{{index}}" data-index="{{index}}" bindtap="changeTab">
+            {{item.name}}
+            <view class="notifyNum" wx:if="{{item.notifyNum && item.notifyNum > 0}}">{{item.notifyNum}}</view>
+        </view>
+    </view>
+</block>

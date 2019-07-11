@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "onReachBottomDistance": 0,
+  "usingComponents": {
+    "promotion-component": "/components/promotion-component/promotion-component"
+  }
+}

@@ -1,0 +1,26 @@
+<wxs module="filter" src="../../../../utils/filter.wxs"></wxs>
+<view class='floorPage'>
+  <view class='list' wx:for="{{_item.listFloorDetail.article}}" wx:key="index">
+     <view class='floorBan'>
+        <image src='{{item.titleImg}}'></image>
+     </view>
+     <view class='floorCon'>
+         <view class='floorTit c_333'>
+             {{item.title}}
+         </view>
+         <view class='floorSub'>
+           <view class='c_999 cloorTxt {{item.flag==true?"show":"hide"}}'>
+           {{item.summary}}
+           </view>
+           <text class='showAll' wx:if="{{filter.wordNum(item.summary,80)==1}}" data-id="{{index}}" bindtap='toggleWord'>{{item.flag?'全部展开':'收起'}}</text>
+         </view>
+         <view class='floorBom'>
+             <view class='auInfo c_999'>
+                <text class='author'>作者：{{filter.transformNameFive(item.author)}}</text>
+                <text class='time'>{{filter.dateFormat(item.updateTime,'yyyy-MM-dd')}}</text>
+             </view>
+             <view class='toDetail' data-number="{{item.contentNumber}}" data-id="{{item.id}}" bindtap='toDetail'>开始学习</view>
+         </view>
+     </view>
+  </view>
+</view>

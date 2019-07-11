@@ -1,0 +1,128 @@
+/* pages/waterElephantCard/waterElephantCard.wxss */
+page {
+  background-color: #f4f4f4;
+}
+.page .page-tab {
+  width: 100%;
+  z-index: 100;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  display: flex;
+  background: #fff;
+}
+.page .page-tab view{
+  flex: 1;
+  font-size: 30rpx;
+  color: #9F9F9F;
+}
+.page .page-tab .active{
+  color: #333;
+  font-weight: 600;
+  position: relative;
+}
+.page .page-tab .active::after{
+  content: '';
+  background: #333;
+  position: absolute;
+  width: 30%;
+  height: 4rpx;
+  bottom: 0;
+  left: 35%;
+}
+.page .page-content{
+  position:absolute;
+  width: 100%;
+  height:calc(100% - 320rpx);
+}
+.page .page-content .page-content-item {
+  width: 700rpx;
+  height: 320rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  position: relative;
+  overflow: hidden;
+}
+.page .page-content .page-content-item .page-content-item-bg {
+  width: 100%;
+  height: 100%;
+}
+.page .page-content .page-content-item .page-content-item-bg image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.page-content-item-yue {
+  position: absolute;
+  top: 90rpx;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 40rpx;
+}
+.page-content-item-yue text{
+  font-size: 60rpx;
+}
+.page-content-item-yue .text2{
+  font-size: 30rpx;
+}
+.page-content-item-time {
+  font-size: 24rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 100rpx;
+  left: 0;
+  color: #fff;
+  text-align: center;
+}
+.page-content-item-money {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  color: #999;
+}
+.page-content-item .icon {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.page .page-content-nocard {
+  width: 100%;
+  margin-top: 120rpx;
+  text-align: center;
+  color: #999;
+  font-size: 34rpx;
+}
+.page .page-content-nocard image{
+  display: block;
+  width: 460rpx;
+  height: 460rpx;
+  margin: 0 auto;
+}
+.page .page-btn {
+  position: fixed;
+  width: 100%;
+  height: 220rpx;
+  left: 50%;
+  bottom: 0;
+  text-align: center;
+  transform:translateX(-50%); 
+  background: #f4f4f4;
+}
+.page .page-btn view{
+  width: 610rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 70rpx auto;
+  border: 1px solid #FF3030;
+  border-radius: 40rpx;
+  background: #FF3030;
+  color: #fff;
+}

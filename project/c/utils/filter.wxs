@@ -1,0 +1,115 @@
+var filter = {
+  priceFilter: function (value = '0', slice) {
+    var value = Math.round(parseFloat(value) * 100) / 100;
+    var xsd = value.toString().split(".");
+    if (xsd.length == 1) {
+      value = value.toString() + ".00";
+      if (slice) {
+        return value.toString().split(".");
+      }
+      return value;
+    }
+    if (xsd.length > 1) {
+      if (xsd[1].length < 2) {
+        value = value.toString() + "0";
+      }
+      if (slice) {
+        return value.toString().split(".");
+      }
+      return value;
+    }
+  },
+  toDecimal: function (value = '0') {
+    var val = parseFloat(value)
+    if (isNaN(val)) {
+      return
+    } 
+    val = Math.round(value * 100) / 100;
+    return val 
+  },
+  sxt: function (value = '0') {
+    var bNum = value.toString().indexOf('.')
+    if (bNum>-1) {
+      var xsd = value.toString().split(".");
+      console.log(xsd)  
+      return xsd
+    } else {
+      console.log(value) 
+      return [value,false]
+    }
+    
+  }
+}
+// 格式化时间
+var regYear = getRegExp("(y+)", "i");
+
+var dateFormat = function (timestamp, format) {
+  if (!format) {
+    format = "yyyy-MM-dd hh:mm:ss";
+  }
+  if (!timestamp) {
+    return ' '
+  }
+  timestamp = parseInt(timestamp);
+  var realDate = getDate(timestamp);
+
+  function timeFormat(num) {
+    return num < 10 ? '0' + num : num;
+  }
+  var date = [
+    ["M+", timeFormat(realDate.getMonth() + 1)],
+    ["d+", timeFormat(realDate.getDate())],
+    ["h+", timeFormat(realDate.getHours())],
+    ["m+", timeFormat(realDate.getMinutes())],
+    ["s+", timeFormat(realDate.getSeconds())],
+    ["q+", Math.floor((realDate.getMonth() + 3) / 3)],
+    ["S+", realDate.getMilliseconds()],
+  ];
+  var reg1 = regYear.exec(format);
+  if (reg1) {
+    format = format.replace(reg1[1], (realDate.getFullYear() + '').substring(4 - reg1[1].length));
+  }
+  for (var i = 0; i < date.length; i++) {
+    var k = date[i][0];
+    var v = date[i][1];
+
+    var reg2 = getRegExp("(" + k + ")").exec(format);
+    if (reg2) {
+      format = format.replace(reg2[1], reg2[1].length == 1 ?
+        v : ("00" + v).substring(("" + v).length));
+    }
+  }
+  return format
+}
+var transformName = function(name){
+  // 用户名和邀请人名字超过5个字就显示四个字+...
+  if (name.length > 5) {
+    name = name.slice(0, 4) + '...'
+  }
+  return name
+}
+var transformNameFive = function (name) {
+  // 用户名和邀请人名字超过5个字就显示五个字+...
+  if (name.length > 5) {
+    name = name.slice(0, 5) + '...'
+  }
+  return name
+}
+// 根据字数判断是否显示展开和收起
+var wordNum=function(str,num){
+  if(str.length>num){
+    num=1
+  }else{
+    num=2;
+  }
+  return num;
+}
+module.exports = {
+  priceFilter: filter.priceFilter,
+  toDecimal: filter.toDecimal,
+  sxt: filter.sxt,
+  dateFormat: dateFormat,
+  transformName: transformName,
+  wordNum: wordNum,
+  transformNameFive: transformNameFive
+}

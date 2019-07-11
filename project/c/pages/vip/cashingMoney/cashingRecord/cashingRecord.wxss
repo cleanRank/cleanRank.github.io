@@ -1,0 +1,38 @@
+.horizontalLine{
+  height: 10rpx;
+  background: #FBFBFB;
+}
+.cashingRecordItem{
+  font-size: 28rpx;
+  height: 90rpx;
+  line-height: 88rpx;
+  border-bottom: 2rpx solid #F8F8F8;
+  margin-left: 24rpx;
+  /* padding-right: 24rpx; */
+}
+.cashingTime{
+  text-align: center;
+}
+.cashingMoney{
+  padding: 0 10rpx;
+  overflow: hidden;
+  text-align: center;
+  /* margin-left: 100rpx; */
+}
+.cashingStatus{
+  /* width: 112rpx; */
+  text-align: center;
+}
+.cashingStatus_00{
+  color: #333;
+}
+.cashingStatus_01{
+  color: #65EA60;
+}
+.cashingStatus_02{
+  color: #FF6262;
+}
+.cashingRecordNull{
+  text-align: center;
+  font-size: 28rpx;
+}

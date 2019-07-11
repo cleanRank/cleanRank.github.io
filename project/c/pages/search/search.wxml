@@ -1,0 +1,109 @@
+<!--pages/search/search.wxml-->
+<view class='searchWrap'>
+  <!-- 搜索框头部分 -->
+  <view class='searchHeader'>
+    <view class='searchArea'>
+      <search-box
+        bind:searchFn="searchFn"
+        bind:getSearchWord="getSearchWord"
+        define-word='{{defineWord}}'
+        id="searchCom"
+      />
+    </view>
+    <text class='searchBtn' bindtap='searchFn'>搜索</text>
+  </view>
+  
+  <!-- 搜索关键字标签部分 -->
+  <view class='keyWordSection' wx:if='{{notYetSearch}}'>
+    
+    <!-- 搜索框搜索历史部分 -->
+    <view class='searchMain'>
+      <!-- 搜索历史 -->
+      <view class='searchHistory'>
+        <result-section
+          wx:if = '{{searchHisList.length > 0}}'
+          title-txt = '搜索历史'
+          show-del = '{{true}}'
+          item-list = '{{searchHisList}}'
+          bind:tapWord = "skipSearchHis"
+          bind:clearTips = 'clearHisTips'
+        />
+      </view>
+      <!-- 热门搜索 -->
+      <view class='searchHot'>
+        <result-section
+          wx:if = '{{searchHotList.length > 0}}'
+          title-txt = '热门搜索'
+          item-list = '{{searchHotList}}'
+          bind:tapWord = 'skipSearchHot'
+        />
+      </view>
+    </view>
+  </view>
+
+  <!-- 显示搜索出的所有商品 -->
+  <view class='resultSection' wx:else>
+    <!-- 整体选择商品面板:有商品 -->
+    <view class='selectGoodsPlane' wx:if="{{goodsList.length > 0}}">
+      <view class='screenNavigation'>
+        <view
+          class="navItem {{item.hasIcon ? item.hasIcon : ''}} {{item.orderNo == formData.orderNo ? 'sel' : ''}}"
+          wx:for="{{navList}}"
+          wx:key="{{index}}"
+          data-item='{{item}}'
+          bindtap='selectSortNav'
+        >
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+      <view class='scrollSection'>
+        <scroll-view
+          class='scrollView'
+          scroll-y
+          lower-threshold='70rpx'
+          bindscrolltolower='scrolltolower'
+          scroll-top='{{topDistance}}'
+        >
+          <view class='goodsItem' wx:for="{{goodsList}}" wx:key="{{index}}" data-item="{{item}}" bindtap='selectGood'>
+            <view class='goodsItem_pic'>
+              <image
+                mode='aspectFit' src='{{item.proImage}}'
+              ></image>
+            </view>
+            <view class='goodsItem_info'>
+              <view class='goodInfo_title'><image wx:if="{{item.isCrossBorder=='1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image><text class="goodInfo_title_text">{{item.productName}}</text></view>
+              <view class="goodInfo_cx" wx:if="{{item.activityLabel && item.activityLabel.length > 0}}">
+                <block wx:for="{{item.activityLabel}}" wx:key="index" wx:for-item="val">
+                  <view class="cx_item" data-labelStyle="{{val.labelStyle}}">{{val.labelName}}</view>
+                </block>
+                
+              </view>
+              <view class='goodInfo_price'>
+                <text><text class='price_symbol'>￥</text>{{item.price}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 无商品图片显示 -->
+    <view class='noGoodsPlane' wx:else>
+      <view class='noGoodsPic'>
+        <text class='noGoodsTxt'>未找到相关商品</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 搜索补全文字列表 -->
+  <view class='searchComplete' wx:if='{{completeList.length > 0}}'>
+    <view
+      class='searchCom_item'
+      wx:for='{{completeList}}'
+      wx:key='{{index}}'
+      data-item='{{item}}'
+      bindtap='skipSearchHis'
+    >{{item.text}}</view>
+  </view>
+
+  <view class='whiteMask' wx:if='{{!pageReady}}'></view>
+</view>

@@ -1,0 +1,116 @@
+.pageColor {
+  background: #F2F2F2;
+}
+
+.logisDetail {
+  background-color: #fff;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+
+.logisMarging {
+  margin: 20rpx 24rpx;
+}
+.expressPhone image{
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 20rpx;
+}
+.item {
+  background-color: #fff;
+}
+
+.itemHeight {
+}
+
+.flex-boxwrap {
+  flex-wrap: nowrap;
+  padding-left: 55rpx;
+  padding-right: 24rpx;
+}
+.logisticsInfoWrap{
+  background-color: #fff;
+}
+.imageItem {
+  width: 38rpx;
+  height: 38rpx;
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.timeItem {
+  width: 90rpx;
+  height: 84rpx;
+  font-size: 32rpx;
+  padding-left: 24rpx;
+}
+.timeMoonAndSun{
+
+}
+.itemTime{
+  font-size: 24rpx;
+}
+.contentItem {
+  background-color: #fff;
+  padding-top: 38rpx;
+  padding-left: 24rpx;
+}
+.itemIcon{
+  padding-top: 60rpx;
+  position: relative;
+}
+.itemIcon:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #D8D8D8;
+  z-index: 1
+
+}
+.itemIconFirst{
+  padding-top: 0;
+  margin-top: 60rpx;
+}
+.itemIconLast{
+  height: 38rpx;
+}
+.contentAdds {
+  padding-right: 10rpx;
+  font-size: 26rpx;
+  line-height: 37rpx;
+  margin-bottom: 10rpx;
+}
+
+.imageitemheight {
+  height: 100%;
+  width: 1px;
+  background-color: #d8d8d8;
+}
+
+.titleItem {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  line-height: 45rpx;
+}
+
+.line {
+  width: 2rpx;
+  background-color: #d8d8d8;
+}
+
+.lineConentTop {
+  width: 18rpx;
+  height: 60rpx;
+}
+
+.lineConentBottom {
+  width: 18rpx;
+  height: 96rpx;
+}

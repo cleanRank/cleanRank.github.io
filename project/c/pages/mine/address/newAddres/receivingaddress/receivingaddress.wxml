@@ -1,0 +1,9 @@
+<view class="page">
+  <scroll-view class="addressList" wx:if="{{receiveaddressList.length > 0}}">
+    <view  wx:for="{{receiveaddressList}}" wx:key="{{item.id}}">
+      <view bindtap='getaddressList' data-index='{{index}}' class="list_name">
+        <text class='list_name_text'>{{item.areaName}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

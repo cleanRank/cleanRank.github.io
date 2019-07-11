@@ -1,0 +1,6 @@
+.haveBg{
+  padding-top:95rpx;
+  background-size: 100% 416rpx;
+  background-repeat: no-repeat;
+  background-position: top center;
+}

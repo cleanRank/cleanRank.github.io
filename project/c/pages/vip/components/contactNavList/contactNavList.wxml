@@ -1,0 +1,44 @@
+<!--pages/vip/components/contactNavList/contactNavList.wxml-->
+<view class="page-address-book">
+  <!-- <scroll-view scroll-y scroll-with-animation='true' style="height: {{windowHeight}}px" scroll-into-view="{{'ss'+alpha}}"> -->
+  <scroll-view scroll-y scroll-with-animation='true' bindscrolltolower="loadMore">
+    <!-- 待处理 -->
+    <view class="address-item"  bindtap="applyFriendsPage">
+      <view class="applyCount">
+          <image src="/images/im/applyFriend.png"></image>
+          <view class="countNum" wx:if="{{applyFriendCount && applyFriendCount > 0}}">{{applyFriendCount}}</view>
+      </view>
+      <view class="name">待处理请求</view>
+    </view>
+    <!-- 邀请人 -->
+    <view class="address-item inviter" wx:if="{{inviter && inviter.flag == '2'}}" bindtap="chatEvent" data-info="{{inviter}}">
+        <view class="userInfo">
+            <image src="{{inviter.avatarUrl}}"></image>
+            <view class="name">{{inviter.nickName}}</view>
+        </view>
+        <view class="userFlag">我的邀请人</view>
+    </view>
+    <view class="geLine"></view>
+    <!-- 好友列表 -->
+    <view class="alphabet" wx:if="{{addressList && addressList.length > 0}}">
+      <view class="alphabet-list">
+        <view wx:for="{{addressList}}" wx:key="unique" class="section-item">
+          <view bindtap="{{!buttonClicked ? 'chatEvent':''}}" data-index="{{index}}" data-info="{{item}}" class="section-item-cells">
+            <view class="section-item-cell">
+              <image class='avater' src='{{item.avatarUrl}}'></image>
+            </view>
+            <view class="section-item-right {{index != (item.datas.length-1) ? 'border-bottom':''}}">
+              <text>{{item.nickName}}</text>
+              <view class="fansFlag" wx:if="{{item.flag == '1'}}">粉丝</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 无数据缺省 -->
+    <!-- <view class="noData" wx:else>
+        <image src="/images/noData/no_data.png"></image>
+        <view class="noDataInfo">还没有内容哦～</view>
+    </view> -->
+  </scroll-view>
+</view>

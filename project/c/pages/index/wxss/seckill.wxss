@@ -1,0 +1,437 @@
+
+.needShow{
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+}
+/* .floorImg{
+  margin-bottom: 20rpx;
+} */
+.needShow>image{
+  vertical-align: top;
+  width: 100%;
+  height: auto;
+}
+.packsTitleText{
+  vertical-align: middle;
+}
+
+.sekillBox{
+  margin-top: 0rpx !important;
+}
+.sekillProducts{
+  z-index: 1;
+  /* background:#D8D8D8; */
+  padding:0rpx 0 5rpx 0;
+}
+.skillActive view{
+  display: none;
+}
+.sekillTitleView{
+  width: 100%;
+  position:relative;
+  display:inline-block;
+  height:74rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  flex:0 0 100%;
+
+}
+.sekillTitle{
+  position:relative;
+  width:17%;
+  overflow:hidden;
+  display: inline-block;
+  margin-left:3px;
+  margin-right:3px;
+  height: 100%;
+}
+/* 选中 */
+.skillActive text{
+ color: #FF3B30 !important;
+ text-align: center;
+}
+.sekillTitle text{
+  display: block;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden;
+ 
+}
+.seckillNormal .sekillItemStatus{
+  color: #777777;
+}
+.seckillNormal text{
+  color: #333333;
+}
+.sekillItemName{
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 33rpx;
+  font-weight: bold;
+}
+.sekillProduct:first-of-type{
+  margin-top: 0rpx;
+}
+.sekillProduct{
+  z-index: 5;
+  position: relative;
+  /* box-shadow: 0 0 8rpx 0 rgba(0,0,0,.04), 0 8rpx 8rpx 0 rgba(0,0,0,.02) ;
+  -webkit-box-shadow: 0 0 8rpx 0 rgba(0,0,0,.04), 0 8rpx 8rpx 0 rgba(0,0,0,.02) ; */
+  border-radius: 12rpx;
+  height:288rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+}
+.sekillItemStatus{
+  width: 100%;
+  padding-top: 5rpx;
+  font-size: 24rpx;
+  line-height: 33rpx;
+}
+.sekillTitleBot{
+  width: 16rpx; 
+  background: linear-gradient(to right, #FC6B69 , #FE3F57);
+  height: 4rpx; 
+  margin: auto;
+  border-radius: 2rpx;
+  position: absolute;  
+  bottom: 0rpx; 
+  display: block;  
+  left: 0;
+  right: 0;
+}
+.productRight{
+  width: 408rpx;
+  padding-bottom: 24rpx;
+  display: flex;
+  flex-direction: column;
+}
+image.proImage,.proImage_nop{
+  width: 240rpx;
+  height: 240rpx;
+  display: block;
+}
+.proImageWrap{
+  position: relative;
+  margin: 24rpx 24rpx 24rpx 16rpx;
+}
+.saveno{
+  position: absolute;
+  width: 128rpx;
+  height: 128rpx;
+  left:50%;
+  margin-left: -64rpx;
+  top:50%;
+  margin-top: -64rpx;
+  z-index: 99;
+}
+.saveno4{
+  top: 0;
+  margin-top: 108rpx;
+}
+.saveno13{
+  top: 0;
+  margin-top: 49rpx;
+}
+.proImage_nop{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.productName{
+  color:#333333;
+  font-size:34rpx;
+  line-height:48rpx;
+  padding-top:19rpx;
+  margin-bottom:8rpx;
+  display:flex;
+  align-items:center;
+}
+.productNewTit{
+  display: block;
+}
+.viceTitle{
+  color:#999;
+  font-size:26rpx;
+  height: 37rpx;
+  line-height: 37rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+.productLabel{
+  height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.productLabelThir{
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+  margin-bottom: 16rpx
+}
+.productLabelThirteen{
+  height: 37rpx;
+  margin-bottom: 6rpx;
+  padding-left: 16rpx;
+  padding-right: 16rpx;
+}
+.productLabelRebate{
+  height: 28rpx;
+}
+.productLabelFour{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 28rpx;
+  margin-bottom: 12rpx;
+}
+.productLabel .label,.priceBuyThirteen .label{
+  color:#FF5A60;
+  font-size:18rpx;
+  border-radius:4rpx;
+  padding:0 2rpx;
+  display:inline-block !important;
+  height:28rpx !important;
+  line-height:28rpx;
+  background:#fff;
+  margin-right:16rpx;
+  overflow: hidden;
+  border:1rpx solid #FF5A60;
+  box-sizing: border-box;
+}
+.productLabel .rebate,.priceBuyThirteen .rebate{
+  position: relative;
+  background: #F8DDAD;
+  color: #714B16;
+  font-size: 20rpx;
+  /* padding-left: 28rpx; */
+  font-weight: 700;
+  height: 28rpx !important;
+  line-height: 26rpx;
+  border: none;
+  box-sizing: border-box;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.productLabel .rebateTxt{
+  position: relative;
+  width: 28rpx;
+  height: 28rpx;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  line-height: 28rpx;
+  background-color: #444;
+  font-weight: 400;
+  border-top-left-radius: 4rpx;
+  border-bottom-left-radius: 4rpx;
+}
+/* .productLabel .rebate:before{
+  content: '赚';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28rpx;
+  height: 28rpx;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  background-color: #444;
+  font-weight: 400;
+} */
+.proprice{
+  /* height: 24rpx; */
+  line-height: 24rpx;
+  color: #FF5A60;
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-right: 10rpx;
+}
+.proprice-thirteen{
+  font-size: 20rpx;
+}
+.proprice-thirteen text{
+  font-size: 26rpx;
+}
+.priceBuy{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 44rpx;
+  overflow: hidden;
+}
+.proDuble{
+  line-height: 33rpx;
+  display: block;
+}
+.proDuble .smallBefore{
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.proDuble text {
+  font-size: 36rpx;
+}
+.buyPacks{
+  font-size:24rpx;
+  text-align:center;
+  color:#FD455F;
+  padding:0 16rpx;
+  border-radius:22rpx;
+  border:1rpx #FD455F solid;
+  height: 38rpx;
+  line-height: 38rpx;
+  display: block;
+}
+
+.fanBox{
+  /* background:rgba(255,48,48,0.10);
+  font-size:22rpx;
+  padding:2rpx 10rpx 2rpx 10rpx;
+  color:#FF6330; */
+  display:inline-block !important;
+  /* border-radius:5rpx;
+  margin-left:10rpx; */
+  padding: 0;
+
+}
+.fanBox text{
+  border-radius:5rpx;
+  margin-left:10rpx;
+  background:rgba(255,48,48,0.10);
+  font-size:22rpx;
+  padding:2rpx 10rpx 2rpx 10rpx;
+  color:#FF6330;
+  height: 30rpx;
+}
+.fanBox .rebate{
+  background:rgba(255,158,21,0.15);
+  color:rgba(255,158,21,1);
+}
+.priceFlex{
+  height: 59rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15rpx;
+  margin-bottom: 5rpx;
+}
+.priceBox{
+  position: relative;
+}
+.promotionView{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+.promotionView .goodBtn{
+  display: block;
+  margin-left: 16rpx;
+}
+.priceBox text{
+  display: inline-block;
+}
+.propriceB{
+  font-size: 24rpx !important;
+  font-weight: bold;
+}
+.propriceNum{
+  font-size: 36rpx !important;
+  font-weight: 500;
+}
+.proOrinPrice{
+  color: #777777;
+  font-size: 24rpx;
+  text-decoration: line-through;
+  padding-right: 10rpx;
+}
+.putShopCart{
+  color:white;
+  background: #FD455F;
+}
+.proGeneralize{
+  color:#FD455F;
+  font-weight: normal;
+}
+.proGeneralize,.putShopCart{
+  text-align: center;
+  border-radius:30rpx;
+  padding:0 32rpx;
+  font-size:26rpx;
+  font-weight: 500;
+  border: 1rpx solid #FD455F;
+  height: 52rpx;
+  line-height:52rpx;
+}
+
+/* 双列商品 */
+.packs{
+  display:inline-block;
+  width:344rpx;
+  position: relative;
+  border-radius: 8rpx;
+  overflow: hidden;
+  padding-bottom: 20rpx;
+  background: #fff;
+  margin-bottom: 16rpx;
+
+}
+.packsView{
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+  box-sizing: border-box;
+}
+/* .packsView .packs:nth-child(2n){
+  margin-left:15rpx; 
+} */
+.packsView .packs:nth-child(1),.packsView .packs:nth-child(2){
+  margin-top:0rpx;
+}
+.packsView .packs:nth-child(even){
+  margin-left:14rpx;
+}
+.packsImage{
+  width:100%;
+
+}
+.packsTitle{
+  display:block;
+  font-size:28rpx;
+  color:#333333;
+  padding-left:20rpx;
+  padding-right:20rpx;
+  display: -webkit-box;     
+  word-break: break-all;
+  text-overflow: ellipsis;  
+  overflow: hidden;          
+   /* //多出不分隐藏 */
+  -webkit-box-orient: vertical;    
+  /* //竖直方向的超出和隐藏 */
+  -webkit-line-clamp: 2;
+  height: 84rpx;
+  /* //设定行数为2 */
+  line-height: 40rpx;
+  margin-bottom: 15rpx;
+  margin-top: 16rpx;
+}
+.packsTitleThir{
+  padding-left:16rpx;
+  padding-right:16rpx;
+}
+.textEllipsis{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  display: block;
+}

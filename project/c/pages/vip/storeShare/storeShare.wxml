@@ -1,0 +1,44 @@
+<!--pages/vip/storeShare/storeShare.wxml-->
+<!-- <view class='storeShareWrap storeShare_BG'> -->
+<view class='storeShareWrap storeShare_BG' style='background-image: url({{bgImg}})'>
+  <view class='storeExhibite'>
+    <view class='storeForm'>
+      <view class='storerPic'>
+        <image mode='scaleToFill' style='width: 100%; height: 100%;' src='{{userInfo.pic}}'></image>
+      </view>
+      <view class='storeInfoBox'>
+        <view class='storeInfoIcon'>
+          <image mode='aspectFit' style="width: 100%; height: 100%;" src='../../../images/storeShare/store_icon.png'></image>
+        </view>
+        <view class='storeInfoTxt'>
+          <text class='storeInfoName'>{{editStoreName}}</text>
+          <icon class='verticalString'></icon>
+          <text bindtap='tapEditStoreName'>编辑</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='storeBtnPlane'>
+    <!-- 二维码 -->
+    <view class='storeQrCode'>
+      <view class='storeQrCodeBox'>
+        <image style='width: 100%; height: 100%' src="{{qrCodeImg}}"></image>
+      </view>
+      <text class='storeQrCodeTxt'>长按识别小程序码</text>
+    </view>
+    <view class='storeShareBtn_individual'>
+      <sharePer></sharePer>
+    </view>
+    <view class='storeShareBtn_saveBtn'>
+      <downloadBtn
+        downloadUrl='{{sharePics}}'
+        bind:downloadFn='downloadImgFinish'
+      ></downloadBtn>
+    </view>
+  </view>
+  <customModal bind:modalConfirmFn="saveStoreName" bind:tapCancel="clearStoreName" id="modal">
+    <view class='inputForm'>
+      <input class='inputForm_inp' maxlength='11' placeholder='请输入店铺名称' placeholder-class='inputForm_placeholder' bindconfirm='saveStoreName' value='{{inputStoreName}}' bindinput='inputStoreName'></input>
+    </view>
+  </customModal>
+</view>

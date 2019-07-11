@@ -1,0 +1,29 @@
+    <wxs module="numberUtil" src="../../../../utils/numberUtil.wxs"></wxs>
+    <view class="floorBox {{item.floorType != defaultType ? 'needHide' :'needShow'}} {{item.bgImg?'haveBg':''}}" style="background-image:url({{item.bgImg}})"> 
+      <!-- style="background:{{item.listFloorDetail[0].defaultBgColor}}"> -->
+      <view class='sekillProduct' bindtap='productClick' data-info="{{item}}" wx:for="{{item.listFloorDetail[0].prudouct}}" wx:key="unique6">
+        <view class="proImageWrap">
+          <image src="{{item.proImage}}" class="proImage" />
+        </view>
+        <view class='productRight'>
+          <view class='productName'>
+          <image wx:if="{{item.isCrossBorder =='1'}}" src='/images/icon/overseas-label.png' class='overseas-label'></image>
+            <view class='productNameText textEllipsis'>
+            {{item.productName}}
+            </view>
+          </view>
+          <text class='viceTitle textEllipsis'>{{item.viceTitle}}</text>
+          <view class="productLabel">
+            <text class='label'>促销价</text>
+            <text class="proprice">
+<text class="propriceB">￥</text>
+            <text class="propriceNum">{{numberUtil.numberFormat(item.activityPrice?item.activityPrice:item.price)}}</text></text>
+            <text class="label rebate" wx:if="{{howPromotion!=0}}">￥{{numberUtil.numberFormat(item.rebate)}}</text>
+          </view>
+          <view class='promotionView'>
+            <text class='proGeneralize goodBtn' data-status="1" catchtap="putShopCartOrBuy" data-info="{{item}}">抢购</text>
+            <text class='putShopCart goodBtn' catchtap='promotionShow' wx:if="{{howPromotion!=0}}" data-info="{{item}}">推广</text>
+          </view>
+        </view>
+      </view>
+    </view>

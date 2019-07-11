@@ -1,0 +1,23 @@
+<view class="keyboardWrap">
+  <view class="keyboardCon">
+    <view class="title">
+      <image class=return"></image>
+      <text class="titTxt">使用虚拟资产，需验证手机验证码</text>
+      <image src='/images/icon/close.png' class="close" bindtap='close'></image>
+    </view>
+    <view class='codeWrap'>
+      <view class="codeCon">
+        <view wx:for="{{codeList}}" class="code" wx:key="{{index}}">{{item}}</view>
+      </view>
+      <view class="countDown" wx:if="{{timeDown}}"><text class='c_blue'>{{timeDown}}</text>秒后可重新获取</view>
+      <view class="countDown" wx:else><text class='c_blue' bindtap='sxtPrePay'>重新获取验证码</text></view>
+    </view>
+    <view class="keyList">
+      <view class="key" wx:for="{{keyList}}" wx:key="{{index}}" bindtap='tapKey' data-key="{{item}}" data-index="{{index}}">
+        <text class='keyNum' wx:if="{{item.num}}">{{item.num}}</text>
+        <text class='keyLetter' wx:if="{{item.keyLetter}}">{{item.keyLetter}}</text>
+        <image wx:if="{{index == keyList.length-1}}" class='delete' src='/images/icon/delete.jpg'></image>
+      </view>
+    </view>
+  </view>
+</view>

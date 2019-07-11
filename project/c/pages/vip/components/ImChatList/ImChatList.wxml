@@ -1,0 +1,37 @@
+<!--pages/vip/components/ImChatList/ImChatList.wxml-->
+<view class="message-list">
+  <view class="message-content" wx:if="{{messageList && messageList.length > 0}}">
+    <view class="messageList" data-index="{{index}}" data-info="{{item}}" wx:for="{{messageList}}" wx:key="this">
+          <view class="massage-item clearfix list_del txt" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-info="{{item}}" bindtap="singleChat" style="{{item.shows}}" data-index="{{index}}">
+
+
+            <view class="left-box" wx:if="{{item.userFor == 1}}">
+              <image class="image-box" src="{{item.mainPic?item.mainPic:'https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/http://tmp/wx81b6a1343fac20fd.o6zAJsysIvXtFch540m2g7ak2Eoo.AqHaI6UggAW17f872cfd0dbbe504ee05813e4b93a08b.jpeg'}}"></image>
+              <view class="icon" wx:if="{{item.unreadCount}}">{{item.unreadCount}}</view>
+            </view>
+            <view class="left-box" wx:else>
+              <image class="image-box" src="https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/http://tmp/wx81b6a1343fac20fd.o6zAJsysIvXtFch540m2g7ak2Eoo.ePZoF7Nn1UICc091b82fdaafb0a740ff41e287f90db7.jpeg"></image>
+              <view class="icon" wx:if="{{item.unreadCount}}">{{item.unreadCount}}</view>
+            </view>
+            <view class="right-box clearfix">
+              <view class="text-box">
+                <view class="user-name">{{item.name}}</view>
+                <view class='message' wx:if="{{item.messageType == 6}}">{{item.messageContent}}</view>
+                <view class='message' wx:else>
+                  {{item.messageContent ? (item.messageType != 1 ? (item.messageContent.indexOf('emotion_') !== -1 ? '[图片]' : '[表情]') : item.messageContent): ''}}
+                </view>
+              </view>
+              <view class="date-box">{{item.messageTimeLong}}</view>
+            </view>
+            
+        </view>
+        <view catchtap="showDel" wx:if="{{!item.showDel}}" data-info="{{item}}" data-index="{{index}}" class="list_del del delete">删除</view>
+        <view wx:else catchtap="delItem" data-groupid="{{item.groupId}}" class="delete addwidth {{item.candelete?'addwidth':''}}">确认删除</view>
+    </view>  
+  </view>
+  <!-- 无数据缺省 -->
+  <view class="noData" wx:else>
+      <image src="/images/noData/no_data.png"></image>
+      <view class="noDataInfo">还没有内容哦～</view>
+  </view>
+</view>

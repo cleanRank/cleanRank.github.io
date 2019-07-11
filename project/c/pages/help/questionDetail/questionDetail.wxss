@@ -1,0 +1,79 @@
+/* pages/help/helpDetail/helpDetail.wxss */
+page{
+    background: #f4f4f4;
+}
+.questionCon{
+    background: #fff;
+    padding: 40rpx 24rpx 24rpx;
+}
+.questionCon text{
+    display: none;
+}
+.questionCon image{
+    width: 100%!important;
+}
+.title{
+    font-size: 28rpx;
+    color: #444444;
+    line-height: 40rpx;
+    font-weight: 700;
+}
+.questionTitle{
+    margin-bottom: 14rpx;
+}
+
+.WxEmojiView{
+    font-size: 26rpx;
+    color: #444444;
+}
+.relativeTitle{
+    margin: 40rpx 0 16rpx 24rpx;
+}
+.relativeItem{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24rpx 0;
+    border-bottom:1px solid #f4f4f4;
+    background: #fff;
+    padding: 24rpx 20rpx;
+    border-radius: 12rpx;
+}
+.relativeCon{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 26rpx;
+    color: #444;
+}
+.relativeItem:not(:last-child){
+    border-bottom: 1px solid #F4F4F4;
+}
+.rightArrow{
+    width: 24rpx;
+    height: 24rpx;
+}
+.wxParse-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #dadada;
+    border-right:0;
+    border-bottom: 0;
+}
+.wxParse-tbody .wxParse-tr{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wxParse-td{
+    padding: 10rpx;
+    border-bottom: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    text-align: center;
+    width: 100%;
+    min-height:100rpx;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:1;
+}

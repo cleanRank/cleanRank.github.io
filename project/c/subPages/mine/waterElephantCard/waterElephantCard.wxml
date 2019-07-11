@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="page-tab">
+    <view class="page-tab-left {{aIndex==0?'active':''}}" data-index="0" bindtap="changeTab">可用({{usableSxtCount}})</view>
+    <view class="page-tab-right {{aIndex==1?'active':''}}" data-index="1" bindtap="changeTab">不可用({{unavailableSxtCount}})</view>
+  </view>
+  <!-- 卡片内容部分 start -->
+  <scroll-view class='page-content' scroll-y  bindscrolltolower="lower" wx:if="{{list.length>0}}">
+
+    <view class="page-content-item" wx:for="{{list}}" wx:key="index">
+      <view class='page-content-item-bg'>
+        <image wx:if="{{aIndex==0}}" src="/images/card/card_bg.png"></image>
+        <image wx:else src="/images/card/nocard_bg.png"></image>
+      </view>
+      <view class="page-content-item-yue">
+        余额¥
+        <text>{{item.integer}}.</text>
+        <text class="text2">{{item.part}}</text>
+      </view>
+      <view class="page-content-item-time">
+        有效期至   <text>{{item.deadline}}</text>
+      </view>
+      <view class="page-content-item-money">
+        面值¥<text>{{item.totalAmount}}</text>
+      </view>
+      <image class="icon" wx:if="{{aIndex==1}}" src="{{usableImgUrl[item.usableStatus]}}"></image>
+    </view>
+
+  </scroll-view>
+  <!-- 卡片内容部分 end -->
+  <view class="page-content-nocard" wx:if="{{showNoCard&&aIndex==0&&usableSxtCount==0}}">
+    <image src="/images/card/hasnocard.png"></image>
+    <view>暂无可用卡券～</view>
+  </view>
+  <view class="page-content-nocard" wx:elif="{{showNoCard&&aIndex==1&&unavailableSxtCount==0}}">
+    <image src="/images/card/hasnocard.png"></image>
+    <view>暂无不可用卡券～</view>
+  </view>
+  <view class="page-btn">
+    <view bindtap="goPage">绑定新卡</view>
+  </view>
+</view>

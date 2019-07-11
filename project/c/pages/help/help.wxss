@@ -1,0 +1,43 @@
+page{
+  background: #f4f4f4;
+}
+.searchHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  background:#fff;
+  padding:0 24rpx;
+  box-sizing:border-box;
+}
+.searchArea{
+  width: 100%;
+}
+.conWrap{
+  margin: 0 24rpx;
+}
+.conList{
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  background: #fff;
+}
+.questionItem{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1px solid #f4f4f4;
+}
+.helpTitle{
+  font-size: 28rpx;
+  font-weight: 700;
+  padding: 16rpx 0;
+  line-height: 40rpx;
+}
+.helpItem{
+  font-size: 26rpx;
+}
+.rightArrow{
+    width: 24rpx;
+    height: 24rpx;
+}

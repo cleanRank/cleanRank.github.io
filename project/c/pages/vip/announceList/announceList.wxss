@@ -1,0 +1,55 @@
+.announcePage{
+  padding: 20rpx 24rpx;
+}
+.announceList{
+  width: 100%;
+  height: 208rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F4F4F4;
+}
+.announceTit{
+  margin-bottom: 18rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+}
+.announceLeft{
+   width: 458rpx;
+   font-size: 30rpx;
+   line-height: 40rpx;
+   margin-bottom: 24rpx;
+   height: 100%;
+   padding: 20rpx 0;
+   position: relative;
+   box-sizing: border-box;
+}
+.announceSub{
+  font-size: 22rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  position: absolute;
+  bottom: 20rpx;
+}
+.announceSub text{
+  display: inline-block;
+  line-height: 22rpx;
+}
+.announceSub .author{
+  margin-right: 20rpx;
+  width: 128rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.announceRight{
+  width: 224rpx;
+  height: 168rpx;
+  overflow: hidden;
+}
+.announceRight image{
+  display: block;
+  width: 100%;
+  height:100%;
+}
