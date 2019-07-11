@@ -1,0 +1,90 @@
+@charset "utf-8";
+@import "app";
+$redColor:#FF0000;
+.head-cont{
+  @include px2rem(height, 88);
+  @include px2rem(line-height, 88);
+  background: #FFFFFF;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  // @include px2rem(padding, 0 30 0 0);
+  border-bottom: 1px solid $bgColor;
+  color: $color333;
+  &.else_red{
+    background: #FFFFFF;
+  }
+  &.bg-fff{
+    background: #ffffff;
+    @include px2rem(height, 76);
+    @include px2rem(line-height, 76);
+    border-bottom: 1px solid $borderColor;
+    span{
+      color: $color333;
+    }
+  }
+  a{
+    @include px2rem(height, 88);
+    color: $color333;
+    &.return{
+      position: absolute;
+      left: .4rem;
+      top: 0;
+      @include px2rem(width, 200);
+      background: url("./assets/icon/icon/new-return.png") no-repeat center left;
+      @include px2rem(background-size, 18 33);
+      z-index: 999;
+    }
+    &.bank_btn{
+      background: url("./assets/icon/icon/fahhui.png") no-repeat center left;
+      @include px2rem(background-size, 60 60);
+    }
+    &.close{
+      @include px2rem(width, 30);
+      background: url("./assets/icon/icon/gb@2x_grey.png") no-repeat left center;
+      @include px2rem(background-size, 30 30);
+    }
+    &.close_ml{
+      @include px2rem(margin-left, 53);
+    }
+    &.my_icon{
+      @include px2rem(width, 56);
+      background: url("./assets/icon/icon/touxinag_2@2x.png") no-repeat left center;
+      @include px2rem(background-size, 56 56);
+      &.already-jh{
+        background: url("./assets/icon/icon/touxiang_1@2x.png") no-repeat left center;
+        @include px2rem(background-size, 56 56);
+      }
+    }
+    &.cs_icon{
+      @include px2rem(width, 44);
+      background: url("./assets/icon/icon/cus_icon.png") no-repeat left center;
+      @include px2rem(background-size, 44 44);
+    }
+    &.txt_r{
+      @include font-dpr(28);
+      // @include px2rem(padding-right, 30);
+    }
+  }
+  span{
+    &.txt_r{
+      @include font-dpr(28);
+      // @include px2rem(padding-right, 30);
+    }
+  }
+  .tit{
+    text-align: center;
+    @include font-dpr(36);
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    @include px2rem(padding-left, 20);
+  }
+  .empty_r{
+    // @include px2rem(width, 0);
+  }
+  .empty_w{
+    @include px2rem(width, 113);
+  }
+}

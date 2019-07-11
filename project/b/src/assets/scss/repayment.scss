@@ -1,0 +1,124 @@
+// 待还款
+.advance_repayment_item{
+  @include px2rem(min-height, 196);
+  @include px2rem(margin, 32 24 0);
+  @include px2rem(padding-left, 24);
+  box-shadow: 0 0 12px 0 rgba(0,0,0,0.08), 0 8px 8px 0 rgba(0,0,0,0.04);
+  @include px2rem(border-radius, 12);
+}
+.advance_repayment_title{
+  @include lh(65, 65);
+  border-bottom: 1px solid #F8F8F8;
+  &.canRepay_go{
+    background:url("./assets/icon/cashier/jiant.png") no-repeat right 0.32rem center;
+    @include px2rem(background-size,15 30);
+  }
+}
+.repaydetail_title{
+  @include px2rem(padding, 0 24 0 52);
+  background: url(./assets/icon/icon/nochecked.png) no-repeat center left;
+  @include px2rem(background-size, 28 28);
+  &.checked_btn{
+    background: url(./assets/icon/icon/checked.png) no-repeat center left;
+    @include px2rem(background-size, 28 28);
+  }
+  &.checked_zh{
+    background: url(./assets/icon/icon/zh.png) no-repeat center left;
+    @include px2rem(background-size, 28 28);
+  }
+}
+.overdue_btn{
+  @include px2rem(padding, 3 14);
+  background: $redBj;
+  @include px2rem(border-radius, 16.5);
+  @include font-dpr(20);
+  @include px2rem(margin-left, 34);
+}
+.repay_money{
+  @include lh(80, 80);
+  @include px2rem(padding-right, 24);
+}
+.hkfs_type{
+  @include px2rem(padding, 0 24 12 0);
+}
+.return_money{
+  @include font-dpr(40);
+}
+.not_repay{
+  @include font-dpr(30);
+  @include px2rem(padding-right, 24);
+  text-align: right;
+}
+.repay_suatus{
+  @include font-dpr(30);
+  @include px2rem(padding-left, 20);
+}
+// 全选按钮
+.addorder_box{
+  width: 100%;
+  @include px2rem(height,98);
+  @include px2rem(line-height,98);
+  // border-top: 1px solid $borderColor;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  .agree{
+    @include px2rem(width,31);
+    @include px2rem(height,31);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    vertical-align: middle;
+    // margin-top: -5px;
+    background: url("./assets/icon/icon/nochecked.png") no-repeat;
+    @include px2rem(background-size, 30 30);
+    border-radius: 50%;
+    @include px2rem(margin-right,20);
+    border: none;
+  }
+  .agree:checked{
+    border: none;
+    background: url("./assets/icon/icon/checked.png") no-repeat;
+   @include px2rem(background-size, 30 30);
+  }
+}
+.money_txt{
+  background: #FAFAFA;
+  // border-top: 1px solid $borderColor;
+  @include px2rem(padding-left, 30);
+}
+.confirmorder_btn{
+   @include px2rem(width, 320);
+   background: $mainColor;
+   text-align: center;
+   @include font-dpr(34);
+   color: #ffffff;
+   &.hui {
+    background: $borderColor;
+  }
+}
+// 还款结果
+.repay_result{
+  text-align: center;
+  @include px2rem(padding-top, 122);
+  img{
+    @include px2rem(width,460);
+  }
+  p{
+    line-height: 1.6;
+    // @include px2rem(padding-top, 22);
+  }
+}
+.repay_success{
+  @include px2rem(margin, 24 24 0 24);
+  background: #F8F8F8;
+  @include px2rem(border-radius, 12);
+  @include px2rem(padding-left, 24);
+}
+.repay_success_item{
+  @include lh(82, 82);
+  @include px2rem(padding-right, 24);
+  border-bottom: 1px solid #eee;
+  &:last-child{
+    border: none;
+  }
+}

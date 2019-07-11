@@ -1,0 +1,54 @@
+{
+  "extends": ["tslint:latest"],
+  "rules": {
+    "arrow-parens": false,
+    "interface-name": [false],
+    "max-line-length": [true, 230],
+    "member-access": false,
+    "member-ordering": [true, {"order": "statics-first"}],
+    "no-arg": true,
+    "no-console": [true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-debugger": true,
+    "no-switch-case-fall-through": true,
+    "ordered-imports": [
+      false, {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive"
+      }
+    ],
+    "trailing-comma": [true, {
+      "multiline": "always",
+      "singleline": "never"
+    }],
+    "no-trailing-whitespace": false,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "object-literal-sort-keys": false,
+    "radix": true,
+    "semicolon": [true, "always", "ignore-interfaces", "ignore-bound-class-methods"],
+    "triple-equals": [true, "allow-null-check"],
+    "variable-name": [true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case",
+      "allow-leading-underscore"
+    ],
+    "whitespace": [true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "quotemark": [ true, "single", "jsx-double" ]
+  },
+
+  "jsRules": {
+    "quotemark": [ true, "single", "jsx-double" ]
+  }
+}

@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import "app";
+@mixin wh($w,$h){
+  @include px2rem(width,$w);
+  @include px2rem(height,$h);
+}
+@mixin box_m($m){
+  @include px2rem(margin,$m);
+}
+@mixin box_p($p){
+  @include px2rem(padding,$p);
+}
+.disimg{
+  width: 100%;
+  display: block;
+}
+.ac_header{
+  width: 100%;
+  background-size: cover;
+}
+//通用样式
+@mixin publicCss($bg,$fc){
+    position: relative;
+    @include font-dpr(24);
+    background-color: $bg;
+    .ac_title {
+      color: #444;
+      @include font-dpr(26);
+      @include lines-ellipsis(2);
+    }
+    .info {
+      color: #999;
+    }
+    .price{
+      color: $fc;
+      b {
+        font-weight: normal;
+        @include font-dpr(30);
+      }
+    }
+    .img_box {
+      text-align: center;
+      img {
+        display: block;
+      }
+    }
+    .btn {
+      display: block;
+      @include px2rem(border-radius, 5);
+      color: #fff;
+      text-align: center;
+      @include px2rem(height, 54);
+      @include px2rem(line-height, 54);
+      @include px2rem(margin-top,20);
+      &.dis_btn {
+        color: #999;
+        background-color: $borderColor;
+      }
+    }
+    .tag {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      @include wh(110,55);
+      @include font-dpr(18);
+      color: #fff;
+      text-align: center;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      @include px2rem(line-height,26);
+      @include px2rem(padding,1 0);
+      //background-image: url("../images/activity/chrisAndNewYear/tag_1.png");
+    }
+}
+//一行一个商品
+@mixin oneGoods($m1,$m2,$m3,$w,$h,$btnbg){
+  @include box_p($m1);
+  @include box_m($m2);
+  .img_box{
+    @include wh($w,$h);
+    @include box_m($m3);
+    img{
+      @include wh($w,$h);
+    }
+  }
+  .btn{
+    @include wh(260, 60);
+    background-color:$btnbg;
+  }
+  .ac_title{
+    @include px2rem(line-height,50);
+    @include px2rem(height,100);
+  }
+}
+
+// 一行两个商品
+@mixin twoGoods($p,$w,$h,$m,$btnbg){
+  @include box_p($p);
+  @include box_m($m);
+  // .img_box{
+  //   //@include box_p($p);
+  //   img{
+  //     margin: 0 auto;
+  //     @include wh($w,$h);
+  //   }
+  // }
+  .ac_title{
+    @include px2rem(line-height,40);
+    @include px2rem(height,80);
+  }
+  .info{
+    @include box_m($m);
+  }
+  .btn{
+    @include box_m(20 0 0 0);
+    background-color:$btnbg;
+  }
+}
+.ac_cell_1, .ac_cell_2 {
+  @include publicCss(#fff,$redColor);
+}
+.ac_cell_1{
+  @include oneGoods(0 0 0 0,0 20 20,0 20 0 0,200 ,200,#f60);
+}
+.ac_list_2{
+  overflow: hidden;
+  @include px2rem(margin,0 5);
+  >li{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    // @include px2rem(padding,0 10);
+    // @include px2rem(margin,0 0 15);
+    overflow: hidden;
+  }
+}
+.ac_cell_2{
+  display: block;
+  @include twoGoods(0,352,352,10 5 0,#f60);
+}
+//.top_go{@include wh(97,97);
+//  position: fixed;
+//  z-index: 33;
+//  @include px2rem(right,10);
+//  @include px2rem(bottom,20);
+//}

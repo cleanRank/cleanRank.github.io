@@ -1,0 +1,52 @@
+// 我的邀请用户
+.fans_num_wrap{
+  @include px2rem(width, 702);
+  margin: 0 auto;
+  @include px2rem(margin-top, 30);
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  @include px2rem(border-radius, 12);
+  overflow: hidden;
+  @include px2rem(padding, 20 0 24);
+  .myfans_num{
+    text-align: center;
+    .fans_b{
+      line-height: 1.4;
+      @include font-dpr(80);
+    }
+  }
+  b, span{
+    display: block;
+  }
+  .order_fans_wrap{
+    @include px2rem(margin-top, 16);
+    text-align: center;
+  }
+  .num_orders{
+    @include font-dpr(34);
+    line-height: 1.4;
+  }
+}
+.fansListWrap{
+  @include px2rem(margin-top, 60);
+  p{
+    @include font-dpr(28);
+    color: #777777;
+    line-height: 1.2;
+    @include px2rem(padding-bottom, 20);
+    position: relative;
+  }
+  p.active_p{
+    color: #333;
+    &:after{
+      content: '';
+      position: absolute;
+      @include wh(40, 3);
+      background: $mainColor;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin:0 auto;
+      // margin-left: calc(25% - 0.53333rem);
+    }
+  }
+}

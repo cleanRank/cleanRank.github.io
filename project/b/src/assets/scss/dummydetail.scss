@@ -1,0 +1,236 @@
+@import "app";
+@mixin wh($w,$h){
+  @include px2rem(width,$w);
+  @include px2rem(height,$h);
+}
+@mixin box_m($m){
+  @include px2rem(margin,$m);
+}
+@mixin box_p($p){
+  @include px2rem(padding,$p);
+}
+@mixin line_h($h){
+  @include px2rem(height,$h);
+  @include px2rem(line-height,$h);
+}
+.phone_num{
+  border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  @include box_p(0 20);
+  @include px2rem(margin-top,13);
+  @include line_h(155);
+  vertical-align: middle;
+}
+.pho_n{
+
+  border: none;
+  @include font-dpr(36);
+  @include px2rem(text-indent,10);
+  width: 90%;
+  background: #FFFFFF;
+}
+.mail_list{
+  @include px2rem(width,72);
+  background: url("../../assets/icon/icon/txl_03.jpg") center no-repeat;
+  @include px2rem(background-size,50 57);
+}
+.no_bag{ background: none;}
+.clear_pho{
+  @include px2rem(width,100);
+  line-height: 100%;
+  background:url("../../assets/icon/icon/closed_03.png") center no-repeat;
+  @include px2rem(background-size,60 60);
+  height: 100%;
+  display: none;
+}
+.error_p{
+  @include line_h(40);
+  @include px2rem(padding-left,17);
+  color: #666666;
+  @include font-dpr(24);
+}
+.moneylist{
+  @include px2rem(padding-bottom,30);
+  .nav_box > div {
+    margin-top: 0.4rem;
+  }
+  // .nav_box > div:nth-child(1) {
+  //   margin-top: 0;
+  // }
+  // .nav_box > div:nth-child(2) {
+  //   margin-top: 0;
+  // }
+  // .nav_box > div:nth-child(3) {
+  //   margin-top: 0;
+  // }
+  .nav_box > div:nth-child(-n+3){
+    margin-top: 0;
+  }
+  // .nav_box:last-child{
+  //   @include box_m(0);
+  // }
+}
+.dummyProblem{
+  text-align: right;
+  @include px2rem(padding-right,20);
+  @include px2rem(padding-bottom,30);
+  // border-bottom: 1px solid $borderColor;
+}
+.nav_list{
+  width: 33.3%;
+  .active{
+    background: $mainColor;
+    border:1px solid $mainColor;
+    p{ color: #FFFFFF;}
+  }
+}
+.package_box{
+  @include px2rem(width,215);
+  @include px2rem(min-height,105);
+  border: 1px solid $borderColor;
+  margin: 0 auto;
+  text-align: center;
+  @include box_p(10 0);
+}
+
+.sj_f{
+  @include font-dpr(24);
+  line-height: 1.4;
+}
+
+.staging_wrap{
+  position: absolute;
+  visibility: visible;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 22;
+  background-color: #fff;
+}
+
+// .s_head{
+//   @include font-dpr(36);
+//   @include px2rem(padding,0 10 0 30);
+//   border-bottom: 1px  solid $borderColor;
+//   span{
+//     @include px2rem(line-height,40);
+//     @include px2rem(padding-top,20);
+//     @include px2rem(padding-bottom,20);
+//   }
+// }
+// .s_h_close{
+//   @include px2rem(width,50);
+//   text-align: center;
+//   @include font-dpr(40);
+// }
+// .s_h_txt{
+//   position: relative;
+//   @include px2rem(padding-left,15);
+//   &:before{
+//     content: "";
+//     position: absolute;
+//     left: 0;
+//     top: 50%;
+//     -webkit-transform : translate3d(0, -50%, 0);
+//     transform : translate3d(0, -50%, 0);
+//     @include px2rem(width,5);
+//     @include px2rem(height,34);
+//     background-color: $mainColor;
+//   }
+// }
+// .pro_attr{
+//   @include px2rem(padding,26 0 10);
+//   font-size: 0;
+//   span{
+//     @include font-dpr(24);
+//     display: inline-block;
+//     @include px2rem(margin,0 10);
+//     @include px2rem(padding,5 10);
+//     @include px2rem(border-radius,5);
+//     background-color: $borderColor;
+//     color: #fff;
+
+//   }
+// }
+// .month_price{
+//   color: $mainColor;
+// }
+// .btn_wrap{
+//   box-sizing: border-box;
+//   width: 100%;
+//   background-color: #fff;
+//   @include px2rem(padding,15 30);
+//   .goods_info_container &{
+//     position: fixed;
+//     z-index: 10;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     border-top: 1px solid $borderColor;
+//   }
+// }
+// .go_order_btn{
+//   display: block;
+//   @include font-dpr(32);
+//   text-align: center;
+//   color: #fff;
+//   background-color: $mainColor;
+//   width: 100%;
+//   @include px2rem(height,90);
+//   @include px2rem(line-height,90);
+//   @include px2rem(border-radius,10);
+// }
+.go_top{
+  position: fixed;
+  z-index: 15;
+  display: block;
+  @include px2rem(bottom,170);
+  @include px2rem(right,50);
+  @include px2rem(width,70);
+  @include px2rem(height,70);
+  @include px2rem(text-indent,-10000);
+  overflow: hidden;
+  background: url("../../assets/icon/icon/arrow_top.png")  no-repeat center;
+  background-size: contain;
+}
+// .bigapic{
+//   width: 100%!important;
+// }
+
+
+// .blended_box{
+//   position: absolute;
+//   width: 100%;
+//   background: #f3f3f3;
+//   @include px2rem(height,252);
+//   overflow: hidden;
+//   z-index: 2;
+//   @include px2rem(top,273);
+//   .mouseout,.mouseover{
+//     width: 100%;
+//     @include px2rem(height,82);
+//     @include px2rem(line-height,82);
+//     border-bottom: 1px solid $borderColor;
+//   }
+// }
+//payment_mode
+// .logo_img{
+//   @include px2rem(width,130);
+//   @include px2rem(height,65);
+//   @include px2rem(margin,10 20 10 0);
+//   text-align: center;
+//   img{
+//     @include px2rem(width,65);
+//     @include px2rem(height,65);
+//     border-radius: 5px;
+//   }
+// }
+// .payment_modefont{
+//   @include font-dpr(28);
+//   @include px2rem(line-height,85)
+// }
+.ts_m{
+  @include px2rem(padding-left,20);
+  line-height: 2;
+  color: #999999;
+}

@@ -1,0 +1,52 @@
+// 下载页
+.extension_wrap{
+  width: 100%;
+  min-height: 100%;
+  // background: url(./assets/icon/share/download_bg.jpg) no-repeat top left;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .downloadTop{
+    width: 100%;
+    @include px2rem(height, 1006);
+    display: block;
+  }
+  .downloadBottom{
+    width: 100%;
+    @include px2rem(min-height, 328);
+    background: url(./assets/icon/share/download_bg2.jpg) no-repeat bottom left;
+    background-size: 100% 100%;
+    position: relative;
+  }
+  .downloadBtn{
+    @include wh(651, 183);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    background: url(./assets/icon/share/download_btn.png) no-repeat top left;
+    background-size: 100% 100%;
+    transition: .3s all;
+  }
+  .downloadBtnA{
+    background: url(./assets/icon/share/download_btn_a.png) no-repeat top left;
+    background-size: 100% 100%;
+  }
+  .openApp{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    @include px2rem(top, 92);
+    @include wh(651, 100);
+    @include px2rem(line-height, 100);
+    text-align: center;
+    @include font-dpr(28);
+    color: $color444;
+  }
+}
+.shadowBox{
+  box-shadow: 0 6px 6px rgba(234, 92, 85, 0.21);
+}

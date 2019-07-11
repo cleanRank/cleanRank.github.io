@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+.bmborder{
+  border-bottom: 1px solid $borderColor;
+}
+.btborder{
+  border-top: 1px solid $borderColor;
+}
+
+%dbcenter{
+  display: block;
+  text-align: center;
+}
+%sl{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+//分期账单
+$overdue: $mainColor;
+.bDetaillWrap{
+  @extend .btborder;
+  background: #ffffff;
+  @include px2rem(margin-top, 10);
+}
+.pro{
+  @include px2rem(margin, 0 30);
+  @include px2rem(padding, 54 0 68 0);
+  .p_title{
+    @include font-dpr(36);
+    @extend .c_333;
+    @include px2rem(margin-bottom, 24);
+  }
+  .capital_yh{
+    @include px2rem(margin-top, 34);
+    span{
+      display: block;
+      @include font-dpr(24);
+      @extend .c_999;
+    }
+    .money{
+      @include px2rem(margin-top, 24);
+      @include font-dpr(30);
+      @extend .c_333;
+    }
+  }
+}
+.date_order{
+  @include font-dpr(24);
+  @extend .c_999;
+  @include px2rem(padding-bottom, 51);
+  @extend .bmborder;
+  .oederNum{
+    @include px2rem(margin-left, 80);
+  }
+}
+
+.billList{
+  li{
+    @include px2rem(height, 130);
+    @include px2rem(line-height, 130);
+    @extend .bmborder;
+    @include px2rem(padding, 0 30);
+    i{
+      font-style: normal;
+    }
+    .num{
+      @include font-dpr(30);
+      @extend .c_333;
+      @include px2rem(margin-right, 20);
+    }
+    .i_h{
+      @include px2rem(margin-left, 10);
+    }
+  }
+  .li_head{
+    @include px2rem(height, 82);
+    @include px2rem(line-height, 82);
+    @extend .btborder;
+    @include font-dpr(30);
+    @extend .c_333;
+    background: #eaeaea;
+    b{
+      @include font-dpr(24);
+      @extend .c_999;
+      font-weight: normal;
+    }
+  }
+  .al_h{
+    @extend .c_999;
+  }
+  .overdue_h{
+    color: $overdue;
+  }
+  .not_h{
+    @extend .c_333;
+  }
+}

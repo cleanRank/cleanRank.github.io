@@ -1,0 +1,546 @@
+
+$color1:$mainColor;
+//授信成功
+.ts-cont{
+  color: #999999;
+  @include px2rem(padding, 0 30);
+  b{
+    @include wh(25, 24);
+    background: url("./assets/icon/credit/tishiyu@2x.png") no-repeat center;
+    background-size: contain;
+    vertical-align: middle;
+    @include px2rem(margin, 8 14 0 10);
+  }
+  p{
+    @include font-dpr(24);
+    @include px2rem(line-height, 42);
+  }
+}
+// .btn_auth{
+//   @include px2rem(margin-bottom, 30);
+// }
+/* 个人中心改版 start */
+.new-personal-menu{
+  @include px2rem(margin-top, -72);
+  position: relative;
+  z-index: 1;
+}
+.new-personal-info-bg{
+  background: url("./assets/icon/personal/personal-bg.png") left top no-repeat;
+  background-size: 100% 100%;
+}
+.new-personal-info{
+  @include px2rem(height, 320);
+  @include display-flex;
+  align-items: center;
+  position: relative;
+  .message-status{
+    position: absolute;
+    @include px2rem(top, 24);
+    @include px2rem(right, 4);
+    @include px2rem(width, 42);
+    @include px2rem(height, 42);
+    background: url("./assets/iconfont/header/header-message-white.svg") no-repeat center center;
+    @include px2rem(background-size,  42 42);
+    color: #fff;
+    .msg_num{
+      position: absolute;
+      background: $mainColor;
+      left: 52%;
+      @include px2rem(top,  0);
+      color: #fff;
+      text-align: center;
+      @include wh(28, 28);
+      @include px2rem(line-height, 28);
+      @include px2rem(border-radius, 14);
+      @include font-dpr(24);
+      &.msgNumTwo{
+        @include px2rem(width, 40);
+        @include px2rem(height, 28);
+      }
+    }
+  }
+}
+
+.new-personal-portrait{
+  @include px2rem(width, 124);
+  @include px2rem(height, 124);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  @include px2rem(margin-left, 16);
+  overflow: hidden;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, .6);
+  @include px2rem(border-width, 4);
+  overflow: hidden;
+  background: url('./assets/icon/personal/tx.png') center no-repeat;
+  background-size: cover;
+  img {
+    @include px2rem(width, 124);
+    @include px2rem(height, 124);
+  }
+}
+.new-personal-tel{
+  @include px2rem(margin-left, 37);
+  @include font-dpr(38);
+  color: #C9E0FF;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.new-personal-loan{
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  background: #fff;
+  @include px2rem(border-radius, 12);
+  &.mb-32{
+    @include px2rem(margin-bottom, 32);
+  }
+}
+.new-personal-loan-no{
+  text-align: center;
+  margin: 0 auto;
+  @include lh(188, 188);
+}
+.new-personal-loan-not-active{
+  @include display-flex;
+  @include justify-content(space-between);
+  align-items: center;
+  flex-wrap: wrap;
+  @include px2rem(height, 128);
+
+  @include px2rem(padding,0 30);
+  background: url("./assets/iconfont/icon/right-down.svg") right center no-repeat;
+  @include px2rem(background-size, 64 64);
+}
+.new-personal-loan-ceiling{
+  color: $mainColor;
+  &>em{
+    @include font-dpr(30);
+  }
+  @include font-dpr(56);
+}
+.new-personal-loan-active-btn{
+  color: #777;
+  @include font-dpr(26);
+  @include px2rem(margin-right, 30);
+}
+.new-personal-loan-details{
+  overflow: hidden;
+  @include px2rem(padding-top, 22);
+  @include px2rem(padding-bottom, 22);
+}
+.reimbursement{
+  @include display-flex;
+  flex-flow:  wrap;
+}
+.new-personal-loan-bill{
+  text-align: center;
+  position: relative;
+  @include display-flex;
+  @include justify-content(center);
+  flex-direction: column;
+  // .color-bule{
+  //   color: $mainColor;
+  // }
+}
+.loan-available-credit{
+  width: 100%;
+  .loan-available-credit-number{
+    color: $mainColor;
+    @include font-dpr(56);
+    @include px2rem(line-height, 66);
+    @include px2rem(margin-bottom, 7);
+  }
+  .loan-available-credit-txt{
+    color: #999;
+    @include font-dpr(20);
+    @include px2rem(line-height, 28);
+  }
+  &.mb-28{
+    @include px2rem(margin-bottom, 28);
+  }
+}
+.loan-repayment{
+  width: 50%;
+  @include px2rem(height, 77);
+  .loan-repayment-t{
+    color: #333;
+    @include font-dpr(32);
+    @include px2rem(line-height, 45);
+    @include px2rem(margin-bottom, 3);
+  }
+  .loan-repayment-b{
+    color: #999;
+    @include font-dpr(20);
+    @include px2rem(line-height, 28);
+  }
+}
+.before:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 1px;
+  @include px2rem(height, 77);
+  background: #ccc;
+}
+.new-personal-order{
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  background: #fff;
+  @include px2rem(border-radius, 12);
+  @include px2rem(margin-bottom, 32);
+}
+.new-personal-list{
+  @include display-flex;
+  flex-wrap: wrap;
+}
+.new-personal-title{
+  @include lh(66, 66);
+  @include px2rem(margin-left, 24);
+  border-bottom-color: #F8F8F8;
+  border-bottom-style: solid;
+  @include px2rem(border-bottom-width, 2);
+  color: #333;
+  @include font-dpr(30);
+}
+.other_list_wrap{
+  .new-personal-order-item{
+    width: 25%;
+  }
+}
+.new-personal-order-item{
+  text-align: center;
+  dt{
+    @include px2rem(height, 74);
+    background-size: .98667rem .98667rem !important;
+    @include px2rem(margin-top, 20);
+    @include px2rem(margin-bottom, 26);
+    position: relative;
+  }
+  dd {
+    color: #777;
+    @include font-dpr(26);
+    @include px2rem(line-height, 37);
+    @include px2rem(margin-bottom, 20);
+
+  }
+  dd.doubleNum{
+    @include px2rem(width, 40);
+    @include px2rem(height, 28);
+    background: url("./assets/icon/personal/group_3@2x.png") no-repeat center;
+    background-size: 100% 100%;
+  }
+}
+.order-sup-num{
+  position: absolute;
+  top: 0;
+  right: 28%;
+  &.doubleNum{
+    @include px2rem(width, 40);
+    @include px2rem(height, 28);
+    background: url("./assets/icon/personal/group_3@2x.png") no-repeat center;
+    background-size: 100% 100%;
+  }
+}
+.personal-order1 dt{
+  background: url("./assets/icon/personal/personal-order1.png") no-repeat center;
+}
+.personal-order2 dt{
+  background: url("./assets/icon/personal/personal-order2.png") no-repeat center;
+}
+.personal-order3 dt{
+  background: url("./assets/icon/personal/personal-order3.png") no-repeat center;
+}
+.personal-order4 dt{
+   background: url("./assets/icon/personal/personal-order4.png") no-repeat center;
+ }
+ .personal-order5 dt{
+  background: url("./assets/icon/personal/personal-order5.png") no-repeat center;
+}
+.personal-service1 dt{
+  background: url("./assets/icon/personal/personal-service1.png") no-repeat center;
+}
+.personal-service2 dt{
+  background: url("./assets/icon/personal/personal-service2.png") no-repeat center;
+}
+.personal-service3 dt{
+  background: url("./assets/icon/personal/personal-service3.png") no-repeat center;
+}
+.personal-service4 dt{
+  background: url("./assets/icon/personal/personal-service4.png") no-repeat center;
+}
+.personal-service5 dt{
+  background: url("./assets/icon/personal/personal-service5.png") no-repeat center;
+}
+.personal-service6 dt{
+  background: url("./assets/icon/personal/personal-service6.png") no-repeat center;
+}
+.personal-service7 dt{
+  background: url("./assets/icon/personal/personal-service7.png") no-repeat center;
+}
+.new-personal-order-sup{
+  background: red;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.order-sup{
+  position: relative;
+}
+.new-personal-support-item{
+  @include lh(80, 80);
+  background: url("./assets/icon/personal/left.png") right 0.26667rem center no-repeat;
+  @include px2rem(background-size, 30 30);
+}
+
+/* 个人中心改版 end */
+
+// 联系客服
+.customer-service{
+  overflow: hidden;
+}
+.customer-service{
+  text-align: center;
+}
+.customer-service-tel{
+  @include px2rem(margin-bottom, 114);
+}
+.customer-service-time{
+  color: #999;
+  @include font-dpr(30);
+  @include px2rem(line-height, 42);
+  @include px2rem(margin-top, 62);
+}
+.customer-img{
+  @include wh(294, 294);
+  @include px2rem(margin-top, 43);
+}
+.customer-service-tel-num{
+  @include px2rem(margin-top, 50);
+  display: block;
+  color: #fff;
+  @include font-dpr(30);
+  background: $mainColor;
+  @include lh(78, 78);
+  @include px2rem(border-radius, 39);
+  @include px2rem(margin-left, 150);
+  @include px2rem(margin-right, 150);
+  // box-shadow: 0px 24px 40px -20px rgba(62,155,249,.6);
+}
+.customer-service-vipcn_qrcode{
+  @include wh(240, 240);
+  @include px2rem(margin-bottom, 32);
+}
+.customer-service-vipcn_copy{
+  @include font-dpr(26);
+  color: #777;
+  @include px2rem(line-height, 37);
+  @include font-dpr(26);
+}
+// 设置
+.setLine{
+  @include px2rem(height, 20);
+  background-color: #F5F5F5;
+}
+.setInfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-color: #F8F8F8;
+  border-bottom-style: solid;
+  @include px2rem(border-bottom-width, 2);
+}
+.setInfoLabel{
+  display: block;
+}
+.setInfoName{
+  @include font-dpr(30);
+  @include px2rem(min-width, 80);
+  text-align: right;
+}
+.setHeadFileWrap{
+  @include px2rem(width, 80);
+  @include px2rem(height, 80);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.setHeadFile{
+  @include px2rem(width, 80);
+  @include px2rem(height, 80);
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+.setHeadImg{
+  display: block;
+  @include px2rem(width, 80);
+  @include px2rem(height, 80);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.set-up{
+  background: #fff;
+}
+.set-item{
+  @include lh(110, 110);
+  color: #333;
+  @include font-dpr(30);
+  @include px2rem(margin-left, 24);
+  @include px2rem(padding-right, 64);
+  background: url("./assets/iconfont/icon/right-down.svg") right center no-repeat;
+  @include px2rem(background-size, 64 64);
+}
+.editNameMask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0,0,0,0.03);
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+.editNameContent{
+  @include px2rem(width, 510);
+  @include px2rem(height, 302);
+  @include px2rem(border-radius, 12);
+  background: #fff;
+  .editTitle{
+    color: $color999;
+    @include font-dpr(34);
+    @include px2rem(line-height, 48);
+    @include px2rem(padding, 32 0);
+    text-align: center;
+  }
+  .userName{
+    display: block;
+    @include px2rem(width, 305);
+    @include px2rem(height, 66);
+    @include px2rem(border-radius, 6);
+    background: #F5F5F5;
+    border: none;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .editControl{
+    @include px2rem(border-top-width, 2);
+    border-top-style: solid;
+    border-top-color: #F8F8F8;
+    @include px2rem(margin-top, 42);
+    position: relative;
+    &:after{
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 100%;
+      @include px2rem(width, 2);
+      background: #F8F8F8;
+    }
+    .editBtn{
+      color: $color777;
+      display: block;
+      flex: 1;
+      text-align: center;
+      @include font-dpr(28);
+      @include px2rem(height, 80);
+      @include px2rem(line-height, 80);
+    }
+    .confirm{
+      color: $mainColor;
+    }
+  }
+}
+// 关注
+.h_line{
+  @include px2rem(height, 20);
+  background-color: #F5F5F5;
+}
+.myConcern.fixedContainer{
+  position: fixed;
+  @include px2rem(top, 88);
+  width: 100%;
+  z-index: 2;
+  background: #fff;
+}
+.concernContent{
+  @include px2rem(padding-top, 103);
+}
+.celebrity-store{
+  @include px2rem(height, 84);
+  @include px2rem(line-height, 84);
+  justify-content: center;
+  border-bottom: 1px solid #E2E2E2;
+  @include font-dpr(30);
+}
+.celebrity-store-item{
+  flex: 1;
+  text-align: center;
+}
+.selected{
+  color: $mainColor !important;
+  border-bottom: 2px solid $mainColor;
+}
+.concernListItem{
+  @include px2rem(margin-left, 24);
+  @include px2rem(padding, 24 24 24 0);
+  border-bottom: 2px solid #F8F8F8;
+  @include px2rem(height, 182);
+  .itemImgWrap{
+    @include px2rem(width, 100);
+    @include px2rem(height, 100);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    .itemImg{
+      display: block;
+      @include px2rem(width, 100);
+      @include px2rem(height, 100);
+    }
+  }
+  .itemInfo{
+    flex: 1;
+    justify-content: center;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    @include px2rem(margin-left, 32);
+    .itemName{
+      width: 100%;
+      @include font-dpr(34);
+      @include px2rem(line-height, 48);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      @include px2rem(margin-bottom, 8);
+    }
+
+    .itemSignature{
+      @include font-dpr(26);
+      @include px2rem(line-height, 37);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+  }
+}
+.concernListNull{
+  text-align: center;
+  &>img{
+    @include px2rem(width, 260);
+    @include px2rem(margin-left, 20);
+  }
+}

@@ -1,0 +1,73 @@
+.help_wrap{
+  margin-top: 1.33333rem !important;
+}
+.seach_top{
+  @include px2rem(height, 100);
+  background: #fff;
+  @include px2rem(padding-left, 20);
+  @include px2rem(margin-bottom, 12);
+}
+.search_box{
+  @include px2rem(height, 76);
+  @include px2rem(margin-top, 12);
+  background: #f5f5f5 url(./assets/icon/help/seachh.png) left 0.48rem center no-repeat;
+  @include px2rem(background-size, 36 36);
+  @include px2rem(border-radius, 40);
+  @include px2rem(padding-left, 96);
+  overflow: hidden;
+  input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: none;
+    @include font-dpr(30);
+  }
+}
+.search_btn{
+  @include px2rem(width, 100);
+  @include px2rem(line-height, 100);
+  @include font-dpr(30);
+  color: $mainColor;
+  text-align: center;
+}
+// 帮助中心
+.help_title{
+  @include font-dpr(30);
+  border-bottom: 1px solid $borderColor;
+  @include px2rem(padding, 24 30);
+  // @include lh(88, 88);
+  background: #fff;
+  // @include px2rem(margin-top, 12);
+  font-weight: bold;
+}
+.help_list{
+  @include px2rem(padding-left, 30);
+  background: #fff;
+  // @include px2rem(margin-bottom, 12);
+}
+.help_item{
+  border-bottom: 1px solid $borderColor;
+  @include lh(88, 88);
+  color: #444444;
+  @include px2rem(padding-right, 40);
+  @include font-dpr(28);
+  background: url(./assets/icon/cashier/jiant.png) right 0.4rem center no-repeat;
+  @include px2rem(background-size, 15 30);
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  &:last-child{
+    border:none;
+  }
+}
+.help_content{
+  background: #fff;
+  @include px2rem(padding, 24 40);
+  line-height: 1.5;
+  color: #444444;
+  @include font-dpr(28);
+  @include px2rem(margin-bottom, 12);
+}
+.mt12{
+  @include px2rem(margin-top, 12);
+}

@@ -1,0 +1,80 @@
+@charset "utf-8";
+@import "app";
+.auth_steps{
+  background-color: #fff;
+  text-align: center;
+  @include px2rem(padding,50 0 40);
+  @include px2rem(margin-top, 20);
+  border-top: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+}
+%step{
+  position: relative;
+  z-index: 2;
+  @include px2rem(padding,90 0 0);
+
+  @include font-dpr(24);
+  &:before{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    @include px2rem(top,36);
+    @include px2rem(height,4);
+    background-color: #e0e0e0;
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    background: {
+      repeat: no-repeat;
+      position: center top;
+    };
+    @include px2rem(width,76);
+    @include px2rem(height,76);
+    @include px2rem(margin-left,-36);
+    @include px2rem(background-size,76 76);
+  }
+}
+.step_1{
+  @extend %step;
+  &:after{
+    background-image: url("../../assets/icon/credit/shim_1.png");
+  }
+  &.cur:after{
+    background-image: url("../../assets/icon/credit/shim_2.png");
+  }
+  &:before{
+    left: 50%;
+    right: 0;
+  }
+}
+.step_2{
+  @extend %step;
+  &:after{
+    background-image: url("../../assets/icon/credit/geren_1.png");
+  }
+  &.cur:after{
+    background-image: url("../../assets/icon/credit/geren_2.png");
+  }
+  &:before{
+    left: 0;
+    right: 0;
+  }
+}
+.step_3{
+  @extend %step;
+  &:after{
+    background-image: url("../../assets/icon/credit/bangd_1.png");
+  }
+  &.cur:after{
+    background-image: url("../../assets/icon/credit/bangd_2.png");
+  }
+  &:before{
+    left: 0;
+    right: 50%;
+  }
+}

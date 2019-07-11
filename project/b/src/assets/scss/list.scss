@@ -1,0 +1,170 @@
+
+.category_wrap{
+  border-top: 1px solid $borderColor;
+}
+.maxHeight .wk_wrap{
+  top:1.17333rem;
+  border-top: none;
+}
+#pullUp {
+  display: none;
+}
+#categoryBody{
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  @include px2rem(width, 158);
+  overflow-y: auto;
+}
+.category-tab{
+  @include font-dpr(28);
+  @extend .c_333;
+  text-align: center;
+  .ul_cont > li{
+    display: block;
+    @include px2rem(height, 104);
+    @include px2rem(line-height, 104);
+    overflow: hidden;
+    border-bottom: 1px solid $borderColor;
+    background: #FFF;
+    @extend .c_333;
+    &.cur{
+      color: $mainColor;
+      background: $bgColor;
+      border-left: 3px solid $mainColor;
+      a{
+        color: $mainColor;
+      }
+    }
+    a{display: block;
+      @extend .c_333;
+    }
+  }
+
+}
+
+.category-content{
+  -webkit-overflow-scrolling : touch;
+  flex: 1;
+  @include px2rem(margin-top, 20);
+  @include px2rem(padding,0 20);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.listWrap{
+  position: fixed;
+  display: box;              /* OLD - Android 4.4- */
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  @include px2rem(top, 95);
+  left: 0;
+  bottom: 1.2rem;
+  width: 100%;
+}
+.list_banner{
+  position: relative;
+  width: 100%;
+  display: block;
+  &:before{
+    content: "";
+    width: 100%;
+    display: block;
+    padding-top: 29.1%;
+  }
+  img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.banner_a{
+  position: absolute;
+  left: 0;
+  top:0;
+  right: 0;
+  bottom: 0;
+}
+.category-style{
+  //@include px2rem(padding-top, 28);
+  text-align: center;
+  @extend %clearfix;
+  @include font-dpr(28);
+  // overflow-y: auto;
+  // height: calc(100% - 3rem);
+  box-sizing: border-box;
+  >li{
+    background: #ffffff;
+    width: 32.8%;
+    display: block;
+    @include px2rem(padding, 23 0);
+    @extend .c_666;
+    @extend %pull-left;
+    overflow: hidden;
+    img{
+      @include px2rem(width, 120);
+      @include px2rem(height, 120);
+      margin: 0 auto;
+    }
+    em{
+     /* @include px2rem(margin-bottom, 23);*/
+      display: block;
+      @include px2rem(height,30);
+      @include px2rem(line-height,32);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.label_li{
+  margin:0 1px 1.5px 0;
+}
+.tagName_box{
+  @include lh(85,85);
+  @include font-dpr(30);
+  position: relative;
+  &:before,&:after{
+    content: "";
+    display: block;
+    position: absolute;
+    @include px2rem(width,88);
+    height: 1px;
+    background: $borderColor;
+    @include px2rem(top,43);
+  }
+  &:before{
+    @include px2rem(right,88);
+  }
+  &:after{
+    @include px2rem(left,88);
+  }
+}
+//支持的银行卡
+.limitUl{
+ background: #FFFFFF;
+ border-top: 1px solid $borderColor;
+ @include px2rem(margin-top,10);
+ @include px2rem(margin-bottom,66);
+ li{
+   border-bottom: 1px solid $borderColor;
+   @include px2rem(height,150);
+   @include px2rem(line-height,150);
+   .b_name{
+     color: #222333;
+     @include font-dpr(28);
+     @include px2rem(margin-left,30);
+   }
+   .single{
+     @include px2rem(margin-right,18);
+     color: #999999;
+     @include font-dpr(24);
+   }
+   .oneDay{
+     @include px2rem(margin-right,8);
+     color: #999999;
+   }
+ }
+}

@@ -1,0 +1,58 @@
+// 水象通列表查询
+.sxt_list_wrap{
+  @include px2rem(margin, 30 0 0 30);
+  @include px2rem(padding-bottom, 156);
+}
+.sxt_item{
+  @include px2rem(height, 290);
+  @include px2rem(margin-bottom, 20);
+}
+.sxt_detail{
+  @include wh(636, 290);
+  background: url("./assets/icon/sxt/sxt_bj.png") no-repeat left top;
+  background-size: 100% 100%;
+}
+.balance_box{
+  @include px2rem(height, 218);
+  text-align: center;
+  color: #fff;
+  .balance_p{
+    font-size: 0;
+    line-height: 1;
+    @include px2rem(padding, 34 0 13);
+  }
+  .balance_txt{
+    font-weight:600;
+  }
+  .yj_f,.balance_xs{
+    @include font-dpr(54);
+    font-weight:600;
+  }
+  .balance_num{
+    @include font-dpr(109);
+    font-weight:600;
+  }
+}
+.faceValue_p{
+  @include lh(72,72);
+  @include px2rem(padding-left, 20);
+}
+.select_sxt_item{
+  @include wh(40, 40);
+  @include px2rem(margin, 89 22 0 22);
+  input{
+    display: block;
+    margin: 0 auto;
+    @include wh(40, 40);
+    background: url("./assets/icon/sxt/wc.png") center no-repeat;
+    background-size: 0.53333rem 0.53333rem !important;
+    -webkit-appearance: none;
+    border: none;
+  }
+  input:checked{
+    background: url("./assets/icon/sxt/yx.png") center no-repeat;
+  }
+  input:disabled{
+
+  }
+}

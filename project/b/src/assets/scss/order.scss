@@ -1,0 +1,866 @@
+
+/*confirmorder */
+
+.confirm_order,.mybank_wrap{
+  // @include px2rem(padding-top,10);
+}
+.billdateContainer{
+  // position: absolute;
+  width: 100%;
+  // height: 100%;
+  // bottom: 0;
+  // left: 50%;
+  // top: 50%;
+  // margin: -50% 0 0 -50%;
+  // @include px2rem(top,88);
+ }
+.visShow{ visibility: visible; z-index: 2; display: block;}
+.address_div,.product_box,.order_info,.invoice_div{
+  @include px2rem(margin-bottom,10);
+  border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  background: #ffffff;
+}
+.address_div{
+  background:#ffffff url("./assets/icon/order/order_address_icon3x.png") no-repeat top left;
+  background-size: 100% auto;
+  border: none;
+  @include px2rem(margin-bottom,16);
+}
+.sjcz_div{
+  @include px2rem(min-height,110);
+}
+.confirmorder_top{
+  @include px2rem(min-height,118);
+  @include px2rem(margin, 0 24 20);
+  background: #fff;
+  @include px2rem(border-radius, 8);
+}
+.address_p{
+  span{@include px2rem(margin-right,20);}
+}
+.user_p{
+  @include font-dpr(28);
+  @include px2rem(padding,42 0 16 30);
+  span{
+    font-weight: bold;
+  }
+}
+.ress_p{
+  @include font-dpr(26);
+  color: #666;
+  @include px2rem(padding,0 0 42 30);
+}
+.recharge_tel{
+  @include px2rem(line-height,110);
+  @include px2rem(padding-left,30);
+  @include font-dpr(30);
+}
+.address_a{
+  display: block;
+  color: $color333;
+  background: url("./assets/icon/order/address_icon_03.jpg") no-repeat;
+  background-position: 92% 1.13333rem;
+  @include px2rem(background-size,27 37);
+}
+.address_as{
+  @include px2rem(line-height,118);
+  // text-align: center;
+  background: none;
+  @include font-dpr(30);
+  @include px2rem(padding-left, 78);
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    @include wh(78, 118);
+    background: url("./assets/icon/icon/address-icon.png") left 0.4rem center no-repeat;
+    @include px2rem(background-size, 30 40);
+    left: 0;
+    top: 0;
+  }
+}
+.product_box{
+  @include px2rem(padding,17 30);
+  dd{
+    @include px2rem(width,162);
+    @include px2rem(height,162);
+    @include px2rem(margin-right, 24);
+    // border: 1px solid $borderColor;
+    overflow: hidden;
+    position: relative;
+    font-size: 0;
+    .surplus_box{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background:rgba(0,0,0,0.7);
+      @include lh(34, 34);
+      color: #fff;
+      text-align: center;
+      @include font-dpr(20);
+      @include px2rem(border-radius, 0 0 8 8);
+    }
+    img{
+      @include px2rem(width,160);
+      @include px2rem(height,160);
+      display: block;
+    }
+  }
+  dt{
+    // @include px2rem(width,508);
+    p{
+      @include font-dpr(28);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include px2rem(width,500);
+    }
+    p:first-child{ @include px2rem(height,80); @include px2rem(line-height,42);}
+    p.re_p{@include px2rem(margin,18 0 15); height: auto;}
+    p.fSpu{ @include font-dpr(24); line-height: 1.8;}
+  }
+}
+.order_info{
+  p:last-child{ border-bottom: none;}
+}
+.add_address{
+  .l_b{ @include px2rem(width,145);}
+}
+.info_p{
+  .r_s{ color: $color444;
+        text-align: right;
+    // @include font-dpr(28);
+  }
+  .c_999{
+    color: #999 !important;
+  }
+  .c_333{
+    color: #333 !important;
+  }
+  a{ width: 100%;
+    b{ color: $color333;}
+  }
+  .right_s{
+    @include px2rem(width, 20);
+    @include px2rem(height,20);
+    display: inline-block;
+    background: url("./assets/icon/icon/return_r.png") no-repeat;
+    background-position: left center;
+    @include px2rem(background-size,20 20);
+  }
+  .num_em{ background: $mainColor;
+    color: #ffffff;
+    display:inline-block;
+    @include px2rem(width,100);
+    @include px2rem(height,40);
+    @include px2rem(line-height,40);
+    text-align: center;
+    border-radius: 3px;
+  }
+  .r_input{ border: none;
+    @include px2rem(height,99);
+    resize: none;
+    width: 100%;
+    @include px2rem(line-height,99);
+    @include px2rem(padding-left,18);
+    @include font-dpr(24);
+  }
+  textarea.r_input{
+    @include px2rem(height,74);
+    @include px2rem(padding-top,25);
+    @include px2rem(line-height,49);
+    @include px2rem(margin-left, 10);
+  }
+  .c_red{ color: $mainColor;}
+  .c_333{color: $color333;}
+  select{
+    width: 100%;
+    border: none;
+    @include px2rem(padding-right,30);
+    background: transparent url(./assets/icon/login/arow_r.png) no-repeat right center;
+    @include px2rem(background-size, 16 25);
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari 和 Chrome */
+    color: #999;
+    direction: rtl;
+    @include font-dpr(24);
+    option{
+      direction: ltr;
+    }
+    &.bg_none{
+      background: none;
+      padding-right: 0;
+    }
+  }
+}
+.remarks_p{
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border-bottom: none;
+  textarea.r_input{
+    @include px2rem(height,99);
+    @include px2rem(line-height,99);
+    padding: 0;
+    // background: #f00;
+    // @include px2rem(padding-top,15);
+    // border: 1px solid $borderColor;
+    // @include px2rem(margin,10 0 10 20);
+    // @include px2rem(line-height,40);
+    // border-radius: 5px;
+    // background: #FFFFFF;
+  }
+  // .remarks_num{ @include font-dpr(24);
+  //   position: absolute;
+  //   @include px2rem(right,45);
+  //   @include px2rem(bottom,8);
+  // }
+}
+.order_num{
+  background: #ffffff;
+  border-top: 1px solid $borderColor;
+  @include px2rem(margin-bottom,10);
+}
+.confirm_btn{
+  position: inherit;
+  width: 90%;
+  text-align: center;
+  @include px2rem(height, 96);
+  @include px2rem(line-height, 96);
+  border-radius: 1.2rem;
+  color: #ffffff;
+  background: $mainColor;
+  border: none;
+  display: block;
+  @include px2rem(margin,34 0);
+  margin-left: 5%;
+  display: block;
+  @include font-dpr(34);
+  &.hui{
+    background: #C8C8C8;;
+  }
+}
+//页脚下载
+.keep_btn{ position: absolute;
+  @include px2rem(bottom,28);
+  margin-bottom: 0;
+}
+#conBill_btn{@extend .keep_btn;}
+.confirm_order .invoicekeep_btn{ @include px2rem(margin-top,180);}
+.l_b{
+  span{
+    display: block;
+    @include px2rem(line-height,40);
+  }
+  .time_s{ @include font-dpr(20);
+    color: $color999;
+  }
+  .coupno_s{@include px2rem(padding,8 0);}
+}
+.num_sr{
+  text-align: right;
+  .num_b{ font-weight: normal;
+    color: $mainColor;
+  }
+}
+.pay_road{ background: #fff;
+  border-top: 1px solid $borderColor;
+  @include px2rem(margin-bottom,112);
+  .coupon_h{
+    @include px2rem(padding-left,76);
+    @include font-dpr(24);
+    &:before{
+      content: '';
+      @include px2rem(width,24);
+      @include px2rem(height,32);
+      background: url("./assets/icon/order/bank_i_03.png") no-repeat;
+      @include px2rem(background-size,24 32);
+      @include px2rem(left,40);
+    }
+  }
+}
+/* bank */
+.add_bank{ background: #fff;
+  display: block;
+  @include px2rem(height,88);
+  @include px2rem(line-height,88);
+  @include px2rem(margin-top,16);
+  text-align: center;
+  @include font-dpr(32);
+  color: $color333;
+  // border-bottom: 1px solid $borderColor;
+  &:before{
+    content:'';
+    position: absolute;
+    @include px2rem(width, 28);
+    @include px2rem(height, 28);
+    background: url("./assets/icon/icon/home_add_icon@3x.png") no-repeat center;
+    background-size: 100% 100%;
+    @include px2rem(margin,30 0 0 -40);
+  }
+}
+.mybank_wrap{
+ height: calc(100% - 1.6rem);
+}
+// .no_data{
+//   width: 100%;
+//   height: 100%;
+//   text-align: center;
+//   @include font-dpr(32);
+//   background: url("./assets/icon/order/zw_icon3x.png") no-repeat center 40%;
+//   @include px2rem(background-size,130 98);
+// }
+.bank_list{
+  // @include px2rem(margin-top,11);
+  // border-bottom: 1px solid $borderColor;
+  background: #FFFFFF;
+  // background: #FFFFFF url(./assets/icon/icon/left.png) right 0.4rem center no-repeat;
+  // @include px2rem(background-size,20 34);
+  .cardTypeStr_title{
+    @include px2rem(padding, 40 20 22);
+    background: $bgColor;
+    @include font-dpr(30);
+    color: #666666;
+    overflow: hidden;
+  }
+  .bank_p{
+    overflow: hidden;
+    line-height: 1.5;
+
+  }
+  .bank_name{
+    @include font-dpr(34);
+    @include px2rem(padding,24 28 11 35);
+  }
+  .bank_card{
+    @include px2rem(padding,0 28 27 35);
+    font-family: PingFangSC-Regular;
+    @include font-dpr(28);
+    color: #666;
+  }
+}
+.myBank{
+  background: #FFFFFF url(./assets/icon/cashier/jiant.png) right 0.37333rem center no-repeat;
+  @include px2rem(background-size,15 30);
+}
+.chosen_bank{
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    @include px2rem(width,29);
+    @include px2rem(height,29);
+    background: url("./assets/icon/order/chos_03.png") no-repeat;
+    @include px2rem(background-size,29 28);
+    @include px2rem(right,63);
+    @include px2rem(bottom,40);
+  }
+}
+/* myorderdetails */
+/* invoice */
+.invoice_div{
+  @include px2rem(padding,0 30 38 30);
+  .invoice_title{
+    @include font-dpr(30);
+    @include px2rem(padding,19 0 30 0);
+  }
+}
+.invoice_type{
+  display: inline-block;
+  @include px2rem(width,258);
+  @include px2rem(height,88);
+  @include px2rem(line-height,88);
+  text-align: center;
+  @include font-dpr(34);
+  border: 1px solid $borderColor;
+  border-radius: 5px;
+  @include px2rem(margin-right,38);
+}
+.invoiceType_p{
+  .active{ border: 1px solid $mainColor;}
+}
+.radio_div{ @include px2rem(padding-left,92);}
+.radio_item{
+  @include px2rem(margin-bottom,30);
+  .radio_check{
+    @include px2rem(width,28);
+    @include px2rem(height,28);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    vertical-align: middle;
+    border: 1px solid $borderColor;
+    border-radius: 100%;
+
+  }
+ .radio_check:checked{
+   border: none;
+    background: url("./assets/icon/order/checked_03.png") no-repeat;
+    background-size: 100%;
+  }
+  label{@include font-dpr(34);
+    position: absolute;
+    @include px2rem(margin-left,34);
+  }
+}
+.unit_conment{ width: 100%;
+ @include px2rem(height,84);
+  border: 1px solid $borderColor;
+  border-radius: 5px;
+  @include font-dpr(34);
+  @include px2rem(text-indent,15);
+  @include px2rem(margin,32 0 44 0);
+}
+.popupContainer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index:1;
+  @include bg_opacity(#000,0.8);
+  .invoice_popup{
+    position: absolute;
+    width: 88%;
+    @include px2rem(height,800);
+    background: #FFFFFF;
+    margin-left:6%;
+    @include px2rem(margin-top,112);
+    border-radius: 8px;
+  }
+  .notice_title{ text-align: center;
+    @include px2rem(height,100);
+    @include px2rem(line-height,100);
+    @include font-dpr(36);
+  }
+  .notice_conment{
+    @include px2rem(padding,36 0 0 36);
+    line-height:1.8;
+    @include px2rem(height,513);
+    @include font-dpr(21);
+    border-top: 1px solid $borderColor;
+    border-bottom: 1px solid $borderColor;
+    position: relative;
+    overflow: auto;
+    .notice_p{
+      position: absolute;
+      @include px2rem(left,36);
+      @include px2rem(right,36);
+      @include px2rem(padding-bottom, 36);
+    }
+  }
+}
+/* billdate */
+.billdate_box{
+  // @include px2rem(padding,20 30 52 30);
+  background: #fff;
+  @include px2rem(margin, 0 30);
+  @include px2rem(border-radius, 10);
+  overflow: hidden;
+  .note_p{
+    @include px2rem(line-height, 42);
+    @include font-dpr(28);
+    @include px2rem(padding,50 20);
+    color: #666666;
+  }
+  .top_bor{
+    @include px2rem(padding,20 0 30);
+    @include px2rem(margin,0 20);
+     border-top: 1px solid $borderColor;
+    span:last-child{ text-align: right;}
+  }
+  .c_red{ color: $redColor;
+   font-weight: normal;
+    font-family: arial, verdana, sans-serif;
+  }
+}
+.billdate_list{
+  position: relative;
+  @include px2rem(padding-bottom,50);
+  width:100%;
+  @include font-dpr(72);
+  color: #999999;
+  font-family: arial, verdana, sans-serif;
+  text-align: center;
+  .s_active{ color: $mainColor;}
+}
+.caption_p{
+  @include font-dpr(24);
+  color: #999999;
+  @include px2rem(line-height, 36);
+  // line-height: 1.9;
+  @include px2rem(padding,0 20 0 52);
+  background: url("./assets/icon/icon/money_prompt_icon@3x.png") no-repeat;
+  @include px2rem(background-position,20 6);
+  @include px2rem(background-size,22 22);
+  b{ font-weight: normal;}
+}
+/*myorder*/
+.myorder_list{@include px2rem(margin-bottom,10);}
+.myorder_product{
+  margin-bottom: 0;
+  border-bottom: none;
+  @include px2rem(height,85);
+  @include px2rem(line-height,85);
+}
+.myorder_title{ margin-top: 0;
+  text-align: center;
+  @include px2rem(padding-bottom, 4);
+  color: #777;
+  span{
+    // font-weight: bold;
+  }
+  .visited{
+    color: $mainColor;
+    height: 100%;
+    @include px2rem(border-bottom-width, 4);
+    border-bottom-style: solid;
+    border-bottom-color: $mainColor;
+  }
+}
+.product_details{ margin-bottom: 0;
+  @include px2rem(padding,7 30 7 10);
+  dd{
+    @include px2rem(padding,0 28 0 0);
+    img{@include px2rem(height,166);}
+  }
+  dt{
+    color: $color333;
+  }
+}
+.money_item{
+  background: #FFFFFF;
+  @include px2rem(height,85);
+  @include px2rem(line-height,85);
+  border-bottom: 1px solid $borderColor;
+  @include px2rem(padding,0 10);
+}
+
+.pay_details{ @include font-dpr(24);
+    b{ font-weight: normal; color: $color333;}
+   @include px2rem(margin-right,5);
+}
+.pay_a{ text-align: right;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+
+.rad_a{ @include font-dpr(26);
+  background: $mainColor;
+  color: #FFFFFF;
+  border-radius: 5px;
+  @include px2rem(padding,9 12);
+}
+.info_p .disable_input{background: #FFFFFF;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+/**/
+.paysuccess_box{ background: #FFFFFF;
+  border-top: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+  text-align: center;
+  @include px2rem(margin,10 0);
+  @include px2rem(padding,174 0 202 0);
+  img{ @include px2rem(width,102);
+      @include px2rem(height,102);
+  }
+  p{
+    @include font-dpr(36);
+    @include px2rem(padding-top,42);
+  }
+}
+.logistics_box{ border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  background: #FFFFFF;
+  @include px2rem(min-height,200);
+  overflow: hidden;
+}
+.logistics_list{
+  @include px2rem(padding, 39 0 17 30);
+  position: relative;
+  &:before{
+    content:'';
+    width: 1px;
+    position: absolute;
+    background: $borderColor;
+    @include px2rem(height,170);
+    @include px2rem(left, 50);
+    @include px2rem(top, 39);
+  }
+  &:last-child{
+    &:before{
+      // @include px2rem(height, 0);
+      background: #fff;
+      @include px2rem(top, 46);
+    }
+  }
+}
+.lv_boxs{
+  .current_new{
+    border: 1px solid #7BCA00 !important;
+  }
+  .address_span, .time_b{
+    color: #7BCA00 !important;
+  }
+}
+.red_boxs{
+  .current_new{
+    border: 1px solid $redColor !important;
+  }
+  .address_span, .time_b{
+    color: $redColor !important;
+  }
+}
+.circular_b{
+  @include px2rem(width,40);
+  @include px2rem(margin-right,30);
+  text-align: center;
+  .yuan_b{
+      @include px2rem(width,10);
+      @include px2rem(height,10);
+      background: #ccc;
+      @include px2rem(border-radius,10);
+      display: inline-block;
+      @include px2rem(margin-top, 12);
+      // @include px2rem(margin-left,2);
+  }
+  b.current_new{
+    @include px2rem(width, 40);
+    @include px2rem(height, 40);
+    background: #fff;
+    border: 1px solid $redColor;
+    @include px2rem(border-radius,40);
+    margin: 0;
+  }
+}
+.logistics_inform{
+  width: 85%;
+  .address_span,.time_b{ display: block;
+    @include font-dpr(24);
+    color: $color666;
+  }
+  .address_span{ @include px2rem(margin-bottom,18);}
+  .time_b{ font-weight: normal;}
+}
+.agreement_p{ text-align: center;
+@include font-dpr(24);
+  line-height: 3.2;
+  a{ color: #4eb2ff; text-decoration: underline;}
+}
+.invoiceUnit_p{
+  height: auto;
+ line-height: normal;
+  span{width: 50%;
+    word-wrap: break-word;}
+}
+.go-shop-btn{
+  display: block;
+  width: 3.0667rem;
+  height: .9333rem;
+  line-height: .9333rem;
+  @include font-dpr(32);
+  background: $mainColor;
+  border-radius: 0.46665rem;
+  color: #fff;
+  margin: .72rem auto .72rem auto;
+}
+/*logistics*/
+.logistics_boxs{
+   .fir_info{ @include px2rem(padding-top,20);}
+  .last_info{ @include px2rem(padding-bottom,20);}
+  .info_p{ border-bottom: none;
+    @include px2rem(height,60);
+    @include px2rem(line-height,60);
+    background: #FFFFFF;
+    vertical-align: middle;
+  }
+  .order_num{
+    margin: 0;
+  }
+  .logistics_tel{
+    width: auto;
+    color: $color444;
+    @include font-dpr(26);
+    @include px2rem(padding-right, 18);
+    @include px2rem(height, 22);
+    line-height: 1;
+    display: inline-block;
+    background: url("./assets/icon/icon/logistics_tel_r.png") right center no-repeat;
+    @include px2rem(background-size, 10 20);
+    &.bgNone{
+      background: none;
+    }
+  }
+}
+// 支付结果页
+.tl{
+  text-align: left;
+}
+.group_paysuccess_box{
+  text-align: center;
+  @include px2rem(padding, 91 0 0);
+  .kkje_p{
+    @include px2rem(margin-bottom, 69);
+    line-height: 1.4;
+    @include font-dpr(30);
+  }
+}
+.group_img_box{
+  @include px2rem(width, 100);
+}
+.pay_succes_txt{
+  @include px2rem(margin, 20 0 33);
+  @include font-dpr(36);
+  line-height: 1.4;
+}
+.pay_price{
+  @include font-dpr(60);
+  @include px2rem(margin-bottom, 25);
+}
+.look_btn, .invite_btn{
+  display: inline-block;
+  @include px2rem(width, 230);
+  @include px2rem(height, 68);
+  @include px2rem(line-height, 68);
+  @include font-dpr(28);
+  text-align: center;
+  @include px2rem(border-radius, 34);
+  border: 1px solid $mainColor;
+}
+.look_btn{
+  color: #fff;
+  background: $mainColor;
+  @include px2rem(margin-left, 35);
+}
+.invite_btn{
+  color: $mainColor;
+  @include px2rem(margin-right, 35);
+}
+/* 下单促销 start */
+.paysuccess{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 1.17333rem;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, .7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paysuccess-con{
+  @include px2rem(width, 580);
+  position: relative;
+}
+.paysuccess-close{
+  position: absolute;
+  @include px2rem(right, 12);
+  @include px2rem(top, 44);
+  @include px2rem(width, 44);
+  @include px2rem(height, 44);
+  @include px2rem(padding, 18);
+}
+.paysuccess-coupon-bg{
+  @include px2rem(width, 580);
+  @include px2rem(height, 306);
+  display: block;
+}
+.paysuccess-main{
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include px2rem(border-radius, 0 0 12 12);
+  overflow: hidden;
+  @include px2rem(padding-bottom, 10);
+  @include px2rem(padding-top, 15);
+  position: relative;
+}
+.paysuccess-coupon-list{
+  @include px2rem(max-height, 469);
+  @include px2rem(margin-bottom, 28);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -webkit-transform: translateZ(0px);
+}
+.paysuccess-shadow{
+  @include px2rem(width, 580);
+  @include px2rem(height, 40);
+  position: absolute;
+  left: 0;
+  @include px2rem(bottom, 98);
+}
+.paysuccess-coupon{
+  @include px2rem(width, 497);
+  @include px2rem(padding, 12 0 12 25);
+  @include px2rem(margin-bottom, 14);
+  background: url("./assets/icon/order/paysuccess-coupon-ioc.png") right center no-repeat;
+  @include px2rem(background-size,95 175);
+  border: 1px solid #F4F4F4;
+  position: relative;
+}
+.paysuccess-coupon-val{
+  color: $redColor;
+  @include font-dpr(66);
+  font-weight: bold;
+  @include px2rem(line-height, 76);
+  @include px2rem(margin-bottom, 10);
+  font-family: DIN;
+}
+.paysuccess-coupon-name-small{
+  @include font-dpr(24);
+}
+.paysuccess-coupon-name{
+  color: #65626D;
+  @include font-dpr(28);
+  font-weight: 600;
+  @include px2rem(line-height, 40);
+  @include px2rem(width, 360);
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.paysuccess-coupon-time{
+  color: $color999;
+  @include font-dpr(18);
+  @include px2rem(line-height, 25);
+}
+.paysuccess-coupon-label{
+  color: $redColor;
+  @include font-dpr(28);
+  @include px2rem(line-height, 40);
+  position: absolute;
+  @include px2rem(right, 24);
+  @include px2rem(bottom, 27);
+}
+.paysuccess-coupon-list .paysuccess-coupon:last-of-type{
+  @include px2rem(margin-bottom, 40);
+}
+.paysuccess-mark{
+  @include px2rem(width, 473);
+  @include px2rem(height, 60);
+  @include px2rem(line-height, 28);
+  @include font-dpr(20);
+  color: $color999;
+  text-align: center;
+}
+/* 下单促销 end */

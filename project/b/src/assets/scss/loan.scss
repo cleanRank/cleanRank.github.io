@@ -1,0 +1,339 @@
+.loanIndex_top_box{
+  @include px2rem(height, 306);
+  @include px2rem(padding, 74 20 0);
+  background: #fff url(./assets/icon/loan/bj.png) no-repeat top center;
+  @include px2rem(background-size, 710 380);
+  >p{
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+.loanIndex_state{
+  @include font-dpr(100);
+  @include px2rem(margin, 0 0 30);
+}
+.loanIndex_center_box{
+  background: #fff;
+  @include px2rem(margin, 10 0);
+  @include px2rem(padding, 30 0 0 20);
+}
+.jkje_title{
+  @include font-dpr(30);
+  @include px2rem(padding-bottom, 20);
+}
+.jkje_conment_box{
+  @include lh(58, 58);
+  border-bottom: 1px solid $borderColor;
+  @include font-dpr(48);
+  @include px2rem(padding-bottom, 8);
+  input{
+    width: 90%;
+    border: none;
+    height: 100%;
+    background: none;
+  }
+  ::-webkit-input-placeholder{
+    @include font-dpr(30);
+    line-height: 1;
+  }
+}
+.jkje_fh{
+  @include px2rem(margin-right, 20);
+}
+.error_loan_txt{
+  @include lh(60, 60);
+  @include font-dpr(20);
+}
+.loanIndex_detail_box{
+  background: #fff;
+  @include px2rem(padding-left, 20);
+  .info_p{
+    @include font-dpr(30);
+    padding-left: 0;
+  }
+  :last-child{
+    border-bottom: none;
+  }
+  select{
+    direction: inherit;
+    @include font-dpr(30);
+  }
+}
+.right_btn{
+  background: url("./assets/icon/personal/left.png") right center no-repeat;
+  @include px2rem(background-size, 30 30);
+}
+// 借款确认
+.repayment_palt_box{
+  // background: #fff;
+  // @include px2rem(margin-top, 10);
+}
+.repayment_title{
+  @include lh(90, 90);
+  @include px2rem(padding, 0 20);
+  @include font-dpr(36);
+  border-bottom: 1px solid $borderColor;
+  @include px2rem(margin-bottom, 8);
+  .font14{
+    @include font-dpr(28);
+  }
+}
+.repayment_list{
+  // @include px2rem(padding, 0 0 30);
+}
+.horizontal_box{
+  @include px2rem(margin-bottom, 10);
+  background: #fff;
+  @include px2rem(padding-bottom, 24);
+}
+.repayment_item{
+  @include px2rem(padding, 20 20 0);
+  @include font-dpr(30);
+  line-height: 1.3;
+  .loandateil_txt{
+    @include px2rem(padding, 0 30 0 0);
+  }
+  &.interest_rate_wrap{
+    position: relative;
+  }
+}
+.right_money{
+  text-align: right;
+}
+.skzh_bank{
+  background: #fff;
+  @include px2rem(padding, 0 30);
+  // @include px2rem(margin-top, 10);
+  @include lh(90, 90);
+  @include font-dpr(30);
+}
+.checkout_box{
+  @include px2rem(padding, 20 30 90);
+}
+.interest_rate{
+  @include wh(30, 38);
+  @include px2rem(margin-left, 12);
+  background: url(./assets/icon/loan/gant.png) no-repeat center;
+  background-size: 0.4rem 0.4rem;
+}
+.interest_rate_box{
+  position: absolute;
+  @include px2rem(right, 30);
+  @include px2rem(top, -62);
+  @include px2rem(min-width, 300);
+  @include px2rem(height, 72);
+  @include px2rem(line-height, 62);
+  @include px2rem(padding, 0 14);
+  background: url(./assets/icon/loan/tu.png) no-repeat center;
+  background-size: 100% 0.96rem;
+  // @include px2rem(background-size, 300 72);
+  color: #fff;
+  text-align: center;
+  @include font-dpr(24);
+}
+// 借款成功
+.site-frame-success{
+  @include px2rem(padding, 100 0 0);
+  text-align: center;
+  img{
+    @include px2rem(width, 100);
+    @include px2rem(height, 100);
+  }
+  p{
+    @include px2rem(padding, 20 0);
+    clear: both;
+  }
+}
+.loan_paysuccess{
+  @include px2rem(margin-top, 120);
+  text-align: center;
+  a{
+    display: inline-block;
+    @include wh(280, 80);
+    @include px2rem(line-height, 80);
+    border: 2px solid $mainColor;
+    border-radius: 1.06667rem;
+    @include font-dpr(34);
+    &.goOrder_btn{
+      color: $mainColor;
+    }
+    &.goIndex_btn{
+      color: #fff;
+      background: $mainColor;
+    }
+  }
+}
+// 订单列表
+.loan_list{
+  @include px2rem(height, 80);
+  border-bottom: 1px solid $borderColor;
+  text-align: center;
+  @include font-dpr(30);
+  background: #fff;
+  z-index: 2;
+  margin-top: 0.12333rem;
+  span{
+    @include lh(78, 78);
+    &.visited_span{
+      color: $mainColor;
+      border-bottom: solid $mainColor;
+      @include px2rem(border-bottom-width, 4);
+    }
+  }
+}
+.gaod{
+  height: 1.28666rem;
+}
+.loan_item{
+  border-bottom: 1px solid $borderColor;
+  @include px2rem(padding, 0 30);
+}
+.loanorder_num{
+  @include px2rem(padding, 30 0 25);
+  @include font-dpr(28);
+  &.loandetail_txt{
+    @include px2rem(padding-right, 20);
+  }
+}
+.loan_item_detail{
+  @include px2rem(height, 100);
+  @include px2rem(margin-bottom, 32);
+}
+.loan_status_code{
+  @include px2rem(padding-left, 120);
+  @include px2rem(height, 100);
+  vertical-align:middle;
+  background: {
+    size: 1.33333rem 1.33333rem;
+    position: left center;
+    repeat: no-repeat;
+  }
+}
+.loan_status_01{
+  background-image: url(./assets/icon/loan/xf.png);
+}
+.loan_status_02{
+  background-image: url(./assets/icon/loan/jk.png);
+}
+.loan_status_03{
+  background-image: url(./assets/icon/loan/hk.png);
+}
+
+.loan_money{
+  @include px2rem(padding-top, 2);
+  @include font-dpr(38);
+  font-weight: bold;
+}
+.loan_time{
+  @include px2rem(padding-top, 14);
+  @include font-dpr(26);
+}
+.orderloan_status_code{
+  @include px2rem(width, 122);
+  @include px2rem(line-height, 100);
+  background: url('./assets/icon/cashier/jiant.png') right center no-repeat;
+  @include px2rem(background-size, 15 30);
+}
+.orderloan_status_04{
+  color: $mainColor;
+}
+.orderloan_status_01{
+  color: #FF833D;
+}
+.orderloan_status_02{
+  color: $mainColor;
+}
+.orderloan_status_05{
+  color: #999;
+}
+// 借款详情
+.colorBlock{
+  @include px2rem(height, 10);
+  background: #f5f5f5;
+}
+.loandetail_wrap{
+  @include px2rem(padding-left, 20);
+}
+.xgxy_lixt{
+  @include px2rem(padding, 25 20 28 0);
+  @include font-dpr(28);
+}
+.repayment_plan{
+  @include px2rem(padding-left, 30);
+}
+.repayment_plan_item{
+  @include px2rem(padding, 20 30 30 0);
+  border-bottom: 1px solid $borderColor;
+  line-height: 1.2;
+  @include px2rem(height, 186);
+}
+.periods_num{
+  @include font-dpr(30);
+}
+.sfk_money{
+  @include px2rem(margin, 20 0);
+}
+.btn_box{
+  @include wh(160, 186);
+}
+.hkz_btn{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  @include wh(140, 60);
+  text-align: center;
+  color: #fff;
+  border-radius: 2.48rem;
+}
+.hk_status_03{
+  background: #FF833D;
+}
+.hk_status_02{
+  background: $mainColor;
+}
+.hk_status_01, .hk_status_00{
+  background: #C8C8C8;
+}
+// 借款首页
+.notice_wrap{
+  @include lh(100, 100);
+  @include px2rem(padding, 0 20 0 75);
+  background: #fff url(./assets/icon/loan/lb.png) left 0.26667rem center no-repeat;
+  @include px2rem(background-size, 32 32);
+  .swiper-container02, .swiper-container{
+    position: inherit;
+  }
+}
+.notice_txt{
+  color: #666;
+  @include font-dpr(28);
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.loanState_list{
+  border-bottom: 1px solid $borderColor;
+  background: #fff;
+  @include px2rem(padding, 34 20 66);
+}
+.loanState_item{
+  color: #666;
+  @include font-dpr(28);
+  text-align: center;
+  @include px2rem(padding-top, 100);
+  background: {
+    size: 1.17333rem 1.17333rem;
+    position: top center;
+    repeat: no-repeat;
+  }
+}
+.loanState_item_rxf{
+  background-image: url(./assets/icon/loan/rxf.png);
+}
+.loanState_item_sh{
+  background-image: url(./assets/icon/loan/sh.png);
+}
+.loanState_item_tgl{
+  background-image: url(./assets/icon/loan/tgl.png);
+}

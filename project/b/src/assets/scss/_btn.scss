@@ -1,0 +1,24 @@
+@charset "utf-8";
+@import "app";
+@mixin wh($w,$h){
+  @include px2rem(width,$w);
+  @include px2rem(height,$h);
+}
+@mixin box_m($m){
+  @include px2rem(margin,$m);
+}
+@mixin box_p($p){
+  @include px2rem(padding,$p);
+}
+//按钮通用样式
+@mixin btnCss($w,$h,$mt,$bjc,$fc){
+  @include wh($w,$h);
+  @include px2rem(line-height,$h);
+  margin: 0 auto;
+  @include px2rem(margin-top,$mt);
+  background: $bjc;
+  color:$fc;
+  border-radius: 3px;
+  display:block;
+}
+

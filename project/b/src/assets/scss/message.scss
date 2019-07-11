@@ -1,0 +1,120 @@
+.message_wrap{
+  @include px2rem(padding, 0 20);
+}
+.msg_item_con{
+  background-color: #ffffff;
+}
+/* receipt time start */
+.receipt_time{
+  @include lh(37, 37);
+  @include font-dpr(26);
+  color: #999;
+  text-align: center;
+  @include px2rem(margin-top, 40);
+  @include px2rem(margin-bottom, 20);
+}
+/* receipt time end */
+
+.msg_con{
+  overflow: hidden;
+  background-color: #fff;
+  .msg_img{
+    width: 100%;
+    @include px2px(height, 300);
+    .msg_img_node{
+      width: 100%;
+      @include px2px(height, 300)
+    }
+  }
+  .msg_tit{
+    @include font-dpr(34);
+    @include px2rem(margin, 25 20 0);
+    @include lh(48, 48);
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .msg_text{
+    // @include px2rem(margin-top, 10);
+    @include font-dpr(28);
+    @include px2rem(line-height, 44);
+    @include px2rem(height, 88);
+    @include px2rem(margin, 20 20 25);
+    @include lines-ellipsis(2);
+    color: #666666;
+    box-sizing: border-box;
+  }
+  .read_more{
+    width: 100%;
+    @include px2rem(padding-top, 18);
+    @include px2rem(padding-bottom, 20);
+    color: #999;
+    background: rgba(0,0,0,0);
+    @include font-dpr(30);
+    @include lh(44, 44);
+    display: block;
+    box-sizing: content-box;
+  }
+  .line{
+    height: 1px;
+    background-color: #E2E2E2;
+    @include px2rem(margin, 30 20 0 20);
+  }
+}
+/* read more start */
+.read_more{
+  width: 100%;
+  @include px2rem(padding-top, 18);
+  @include px2rem(padding-bottom, 20);
+  color: #999;
+  background: rgba(0,0,0,0);
+  @include font-dpr(30);
+  @include lh(44, 44);
+  display: block;
+  box-sizing: content-box;
+}
+/* read more end */
+
+/* good details start */
+.good_details{
+  @include display-flex;
+  @include align-items(center);
+  @include px2rem(padding, 23 20 20 30);
+  .good_details_img_con{
+    @include wh(120, 120);
+    border: 1px solid $borderColor;
+    overflow: hidden;
+    .good_details_img{
+      @include wh(120, 120);
+    }
+  }
+  .good_details_name{
+    @include flex(1);
+    @include font-dpr(28);
+    color: #666;
+    @include px2px(margin-left, 15);
+    @include px2rem(line-height, 44);
+    @include lh(88, 44);
+    @include lines-ellipsis(2);
+  }
+}
+/* good details end */
+
+/* message null start */
+.msg_null{
+  text-align: center;
+  @include px2rem(padding-top, 225);
+  img{
+    @include wh(192, 209);
+  }
+  p{
+    color: $color333;
+    @include font-dpr(36);
+    @include px2rem(padding-top, 30);
+  }
+}
+/* message null end */
+
+
+
+

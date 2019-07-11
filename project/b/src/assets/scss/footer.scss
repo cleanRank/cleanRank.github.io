@@ -1,0 +1,63 @@
+// footer
+.footer_wrap{
+  @include px2rem(height, 100);
+  // border-top: 1px solid $borderColor;
+  box-shadow: 0 0 5px $borderColor;
+  position: fixed;
+  bottom:-5px;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+  >p {
+    @include font-dpr(24);
+    text-align: center;
+    line-height: 1;
+    @include px2rem(padding-top, 62);
+    background-size: 0.64rem 0.64rem !important;
+    position: relative;
+  }
+}
+.footer_item_00{
+  color: $disColor;
+  background: url(./assets/iconfont/footer/footer-home.png) no-repeat top 0.13333rem center;
+}
+.footer_item_01{
+  color: $disColor;
+  background: url(./assets/iconfont/footer/footer-category.png) no-repeat top 0.13333rem center;
+}
+.footer_item_02{
+  color: $disColor;
+  background: url(./assets/iconfont/footer/footer-wallet.png) no-repeat top 0.13333rem center;
+}
+.footer_item_03{
+  color: $disColor;
+  background: url(./assets/iconfont/footer/footer-cart.png) no-repeat top 0.13333rem center;
+}
+.footer_item_04{
+  color: $disColor;
+  background: url(./assets/iconfont/footer/footer-my.png) no-repeat top 0.13333rem center;
+}
+.footer_active_Index{
+  color: $mainColor;
+  background: url(./assets/iconfont/footer/footer-home-a.png) no-repeat top 0.13333rem center;
+}
+.footer_active_Category{
+  color: $mainColor;
+  background: url(./assets/iconfont/footer/footer-category-a.png) no-repeat top 0.13333rem center;
+}
+.footer_active_Vip{
+  color: #DA9F4A;
+  background: url(./assets/iconfont/footer/footer-wallet-a.png) no-repeat top 0.13333rem center;
+}
+.footer_active_ShopCart{
+  color: $mainColor;
+  background: url(./assets/iconfont/footer/footer-cart-a.png) no-repeat top 0.13333rem center;
+}
+.footer_active_Personal{
+  color: $mainColor;
+  background: url(./assets/iconfont/footer/footer-my-a.png) no-repeat top 0.13333rem center;
+}
+.shopCartNum{
+  position: absolute;
+  //@include px2rem(top, 10);
+}

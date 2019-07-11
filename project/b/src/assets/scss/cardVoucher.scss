@@ -1,0 +1,190 @@
+.table_card_title{
+  background: #fff;
+  @include px2rem(margin, 10 0 20);
+  text-align: center;
+  @include font-dpr(30);
+  p{
+    line-height: 1.5;
+    @include px2rem(padding, 21 0);
+    border-bottom: 0.01333px solid $borderColor;
+    &.cur_tab{
+      border-bottom: 0.04rem solid $mainColor;
+    }
+  }
+}
+.cardVoucher_title{
+  // @include px2rem(margin-top, 10);
+  background: #ffffff;
+  @include lh(height, 90);
+  @include font-dpr(30);
+  border-bottom: 1px solid #e1e1e1;
+  @include px2rem(padding-left, 30);
+}
+.cardVoucher_wrap{
+  background: #fff;
+  @include px2rem(padding, 22 15);
+  @include display-flex();
+  @include flex-wrap();
+  .cardVoucher_item {
+    box-sizing: border-box;
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    @include align-items(center);
+    width: calc(50% - .4rem);
+    -webkit-flex-basis: calc(50% - .4rem);
+    flex-basis: calc(50% - .4rem);
+    @include px2rem(margin, 15);
+    @include px2rem(height, 102);
+    border: 1px solid $borderColor;
+    position: relative;
+    &.selected {
+      border-color: $mainColor;
+    }
+    &.sell_out_item{
+      border: 1px solid #fff;
+    }
+  }
+  .buyBack_img{
+    position: absolute;
+    @include wh(71, 35);
+    @include px2rem(right, 10);
+    @include px2rem(top, -25);
+    background: url(./assets/icon/cardVoucher/hs.png) top left no-repeat;
+    background-size: 100% 100%;
+  }
+  .cardVoucher_item_img {
+    @include wh(250, 96);
+    display: block;
+  }
+  .sell_box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(216,216,216,0.70);
+    &::before{
+      content: '已售罄';
+      width: 100%;
+      @include lh(36, 36);
+      color: #fff;
+      @include font-dpr(22);
+      text-align: center;
+      left: 0;
+      bottom: 0;
+      position: absolute;
+      background: rgba(34,34,34,0.50);
+    }
+  }
+}
+.face_value_box {
+  @include display-flex;
+  @include flex-wrap;
+  background: #fff;
+  @include px2rem(padding, 15 14);
+  // @include align-items(center);
+  // @include justify-content(center);
+}
+.face_value_item {
+  @include display-flex;
+  @include justify-content(center);
+  @include px2rem(width, 164);
+  @include lh(62, 62);
+  @include px2rem(margin, 15 6);
+  border: 1px solid $borderColor;
+  @include px2rem(border-radius, 10);
+  color: #666;
+  @include font-dpr(28);
+  &.selected {
+    border-color: $mainColor;
+  }
+  &.disabled{
+    border-color: #C8C8C8;
+    background: #C8C8C8;
+    color: #fff;
+  }
+}
+// 卡券寄售
+.cardrate_img{
+  display: block;
+  width: 100%;
+}
+.cardRate_wrap{
+  .btnCom{
+    @include wh(681, 84);
+    background: url(./assets/icon/cardVoucher/btn.png) no-repeat top center;
+    background-size: 100% auto;
+    @include px2rem(margin-top, 50);
+  }
+}
+.rate_box_title{
+  text-align: center;
+  color: #FF566B;
+  line-height: 1;
+  @include px2rem(margin, 50 0 28);
+}
+.rate_table{
+  width: 91%;
+  margin: 0 auto;
+  border-right: 2px solid #FF566B;
+  border-bottom: 2px solid #FF566B;
+  td, th{
+    width: 50%;
+    text-align: center;
+    border-left: 2px solid #FF566B;
+    border-top: 2px solid #FF566B;
+    @include px2rem(height, 72);
+    color: #FF566B;
+  }
+  th{
+    @include font-dpr(30);
+  }
+  td{
+    @include font-dpr(26);
+  }
+}
+// 订单模块
+.order_card_item{
+  overflow: hidden;
+  @include px2rem(margin, 0 20 20);
+  background: #fff;
+  @include px2rem(border-radius, 12);
+  box-shadow: 0 0 0.10667rem rgba($color: #000000, $alpha: 0.18);
+}
+.order_card_title{
+  @include px2rem(padding, 0 15 0 30);
+  @include px2rem(line-height, 100);
+}
+.order_card_detail{
+  @include px2rem(padding, 0 25 0 30);
+  @include px2rem(margin-bottom, 24);
+  b, span{
+    @include font-dpr(28);
+    color: $color333;
+    opacity: 0.7;
+  }
+  .copy_btn{
+    @include px2rem(width, 110);
+    @include px2rem(padding, 0 0 4);
+    text-align: center;
+    border: 1px solid #999;
+    @include px2rem(border-radius, 8);
+  }
+  .pasword_btn{
+    background: url(./assets/icon/cashier/off.png) 95% center no-repeat;
+    @include px2rem(background-size, 30 30);
+  }
+  .onEye{
+    background: url(./assets/icon/cashier/on.png) 95% center no-repeat;
+    @include px2rem(background-size, 30 30);
+  }
+}
+.go_recycle{
+  @include lh(80, 80);
+  text-align: center;
+  color: #fff;
+  @include font-dpr(30);
+  background: $mainColor;
+  @include px2rem(margin-top, 45);
+}

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+.c_fff{
+  color: #ffffff;
+}
+.c_999{
+  color: #999;
+}
+%tc_dib{
+  text-align: center;
+  display: inline-block;
+}
+//一元购规则
+.ruleList{
+  @include px2rem(padding, 0 46 0 50);
+  &.problemlist {
+    background-color: #fff;
+  }
+}
+.li_item{
+  @include px2rem(padding, 34 0 48 0);
+  border-bottom: 1px solid #d9d9d9;
+  .span_num{
+    @include px2rem(width, 30);
+    @include px2rem(height, 30);
+    @include px2rem(line-height, 30);
+    @include px2rem(margin-right, 18);
+    @include px2rem(margin-top, 3);
+    background: $mainColor;
+    @extend .c_fff;
+    text-align: center;
+  }
+  .p_txt{
+    @include px2rem(line-height, 38);
+    @include font-dpr(24);
+    span{
+      @extend .c_999;
+      display: block;
+    }
+  }
+  .title_problem{
+    @include font-dpr(30);
+    @include px2rem(margin,0 0 30);
+    display: block;
+  }
+}
+.foot_txt{
+  @include px2rem(line-height, 38);
+  @extend .c_999;
+  @include px2rem(padding-top, 92);
+  @include px2rem(padding-bottom, 40);
+  text-align: center;
+}

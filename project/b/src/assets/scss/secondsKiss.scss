@@ -1,0 +1,191 @@
+.sk-bg-color{
+  background: url('./assets/icon/banner/lazy_banner.png') no-repeat;
+  background-size: 100% auto;
+  overflow: hidden;
+  .swiper-container{
+    position: inherit;
+  }
+  img{
+    display: block;
+    width: 100%;
+  }
+}
+.sk-time-list{
+  margin-top: -3px;
+}
+.sk-time-box{
+  background-color:#fff;
+  @include px2rem(padding-top,32);
+  @include px2rem(height,124);
+  @include c3(box-sizing,border-box);
+  position:relative;
+  &.cur{
+    .sk-time-num,.sk-time-text{
+      color: $mainColor;
+    }
+    .sk-time-num{
+      .sk-time-day{
+        color: $mainColor;
+      }
+    }
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 60%;
+    margin-left: -30%;
+    height: 2px;
+    background-color: #fff;
+
+  }
+  &.cur:after{
+    background-color: $mainColor;
+  }
+
+  .sk-time-num{
+    @include font-dpr(30);
+    @include px2rem(line-height,38);
+    color:$color333;
+    text-align:center;
+    .sk-time-day{
+      @include font-dpr(24);
+      color:$color666;
+    }
+  }
+  .sk-time-text{
+    @include font-dpr(24);
+    color:$color666;
+    text-align:center;
+
+  }
+
+}
+.sk-remind{
+  @include px2rem(margin-top,12);
+  position:relative;
+  @include px2rem(height,86);
+  @include px2rem(line-height,86);
+  @include px2rem(padding,0 20 0 15);
+  background-color:#fff;
+  &:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom:0;
+    @include px2rem(width,5);
+    background-color:$mainColor;
+
+    }
+  h3,div {
+    @include px2rem(height, 86);
+    @include px2rem(line-height, 86);
+  }
+}
+
+.sk-remind-text{
+  @include font-dpr(34);
+  color:$mainColor;
+}
+.sk-remind-time{
+  text-align: right;
+  @include font-dpr(26);
+  color:$color666;
+  span{
+    display:inline-block;
+    @include wh(34,34);
+    @include px2rem(line-height,34);
+    border:1px solid $color999;
+    text-align:center;
+    @include px2rem(margin,0 6);
+    @include font-dpr(21);
+  }
+}
+.hide{
+  display:none !important
+}
+.sk-goods-wrapper{
+  @include px2rem(padding,0 20);
+  @include px2rem(margin-top,12);
+  background-color:#fff;
+}
+.sk-goods-detail{
+ @include px2rem(padding,30 0);
+
+}
+.sk-goods-title{
+  @include px2rem(height,120);
+  color:$color333;
+  @include font-dpr(28);
+  @include px2rem(line-height,40);
+  p{
+    @include lines-ellipsis(2);
+  }
+  span{
+    color:$color999;
+    @include font-dpr(24);
+    @include lines-ellipsis(1);
+    @include px2rem(line-height,52);
+  }
+}
+
+.sk-goods-img{
+  @include px2rem(margin-right,35);
+  img{
+    //@include wh(164,189);
+    @include px2rem(width,164);
+    @include px2rem(margin-top,6);
+  }
+}
+.sk-goods-payment{
+  color:$mainColor;
+  @include px2rem(line-height,40);
+  @include font-dpr(24);
+  @include px2rem(margin-top,20);
+  span{
+    color:$color999;
+    text-align:right;
+    @include px2rem(width,180);
+  }
+}
+.sk-goods-purchase{
+  position: relative;
+  p{
+    color:$mainColor;
+    @include font-dpr(24);
+    em{
+      @include font-dpr(36);
+    }
+    del{
+      color:$color666;
+
+    }
+  }
+  span{
+    display: block;
+    position: absolute;
+    right: 0;
+    cursor:pointer;
+    @include px2rem(border-radius, 5);
+    color: #fff;
+    text-align: center;
+    @include wh(130,60);
+    @include px2rem(line-height, 60);
+    background-color:$mainColor;
+    &.dis_btn {
+      background-color: #ccc;
+    }
+    &.remind_btn{
+      background-color: $mainColor;
+    }
+  }
+}
+.list-fix{
+  position: fixed;
+  @include px2rem(top, 88);
+  left: 0;
+  right: 0;
+  z-index: 10;
+}

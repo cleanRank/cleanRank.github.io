@@ -1,0 +1,60 @@
+.about_wrap{
+  margin-top: 1.33333rem !important;
+  color: #888888;
+}
+.sxyp_info{
+  text-align: center;
+  @include px2rem(padding-top, 47);
+  @include font-dpr(26);
+}
+.sxyp_logo{
+  @include wh(120, 120);
+  @include px2rem(margin-bottom, 19);
+}
+.sxyp_ver{
+  @include px2rem(margin-bottom, 32);
+}
+.sxyp_synopsis{
+  @include px2rem(line-height, 50);
+  @include px2rem(padding,0 40);
+  text-align: left;
+  @include px2rem(margin-bottom, 14);
+
+}
+/* 品牌优点 start */
+.brand_advantages{
+  text-align: center;
+  @include px2rem(margin-bottom, 88);
+
+  .brand_advantages_title{
+    @include font-dpr(28);
+    @include px2rem(margin-bottom, 21);
+  }
+  .brand_protection{
+    text-align: left;
+    @include px2rem(padding-left,40);
+    @include font-dpr(26);
+    @include px2rem(line-height, 58);
+    .font_bold{
+      font-weight: bold;
+    }
+  }
+}
+/* 品牌优点 end */
+
+/* 公众号 start */
+.vipcn{
+  text-align: center;
+}
+.vipcn_copy{
+  @include px2rem(line-height, 37);
+  @include px2rem(margin-bottom, 32);
+}
+.copy_vipcn_btn{
+  color: #409cfa;
+}
+.vipcn_qrcode{
+  @include wh(210, 210);
+}
+/* 公众号 end */
+

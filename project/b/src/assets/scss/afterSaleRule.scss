@@ -1,0 +1,195 @@
+// 常见问题
+$bdc: $borderColor;
+$dark: $color333;
+$light: #666;
+$red: #f00;
+.feq-wp {
+  background: #fff;
+}
+.feq-dl {
+  @include px2rem(padding, 33 30 0);
+  overflow: hidden;
+  dt {
+    color: $dark;
+    @include font-dpr(26);
+    @include px2rem(margin, 7 0);
+    &.center {
+      text-align: center;
+      @include font-dpr(30);
+      @include px2rem(margin, 23 0);
+    }
+    .smaller {
+      @include font-dpr(24);
+    }
+  }
+  dd {
+    @include font-dpr(22);
+    color: $light;
+    line-height: 2;
+  }
+  .table-dd {
+    @include px2rem(margin, 0 -32);
+  }
+  .dli {
+    &:before {
+      content: "";
+      display: inline-block;
+      @include px2rem(width, 5);
+      @include px2rem(height, 5);
+      @include c3(border-radius, 50%);
+      background: $light;
+      vertical-align: middle;
+      @include px2rem(margin-right, 8);
+    }
+  }
+  .dark-dd {
+    color: $dark;
+  }
+  .red-dd {
+    color: $red;
+  }
+}
+.req-table {
+  width: 100%;
+  border: 1px solid $bdc;
+  @include px2rem(margin, 24 0 44);
+  th, td {
+    border: 1px solid $bdc;
+    vertical-align: middle;
+    text-align: center;
+    @include px2rem(padding, 6);
+    @include font-dpr(24);
+    line-height: (36 / 24);
+  }
+  th {
+    @include font-dpr(26);
+    color: $dark;
+  }
+  .wider {
+    @include px2rem(width, 210);
+  }
+  .thiner {
+    @include px2rem(width, 154);
+  }
+}
+
+.feq-footer {
+  @include px2rem(margin-top, 80);
+  .line-through-text {
+    position: relative;
+    text-align: center;
+    color: #999;
+    @include font-dpr(24);
+    span {
+      position: relative;
+      display: inline-block;
+      @include px2rem(padding, 0 31);
+      background: #fff;
+    }
+    &:before {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      content: "";
+      border: 1px solid $bdc;
+    }
+  }
+}
+.feq-footer-btns {
+  text-align: center;
+  @include px2rem(margin, 55 0 38);
+  .feq-footer-btn {
+    @include px2rem(width, 240);
+    @include px2rem(height, 80);
+    @include px2rem(line-height, 80);
+    @include font-dpr(30);
+    @include px2rem(border-radius, 7);
+    color: #fff;
+    + .feq-footer-btn {
+      @include px2rem(margin-left, 80);
+    }
+    &.resolve-btn {
+      background-color: $mainColor;
+    }
+    &.unresolve-btn, &.hasClicked {
+      background-color: #ccc;
+    }
+  }
+}
+.req-advice {
+  -webkit-box-align: center;
+  @include c3(align-items, center);
+  @include px2rem(margin, 37 30);
+  .req-advice-text {
+    border: 1px solid $bdc;
+    @include px2rem(height, 90);
+    @include px2rem(padding, 7 13);
+    @include px2rem(line-height, 37);
+    @include font-dpr(24);
+    @include c3(border-radius, (4/75)rem);
+    resize: none;
+  }
+  .req-advice-btn {
+    @include px2rem(width, 151);
+    @include px2rem(flex-basis, 151);
+    @include px2rem(margin-left, 19);
+    @include px2rem(height, 70);
+    @include px2rem(line-height, 70);
+    background-color: #58b0f4;
+    @include px2rem(border-radius, 4);
+    @include font-dpr(30);
+    color: #fff;
+  }
+}
+.req-ucan-also-wp {
+  @include px2rem(padding, 0 30);
+  h3 {
+    background: $bgColor;
+    @include px2rem(padding, 18 37);
+    @include px2rem(margin, 0 -30);
+    color: $dark;
+    @include font-dpr(30);
+  }
+  .req-ucan-also {
+    background: $bgColor;
+  }
+  .req-ucan-also-item {
+    -webkit-box-flex:1;
+    @include c3(flex, 1);
+    // -webkit-box-orient: vertical;
+    // -webkit-box-direction: normal;
+    // @include c3(flex-direction, column);
+    // -webkit-box-pack: center;
+    // @include c3(justify-content, center);
+
+    -webkit-box-align: center;
+    @include c3(align-items, center);
+    @include px2rem(height, 292);
+    @include font-dpr(24);
+    color: #666;
+    line-height: (40/24);
+    background: #fff;
+    @include px2rem(width, 342);
+    + .req-ucan-also-item {
+      @include px2rem(margin-left, 3);
+    }
+    img, span {
+      display: block;
+      text-align: center;
+    }
+  }
+  .email-icon {
+    @include px2rem(width, 108);
+    @include px2rem(height, 71);
+    @include px2rem(margin-bottom, 25);
+  }
+  .phone-icon {
+    @include px2rem(width, 84);
+    @include px2rem(height, 84);
+    @include px2rem(margin-bottom, 30);
+  }
+}
+.placeholderHack {
+  color: #999;
+}

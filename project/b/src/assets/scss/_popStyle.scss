@@ -1,0 +1,78 @@
+@charset "utf-8";
+%opa{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100001;
+  background: rgba(0, 0, 0, 0.5);
+}
+%btn_comsty{
+  @include px2rem(height, 90);
+  @include px2rem(line-height, 90);
+  background: none;
+  @include font-dpr(30);
+  color: #008AD3;
+  width: 100%;
+  display: block;
+  border: 0;
+  outline: none;
+}
+
+.pop_box{
+  /*position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000;*/
+  .opa{
+    @extend %opa;
+  }
+}
+.tip-cont{
+  @include px2rem(margin, 0 68);
+  background: $bgColor;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 10000111;
+  border-radius: .1333rem;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  // @include px2rem(border-radius, 20);
+  .p_txt{
+    @include px2rem(padding-top, 34);
+    @include font-dpr(28);
+    line-height: 1.5;
+    font-weight: bold;
+  }
+  .state{
+    display: block;
+    @include px2rem(padding, 20);
+    @include font-dpr(24);
+    line-height: 1.5;
+    color: #666666;
+  }
+  .btn_cancle{
+    color: #666666;
+  }
+  .js_pop_ok{
+    color: $mainColor;
+  }
+}
+.btn-cont{
+  border-top: 1px solid $borderColor;
+  a{
+    @extend %btn_comsty;
+    border-right: 1px solid $borderColor;
+    &:last-child{
+      border-right: 0;
+    }
+  }
+}

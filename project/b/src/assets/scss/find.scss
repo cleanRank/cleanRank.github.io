@@ -1,0 +1,59 @@
+/*confirmorder */
+
+.find_item{
+  display: block;
+  @include px2rem(margin,16 16 0 16);
+  background: #ffffff;
+  color: #222333;
+}
+.find_picture{
+  display: block;
+  width: 100%;
+}
+.find_content{
+  @include px2rem(padding,22);
+  >p{
+    @include font-dpr(24);
+    color: #999999;
+  }
+}
+.con_box{@include px2rem(padding-bottom,20);}
+.con_title{
+  @include font-dpr(30);
+  @include px2rem(padding,23 0 10 0);
+}
+.con_box,.con_title{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.record_box{
+  text-align: right;
+  >span{
+    @include px2rem(padding,0 20 0 37);
+  }
+}
+.read_span{
+  background: url("./assets/icon/icon/home_view_icon@3x.png") left center no-repeat;
+  @include px2rem(background-size, 30 30);
+}
+.likes_span{
+  background: url("./assets/icon/icon/home_like_icon@3x.png") left center no-repeat;
+  @include px2rem(background-size, 30 30);
+}
+.itlikes_span{
+  background: url("./assets/icon/icon/home_like_h@3x.png") left center no-repeat;
+  @include px2rem(background-size, 30 30);
+}
+.record_box .comment_span{
+  @include px2rem(padding,0 0 0 37);
+  background: url("./assets/icon/icon/home_message_icon@3x.png") left center no-repeat;
+  @include px2rem(background-size, 30 30);
+}
+.no_faxian{
+  @include px2rem(padding,7 0);
+}
+.modelseven_box{
+  @include px2rem(margin,0 15);
+  @include px2rem(padding-bottom,15);
+}

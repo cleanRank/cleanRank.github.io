@@ -1,0 +1,274 @@
+.hbWrap{
+  @include px2rem(padding, 24 0 24);
+}
+.couponsBox{
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  // .use_item{
+  //   position: relative;
+  //   @include px2rem(margin,20 0);
+  //     .couponsBg{
+  //       @include px2rem(width,253);
+  //       @include px2rem(height,200);
+  //       @include px2rem(padding-right, 9);
+  //       overflow: hidden;
+  //       p{
+  //         color: #fff;
+  //         text-align: center;
+  //       }
+  //       .p_top{
+  //         @include font-dpr(26);
+  //         @include px2rem(margin,50 0 16 0);
+  //         span{
+  //           @include font-dpr(50);
+  //         }
+  //       }
+  //       .p_bottom{
+  //         @include font-dpr(28);
+  //         // @include px2rem(padding,0 20);
+  //       }
+  //     }
+  //     // .coupons_blueBg{
+  //     //   background: url("./assets/icon/member/couponsBg_1.png") no-repeat;
+  //     //   background-size: 100% 100%;
+  //     // }
+  //     // .coupons_greyBg{
+  //     //   background: url("./assets/icon/member/couponsBg_2.png") no-repeat;
+  //     //   background-size: 100% 100%;
+  //     // }
+  //     // .couponsInfoBox{
+  //     //   background: #fff;
+  //     //   @include px2rem(height,200);
+  //     //   display: flex;
+  //     //   display: -webkit-flex;
+  //     //   @include px2rem(border-radius, 0 24 24 0);
+  //     //   border:1px solid rgba(230,230,230,0.6);
+  //     //   border-left: none;
+  //     //   .couponsInfo{
+  //     //     // @include px2rem(width,360);
+  //     //     @include px2rem(margin-left, 13);
+  //     //     line-height: 1.4;
+  //     //     .p_top{
+  //     //       color: #777;
+  //     //       @include font-dpr(30);
+  //     //       @include px2rem(margin, 27 0 8 0);
+  //     //       font-weight:600;
+  //     //       text-overflow:ellipsis;
+  //     //       overflow:hidden;
+  //     //       white-space:nowrap;
+  //     //     }
+  //     //     .p_middle{
+  //     //       color: #ccc;
+  //     //       @include font-dpr(24);
+  //     //     }
+  //     //     .p_bottom{
+  //     //       @include px2rem(width,128);
+  //     //       color: #999;
+  //     //       @include font-dpr(24);
+  //     //       @include px2rem(margin-top,20);
+  //     //       background: url("./assets/icon/member/pointedUp.png") right center no-repeat;
+  //     //       background-size: 0.32rem 0.26667rem;
+  //     //       &.p_active_bottom {
+  //     //         .p_bottom{
+  //     //           background: url("./assets/icon/member/pointedDown.png") right center no-repeat;
+  //     //           background-size: 0.32rem 0.26667rem;
+  //     //         }
+  //     //       }
+  //     //     }
+  //     //   }
+  //     //   .couponsState{
+  //     //     display: flex;
+  //     //     -webkit-align-items: center;
+  //     //     align-items: center;
+  //     //     -webkit-justify-content: center;
+  //     //     justify-content: center;
+  //     //     color: #999;
+  //     //     @include font-dpr(24);
+  //     //   }
+  //     // }
+  //   // .rulesInfo{
+  //   //   // width: 100%;
+  //   //   // @include px2rem(height,80);
+  //   //   // @include px2rem(line-height,80);
+  //   //   @include px2rem(padding,10 20);
+  //   //   line-height: 2;
+  //   //   opacity: 0.6;
+  //   //   background: #FFFFFF;
+  //   //   color: #999;
+  //   //   @include font-dpr(24);
+  //   // }
+  // }
+  // .use_item:first-child{
+  //   margin: 0;
+  // }
+  .couponsOk{
+    .couponsMoney{
+      color: #FF714A;
+    }
+    .couponsTit{
+      color: #333;
+    }
+    .couponsTimeLimit,.couponsRuleDetailTxt{
+      color: #999;
+    }
+  }
+  .couponsNo{
+    .couponsMoney,.couponsTit,.couponsTimeLimit,.couponsRuleDetailTxt{
+      color: #ccc;
+    }
+  }
+  .couponsCon[data-type="0"] {
+    transform: translate3d(0, 0, 0);
+  }
+  .couponsCon[data-type="1"] {
+    transform: translate3d(-1.6rem, 0, 0);
+    overflow: initial;
+  }
+  .couponsCon{
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    @include px2rem(margin, 0 24);
+    overflow: hidden;
+  }
+  .couponsDelete{
+    @include px2rem(width, 120);
+    @include px2rem(border-radius, 0 12 12 0);
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    @include px2rem(right, -120);
+    background: $mainColor;
+    span {
+      display: block;
+      @include font-dpr(30);
+      color: #fff;
+    }
+  }
+  .couponsItem{
+    flex-direction:row;
+    flex-wrap: wrap;
+    @include px2rem(margin-bottom, 24);
+    .couponsLeftImg{
+      @include px2rem(width, 78);
+      @include px2rem(height, 232);
+      display: block;
+    }
+    .couponsDetail{
+      flex: 1;
+      @include px2rem(width, 606);
+      @include px2rem(padding-left, 18);
+      background: url("./assets/icon/member/coupons-bg.png") no-repeat left top;
+      background-size: 100% 100%;
+      flex-direction:column;
+      .couponsMoney{
+        @include px2rem(margin-top, 8);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include px2rem(width, 606);
+      }
+      .couponsMoneyNum{
+        @include font-dpr(90);
+        @include px2rem(line-height, 108);
+
+      }
+      .couponsScope{
+        @include font-dpr(30);
+        @include px2rem(line-height, 42);
+        @include px2rem(padding-top, 51);
+        // display: block;
+      }
+      .couponsTit{
+        @include px2rem(width, 606);
+        @include font-dpr(30);
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .couponsName{
+        flex: 1;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        font-weight: 500;
+        @include px2rem(line-height, 42);
+        @include px2rem(margin-right, 20);
+      }
+      .couponsUseBtn{
+        @include px2rem(width, 114);
+        @include px2rem(height, 42);
+        @include px2rem(margin-right, 20);
+        @include px2rem(padding, 5 20);
+        display: block;
+
+      }
+      .couponsTimeLimit{
+        @include px2rem(height, 65);
+        @include font-dpr(24);
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-top:auto;
+      }
+      .couponsRule{
+        display:flex;
+        align-items:center;
+        @include px2rem(padding-right, 40);
+        .couponsRuleImg{
+          @include px2rem(width, 30);
+          @include px2rem(height, 30);
+          @include px2rem(margin-left, 10);
+
+        }
+      }
+    }
+    .couponsRuleImgTop{
+      .couponsRuleImg{
+        transform:rotate(180deg);
+      }
+
+    }
+    .couponsRuleDetail{
+      width: 100%;
+      @include px2rem(margin-left, 78);
+      .couponsRuleDetailLine{
+        width: 100%;
+        @include px2rem(height, 11);
+        display: block;
+      }
+      .couponsRuleDetailTxt{
+        @include px2rem(min-height, 65);
+        @include font-dpr(20);
+        @include px2rem(line-height, 30);
+        background: #fff;
+        @include px2rem(padding, 10 18 20);
+      }
+    }
+    &.ml-24{
+      @include px2rem(margin-left, 24);
+    }
+  }
+}
+.no_datas{
+  text-align: center;
+  padding-bottom: 0.2rem;
+}
+.go_shiy{
+  position: absolute;
+  right: 0;
+  @include px2rem(padding-right, 62);
+  color: $mainColor;
+  @include px2rem(top, 82);
+  background: url(./assets/icon/icon/bule_jt.png) right 0.4rem center no-repeat;
+  @include px2rem(background-size, 30 30);
+}

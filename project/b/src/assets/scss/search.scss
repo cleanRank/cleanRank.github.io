@@ -1,0 +1,139 @@
+
+$color1:#76c5f9;
+@mixin lh($h, $lh){
+  @include px2rem(height, $h);
+  @include px2rem(line-height, $lh);
+}
+@mixin wh($w, $h){
+  @include px2rem(width, $w);
+  @include px2rem(height, $h);
+}
+//搜索
+.borbt{
+  border-bottom: 1px solid #eee;
+}
+.new-sort-price span{
+  &:after{
+    @include wh(11, 19);
+    @include px2rem(margin-top, 30);
+    @include px2rem(margin-left, 10);
+  }
+  &.A_img{
+    &:after {
+      background: url("./assets/icon/icon/arow_moren.png") no-repeat right center;
+      background-size: contain;
+    }
+  }
+
+}
+.new-sort-price.active{
+  .A_img{
+    &:after {
+      background: url("./assets/icon/icon/arow_active_top.png") no-repeat right center;
+      background-size: contain;
+    }
+  }
+  &.price_down{
+    .A_img{
+      &:after {
+        background: url("./assets/icon/icon/arow_active_bottom.png") no-repeat right center;
+        background-size: contain;
+      }
+    }
+  }
+}
+.no-data{
+  // display: none;
+  background: url("./assets/icon/icon/search_empty_icon@3x.png") no-repeat center top;
+  @include px2rem(background-position-y, 110);
+  @include px2rem(background-size, 250 230);
+  @include px2rem(padding-top, 390);
+  @include font-dpr(28);
+  @include px2rem(line-height,28);
+  color: #666666;
+  // text-align: center;
+}
+// 热门搜索
+.hot_search{
+
+}
+.his_search{
+  border-bottom: none;
+  @include px2rem(margin-bottom,16);
+  clear: both;
+  overflow: hidden;
+}
+.title_search{
+  @include px2rem(height, 80);
+  @include px2rem(line-height, 80);
+  @include px2rem(padding-left, 30);
+  @include font-dpr(28);
+
+}
+.hot_search_list{
+  width: 96%;
+  background: #ffffff !important;
+  @include px2rem(padding-left,30);
+  clear: both;
+  overflow: hidden;
+}
+.his_t{
+  position: relative;
+  background: #ffffff;
+  color: #666;
+}
+.hot_t{
+  background: #ffffff;
+  color: #666;
+}
+.hot_search_item{
+  @include px2rem(padding,0 10);
+  @include px2rem(margin,0 20 20 0);
+  float: left;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  border: 1px solid #999999;
+  border-radius: 5px;
+  @include font-dpr(26);
+  @include px2rem(max-width,388);
+  @include px2rem(height,46);
+  @include px2rem(line-height,50);
+
+}
+.hot_search_item_jump{
+  color: $mainColor;
+  border-color: $mainColor;
+}
+.history_search_list{
+  background: #fff;
+  overflow: hidden;
+  @include px2rem(padding-left,30);
+  overflow: hidden;
+}
+.history_search_item{
+  @include px2rem(padding,0 10);
+  @include px2rem(margin,0 20 20 0);
+  float: left;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  @include font-dpr(26);
+  @include px2rem(max-width,388);
+  @include px2rem(height,46);
+  @include px2rem(line-height,50);
+  color: #666;
+}
+.deleteHis_btn{
+  position: absolute;
+  @include px2rem(width,36);
+  @include px2rem(height, 36);
+  background: #ffffff url("./assets/icon/member/search_delete_icon@3x.png") center no-repeat;
+  @include px2rem(background-size,36 36);
+  @include px2rem(right,30);
+  @include px2rem(top,20);
+}
+
+

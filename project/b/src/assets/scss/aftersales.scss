@@ -1,0 +1,401 @@
+// 售后列表
+.bg{
+  background: #fff;
+}
+.as_list_title{
+  @include px2rem(padding, 0 120);
+  background: #fff;
+  p{
+    @include px2rem(width, 140);
+    @include lh(68, 68);
+    @include font-dpr(30);
+    color: #9F9F9F;
+    text-align: center;
+    border-bottom: 0.05333rem solid #fff;
+    @include px2rem(margin, 0 50);
+    &.cur_btn{
+      color: $mainColor;
+      border-bottom: 0.05333rem solid $mainColor;
+    }
+  }
+}
+.as_search_box{
+  clear: both;
+  background: #fff;
+  position: relative;
+  @include px2rem(padding, 15 24);
+  .search_input{
+    @include wh(618, 68);
+    border: none;
+    display: block;
+    background: #F4F4F4;
+    @include px2rem(border-radius, 40);
+    @include px2rem(text-indent, 30);
+  }
+  .as_search_btn{
+    @include px2rem(line-height, 68);
+    text-align: right;
+  }
+  .clear_word{
+    position: absolute;
+    display: block;
+    @include wh(40, 40);
+    @include px2rem(right, 138);
+    @include px2rem(top, 30);
+    background: url(./assets/icon/icon/closed_03.png) center no-repeat;
+    @include px2rem(background-size, 40 40);
+
+  }
+}
+.as_item_box{
+  background: #fff;
+  @include px2rem(margin-top, 16);
+  position: relative;
+}
+.as_order_box{
+  @include px2rem(padding, 0 24);
+  @include px2rem(line-height, 89);
+  border-bottom: 1px solid $borderColor;
+}
+.as_product_detail{
+  @include px2rem(height, 180);
+  @include px2rem(padding, 0 24);
+  align-items: center;
+  .as_productImg{
+    @include px2rem(width, 147);
+    img{
+      @include wh(130, 130);
+    }
+  }
+  .as_productContent{
+    @include px2rem(width, 525);
+  }
+  .as_productName, .num_spu_box{
+    @include singleline-ellipsis();
+    line-height: 1.4;
+  }
+  .num_spu_box{
+    @include px2rem(min-height, 33);
+    @include px2rem(margin, 8 0 0);
+  }
+  .as_jg_box{
+    @include px2rem(min-height, 42);
+    @include px2rem(margin-top, 18);
+  }
+}
+.apply_as_btn{
+  position: absolute;
+  @include px2rem(right, 24);
+  @include px2rem(bottom, 24);
+  @include px2rem(width, 140);
+  @include lh(40, 40);
+  @include font-dpr(24);
+  @include px2rem(border-radius, 29);
+  text-align: center;
+  border: 1px solid $borderColor;
+  color: #ccc;
+  background: none;
+  &.yes_apply_btn{
+    border: 1px solid $mainColor;
+    color: $mainColor;
+  }
+}
+.schedule_query_box{
+  overflow: hidden;
+  text-align: right;
+  background: #ffffff;
+  border-top: 1px solid $borderColor;
+  @include px2rem(padding, 24 0);
+  span{
+    display: inline-block;
+    border: 1px solid $mainColor;
+    color: $mainColor;
+    @include px2rem(width, 180);
+    @include lh(52, 52);
+    @include font-dpr(28);
+    @include px2rem(border-radius, 29);
+    text-align: center;
+    @include px2rem(margin-right, 24);
+    &.cancel_apply_btn{
+      color: #fff;
+      background: $mainColor;
+    }
+  }
+}
+.position_btn_wrap{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+// 售后单详情
+.after_detail_wrap{
+  @include px2rem(padding-bottom, 120);
+}
+.after_detail_top{
+  @include px2rem(height, 106);
+  align-items: center;
+  background: #fff;
+  @include px2rem(margin, 16 0);
+  @include px2rem(padding, 0 30);
+}
+.after_detail_type{
+  span{
+    display: block;
+    line-height: 1.6;
+    @include font-dpr(26);
+  }
+  b{
+    @include px2rem(padding-left, 16);
+  }
+}
+.ad_order{
+  @include px2rem(padding, 12 30);
+  border-bottom: 1px solid $borderColor;
+}
+.buyer_address_box{
+  @include px2rem(margin-top, 16);
+}
+.hhwld_box{
+  position: relative;
+}
+.as_title_box{
+  @include lh(95, 95);
+  border-bottom: 1px solid $borderColor;
+  @include px2rem(padding-left, 24);
+  @include font-dpr(28);
+  position: relative;
+  &.progress_title{
+    @include font-dpr(32);
+    border-bottom: none;
+  }
+}
+.no_border{
+  border: none !important;
+}
+.conment_boxs{
+  @include px2rem(padding, 24);
+}
+.conment_txt{
+  line-height: 1.4;
+  @include px2rem(margin-bottom, 18);
+  @include font-dpr(26);
+  &.no_margin{
+    margin: 0;
+  }
+  span{
+    @include px2rem(min-width, 168);
+  }
+  b{
+    @include px2rem(width, 514);
+    // @include singleline-ellipsis();
+  }
+}
+.describe_txt{
+  @include px2rem(padding, 27 24 31 24);
+  line-height: 1.6;
+}
+.describe_img_list{
+  @include px2rem(padding, 0 24 28);
+}
+.describe_img_box{
+  @include px2rem(width, 200);
+  @include px2rem(margin-right, 51);
+  &:last-child{
+    margin-right: 0;
+  }
+  img{
+    display: block;
+    @include wh(200, 200);
+    @include px2rem(border-radius, 6);
+  }
+}
+// 申请售后服务
+.apply_after_wrap{
+  @include px2rem(padding-bottom, 124);
+}
+.apply_after_top{
+  @include px2rem(margin, 16 0);
+}
+.apply_select_quantity{
+  @include px2rem(padding, 0 0 30);
+  .number-btn{
+    @include px2rem(border-radius, 25);
+    margin-top: 0;
+  }
+  .c_red{
+    color: $redColor !important;
+  }
+  .sl_box{
+    margin-top: 0;
+  }
+}
+.mar16{
+  @include px2rem(margin-top, 16);
+}
+.apply_type_btn{
+  @include px2rem(padding, 0 0 30);
+  span{
+    display: inline-block;
+    border: 1px solid #ccc;
+    color: #333;
+    @include px2rem(width, 160);
+    @include lh(50, 50);
+    @include font-dpr(28);
+    @include px2rem(border-radius, 25);
+    text-align: center;
+    @include px2rem(margin-left, 24);
+    &.cur_btn{
+      border: 1px solid $mainColor;
+      color: $mainColor;
+    }
+  }
+}
+.refund_monery{
+  @include font-dpr(28);
+  @include px2rem(padding, 0 24 24);
+  b{
+    @include px2rem(padding-left, 24);
+  }
+  input{
+    border: none;
+  }
+}
+.refund_txt{
+  color: #999;
+  @include font-dpr(24);
+  @include lh(78, 78);
+  @include px2rem(padding-left, 24);
+  background: #f4f4f4;
+}
+.reason_select_box{
+  @include px2rem(margin, -16 24 0);
+  @include px2rem(padding-bottom, 30);
+  @include font-dpr(28);
+  background: url("./assets/icon/member/pointedUp.png") right center no-repeat;
+  @include px2rem(background-size, 32 20);
+}
+.reason_box{
+  @include px2rem(padding-bottom, 30);
+}
+.reason_explain_wrap{
+  overflow: hidden;
+  position: relative;
+  @include wh(670, 320);
+  @include px2rem(padding, 24 16);
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  @include px2rem(border-radius, 12);
+  .reason_explain{
+    display: block;
+    @include wh(670, 246);
+    border: none;
+    resize:none;
+    // @include px2rem(padding, 24 16);
+    line-height: 1.4;
+    @include font-dpr(28);
+  }
+  .num_box{
+    position: absolute;
+    color: #ccc;
+    @include px2rem(right, 40);
+    @include px2rem(bottom, 54);
+    @include font-dpr(28);
+  }
+}
+.upload_img_box{
+  @include px2rem(padding, 0 24 24);
+}
+.card-upload{
+  @include wh(200, 200);
+  background: url("./assets/icon/icon/add_photo.png") center no-repeat;
+  @include px2rem(background-size, 200 200);
+  position: relative;
+  @include px2rem(margin-right, 51);
+  &:last-child{
+    margin-right: 0;
+  }
+  img{
+    @include wh(200, 200);
+    @include px2rem(border-radius, 6);
+  }
+  .license{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+  }
+  .clearImg_box{
+    position: absolute;
+    @include wh(32, 32);
+    @include px2rem(right, 6);
+    @include px2rem(top, 6);
+    background: url(./assets/icon/icon/remove.png) center no-repeat;
+    @include px2rem(background-size, 32 32);
+  }
+}
+.apply_after_btn{
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+  bottom: 0;
+  left: 0;
+}
+// 寄送商品
+.logistics_wrap{
+  p{
+    @include px2rem(height, 89);
+    @include px2rem(padding, 0 24);
+  }
+  label{
+    @include px2rem(width, 174);
+    @include px2rem(line-height, 89);
+  }
+  span{
+    @include px2rem(line-height, 89);
+  }
+  input{
+    background: #fff;
+    border: none;
+    &::-webkit-input-placeholder{color: #999;}
+    &::-moz-placeholder{color: #999;}
+    &:-moz-placeholder{color: #999;}
+    &:-ms-input-placeholder{color: #999;}
+  }
+  .logistics_number{
+    overflow: hidden;
+    border-top: 1px solid $borderColor;
+  }
+}
+.logistics_company{
+  background: url("./assets/icon/member/pointedUp.png") right 0.32rem center no-repeat;
+  @include px2rem(background-size, 32 20);
+}
+// 选择框
+.sh_title{
+  text-align: center;
+  @include font-dpr(34);
+  @include px2rem(padding, 29 0);
+  line-height: 1.4;
+}
+.autoScroll_as{
+  @include px2rem(height, 396);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  @include px2rem(margin, 0 0 0 24);
+}
+.afterSaleReason_box{
+  @include lh(89, 89);
+  border-bottom: 1px solid $borderColor;
+  @include font-dpr(30);
+  background: url(./assets/icon/sxt/wc.png) right 0.32rem center no-repeat;
+  background-size: 0.58667rem 0.58667rem !important;
+  &.cur_select{
+    background: url(./assets/icon/sxt/yx.png) right 0.32rem center no-repeat;
+  }
+  &:last-child{
+    border-bottom: none;
+  }
+}

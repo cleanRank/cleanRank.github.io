@@ -1,0 +1,285 @@
+
+$col_ccc: #cccccc;
+.boradius {
+  @include px2rem(border-radius, 5);
+}
+
+.dis_color {
+  background-color: $col_ccc !important;
+}
+
+// .dibct {
+//   display: block;
+//   text-align: center;
+// }
+// .edit_addr_wrap{
+//   height: 100%;
+// }
+.address_wrap {
+  height: calc(100% - 3.3333rem);
+}
+.add_addr_list{
+  min-height: calc(100% - 3.3333rem);
+}
+// .no_data {
+//   width: 100%;
+//   height: calc(100% - 3.3333rem);
+//   text-align: center;
+//   @include font-dpr(32);
+//   background: url("./assets/icon/order/zw_icon3x.png") no-repeat center 40%;
+//   @include px2rem(background-size,130 98);
+// }
+
+.addr_list {
+  min-height: 100%;
+}
+
+.addr_item,.addr_item1 {
+  @include px2rem(margin, 10 0);
+  @include font-dpr(30);
+  background-color: #fff;
+  border-top: 1px solid $borderColor;
+  border-bottom: 1px solid $borderColor;
+}
+.addr_item1{
+  @include px2rem(padding, 15 0);
+}
+.addr_info{
+  @include px2rem(padding, 50 27);
+}
+
+.addr_hd {
+  position: relative;
+  @include px2rem(line-height, 45);
+}
+.addr_hd .tag {
+  display: inline-block;
+  @include font-dpr(22);
+  @include px2rem(line-height, 45);
+  .addr_checked & {
+    background-color: #62c8fe;
+  }
+  &.def{
+    background-color: $mainColor;
+    position: absolute;
+    @include px2rem(right,0);
+    top: 0;
+  }
+}
+
+.label, .addr_hd .tag {
+  @include px2rem(border-radius, 5);
+  background-color: #ccc;
+  color: #fff;
+  @include px2rem(padding, 0 10);
+}
+
+.addr_txt {
+  @include px2rem(padding, 20 0 0);
+  @include font-dpr(28);
+}
+
+.addr_tool {
+  @include font-dpr(26);
+  line-height: 1.6;
+  @include px2rem(padding, 10 27);
+  border-top: 1px solid $borderColor;
+}
+
+.addr_radio {
+  display: inline-block;
+  position: relative;
+  &:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    @include px2rem(margin-top,-14);
+    @include px2rem(width, 28);
+    @include px2rem(height, 28);
+    border: 1px solid #a5a5a5;
+    border-radius: 50%;
+  }
+  .addr_checked & {
+    &:before {
+      background: url("./assets/icon/member/radio_checked_bg.png") no-repeat center;
+      background-size: 70% auto;
+      border-color: #62c8fe;
+    }
+    .label {
+      background-color: $mainColor;
+    }
+  }
+}
+
+.label {
+  @include px2rem(margin, 0 0 0 50);
+  display: inline-block;
+}
+.edit_adrr {
+  color: $color333;
+  @include px2rem(padding, 0 40 0 60);
+  background: url("./assets/icon/member/pencil.png") no-repeat left center;
+  @include px2rem( background-size, 40 40);
+  &.edge_box{
+    background-position: center;
+    font-size: 0;
+    border-left: 1px solid $borderColor;
+  }
+}
+
+.del_adrr {
+  @include px2rem(padding, 0 0 0 50);
+  background: url("./assets/icon/member/delete.png") no-repeat left center;
+  @include px2rem( background-size, 30 40);
+}
+.edge_box{
+  @include px2rem(width, 80);
+}
+
+.center_box{
+  color: $color333;
+  @include px2rem(padding, 10 40);
+  .tel{
+    @include px2rem(padding, 0 40 0 0);
+    text-align: right;
+  }
+}
+//新增收货地址
+.add_addr_list {
+  @include px2rem(margin, 10 0);
+  border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  background: #ffffff;
+  .addr_input {
+    text-align: right;
+  }
+}
+%r_arr{
+  @include px2rem(padding-right, 30);
+  background: transparent url(./assets/icon/login/arow_r.png) no-repeat right center;
+  @include px2rem(background-size, 16 25);
+}
+.info_p {
+  @include px2rem(height, 100);
+  @include px2rem(line-height, 100);
+  @include px2rem(padding, 0 30);
+  // border-bottom: 1px solid $borderColor;
+  @include font-dpr(28);
+  overflow: hidden;
+  .l_b {
+    @include px2rem(width, 145);
+    font-weight: normal;
+  }
+  select {
+    @extend %r_arr;
+    width: 100%;
+    border: none;
+    appearance: none;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari 和 Chrome */
+    color: #999;
+    direction: rtl;
+    @include font-dpr(24);
+    option {
+      direction: ltr;
+    }
+  }
+}
+.addr_input,.select_address {
+  border: none;
+  @include px2rem(height, 60);
+  @include px2rem(margin, 19.5 0);
+  resize: none;
+  width: 100%;
+  // @include px2rem(line-height, 99);
+  @include px2rem(padding-left, 18);
+  @include font-dpr(24);
+  color: #999;
+}
+.select_address{
+  @extend %r_arr;
+}
+.address_list{
+  @include px2rem(margin, 10 0);
+  background-color: #fff;
+  >li{
+    @include font-dpr(32);
+    border-bottom: 1px solid $borderColor ;
+    @include px2rem(padding,0 30);
+    @include px2rem(height,88);
+    @include px2rem(line-height,88);
+  }
+}
+.tishi{
+  @include px2rem(padding,0 20 0 50);
+  background: url("./assets/icon/member/tishi.png") no-repeat left top;
+  @include px2rem(background-size,24 24);
+  @include px2rem(background-position,20 10);
+  @include px2rem(line-height,40);
+  color: #666;
+  @include font-dpr(26);
+}
+// 新增银行卡
+.addbank_wrap {
+  // height: calc(100% - 3.3333rem);
+  @include px2rem(padding,100 30 45 30);
+  background: #fff;
+}
+.inp {
+  @include px2rem(margin, 25 0);
+  @include px2rem(line-height, 88);
+  &:first-child {
+    @include px2rem(margin-top, 0);
+  }
+  label {
+    @include px2rem(margin-right, 18);
+    @include font-dpr(24);
+  }
+  p {
+    @extend .boradius;
+    border: 1px solid $borderColor;
+    @include font-dpr(28);
+  }
+  input {
+    background-color: #fff;
+    width: 100%;
+    @include px2rem(text-indent, 20);
+    border: none;
+    position: relative;
+    @include font-dpr(28);
+  }
+}
+.stick_main .inp label{
+  @include font-dpr(28);
+}
+
+.yzmGray {
+  background: $col_ccc;
+}
+.support_show {
+  > a {
+    color: #666;
+    text-decoration: underline;
+  }
+  @include font-dpr(28);
+  @include px2rem(margin, 30 0 20);
+  text-align: right;
+}
+
+.crossBorder_txt{
+  line-height: 1.5;
+  @include px2rem(padding, 16 0 16 25);
+  @include px2rem(margin-bottom, 16);
+  @include font-dpr(24);
+  background: #FFF8E8;
+  // background: #FFF8E8 url("./assets/icon/cashier/public_all.png") 0.35rem 0.21333rem no-repeat;
+  // @include px2rem(background-size, 45 45);
+  color: #FAA61A;
+  &.position_cross{
+    position: fixed;
+    top: 1.2rem;
+    width: 100%;
+    left: 0;
+  }
+}

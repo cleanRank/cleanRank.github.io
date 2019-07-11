@@ -1,0 +1,127 @@
+@import "app";
+@import "flex";
+.store{
+  @include px2rem(margin-top, 404);
+}
+.sotreGoodsSort{
+  @include px2rem(height, 84);
+  @include px2rem(line-height, 80);
+  @include px2rem(line-height, 80);
+  border-bottom: 2px solid #F8F8F8;
+  border-top: 2px solid #F8F8F8;
+}
+.goodsSortItem{
+  color: $color777;
+  text-align: center;
+  @include font-dpr(30);
+}
+.goodsSortItem.active{
+  color: #000;
+  .activeBefore{
+    &:after{
+      background: url('./assets/icon/icon/store_active_top.png') center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .activeAfter{
+    &:after{
+      background: url('./assets/icon/icon/store_active_bottom.png') center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+.goodsSortTxt{
+  position: relative;
+  @include px2rem(padding-right, 32);
+}
+.sort{
+  .goodsSortTxt{
+    &:after{
+      content: '';
+      @include px2rem(width, 16);
+      @include px2rem(height, 26);
+      background: url('./assets/icon/icon/store_active.png') center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+}
+
+.sotreGoodsList{
+  display: flex;
+  flex-wrap: wrap;
+  @include px2rem(margin-left, 17);
+  @include px2rem(margin-right, 17);
+  @include px2rem(padding-top, 22);
+
+  position: relative;
+  z-index: 1;
+}
+.sotreGoodWrap{
+  @include px2rem(width, 296);
+  @include px2rem(margin-bottom, 14);
+  @include px2rem(border-radius, 12);
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  background: #fff;
+  overflow: hidden;
+  @include px2rem(margin-left, 7);
+  @include px2rem(margin-right, 7);
+  @include px2rem(padding-right, 24);
+  @include px2rem(padding-left, 24);
+}
+.sotreGoodWrapImgCon{
+  @include px2rem(padding-top, 16);
+  @include px2rem(padding-bottom, 16);
+  @include px2rem(width, 260);
+  @include px2rem(height, 260);
+  margin: 0 auto;
+  position: relative;
+  background-color: #fff;
+  .sotreGoodWrapImg{
+    @include px2rem(width, 260);
+    @include px2rem(height, 260);
+  }
+}
+.sotreGoodWrapImgCon img[lazy=loading] {
+  background: url('./assets/icon/banner/lazy_proudt.png') center no-repeat;
+  background-size: 100% 100%;
+}
+.sotreGoodDetails{
+  .sotreGoodName{
+    @include px2rem(height, 68);
+    @include px2rem(line-height, 37);
+    color: #333;
+    @include font-dpr(26);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    @include px2rem(margin-bottom, 16);
+  }
+  .sotreGoodPayMonthlyNo{
+    .sotreGoodOriginalPrice{
+      @include px2rem(line-height, 28);
+      @include px2rem(height, 24);
+      @include px2rem(padding-bottom, 16);
+    }
+    .sotreGoodOriginalPriceNum{
+      color: $color999;
+      @include font-dpr(20);
+    }
+    .sotreGoodPayPrice{
+      @include px2rem(line-height, 37);
+      @include px2rem(height, 32);
+      @include px2rem(padding-bottom, 24);
+      color: $redColor;
+      @include font-dpr(28);
+      text-align: center;
+      .small{
+        @include font-dpr(18);
+      }
+    }
+  }
+}

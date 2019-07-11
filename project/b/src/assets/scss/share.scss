@@ -1,0 +1,189 @@
+@charset "UTF-8";
+@import "_app";
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  background: #fff;
+  >img{
+    display: block;
+  }
+}
+.slider_1{
+  .fix_main{
+    width: 90%;
+    background: url("../../assets/icon/share/001.png") no-repeat center;
+    background-size: contain;
+    @include px2rem(bottom,250);
+  }
+}
+.fix_main,.fix_footer{
+  position: absolute;
+
+}
+.slider_1,.slider_4{
+  .fix_main{
+    right: 5%;
+    top: 0;
+    left: 5%;
+  }
+  .fix_footer{
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.slider_2,.slider_3{
+  .fix_main{
+    right: 0;
+    top: 0;
+    left: 0;
+    @include px2rem(height,248);
+  }
+  .fix_footer{
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include px2rem(top,248);
+  }
+}
+
+.slider_2{
+  .fix_main{
+    background: url("../../assets/icon/share/002_1.jpg") no-repeat center;
+    background-size: 100% auto;
+  }
+  .fix_footer{
+    background: url("../../assets/icon/share/002_2.jpg") no-repeat center;
+    background-size: contain;
+  }
+}
+.slider_3{
+  .fix_main{
+    background: url("../../assets/icon/share/003_1.jpg") no-repeat center;
+    background-size: 100% auto;
+  }
+  .fix_footer{
+    background: url("../../assets/icon/share/003_2.jpg") no-repeat center;
+    background-size: contain;
+  }
+}
+
+.slider_4{
+  .fix_main{
+    background: url("../../assets/icon/share/004.jpg") no-repeat center;
+    background-size: contain;
+    @include px2rem(bottom,120);
+  }
+}
+
+.more_slider{
+  @include px2rem(height,130);
+  background: url("../../assets/icon/share/more.png") no-repeat center;
+  @include px2rem(background-size,33 88);
+}
+.btn_wrap{
+  @include px2rem(padding,20 0);
+}
+.download_btn{
+  display: block;
+  @include px2rem(width,400);
+  @include px2rem(line-height,80);
+  color: #ed2124;
+  @include font-dpr(36);
+  border: 1px solid #ed2124;
+  @include px2rem(border-radius,100);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.an_box .ios_show {
+  display: none
+}
+.ios_box .an_show {
+  display: none
+}
+// .pop_box{position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 10;background:#000;filter:alpha(opacity=80);background:rgba(0,0,0,0.8);}
+.close_btn{display: block;margin: 0 auto;height:10%;width: 30%; }
+.pop_txt{margin: 10px auto;}
+.ios_box .pop_txt{width: 90%;}
+.an_box .pop_txt{width: 80%;}
+.ios_box .close_btn{background: url("../../assets/icon/share/ios_close.png") no-repeat center;background-size: contain;}
+.an_box .close_btn{background: url("../../assets/icon/share/android_close.png") no-repeat center;background-size: contain;}
+
+//h5授信
+.credit_down,.prompt-cont{
+  @include px2rem(padding-top, 60);
+  text-align: center;
+  span{
+    @include font-dpr(46);
+    @include px2rem(line-height, 110);
+    color: #ff4a38;
+  }
+  p{
+    @include font-dpr(30);
+    color: #777777;
+    @include px2rem(line-height, 42);
+  }
+  img{
+    @include px2rem(margin-top, 100);
+    &.mt0{
+      @include px2rem(margin-top, 10);
+    }
+  }
+}
+.down_mt{
+  @include px2rem(margin-top, 150);
+}
+.down_mt02{
+  @include px2rem(margin-top, 42);
+}
+
+//提示语+引导下载
+.prompt-cont{
+  @include px2rem(margin-top, 80);
+  //@include px2rem(padding-bottom, 65);
+  //background: #ffffff;
+  //border-bottom: 1px solid $borderColor;
+  //border-top: 1px solid $borderColor;
+  .sbt_img{
+    @include px2rem(width,453);
+  }
+  p{
+    @include font-dpr(34);
+    color: $color333;
+    @include px2rem(line-height, 60);
+    @include px2rem(margin-top,10);
+  }
+  span{
+    @include px2rem(line-height, 70);
+    @include font-dpr(30);
+    color: #999;
+    display: block;
+  }
+  span.dzh_span{
+    padding:0 0.3rem;
+    margin-top:0.15rem;
+    line-height: 0.63333rem;
+    @include font-dpr(28);
+  }
+  .btnCom{
+    @include px2rem(width, 200);
+    @include px2rem(height, 70);
+    @include px2rem(line-height, 70);
+    @include font-dpr(30);
+    color: #ffffff;
+    background: $mainColor;
+    display: inline-block;
+    @include px2rem(border-radius, 70);
+    margin: 0 auto;
+    @include px2rem(margin-top, 80);
+  }
+  .bt_ngo{
+    @include px2rem(margin-top, 80);
+  }
+  .btn_cus{
+    @include px2rem(margin-left, 45);
+  }
+}

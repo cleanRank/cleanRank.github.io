@@ -1,0 +1,569 @@
+@import "flex";
+@import "activitiesTem";
+
+#activityimg_wrap{
+  position: relative;
+  width: 100%;
+  &:before{
+    content: "";
+    width: 100%;
+    display: block;
+    // padding-top: 46.6666667%;
+    @include px2rem(height, 350);
+  }
+  img{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    @include px2rem(height,350);
+  }
+}
+.aicons_item{
+  img{
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+.lbrs_box{ width:100%;
+  margin: 0;
+}
+.activity_list{
+  .g_item{
+    @include px2rem(height, 396);
+    a.advertising_box{
+      @include px2rem(margin,0 5 10);
+      overflow: hidden;
+      padding: 0;
+      @include px2rem(height, 386);
+      img{
+        @include px2rem(height, 386);
+        @include px2rem(max-height, 386);
+      }
+    }
+  }
+}
+.advertising_box{
+  img{
+    width: 100%;
+    display: block;
+  }
+}
+.ac_list_2{
+  li{
+    @include px2rem(height, 550)
+  }
+  .advertising_box{
+    padding: 0;
+    img{
+      @include px2rem(height, 550);
+    }
+  }
+}
+.ac_cell_2{
+  .goods_month_pay{
+    color: $redColor;
+    text-align: center;
+  }
+}
+.activeProductsWrap{
+  padding:0 0.12rem;
+}
+.noposition{
+  .activeProductsWrap{
+    overflow: hidden;
+    .swiper-container{
+      position: static;
+      background: none;
+    }
+  }
+}
+.position_navbar{
+  position: fixed !important;
+  @include px2rem(top, 100);
+  z-index: 222222;
+  background: #ffffff;
+  width: 100%;
+}
+.navBar_title,.navBar_titles{
+  z-index: 9;
+}
+.infeedBoxtit{
+  position: relative;
+  text-align: center;
+  @include px2rem(height,80);
+}
+.navBar_title_position{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left:0;
+  z-index: 4;
+}
+.infee_title_position{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left:0;
+  z-index: 6;
+  &.notFromPzsc {
+    @include px2rem(margin-top, 88);
+  }
+}
+.scroll-1{
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  @include px2rem(height,80);
+  >p{
+    color: #fff;
+    position: relative;
+    min-width: 29%;
+    max-width: 32%;
+    @include px2rem(height,80);
+    display: inline-block;
+    @include px2rem(line-height,80);
+    overflow: hidden;
+    @include font-dpr(28);
+  }
+}
+.scroll_index{
+  width: 95%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: absolute;
+  top: 0;
+  @include px2rem(left, 10);
+  right: 0;
+  bottom: 0;
+  @include px2rem(height,80);
+  >p{
+    position: relative;
+    color: $color333;
+    @include px2rem(padding, 0 20);
+    @include px2rem(height,80);
+    @include px2rem(line-height,80);
+    display: inline-block;
+    overflow: hidden;
+    @include font-dpr(28);
+  }
+  p:last-child{
+    @include px2rem(padding-right, 53);
+  }
+}
+.scroll_item{
+  display: inline-block;
+  @include px2rem(border-bottom-width, 4);
+  border-bottom-style: solid;
+  border-bottom-color: $mainColor;
+  color: $mainColor;
+  @include px2rem(height,76);
+}
+.more_box{
+  position: absolute;
+  right: 0;
+  @include px2rem(height,80);
+  @include px2rem(width,50);
+  overflow: hidden;
+  transform:rotate(90deg);
+  -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+  img{
+    @include px2rem(width,23);
+    @include px2rem(height, 41);
+    margin: 0 auto;
+    @include px2rem(margin-top, 19.5);
+  }
+}
+.more_box_index{
+  @include px2rem(height,70);
+  background: #ffffff;
+  -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+  img{
+    @include px2rem(width,16);
+    @include px2rem(height, 25);
+    @include px2rem(margin-top, 30);
+    @include px2rem(margin-left, 10);
+  }
+}
+.more_box_indexup{
+  @include px2rem(padding-left,20);
+  -webkit-transform:rotate(-90deg);
+  img{
+    @include px2rem(width,16);
+    @include px2rem(height, 25);
+  }
+}
+.preview_box{
+  position: absolute;
+  width: 100%;
+  @include px2rem(height,60);
+  @include px2rem(line-height,60);
+  background: rgba(0,0,0,0.7);
+  z-index: 4;
+  color: #ffffff;
+  text-align: center;
+  @include font-dpr(24);
+  top:0;
+}
+.tag_img{
+  position: absolute;
+  left:0;
+  z-index: 3;
+  max-width: 80%;
+  max-height: 100%;
+  // overflow: hidden;
+  &.top{
+    top: 0.65rem;
+  }
+  &.bottom{
+    bottom: 0.65rem;
+  }
+}
+.ac_cell_2 .top, .js_pro_detail .top{
+  top: 0.3rem;
+}
+.js_pro_detail .bottom{
+  bottom:1.6rem;
+}
+.lootall_img{
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  width: 100%;
+  @include px2rem(top,50);
+  img{
+    @include wh(150,150);
+    margin: 0 auto;
+  }
+}
+.lootall_one{
+  img{
+    @include px2rem(margin-left, 25);
+  }
+}
+.ac_cell_1{
+  .ac_title{
+    @include font-dpr(26);
+    color: #444;
+  }
+  @include px2rem(padding-bottom,15);
+  .btn{
+    @include px2rem(height, 54);
+  }
+}
+.picture-link{
+  width: 100%;
+  position: relative;
+  img{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+  a{
+    position: absolute;
+  }
+}
+.icon_txt{
+  text-align: center;
+  color: $color333;;
+  overflow: hidden;
+  @include font-dpr(28);
+  // text-overflow: ellipsis;
+  // display: -webkit-box;
+  // -webkit-line-clamp: 1;
+  // -webkit-box-orient: vertical;
+  @include px2rem(height, 40);
+  @include px2rem(line-height, 40);
+}
+.g_item p.qualityViceTitle{
+  @include px2rem(line-height, 34);
+  @include font-dpr(24);
+  color: #999;
+}
+.qualityViceTitle{
+  color: #999;
+  //@include px2rem(padding-top,6);
+  @include px2rem(height, 34);
+  @include px2rem(line-height, 34);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  @include font-dpr(24);
+}
+.ac_title{
+  img{
+    display: inline-block;
+    vertical-align: middle;
+    @include px2rem(margin-right,10);
+  }
+}
+.label_img{
+  // @include px2rem(max-width, 180);
+  @include px2rem(max-height, 30);
+  @include px2rem(min-height, 28);
+  display: inline-block;
+  @at-root .floor & {
+    display: inline-block;
+  }
+  &.title_label_img {
+    @include px2rem(max-height, 30);
+    @include px2rem(min-height, 28);
+  }
+}
+.label_btnimg_box {
+  @include display-flex;
+  @include px2rem(margin-left, 30);
+}
+/* New Seconds Kill start */
+.new_seckill_wrap{
+  .new_seckill_tab_btn{
+    overflow-x: scroll;
+    white-space: nowrap;
+    .seckill_tab_btn{
+      color: $color333;
+      display: inline-block;
+      @include px2rem(padding,10 5);
+      @include px2rem(width, 270);
+      text-align: center;
+      vertical-align: top;
+      @include px2rem(height, 80);
+      .new_seckill_name{
+        @include px2rem(margin,0 2.5);
+        @include px2rem(width, 265);
+        @include font-dpr(34);
+        @include lh(48, 48);
+        font-weight: bold;
+        @include px2rem(margin-bottom, 2);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .new_seckill_status{
+        @include font-dpr(22);
+        @include lh(30, 30);
+      }
+    }
+  }
+  .bgBlue_colorWhite{
+    background: #3E9BFA !important;
+    color: #ffffff!important;
+  }
+  .new_seckill_tab_main{
+    @include px2rem(padding, 10 0);
+    white-space: nowrap;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    .new_seckill_good_list{
+      display: inline-block;
+      position: relative;
+      font-size: 0;
+      @include lh(488, 488);
+      .new_seckill_good{
+        @include px2rem(width, 260);
+        @include px2rem(padding,25 20);
+        @include px2rem(margin-left, 10);
+        display: inline-block;
+        background-color: #fff;
+        vertical-align: middle;
+        .new_seckill_good_img_box{
+          @include wh(260, 251);
+          overflow: hidden;
+          @include px2rem(line-height, 251);
+          text-align: center;
+          @include px2rem(margin-bottom, 20);
+          position: relative;
+          font-size: 0;
+          overflow: hidden;
+          .new_seckill_good_img{
+            @include wh(260, 251);
+            vertical-align: middle;
+          }
+          .good_are_gone{
+            @include wh(156, 156);
+            @include px2rem(line-height, 156);
+            background: rgba(0, 0, 0, .5);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 50%;
+            @include font-dpr(28);
+            color: #ffffff;
+          }
+        }
+      }
+      .new_seckill_good_detail{
+        .new_seckill_good_title{
+          @include font-dpr(26);
+          color: #444444;
+          @include px2rem(line-height, 42);
+          @include px2rem(height, 80);
+          white-space: normal;
+          word-break: break-word;
+          @include lines-ellipsis(2);
+          @include px2rem(margin-bottom, 14);
+        }
+        .new_seckill_good_price{
+          position: relative;
+          @include px2rem(padding-top, 22);
+          overflow: hidden;
+          .new_seckill_good_price_current{
+            @include lh(50, 50);
+            float: left;
+            @include font-dpr(32);
+            color: #FF0000;
+            .new_seckill_good_price_original{
+              @include font-dpr(20);
+              color: #999999;
+              @include lh(20, 22);
+              position: absolute;
+              top: 0;
+              left: 0;
+              text-decoration: line-through;
+            }
+          }
+          .new_seckill_Buying{
+            @include wh(120, 50);
+            float: right;
+            @include px2rem(border-width, 2);
+            border-color: #3E9BFA;
+            border-style: solid;
+            background-color: #ffffff;
+            @include px2rem(border-radius, 6);
+            color: #3E9BFA;
+            @include font-dpr(24);
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+    .new_seckill_session_next{
+      @include wh(26, 486);
+      @include px2rem(line-height, 486);
+      @include px2rem(padding,0 23);
+      vertical-align: top;
+      background: #F8F8F8;
+      border: 1px solid #E1E1E1;
+      @include font-dpr(26);
+      display: inline-block;
+      color: #666666;
+      @include px2rem(margin-left, 10);
+      &>span{
+        display: inline-block;
+        @include px2rem(line-height, 32);
+        white-space: normal;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+/* New Seconds Kill end */
+
+// 图片单列模块
+.spike_title_wrap{
+  white-space: nowrap;
+  overflow-x: scroll;
+  @include px2rem(padding-left, 19);
+}
+.spike_title_item{
+  display: inline-block;
+  text-align: center;
+  @include px2rem(padding,13 19 20 19);
+  p{
+    line-height: 1.6;
+  }
+  .spike_time{
+    @include font-dpr(32);
+  }
+  .spike_status{
+    @include font-dpr(22);
+  }
+  &.spike_title_activi{
+    position: relative;
+    &::after{
+      content: '';
+      position: absolute;
+      @include wh(16, 4);
+      background:linear-gradient(90deg,rgba(252,107,105,1) 0%,rgba(254,63,87,1) 100%);
+      @include px2rem(border-radius, 4);
+      bottom: 0;
+      @include px2rem(margin-left, -8);
+    }
+  }
+}
+.modelEighteen_item{
+  @include px2rem(padding, 24 24 0);
+}
+.model_banner{
+  @include wh(702, 320);
+  display: block;
+  margin: 0 auto;
+  @include px2rem(margin-bottom, 16);
+  @include px2rem(border-radius, 12);
+}
+.modelEighteen_txt_box{
+  @include px2rem(padding-bottom, 24);
+  border-bottom: 1px solid #F8F8F8;
+}
+.productName_title, .viceTitle_title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.productName_title{
+  @include px2rem(margin-bottom, 4);
+}
+.viceTitle_title{
+  @include px2rem(margin-bottom, 20);
+  @include px2rem(height, 37);
+}
+.prices_box{
+  align-items: center;
+  overflow: hidden;
+  .productStatus{
+    @include font-dpr(26);
+    line-height: 1.2;
+    display: inline-block;
+    background:#FFE9EA;
+    @include px2rem(padding, 6 6 7);
+    @include px2rem(border-radius, 6);
+  }
+}
+.buyingPrice_box{
+  @include px2rem(margin, 0 16);
+ b{
+  @include font-dpr(46);
+  font-weight: 500;
+ }
+}
+.prbtn_wrap{
+  clear: both;
+  text-align: right;
+  font-size: 0;
+  @include px2rem(margin-top, 10);
+  span{
+    display: inline-block;
+    line-height: 1.4;
+    @include px2rem(padding, 9 30 6);
+    border: 1.5px solid $mainColor;
+    @include px2rem(border-radius, 30);
+    @include font-dpr(28);
+  }
+  .share_btns{
+    background: $mainColor;
+    color: #fff;
+    @include px2rem(margin, 0 4 0 16);
+  }
+}

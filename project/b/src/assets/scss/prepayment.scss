@@ -1,0 +1,93 @@
+@charset "utf-8";
+.prepay_title{
+  @include px2rem(height,109);
+  text-align: center;
+  background: #fff;
+  .list_item{
+    @include font-dpr(24);
+    @include px2rem(padding-top, 61);
+    border-bottom:1px solid $borderColor;
+  }
+  span:first-child{
+    background: url("./assets/icon/prepayment/gray0.png") top 0.3rem center no-repeat;
+    @include px2rem(background-size,43 28);
+  }
+  span:nth-child(2){
+    background: url("./assets/icon/prepayment/gray1.png") top 0.26rem center no-repeat;
+    @include px2rem(background-size,41 32);
+  }
+  span:nth-child(3){
+    background: url("./assets/icon/prepayment/gary2.png") top 0.26rem center no-repeat;
+    @include px2rem(background-size,34 34);
+  }
+  .curTap1,.curTap2,.curTap3{
+    border-bottom: 2px solid $mainColor;
+    color: $mainColor;
+  }
+  span.curTap1:first-child{
+    background: url("./assets/icon/prepayment/red0.png") top 0.3rem center no-repeat;
+    @include px2rem(background-size,43 28);
+  }
+  span.curTap2:nth-child(2){
+    background: url("./assets/icon/prepayment/red1.png") top 0.26rem center no-repeat;
+    @include px2rem(background-size,41 32);
+  }
+  span.curTap3:nth-child(3){
+    background: url("./assets/icon/prepayment/red2.png") top 0.26rem center no-repeat;
+    @include px2rem(background-size,34 34);
+  }
+}
+.allbill_content{
+  >li{
+    background: #fff;
+  }
+}
+.payment_detail{
+  @include px2rem(height, 139);
+  border-bottom: 1px solid $borderColor;
+  .radio_item{
+    @include px2rem(line-height,129);
+    @include px2rem(padding,0 27 0 17);
+    margin-bottom: 0;
+  }
+  .remainDays{
+    @include px2rem(line-height,139);
+    color: #999;
+    @include font-dpr(24);
+    background: url("./assets/icon/prepayment/goright.png") 85% center no-repeat;
+    @include px2rem(background-size,11 24);
+  }
+  .nobj{background: none;}
+}
+.payment_name{
+  @include px2rem(padding-top, 20);
+  line-height: 1.6;
+}
+.name_p{
+  @include px2rem(width, 450);
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.already_payment{
+  //@include px2rem(padding-left, 72);
+  @include px2rem(padding-left,30);
+}
+.debit_txt{
+  @include l_h(60, 60);
+  color: #e1b13d;
+  @include font-dpr(24);
+  @include px2rem(padding-left, 60);
+  border-bottom: 1px solid $borderColor;
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    @include wh(26, 26);
+    @include px2rem(top,17);
+    @include px2rem(left,30);
+    background: url("./assets/icon/prepayment/yellow.png") center no-repeat;
+    @include px2rem(background-size,26 26);
+  }
+}
+

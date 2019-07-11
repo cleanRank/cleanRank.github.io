@@ -1,0 +1,134 @@
+@import "app";
+@import "flex";
+.fixedContainer{
+  position: fixed;
+  @include px2rem(top, 88);
+  width: 100%;
+  z-index: 2;
+  background: #fff;
+}
+.celebrity{
+  @include px2rem(padding-top, 400);
+}
+.celebrityInfoWrap{
+  @include px2rem(border-radius, 12);
+  @include px2rem(margin,40 24);
+  @include px2rem(height, 240);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  .celebrityHeadImgWrap{
+    @include px2rem(width, 120);
+    @include px2rem(height, 120);
+    @include px2rem(margin-top, 60);
+    @include px2rem(margin-left, 24);
+    @include px2rem(margin-right, 24);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .celebrityHeadImg{
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .celebrityInfo{
+    @include px2rem(margin-right, 16);
+    flex: 1;
+    color: #fff;
+    @include px2rem(padding-top, 70);
+
+    .celebrityName{
+      @include font-dpr(34);
+      @include px2rem(line-height, 48);
+      @include px2rem(margin-bottom, 8);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      word-wrap:break-word;
+      word-break:break-all;
+    }
+    .celebritySignature{
+      @include font-dpr(26);
+      @include px2rem(line-height, 37);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      word-wrap:break-word;
+      word-break:break-all;
+    }
+  }
+  .concernStatusWrap{
+    @include px2rem(width, 110);
+    @include px2rem(margin-right, 24);
+    text-align: center;
+    font-size: 0;
+  }
+  .concernStatus{
+    display: inline-block;
+    @include px2rem(height, 33);
+    @include px2rem(line-height, 33);
+    @include px2rem(padding, 0 15);
+    color: #333;
+    @include font-dpr(24);
+    @include px2rem(border-radius, 16.5);
+    @include px2rem(margin-top, 82);
+  }
+}
+.celebrityRecommendTitle{
+  @include px2rem(height, 80);
+  @include px2rem(line-height, 80);
+  @include font-dpr(34);
+  text-align: center;
+  img{
+    width: 100%;
+    @include px2rem(height, 80);
+  }
+}
+.celebrityRecommendGoodList{
+  display: flex;
+  flex-wrap: wrap;
+  @include px2rem(margin-left, 24);
+  @include px2rem(margin-right, 12);
+  @include px2rem(padding-top, 16);
+
+}
+.celebrityRecommendGood{
+  @include px2rem(width, 200);
+  @include px2rem(height, 280);
+  box-shadow: 0 0 0.16rem 0 rgba(0, 0, 0, 0.06), 0 0.10667rem 0.10667rem 0 rgba(0, 0, 0, 0.02);
+  @include px2rem(margin-right, 12);
+  @include px2rem(margin-bottom, 12);
+  @include px2rem(padding, 0 13);
+  .celebrityRecommendGoodImgWrap{
+    @include px2rem(width, 180);
+    @include px2rem(height, 180);
+    @include px2rem(padding, 10);
+    .celebrityRecommendGoodImg{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .celebrityRecommendGoodImgWrap img[lazy=loading] {
+    background: url('./assets/icon/banner/lazy_proudt.png') center no-repeat;
+    background-size: 100% 100%;
+  }
+  .celebrityRecommendGoodName{
+    color: $color333;
+    @include px2rem(line-height, 37);
+    @include singleline-ellipsis();
+    @include px2rem(margin-bottom, 4);
+  }
+  .celebrityRecommendGoodPrice{
+    color: $redColor;
+    text-align: center;
+    @include font-dpr(28);
+    .small{
+      @include font-dpr(18);
+    }
+  }
+}
+.nullData{
+  text-align: center;
+}
+

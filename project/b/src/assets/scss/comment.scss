@@ -1,0 +1,146 @@
+// 评论
+.comment_list_wrap{
+  background-color: #fff;
+}
+.no_comment{
+  @include lh(113, 113);
+  background: #fff;
+  text-align: center;
+  @include px2rem(margin-bottom, 20);
+}
+.comment_title{
+  background: #fff;
+  @include lh(93, 93);
+  @include px2rem(padding, 0 24);
+  span{
+    border-bottom: 1px  solid $borderColor;
+  }
+  .feedbackRate{
+    border-bottom: none;
+  }
+}
+.comment_product{
+  @include px2rem(padding-left, 16);
+  position: relative;
+  &::after{
+    content: '';
+    position: absolute;
+    @include wh(6, 30);
+    background: $mainColor;
+    left: 0;
+    @include px2rem(top, 31.5);
+    @include px2rem(border-radius, 3);
+  }
+}
+.look_all_btn{
+  @include px2rem(padding-right, 28);
+  position: relative;
+  @include font-dpr(24);
+  &::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: url("./assets/icon/icon/return_r.png") no-repeat center;
+    @include wh(24, 24);
+    @include px2rem(background-size, 24);
+  }
+}
+// 评论列表
+.conment_box{
+  @include px2rem(padding, 24);
+}
+.nickname_box{
+  @include px2rem(margin-bottom, 16);
+}
+.headerIcon_box{
+  @include wh(60, 60);
+  @include px2rem(margin-right, 12);
+  overflow: hidden;
+  .header_icon{
+    @include wh(60, 60);
+    display: block;
+    @include px2rem(border-radius, 30);
+  }
+}
+.name_box{
+  @include px2rem(line-height, 60);
+  @include px2rem(margin-right, 18);
+}
+.star_box{
+  @include px2rem(margin-top, 12);
+}
+.star_x{
+  display: inline-block;
+  @include wh(24, 23);
+  @include px2rem(margin, 0 6);
+  background: url("./assets/icon/icon/Star.png") no-repeat center;
+  background-size: 100% 100% !important;
+  &.star_h{
+    background: url("./assets/icon/icon/Starh.png") no-repeat center;
+  }
+}
+.spec_title{
+  line-height: 1.4;
+  @include singleline-ellipsis();
+}
+.content_box{
+  word-wrap:break-word;
+  line-height: 1.4;
+  @include px2rem(margin-top, 16);
+}
+.comment_img_list{
+  @include px2rem(margin-top, 8);
+}
+.comment_img_item{
+  @include wh(226, 226);
+  @include px2rem(border-radius, 8);
+  overflow: hidden;
+  @include px2rem(margin, 12 12 0 0);
+  img{
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  &.comment_img_item:nth-child(3n){
+    margin-right: 0;
+  }
+}
+.reply_conment{
+  line-height: 1.4;
+  @include px2rem(padding, 16 24);
+  background:rgba(244,244,244,1);
+  @include px2rem(border-radius, 6);
+  @include px2rem(margin-top, 20);
+}
+.comment_top {
+  @include px2rem(padding, 110 24 10 24);
+  background: #fff;
+}
+.comment_title_tab{
+  font-size: 0;
+  text-align: left;
+}
+.comment_feedbackRate{
+  color: #444;
+  @include font-dpr(24);
+  @include px2rem(padding-bottom, 24);
+}
+.comment_btn{
+  display: inline-block;
+  @include font-dpr(24);
+  @include lh(50, 50);
+  border: 1px solid #DBDBDB;
+  @include px2rem(padding, 0 23);
+  @include px2rem(border-radius, 26);
+  @include px2rem(margin-right, 24);
+  @include px2rem(margin-bottom, 14);
+  color: #65626D;
+  &.cur_btn{
+    background: #feedef;
+    color: #FD455F;
+    border-color: #FD455F;
+  }
+}

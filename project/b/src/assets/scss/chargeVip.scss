@@ -1,0 +1,142 @@
+@import "app";
+@import "flex";
+
+.vd_container {
+  height: calc(100% - 1.17333rem);
+}
+
+.tab_ht-tab3 {
+  &:before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 0.66667rem;
+    top: 0.33333rem;
+    left: 0;
+    background: $borderColor;
+  }
+}
+.vip_container {
+  height: calc(100% - 1.65333rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  @include px2rem(padding-top, 18);
+  .vip_icontainer {
+    @include display-flex();
+    @include flex-direction-column();
+    @include justify-content(space-between);
+    min-height: 100%;
+  }
+  .vip_banner {
+    width: 100%;
+    display: block;
+  }
+}
+
+.vips {
+  background: #fff;
+  @include px2rem(margin-bottom, 20);
+  border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  h2 {
+    @include px2rem(padding, 30 28);
+    @include font-dpr(28);
+    color: $color333;
+    border-bottom: 1px solid $borderColor;
+  }
+  .vips_list {
+    @include display-flex();
+    @include flex-wrap();
+    @include px2rem(margin, 17 15);
+  }
+  .vips_list-item {
+    box-sizing: border-box;
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    // @include flex(1);
+    @include align-items(center);
+    // @include px2rem(flex-basis, 220);
+    width: calc(50% - .4rem);
+    -webkit-flex-basis: calc(50% - .4rem);
+    flex-basis: calc(50% - .4rem);
+    @include px2rem(margin, 15);
+    @include px2rem(border-radius, 4);
+    @include px2rem(height, 100);
+    border: 1px solid $borderColor;
+    &.selected {
+      border-color: #ccc;
+    }
+  }
+  .vips_list-img {
+    max-width: 81.3%;
+    height: 82%;
+  }
+}
+
+.vip_periods {
+  background: #fff;
+  @include px2rem(padding, 30 20 20);
+  border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  h3 {
+    color: $color333;
+    @include font-dpr(28);
+    @include px2rem(padding, 0 10 10);
+  }
+  .vip_periods_list {
+    @include display-flex;
+    @include flex-wrap;
+  }
+  .vip_periods_list-item {
+    @include display-flex;
+    @include align-items(center);
+    @include justify-content(center);
+    @include px2rem(width, 116);
+    @include px2rem(height, 58);
+    @include px2rem(margin, 10);
+    border: 1px solid $borderColor;
+    color: #999;
+    &.selected {
+      color: #fff;
+      border-color: $mainColor;
+      background-color: $mainColor;
+    }
+  }
+}
+
+.vip_warmtip {
+  line-height: 1.5;
+  @include display-flex();
+  @include flex(1);
+  @include px2rem(padding, 15);
+  @include font-dpr(24);
+  @include px2rem(min-height, 170);
+  .vip_warmtip-label {
+    color: #e1b13d;
+    // width: 5em;
+    white-space: nowrap;
+  }
+  .vip_warmtip-cont {
+    color: #999;
+    @include flex(1);
+    // flex: 1;
+  }
+  .vip_warmtip-detail + .vip_warmtip-detail {
+    display: block;
+    @include px2rem(margin-top, 10);
+  }
+}
+.problem_instr {
+  text-align: center;
+  @include px2rem(padding-bottom, 49);
+  .problem_instr_link {
+    display: inline-block;
+    color: #4d86c0;
+    @include px2rem(padding, 0 17);
+    @include font-dpr(24);
+    + .problem_instr_link {
+      border-left: 1px solid  #4d86c0;
+    }
+  }
+}

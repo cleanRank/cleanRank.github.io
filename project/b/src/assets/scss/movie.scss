@@ -1,0 +1,65 @@
+// 电影票
+.movie_content_box{
+  @include px2rem(margin, 20 20 0);
+  @include px2rem(padding-bottom, 25);
+  background: #ffffff;
+  border: 1px solid $borderColor;
+  @include px2rem(border-radius, 12);
+}
+.movie_content{
+  @include px2rem(margin, 0 30);
+  @include px2rem(padding-bottom, 10);
+  p{
+    @include px2rem(margin-bottom, 15);
+    line-height: 1.5;
+  }
+  .movie_txt{
+    @include font-dpr(26);
+  }
+  &.noborder{
+    border: none !important;
+  }
+  &.border_movie{
+    position: relative;
+    border-bottom: 1px dashed $borderColor;
+    &::before, &::after{
+      content: '';
+      @include wh(15, 30);
+      position: absolute;
+      background: $bgColor;
+      @include px2rem(bottom, -15);
+      border: 1px solid $borderColor;
+    }
+    &::before{
+      @include px2rem(border-radius, 0 30 30 0);
+      @include px2rem(left, -31);
+      border-left: none;
+    }
+    &::after{
+      @include px2rem(border-radius, 30 0 0 30);
+      @include px2rem(right, -31);
+      border-right: none;
+    }
+  }
+}
+.movie_name{
+  @include font-dpr(40);
+  @include px2rem(padding, 31 0 25);
+  overflow: hidden;
+  &.movie_order_status{
+    @include font-dpr(36);
+    b{
+      @include font-dpr(28);
+      text-align: right;
+    }
+  }
+}
+.movie_num{
+  text-align: center;
+  @include px2rem(width, 628);
+  @include lh(90, 90);
+  @include font-dpr(30);
+  background: #F2F2F2;
+  margin: 0.4rem auto 0.08rem;
+  overflow: hidden;
+}

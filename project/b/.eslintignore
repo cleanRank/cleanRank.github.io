@@ -1,0 +1,7 @@
+build/*.js
+config/*.js
+mock/*.js
+src/lib/*.js
+index.html
+gulpfile.js
+yarn.lock

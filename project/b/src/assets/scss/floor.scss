@@ -1,0 +1,869 @@
+.floor-list{
+  &.mg172{
+    @include px2rem(margin-top,172);
+  }
+  &.mg20 {
+    @include px2rem(margin-top, 20);
+  }
+}
+.floor-good-single-row,.floor-seven{
+  @include px2rem(padding, 0 24);
+}
+.floor-eleven,.floor-fourteen{
+  @include px2rem(padding-bottom, 20);
+}
+
+.floor-two,.floor-five,.floor-seven,.floor-fifteen{
+  @include px2rem(margin-bottom, 20);
+}
+/* 图片-1 start */
+.floor-image{
+  position: relative;
+  .floor-image-item{
+    width: 100%;
+  }
+  .hot-area{
+    position: absolute;
+  }
+}
+/* 图片-1 start */
+/* 图片轮播-2 start */
+.floor-swiper{
+  @include px2rem(height, 340);
+  position: relative;
+  .swiper-container{
+    @include px2rem(border-radius, 12);
+    overflow: hidden;
+    background: url(./assets/icon/banner/lazy_banner.png) no-repeat center;
+    background-size: 100% auto;
+  }
+  .swiper-pagination{
+    @include px2rem(width, 44);
+    @include px2rem(height, 24);
+    @include px2rem(line-height, 24);
+    @include px2rem(border-radius, 12);
+    position: absolute;
+    left: auto;
+    @include px2rem(bottom, 8);
+    @include px2rem(right, 32);
+    color: #fff;
+    @include font-dpr(20);
+    background: rgba(0,0,0,0.26);
+  }
+  img{
+    @include px2rem(width, 702);
+    @include px2rem(height, 340);
+    @include px2rem(border-radius, 12);
+    margin: 0 auto;
+  }
+}
+/* 图片轮播-2 end */
+
+/* 商品单列-3 start */
+.floor-good-single-row{
+  overflow: hidden;
+  &.floor-single-row-bg{
+    background-size: 100% 5.12rem;
+  }
+}
+.good-single-row{
+  background: #fff;
+  @include px2rem(border-radius, 12);
+  @include px2rem(padding, 24 20 24 16);
+  @include px2rem(margin-bottom, 20);
+  display: flex;
+  .good-img-wrap{
+    @include wh(240, 240);
+    overflow: hidden;
+    .good-img{
+      @include wh(240, 240);
+    }
+  }
+  .good-info{
+    @include px2rem(padding-left, 20);
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    .good-info-name{
+      color: $color444;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+      @include font-dpr(28);
+      @include px2rem(line-height, 40);
+      @include px2rem(margin-bottom, 12);
+    }
+
+    .good-info-sub-name{
+      color: $color999;
+      @include font-dpr(26);
+      @include px2rem(line-height, 37);
+      @include px2rem(margin-bottom, 12);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .good-info-label{
+      padding: 0;
+    }
+    .good-info-price{
+      @include px2rem(margin-right, 16);
+      font-weight: 600;
+    }
+  }
+  .good-info-sold{
+    color: $color999;
+    @include font-dpr(20);
+    @include px2rem(line-height, 28);
+    @include px2rem(margin-bottom, 10);
+  }
+}
+/* 商品单列-3 end */
+
+/* 图片双列-4 start */
+.floor-biserial-good{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @include px2rem(padding, 0 24 4);
+  .biserial-good{
+    @include px2rem(border-radius, 8);
+    @include px2rem(margin-bottom, 16);
+    @include px2rem(margin-right, 14);
+    @include px2rem(padding-bottom, 4);
+    overflow: hidden;
+    background: #fff;
+  }
+  .biserial-good:nth-child(even){
+    margin-right: 0;
+  }
+  // 商品图片
+  .biserial-good-img{
+    @include wh(344, 344);
+  }
+  // 商品名称
+  .biserial-good-name{
+    color: $color444;
+    @include font-dpr(24);
+    @include px2rem(width, 304);
+    @include px2rem(min-height, 60);
+    @include px2rem(padding, 0 20);
+    @include px2rem(margin, 12 0);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+}
+// 海外购商品label
+.biserial-good-crossBorder{
+  background-image: url('./assets/icon/icon/quqiu.png');
+  background-repeat: no-repeat;
+  @include px2rem(background-position-x, 20);
+  @include px2rem(background-position-y, 3);
+  @include px2rem(background-size, 88 26);
+  @include px2rem(text-indent, 100);
+}
+.biserial-good-label{
+  @include px2rem(padding, 0 20);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: hidden;
+  @include px2rem(margin-bottom, 12);
+  .biserial-good-label-i{
+    @include wh(62, 28);
+    display: block;
+    @include px2rem(margin-right, 12);
+    &.seckill{
+      background: url('./assets/icon/icon/miaosha.png') left center no-repeat;
+      @include px2rem(background-size, 62 28);
+    }
+    &.promotion{
+      background: url('./assets/icon/icon/cuxiao.png') left center no-repeat;
+      @include px2rem(background-size, 62 28);
+    }
+  }
+}
+// 返利label
+.good-label-rebate{
+  position: relative;
+  overflow: hidden;
+  background: $rebateBg;
+  display: block;
+  line-height: 1;
+  @include px2rem(height, 20);
+  @include font-dpr(20);
+  @include px2rem(padding-left, 36);
+  @include px2rem(padding-right, 8);
+  @include px2rem(padding-top, 5);
+  @include px2rem(padding-bottom, 3);
+  @include px2rem(border-radius, 4);
+  @include px2rem(margin-right, 12);
+}
+.good-label-rebate::before{
+  content: '';
+  @include wh(28, 28);
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  background: url('./assets/icon/icon/zhuan.png') left center no-repeat;
+  @include px2rem(background-size, 28 28);
+}
+// 商品价格-已售件数
+.biserial-good-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include px2rem(height, 50);
+  @include px2rem(padding, 0 20 20 20);
+}
+.biserial-good-info-price{
+  color: $redColor;
+  @include font-dpr(36);
+  @include px2rem(line-height, 36);
+  font-weight: 600;
+}
+.biserial-good-info-price-before{
+  @include font-dpr(24);
+  font-weight: 700;
+}
+.biserial-good-info-sold{
+  color: $color999;
+  @include font-dpr(20);
+}
+/* 图片双列-4 end */
+
+
+/* 品牌管理-5 start */
+.floor-nav{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  &-item{
+    width: 20%;
+    text-align: center;
+    @include px2rem(padding, 16 0);
+    img[lazy=loading] {
+      background: url('./assets/icon/banner/lazy_icon.png') no-repeat;
+      background-size: 100% 100%;
+    }
+    &-img{
+      @include wh(90, 90);
+      margin: 0 auto;
+    }
+    &-name{
+      display: block;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      @include px2rem(line-height, 33);
+      @include px2rem(margin-top, 12);
+    }
+  }
+}
+/* 品牌管理-5 end */
+
+/* 秒杀模块-6 start */
+.seckill-nav{
+  font-size: 0;
+  white-space: nowrap;
+  @include px2rem(margin, 20 0);
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling:touch;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -webkit-transform: translateZ(0px);
+  position: static;
+  .nav-item{
+    display: inline-block;
+    color: $color444;
+    text-align: center;
+    @include px2rem(padding-bottom, 14);
+    @include px2rem(width, 96);
+    @include px2rem(padding-left, 20);
+    @include px2rem(padding-right, 20);
+    .nav-item-name{
+      font-weight: 500;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      @include font-dpr(32);
+      @include px2rem(line-height, 29);
+      @include px2rem(margin-bottom, 12);
+    }
+    .nav-item-status{
+      @include font-dpr(24);
+      @include px2rem(line-height, 33);
+    }
+    &.cur{
+      color: $mainColor;
+    }
+  }
+}
+.seckill-list{
+  overflow: hidden;
+  @include px2rem(padding, 0 24);
+}
+/* 秒杀模块-6 start */
+
+/* 图片单列-7 start */
+.floor-single-row{
+  @include px2rem(border-radius, 12);
+  overflow: hidden;
+  background: #fff;
+  .floor-good-info{
+    @include px2rem(padding,0 20 20 24);
+  }
+  .floor-good-img{
+    width: 100%;
+    @include px2rem(height, 320);
+    @include px2rem(margin-bottom, 20);
+  }
+  .floor-good-name{
+    color: $color444;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    @include font-dpr(28);
+    @include px2rem(line-height, 40);
+    @include px2rem(margin-bottom, 12);
+  }
+  .floor-good-sub-name{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color: $color999;
+    @include font-dpr(26);
+    @include px2rem(line-height, 37);
+    @include px2rem(margin-bottom, 12);
+  }
+  .floor-good-label{
+    @include px2rem(padding, 0);
+    @include px2rem(margin-bottom, 8);
+  }
+  .floor-good-price{
+    @include px2rem(margin-right, 16);
+  }
+  .floor-good-footnote{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .floor-good-sold{
+    color: $color999;
+    @include font-dpr(20);
+  }
+}
+.floor-good-btn-wrap{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  .buy{
+    color: $redColor;
+  }
+  .share{
+    color: #fff;
+    background: $redColor;
+    @include px2rem(margin-left, 28);
+  }
+}
+.floor-good-btn{
+  border: 1px solid $redColor;
+  display: block;
+  @include px2rem(height, 50);
+  @include px2rem(line-height, 50);
+  @include px2rem(border-radius, 26);
+  @include px2rem(padding, 0 33);
+}
+.floor-single-row-bg{
+  @include px2rem(padding-top, 96);
+  background-size: 100% 5.54667rem;
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+.floor-good-crossBorder-y{
+  @include px2rem(background-position-x, 0);
+  @include px2rem(background-position-y, 7);
+  @include px2rem(text-indent, 100);
+}
+/* 图片单列-7 end */
+
+/* 秒杀图片单列-9 start */
+.floor-nine{
+  .floor-single-row{
+    @include px2rem(margin-left, 24);
+    @include px2rem(margin-right, 24);
+    @include px2rem(margin-bottom, 20);
+  }
+}
+/* 秒杀图片单列-9 end */
+
+/* 图片平分-10 start */
+.floor-ten{
+  @include px2rem(padding,0 24 20);
+}
+.floor-ten-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .floor-ten-img-2{
+    @include wh(344, 258);
+  }
+  .floor-ten-img-3{
+    @include wh(226, 170);
+  }
+  .floor-ten-img-4{
+    @include wh(168, 126);
+  }
+}
+/* 图片平分-10 end */
+
+/* 优惠券版式-11 start */
+.floor-eleven-row{
+  display: flex;
+  overflow: hidden;
+}
+.floor-coupons{
+  flex: 1;
+  width: auto;
+  height: auto;
+
+}
+.floor-coupons-img{
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+/* 优惠券版式-11 end */
+
+/* 商品(三列)-13 start */
+.floor-thirteen{
+  @include px2rem(padding, 0 0 8 0);
+}
+.floor-thirteen-con{
+  display: flex;
+  flex-wrap: wrap;
+  @include px2rem(padding, 0 24 0 24);
+  &.pd20{
+    @include px2rem(padding-top, 20);
+  }
+}
+.three-rows-good:nth-child(3n+0) {
+  margin-right: 0;
+}
+.three-rows-good{
+  background: #fff;
+  overflow: hidden;
+  @include px2rem(width, 226);
+  @include px2rem(margin-right, 12);
+  @include px2rem(margin-bottom, 12);
+  @include px2rem(border-radius, 8);
+  @include px2rem(padding-bottom, 10);
+  position: relative;
+  .good-img-wrap{
+    @include wh(226, 226);
+    @include px2rem(margin-bottom, 12);
+    .good-img{
+      @include wh(226, 226);
+    }
+  }
+  .good-name{
+    color: $color444;
+    @include font-dpr(24);
+    @include px2rem(padding, 0 16);
+    @include px2rem(height, 60);
+    @include px2rem(line-height, 33);
+    @include px2rem(margin-bottom, 12);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .good-label-rebate{
+    margin-right: 0;
+  }
+  .good-info{
+    @include px2rem(margin-bottom, 6);
+    @include px2rem(padding-left, 16);
+    @include px2rem(padding-right, 16);
+    .biserial-good-info-price{
+      @include font-dpr(26);
+      @include px2rem(line-height, 28);
+    }
+    .biserial-good-info-price-before{
+      @include font-dpr(20);
+      font-weight: 700;
+    }
+  }
+  .mb-6{
+    @include px2rem(margin-bottom, 6);
+  }
+}
+/* 商品(三列)-13 end */
+
+/* 商品轮播-14 start */
+.floor-fourteen-banner{
+  @include px2rem(margin, 0 24 12 24);
+}
+.floor-fourteen-img{
+  width: 100%;
+  @include px2rem(height, 320);
+  @include px2rem(border-radius, 8);
+}
+.floor-swiper-good{
+  font-size: 0;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  @include px2rem(padding,0 24);
+  -webkit-overflow-scrolling:touch;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -webkit-transform: translateZ(0px);
+  position: static;
+  .good:last-of-type{
+    margin-right: 0;
+  }
+  .good{
+    background: #fff;
+    overflow: hidden;
+    text-align: center;
+    @include px2rem(width, 200);
+    @include px2rem(border-radius, 8);
+    @include px2rem(margin-right, 12);
+    display: inline-block;
+    .good-img-wrap{
+      @include wh(200, 200);
+      position: relative;
+      @include px2rem(margin-bottom, 16);
+    }
+    .good-img{
+      @include wh(200, 200);
+    }
+    .good-name{
+      color: $color444;
+      @include font-dpr(24);
+      @include px2rem(line-height, 33);
+      @include px2rem(margin-bottom, 4);
+      @include px2rem(padding, 0 16);
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .good-price{
+      color: $mainColor;
+      @include font-dpr(28);
+      @include px2rem(line-height, 34);
+      @include px2rem(margin-bottom, 12);
+    }
+  }
+}
+/* 商品轮播-14 end */
+.floor-good img[lazy=loading] {
+  background: url('./assets/icon/banner/lazy_banner.png') center no-repeat;
+  @include px2rem(background-size, 750 300);
+}
+.good-img-wrap{
+  position: relative;
+  &>img[lazy=loading] {
+    background: url('./assets/icon/banner/lazy_proudt.png') center no-repeat;
+    @include px2rem(background-size, 200 228);
+  }
+}
+.good-none:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 9;
+  @include wh(128, 128);
+  background: url('./assets/icon/icon/qiangguang.png') center no-repeat;
+  @include px2rem(background-size, 128 128);
+}
+.big-loading{
+  &>img[lazy=loading] {
+    background: #fff url('./assets/icon/banner/lazy_banner.png') center no-repeat;
+    @include px2rem(background-size, 750 300);
+  }
+}
+.floor-image{
+  &>img[lazy=loading] {
+    background: #fff url('./assets/icon/banner/lazy_banner.png') center no-repeat;
+    @include px2rem(background-size, 750 300);
+  }
+}
+.coupons-loading{
+  &>img[lazy=loading] {
+    background: url('./assets/icon/banner/lazy_proudt.png') center no-repeat;
+    background-size: contain;
+  }
+}
+// 分享按钮
+.share-btn{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  background: #FD455F;
+  @include font-dpr(30);
+  @include lh(98, 98);
+  z-index: 999;
+}
+.pb98{
+  @include px2rem(padding-bottom, 98);
+}
+/* 视频-15 start */
+.floor-fifteen{
+  @include px2rem(margin-left, 24);
+  @include px2rem(margin-right, 24);
+  @include px2rem(border-radius, 12);
+  overflow: hidden;
+  .floor-fifteen-img{
+    @include px2rem(width, 702)
+  }
+  .floor-fifteen-video{
+    @include px2rem(width, 702);
+    @include px2rem(height, 394);
+    overflow: hidden;
+    position: relative;
+  }
+  .floor-fifteen-video-mask{
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+  }
+  .floor-fifteen-video-poster{
+    @include px2rem(width, 702);
+    @include px2rem(height, 394);
+  }
+  .floor-fifteen-video-duration{
+    position: absolute;
+    @include px2rem(right, 28);
+    @include px2rem(bottom, 20);
+    >span{
+      display: inline-block;
+      @include font-dpr(20);
+      @include px2rem(height, 36);
+      @include px2rem(line-height, 36);
+      @include px2rem(border-radius, 18);
+      @include px2rem(padding, 0 12);
+      background: rgba(0,0,0,.7);
+      text-align: center;
+      color: #fff;
+    }
+  }
+  .vj-play-pause{
+    @include px2rem(width, 100);
+    @include px2rem(height, 100);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: url('./assets/icon/detail/play.png') center no-repeat;
+    @include px2rem(background-size, 100 100);
+    &.pause{
+      background: url('./assets/icon/detail/pause.png') center no-repeat;
+      @include px2rem(background-size, 100 100);
+    }
+  }
+}
+.floor-fifteen .model-video,.floor-fifteen .video-player{
+  width: 9.36rem !important;
+  height: 5.25333rem !important;
+  position: relative;
+  overflow: hidden;
+  .video-js{
+    width: 100%;
+    height: 100%;
+    .vjs-big-play-button,.vjs-volume-panel{
+      display: none;
+    }
+    .vjs-control-bar{
+      @include px2rem(height, 65);
+      background:rgba(0,0,0,.3);
+    }
+    .vjs-play-control{
+      width: .8rem;
+      display: flex;
+      justify-content: center
+    }
+    .vjs-button > .vjs-icon-placeholder:before,.vjs-time-control{
+      @include font-dpr(28);
+      @include px2rem(line-height, 65);
+    }
+    .vjs-time-control{
+      @include font-dpr(24);
+    }
+    // 豆
+    .vjs-play-progress:before{
+      top: 0 !important;
+      bottom: 0 !important;
+      margin: auto;
+      @include px2rem(height, 10);
+      @include px2rem(line-height, 10);
+      @include font-dpr(22);
+    }
+    // 渐变进度条
+    .vjs-play-progress{
+      @include px2rem(border-radius, 4);
+      background:linear-gradient(90deg,rgba(254,131,131,1) 0%,rgba(253,69,95,1) 100%);
+    }
+    .vjs-load-progress div {
+      background: none;
+    }
+    .vjs-load-progress{
+      background: none;
+    }
+    .vjs-progress-holder{
+      @include px2rem(height, 8);
+      @include px2rem(border-radius, 4);
+      background: #fff;
+    }
+    .vjs-progress-holder,.vjs-load-progress div,.vjs-load-progress{
+      height: 0.10667rem !important;
+      @include px2rem(border-radius, 4);
+    }
+    .vjs-control{
+      height: 100%;
+    }
+  }
+}
+.floor-fifteen-video-network{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .vj-play-pause{
+    position: relative;
+    display: block;
+    margin: 0;
+  }
+  >p{
+    color: #fff;
+    @include font-dpr(24);
+    @include px2rem(padding-top, 20);
+    @include px2rem(line-height, 33);
+  }
+}
+/* 视频-15 end */
+/* 营销版式-16 start */
+.sixteen-wrap{
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  @include px2rem(padding-left, 24);
+  @include px2rem(padding-right, 24);
+  @include px2rem(padding-bottom, 20);
+  overflow: hidden;
+}
+.floor-sixteen-banner{
+  width: 100%;
+}
+.sixteen-line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @include px2rem(margin-top, 12);
+}
+.sixteen-line-img1,.sixteen-line-img1 img{
+  width: 100%;
+}
+.sixteen-line-img2,.sixteen-line-img2 img{
+  @include px2rem(width, 344);
+}
+.sixteen-line-img3,.sixteen-line-img3 img{
+  @include px2rem(width, 226);
+}
+.sixteen-line img{
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+/* 营销版式-16 end */
+
+/* 横切版式-17 start */
+.floor-seventeen{
+  @include px2rem(padding-top, 100);
+  position: relative;
+  .seventeen-nav-wrap{
+    width: 100%;
+    font-size: 0;
+    z-index: 999;
+    position: absolute;
+    @include px2rem(top, 0);
+    left: 0;
+    @include px2rem(height, 100);
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    &.flex{
+      display: flex;
+      flex-direction: row;
+      &>.seventeen-nav{
+        display: block;
+        text-align: center;
+        flex: 1;
+        width: auto;
+        &>p{
+          width: 100%;
+        }
+      }
+    }
+  }
+  .seventeen-nav{
+    @include px2rem(min-width, 150);
+    @include px2rem(height, 100);
+    text-align: center;
+    display: inline-block;
+    overflow: hidden;
+  }
+  .seventeen-nav-img{
+    @include px2rem(width, 48);
+    @include px2rem(height, 48);
+    margin: 0 auto;
+    @include px2rem(margin-top, 12);
+    @include px2rem(margin-bottom, 3);
+  }
+  .seventeen-nav-name{
+    @include px2rem(width, 150);
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    @include font-dpr(24);
+    @include px2rem(line-height, 33);
+    &.lh100{
+      @include px2rem(line-height, 100);
+    }
+  }
+}
+.thirteen-banner{
+  width: 100%;
+}
+/* 横切版式-17 end */

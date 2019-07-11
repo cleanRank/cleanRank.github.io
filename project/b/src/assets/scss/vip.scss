@@ -1,0 +1,440 @@
+// 店主首页
+.vip_message_wrap{
+  @include px2rem(padding, 31 0 47 27);
+}
+.vip_header_box{
+  @include px2rem(width, 137);
+}
+.vip_header_img{
+  @include wh(133, 133);
+  @include px2rem(border-radius, 66.5);
+  border: 2px solid #D8D8D8;
+}
+.message_box{
+  @include px2rem(margin-left, 33);
+}
+.nickName_box{
+  @include font-dpr(42);
+}
+.user_grade{
+  // @include wh(116, 42);
+  @include lh(42, 42);
+  display: inline-block;
+  // background: rgba(255, 99, 48, .1);
+  @include font-dpr(24);
+  // @include px2rem(border-radius, 6);
+  color: #FF6330;
+  text-align: center;
+  @include px2rem(margin, -8 0 0 24);
+}
+.pName_box, .Invitecode_boc{
+  @include font-dpr(24);
+  line-height: 1.3;
+}
+.pName_box{
+  @include px2rem(margin,10 0);
+}
+.copy_btn{
+  display: inline-block;
+  @include lh(40, 40);
+  @include px2rem(border-radius, 20);
+  border: 1rpx solid $mainColor;
+  @include px2rem(padding,0 24);
+  text-align: center;
+  @include px2rem(margin-left, 16);
+  @include font-dpr(24);
+}
+.copy_btn{
+  background: $mainColor;
+  color: #fff;
+  @include px2rem(margin-right, 14);
+}
+
+.share_box{
+  @include px2rem(width, 702);
+  margin: 0 auto;
+  @include px2rem(margin-bottom, 30);
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  @include px2rem(border-radius, 12);
+  overflow: hidden;
+  img{
+    @include wh(702, 160);
+  }
+}
+.my_user_wrap{
+  @include px2rem(width, 702);
+  background:rgba(255,255,255,1);
+  box-shadow:0px 8px 8px 0px rgba(0,0,0,0.04),0px 0px 12px 0px rgba(0,0,0,0.08);
+  @include px2rem(border-radius, 12);
+  margin: 0 auto;
+  @include px2rem(margin-bottom, 40);
+}
+.user_title{
+  @include lh(72, 72);
+  @include px2rem(margin-left, 24);
+  border-bottom: 1px solid #F8F8F8;
+  color: #777777;
+  position: relative;
+  &::before{
+    content: '>';
+    position: absolute;
+    @include px2rem(right, 24);
+  }
+}
+.announce img,.announce span{
+  float: left; 
+  color:#444;
+}
+.announce img{
+  @include px2rem(width, 59);
+  @include px2rem(margin-right, 25);
+  @include px2rem(margin-top, 10);
+}
+.announce span{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @include font-dpr(26);
+  @include px2rem(width, 547);
+}
+.no_tab{
+  &::before{
+    content: '';
+  }
+}
+.my_user_list{
+  @include px2rem(padding, 20 0 24);
+  text-align: center;
+  p{
+    line-height: 1.5;
+  }
+}
+.expect_revenue_list{
+  @include px2rem(padding-bottom, 27);
+}
+.expect_revenue_item_left{
+  text-align: center;
+  @include px2rem(padding-left, 24);
+}
+.today_item{
+  @include px2rem(padding, 20 0);
+  border-bottom: 1px solid #f8f8f8;
+}
+.month_item{
+  @include px2rem(padding-top, 20);
+}
+.today_money{
+  @include font-dpr(42);
+}
+.expect_revenue_item_rig{
+  @include px2rem(width, 240);
+  text-align: center;
+  border-left: 1px solid #F8F8F8;
+  @include px2rem(padding-top, 41);
+}
+.account_balance_txt{
+  @include px2rem(margin, 10 0 40);
+}
+.go_cashingMoney_btn{
+  @include wh(100, 46);
+  @include px2rem(line-height, 46);
+  border: 1px solid $mainColor;
+  @include px2rem(border-radius,23);
+  margin: 0 auto;
+}
+// 预计收入明细
+.time_list_tab{
+  text-align: center;
+  @include px2rem(padding, 18 0 24);
+  span{
+    @include font-dpr(28);
+    color: #777777;
+    border-bottom: 0.05333rem solid #fff;
+    line-height: 1.2;
+    @include px2rem(padding-bottom, 24);
+    &.tab_a{
+      color: #333;
+      border-bottom: 0.05333rem solid $mainColor;
+    }
+  }
+}
+.fans_number_box{
+  @include px2rem(width, 702);
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  @include px2rem(border-radius, 12);
+  margin: 0.4rem auto 0.8rem;
+  @include px2rem(padding, 24 0 30);
+  text-align: center;
+  position: relative;
+  .explain_txt{
+    position: absolute;
+    right: 0;
+    @include px2rem(top, 46);
+    @include wh(126, 50);
+    @include px2rem(line-height, 50);
+    background:linear-gradient(135deg,rgba(78,174,254,1) 0%,rgba(132,140,254,1) 100%);
+    // background-image: linear-gradient(51deg, #FC6C6A 0%, #FF1F49 94%);
+    color: #FFFFFF;
+    text-align: center;
+    @include px2rem(border-radius, 25 0 0 25);
+  }
+  p{
+    line-height: 1.8;
+  }
+}
+.fans_num{
+ @include font-dpr(80);
+ color: #333;
+}
+.order_rebate_title{
+  @include lh(90, 90);
+  border-bottom: 1rpx solid #F8F8F8;
+  @include px2rem(padding-left, 24);
+}
+.sxtj_btn{
+  text-align: right;
+}
+.up_v{
+  @include px2rem(padding, 0 24 0 12);
+}
+// 收入列表
+.order_rebate_list{
+  @include px2rem(padding-bottom, 24);
+  @include px2rem(margin-left, 24);
+  border-bottom: 1px solid #F8F8F8;
+}
+.order_rebate_item{
+  @include px2rem(padding-top, 24);
+  line-height: 1.2;
+  @include font-dpr(28);
+}
+.order_rebate_left{
+  @include px2rem(width, 160);
+}
+.order_rebate_rig{
+  color: #333;
+}
+.th_order{
+  text-align: right;
+  @include px2rem(padding-right, 24);
+}
+// 筛选框
+.screen_wrap{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.screen_mask{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0,0.2);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.screen_box{
+  @include px2rem(min-height, 500);
+  background: #fff;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.screen_title{
+  @include lh(74, 74);
+  border-bottom: 1px solid #F8F8F8;
+  @include px2rem(padding, 0 24);
+  p{
+    @include font-dpr(30);
+  }
+}
+.clear_btn{
+  text-align: right;
+}
+.screen_item{
+  @include px2rem(padding, 40 0 4 24);
+}
+.screen_left{
+  @include px2rem(width, 144);
+  @include font-dpr(28);
+}
+.screen_rig{
+  @include font-dpr(28);
+}
+.screen_btn{
+  display: inline-block;
+  @include px2rem(padding, 6 24);
+  @include px2rem(margin,0 8);
+  border: 1px solid #333;
+  @include px2rem(border-radius, 28);
+  color: #333;
+  &.screen_btn_a{
+    border: 1px solid $mainColor;
+    color: $mainColor;
+  }
+}
+.query_btn{
+  @include px2rem(width, 180);
+  @include lh(52, 52);
+  background: $mainColor;
+  @include px2rem(border-radius, 26);
+  @include font-dpr(30);
+  color: #FFFFFF;
+  text-align: center;
+  @include px2rem(margin, 80 0 0);
+  margin-left: auto;
+  margin-right: auto;
+}
+.picker_btn{
+  display: inline-block;
+  @include px2rem(width, 200);
+  @include lh(44, 44);
+  color: #777;
+  border: 1px solid #333333;
+  @include px2rem(border-radius, 6);
+  text-align: center;
+  position: relative;
+}
+.time_zz{
+  position: absolute;
+  @include px2rem(width, 200);
+  @include lh(44, 44);
+  left: 0;
+}
+// 返利说明
+.explain_txt_wraps{
+  @include px2rem(padding-top, 40);
+}
+.explain_txt_wrap{
+  background: #FFFFFF;
+  box-shadow: 0 0 0.16rem 0 rgba(0,0,0,0.06), 0 0.10667rem 0.10667rem 0 rgba(0,0,0,0.02);
+  @include px2rem(border-radius, 12);
+  @include px2rem(margin, 0 24 40);
+  @include px2rem(padding, 24);
+}
+.explain_txt_title{
+  @include font-dpr(28);
+  @include px2rem(padding-bottom, 14);
+}
+.explain_txt_conment{
+  line-height: 1.7;
+  @include font-dpr(28);
+}
+// 提现
+.horizontalLine{
+  @include px2rem(height, 10);
+  background: #FBFBFB;
+}
+.withdrawalRecord{
+  text-align: right;
+  @include px2rem(padding-top, 14);
+  @include px2rem(margin, 0 24 3 0);
+  .tx_btn{
+    @include px2rem(line-height, 43);
+    @include px2rem(padding, 10 5);
+  }
+}
+.flexCashing{
+  display: flex;
+  text-align: center;
+  @include px2rem(height, 212);
+}
+.cashingPrice{
+  @include px2rem(line-height, 112);
+  @include font-dpr(80);
+}
+.cashingPriceTxt{
+  @include px2rem(line-height, 40);
+}
+.cashing {
+  background: #D8D8D8 !important;
+  box-shadow: none !important;
+}
+.cashingAccount{
+  @include px2rem(height, 90);
+  @include px2rem(line-height, 88);
+  border-bottom: 2px solid #F8F8F8;
+  @include px2rem(padding, 0 24);
+  @include px2rem(margin-bottom, 100);
+  @include font-dpr(28);
+}
+// 提现记录
+.cashingRecordItem{
+  @include font-dpr(28);
+  @include px2rem(height, 90);
+  @include px2rem(line-height, 88);
+  border-bottom: 2px solid #F8F8F8;
+  @include px2rem(margin-left, 24);
+}
+.cashingTime, .cashingStatus, .cashingRecordNull{
+  text-align: center;
+}
+.cashingMoney{
+  @include px2rem(padding, 0 10);
+  overflow: hidden;
+  text-align: center;
+}
+.cashingStatus_00{
+  color: #333;
+}
+.cashingStatus_01{
+  color: #65EA60;
+}
+.cashingStatus_02{
+  color: #FF6262;
+}
+// 确认提现
+.formItem {
+  @include px2rem(height, 90);
+  @include px2rem(line-height, 88);
+  border-bottom: 2px solid #F8F8F8;
+  @include px2rem(margin-left, 24);
+  &:last-of-type{
+    border: none;
+  }
+  .formItemLable{
+    @include font-dpr(28);
+    @include px2rem(width, 112);
+    @include px2rem(margin, 0 20 0 2);
+  }
+  .formItemTxt{
+    @include font-dpr(28);
+  }
+}
+.cashNote{
+  @include font-dpr(20);
+  line-height: 1.4;
+  @include px2rem(padding-top, 16);
+}
+.cashSubmit{
+  @include font-dpr(30);
+  @include px2rem(margin-top, 100);
+}
+// 绑卡
+.formItem{
+  .formItemIpt{
+    @include font-dpr(28);
+    border: none;
+    @include px2rem(padding-right, 24);
+  }
+}
+.getCodeBtn{
+  @include wh(168, 42);
+  @include px2rem(line-height, 40);
+  border: 0.01rem solid $mainColor;
+  @include px2rem(border-radius, 20);
+  @include font-dpr(24);
+  @include px2rem(margin, 22 24 0 0);
+  background: #fff;
+  color: $mainColor;
+  &.dis_color{
+    color: #999;
+    border: 0.01rem solid #999;
+    background: #fff !important;
+  }
+}
+.bindingSubmit{
+  @include px2rem(margin-top, 100);
+}

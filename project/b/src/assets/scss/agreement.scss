@@ -1,0 +1,81 @@
+@import "./app";
+.xwjrz {
+  background: #ffffff;
+  @include font-dpr(28);
+}
+
+.xwjrz p {
+  width: 100%;
+  text-indent: 24px;
+  line-height: 1.8;
+  padding: 0;
+  margin: 0;
+  @include font-dpr(28);
+}
+
+.xwjrz h1 {
+  @include font-dpr(36);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.xwjrz h2,
+.xwjrz h5 {
+  padding: 8px 0;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.xwjrz h2 {
+  text-align: center;
+}
+
+.xwjrz h5 {
+  text-align: center;
+  @include font-dpr(28);
+}
+
+.xwjrz table {
+  width: 100%;
+}
+
+.xwjrz table,
+.xwjrz td,
+.xwjrz th {
+  border: solid 1px #CCC;
+  font-size: 14px;
+}
+
+.xwjrz td,
+.xwjrz th {
+  text-align: center;
+  padding: 5px 0;
+}
+
+.xwjrz .tab td,
+.xwjrz .tab th{
+  text-align: left;
+  padding-left: 10px;
+}
+
+.xwjrz a {
+  text-decoration: underline;
+  display: inline-block;
+  text-indent: 0px;
+  color: black;
+}
+
+.xwjrz b {
+  text-indent: 24px;
+  display: block;
+  line-height: 1.8;
+  @include font-dpr(28);
+}
+
+.tr {
+  text-align: right;
+}
+.xwjrz .agreement p input{
+  @include px2rem(width,20);
+  @include px2rem(height,20);
+}
