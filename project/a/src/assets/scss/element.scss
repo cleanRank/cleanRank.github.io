@@ -1,0 +1,55 @@
+.el-table__header{
+  th{
+    background: #FEAF27!important;
+    .cell{
+      color: #fff;
+      font-size: 13px;
+    }
+  }
+}
+.el-pagination{
+  height: 69px;
+  @include display-flex();
+  @include align-items(center);
+  @include justify-content(center);
+  background: #fff;
+  .el-pager{
+    .active{
+      background: #FEAF27!important;
+    }
+    li{
+      &.el-icon-d-arrow-right{
+        color: #FEAF27!important;
+      }
+    }
+    .number{
+      &.active{
+        &:hover{
+          color: #fff!important;
+        }
+      }
+      &:hover{
+        color: #FEAF27!important;
+      }
+    }
+  }
+}
+.el-checkbox{
+  &.is-checked{
+    .el-checkbox__label{
+      color: #FEAF27!important;
+    }
+    .el-checkbox__inner{
+      background-color: #FEAF27!important;
+      border-color: #FEAF27!important;
+    }
+  }
+  .is-focus{
+    .el-checkbox__inner{
+      border-color: #FEAF27!important;
+    }
+  }
+  .el-checkbox__inner:hover{
+    border-color: #FEAF27!important;
+  }
+}

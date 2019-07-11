@@ -1,0 +1,130 @@
+@charset "utf-8";
+@import "app";
+
+//按钮通用样式
+@mixin btnCss($w,$h,$bjc,$fc){
+  @include wh($w,$h);
+  @include px2rem(line-height,$h);
+  margin: 0 auto;
+  // @include px2rem(margin-top,$mt);
+  background: $bjc;
+  color:$fc;
+  @include px2rem(border-radius, $h/2);
+  display:block;
+  @include font-dpr(32);
+  text-align: center;
+  overflow: hidden;
+}
+//按钮通用样式
+@mixin btnNote($w,$h,$bjc,$fc,$fz){
+  @include wh($w,$h);
+  @include px2rem(line-height,$h);
+  margin: 0 auto;
+  // @include px2rem(margin-top,$mt);
+  background: $bjc;
+  color:$fc;
+  @include px2rem(border-radius, $h/2);
+  display:inline-block;
+  @include font-dpr($fz);
+  text-align: center;
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: $bjc;
+  overflow: hidden;
+}
+//按钮通用样式
+@mixin btnScss($w, $h, $bjc, $fc, $fz) {
+  @include wh($w, $h);
+  @include px2rem(line-height, $h);
+  margin: 0 auto;
+  // @include px2rem(margin-top,$mt);
+  background: $bjc;
+  color: $fc;
+  @include px2rem(border-radius, 8);
+  display: inline-block;
+  @include font-dpr($fz);
+  text-align: center;
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: $bjc;
+  overflow: hidden;
+}
+.btn.btn-blue{
+  @include btnNote(120, 44, #338FFB, #fff, 24);
+}
+.btn.btn-blue-main{
+  @include btnNote(152, 50, #338FFB, #fff, 28);
+}
+.btn.btn-blue-big{
+  @include btnNote(124, 40, #FF5F75, #fff, 28);
+  font-weight: 600;
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #FF5F75;
+}
+.btn.btn-orange{
+  @include btnNote(120, 44, #FFB623, #fff, 24);
+}
+.btn.btn-orange-main{
+  @include btnNote(152, 50, #FFB623, #fff, 28);
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #FFB623;
+}
+.btn.btn-orange-big{
+  @include btnNote(124, 40, #FFB623, #fff, 28);
+  font-weight: 600;
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #FFB623;
+}
+.btn.btn-defalut{
+  @include btnNote(120, 44, #fff, #B3B3B3, 24);
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #B3B3B3;
+}
+.btn.btn-defalut-big{
+  @include btnNote(124, 40, #fff, #B3B3B3, 28);
+  font-weight: 600;
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #B3B3B3;
+}
+.btn.btn-defalut-2{
+  @include btnNote(160, 52, #fff, #999, 30);
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #999;
+}
+.btn.btn-confirm-2{
+  @include btnNote(160, 52, #FF455F, #fff, 30);
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #FF455F;
+}
+.btn.btn-defalut-main{
+  @include btnNote(152, 50, #fff, #B3B3B3, 28);
+  @include px2rem(border-width, 1);
+  @include px2rem(border-radius, 25);
+  border-style: solid;
+  border-color: #B3B3B3;
+}
+.btn.btn-reset{
+  @include btnNote(160, 52, #fff, #FF455F, 28);
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #FF455F;
+}
+.btn.btn-ok{
+  @include btnNote(160, 52, #FF455F, #fff, 28);
+  @include px2rem(border-width, 1);
+  border-style: solid;
+  border-color: #FF455F;
+}
+.btn.btn-theme {
+  @include btnScss(580, 90, #0087FF, #fff, 36);
+}
+.btn-add-item {
+  @include btnScss(82, 48, #0087FF, #fff, 28);
+}
