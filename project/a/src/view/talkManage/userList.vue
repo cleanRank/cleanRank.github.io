@@ -1,5 +1,5 @@
 <template>
-  <div class="page-userList">
+  <div class="page-userList" :style="styleobj">
     <el-row class="top-content">
       <el-col  :xs="20" :sm="20" :md="20" :lg="20" :xl="20">
         <div class="left-box">
@@ -54,28 +54,28 @@
                   <span>用户ID：{{item.friendId}}</span>
                 </div>
                 <div class="info-label">
-                  <span class="label oranger">{{item.age}}.{{item.job}}</span>
-                  <span class="label oranger">{{item.height}}.{{item.weight}}</span>
-                  <span class="label red">年收入{{item.annualSalary}}w</span>
-                  <span class="label gray">{{item.distance}}km</span>
-                  <span class="label green">{{item.stealth==1?'在线':'下线'}}</span>
-                  <span class="label red">微信:{{item.wechat}}</span>
-                  <span class="label red">QQ:{{item.qq}}</span>
+                  <span class="label oranger" v-if="item.age||item.job">{{item.age?item.age+'岁':''}}{{item.age?' · '+item.job:item.job}}</span>
+                  <span class="label oranger" v-if="item.height||item.weight">{{item.height?item.height+'cm':''}}{{item.height?' · '+item.weight:item.weight}}{{item.weight?'kg':''}}</span>
+                  <span class="label red" v-if="item.annualSalary">年收入{{item.annualSalary}}</span>
+                  <span class="label gray" v-if="item.distance">{{item.distance}}km</span>
+                  <span class="label green" v-if="item.stealth==0||item.stealth==1">{{item.stealth==1?'在线':'下线'}}</span>
+                  <span class="label red" v-if="item.wechat">微信:{{item.wechat}}</span>
+                  <span class="label red" v-if="item.qq">QQ:{{item.qq}}</span>
                 </div>
-                <div class="info-tag">
+                <!-- <div class="info-tag">
                   标签：
                   <span>查看过我&nbsp;&nbsp;</span>
-                </div>
+                </div> -->
                 <div class="info-opertor">
-                  <span class="btn btn-oranger">私信</span>
-                  <span class="btn btn-oranger-plain">连麦</span>
+                  <span class="btn btn-oranger" @click="$router.push({path:'/privateLetter',query:{chatUserId:item.friendId}})">私信</span>
+                  <span class="btn btn-oranger-plain" @click="$router.push({path:'/privateLetter',query:{chatUserId:item.friendId}})">连麦</span>
                   <span class="btn btn-pray" @click="checkDetail(item)">详情</span>
                 </div>
               </div>
             </div>
           </el-col>
           <el-col :span="8">
-            <div class="useinfo-detail">
+            <div class="useinfo-detail" v-if="fansList.length">
               <user :datas="userinfo"></user>
             </div>
           </el-col>
@@ -83,10 +83,19 @@
       </div>
       <el-pagination
         :background="true"
-        layout="prev, pager, next"
+        layout="slot, sizes"
         :page-size="pageSize"
-        @current-change="selectPage"
-        :total="totalPage">
+        @size-change="handleSizeChange"
+        >
+        <div class="page-slot">
+          <button type="button" :disabled="disprev" @click="pagePrev">
+            <i class="el-icon el-icon-arrow-left"></i>
+          </button>
+          <div class="page-num">{{page}}</div>
+           <button type="button" :disabled="disnext" @click="peagNext">
+            <i class="el-icon el-icon-arrow-right"></i>
+          </button>
+        </div>
         </el-pagination>
     </div>
   </div>
@@ -97,6 +106,9 @@ export default {
   name: 'standapply',
   data () {
     return {
+      styleobj: {
+        'min-height': null
+      },
       linkTypesChecked: [],
       linkTypes: [{
         name: '查看过我',
@@ -120,35 +132,33 @@ export default {
       searchForm: {
         subAccountId: '', // 子账号id
         stealth: '', // 是否在线
-        age: '',
-        annualSalary: "",
-        attention: '',
-        auditStatus: '',
-        distance: '',
-        friendId: '',
-        job: "",
-        lat: '',
-        lng: '',
-        nickname: "",
-        regionId: '',
-        sex: ''
+        regionId: ''
       },
       accountList: [], // 账号列表
       fansList: [], // 聊天列表
       provinceList: [], // 省列表
       cityList: [], // 城市列表
-      totalPage: 10,
+      totalPage: 1,
       pageSize: 10,
-      page: 1,
+      page: null,
       userinfo: {},
       provinceName: '',
-      cityName: ''
+      cityName: '',
+      disprev: false,
+      disnext: false
     }
   },
   created () {
+    this.page = 1
     this.getAccountList() // 获取陪聊账号
     this.getLinkPersonList() // 获取联系人列表
     this.getCity() // 获取省市区
+  },
+  mounted () {
+    this.$nextTick(() => {
+      let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+      this.styleobj.minHeight = height - 93 + 'px'
+    })
   },
   methods: {
     checkDetail (item) { // 查看用户详细信息
@@ -162,10 +172,28 @@ export default {
       this.searchForm.stealth = ''
     },
     selectCity (e) {
+      console.log(e)
+      if (!e) return
       this.getCity(e)
     },
-    selectPage (e) {
-      this.searchForm.page = e
+    handleSizeChange (e) {
+      this.pageSize = e
+      this.getLinkPersonList()
+    },
+    peagNext (e) { // 下一页
+      this.page++
+      if (this.fansList.length < this.pageSize) {
+        return
+      }
+      this.getLinkPersonList()
+    },
+    pagePrev (e) { // 上一页
+      this.page--
+      if (this.page < 1) {
+        this.page = 1
+        return
+      }
+      this.getLinkPersonList()
     },
     getCity (regionId = 0) {
       this.$http.getCity({ regionId: regionId }).then(res => {
@@ -199,7 +227,27 @@ export default {
       this.$http.getLinkPersonList(param).then(res => {
         this.fansList = res.result
         this.totalPage = res.result.totalPage
+        this.userinfo = this.fansList[0]
       }).catch(e => {})
+    }
+  },
+  watch: {
+    provinceName (newvalue) {
+      this.cityName = ''
+    },
+    page (value) {
+      if (value == 1) {
+        this.disprev = true
+      } else {
+        this.disprev = false
+      }
+    },
+    'fansList.length' (value) {
+      if (value < this.pageSize) {
+        this.disnext = true
+      } else {
+        this.disnext = false
+      }
     }
   },
   components: {
@@ -214,7 +262,8 @@ $orangerColor:#FFF2DB;
 $redColor:#FFEAEE;
 $grayColor:#EDEDED;
 .page-userList{
-  min-height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 0 !important;
   .top-content{
     height: 60px;
     align-items: center;
@@ -263,7 +312,7 @@ $grayColor:#EDEDED;
     position: relative;
     min-height: 500px;
     .useinfo-detail{
-      width: 225px;
+      width: 245px;
       border:1px solid #F0F0F0;
     }
     .mod-item{
@@ -439,6 +488,24 @@ $grayColor:#EDEDED;
           }
         }
       }
+    }
+  }
+  .page-slot{
+    button,div{
+      width: 30px;
+      height: 28px;
+      display: inline-block;
+      font-size: 13px;
+      color: #666;
+      text-align: center;
+      line-height: 28px;
+      background: #f4f4f5;
+      margin: 0 5px;
+    }
+    .page-num{
+      background: #FEAF27;
+      cursor: pointer;
+      color: #fff;
     }
   }
 }

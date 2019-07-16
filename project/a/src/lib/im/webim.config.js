@@ -5,8 +5,8 @@
  * In this way , others won't be influenced by this config while git pull.
  *
  */
-var WebIM = window.WebIM || {};
-WebIM.config = {
+var WebIM = {};
+let config = {
     /*
      * XMPP server
      */
@@ -18,7 +18,8 @@ WebIM.config = {
     /*
      * Application AppKey
      */
-    appkey: '1189181015146248#mowan', // 测试
+    // appkey: '1189181015146248#mowan', // 测试
+    appkey: '1153180620253600#mowantest', // 测试
     // appkey: '1153180620253600#yuewantest', // 线上
 
     /*
@@ -47,11 +48,13 @@ WebIM.config = {
      * @parameter {Boolean} true or false
      */
     isSandBox: false,
-    /**
+  i18n: "cn",
+
+  /**
      * Whether to console.log in strophe.log()
      * @parameter {Boolean} true or false
      */
-    isDebug: false,
+    isDebug: true,
     /**
      * will auto connect the xmpp server autoReconnectNumMax times in background when client is offline.
      * won't auto connect if autoReconnectNumMax=0.
@@ -65,11 +68,14 @@ WebIM.config = {
     /**
      * webrtc supports WebKit and https only
      */
-    isWebRTC: (/Firefox/.test(navigator.userAgent) || /WebKit/.test(navigator.userAgent)) && /^https\:$/.test(window.location.protocol),
+    // isWebRTC: (/Firefox/.test(navigator.userAgent) || /WebKit/.test(navigator.userAgent)) && /^https\:$/.test(window.location.protocol),
+    isWebRTC: true,
+     isStropheLog: false,
     /**
      * after login, send empty message to xmpp server like heartBeat every 45s, to keep the ws connection alive.
      */
     heartBeatWait: 4500,
+  loglevel: "ERROR",
     /**
      * while http access,use ip directly,instead of ServerName,avoiding DNS problem.
      */
@@ -102,6 +108,7 @@ WebIM.config = {
      * false: Don't store the chat record
      */
     saveLocal: true,
+  enableLocalStorage: true,
 
     /**
      * Will encrypt text message and emoji message
@@ -114,4 +121,8 @@ WebIM.config = {
         type: 'none'
     }
 };
-window.WebIM = WebIM
+console.log(WebIM)
+WebIM.config = config
+
+
+export default config

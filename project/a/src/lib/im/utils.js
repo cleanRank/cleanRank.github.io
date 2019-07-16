@@ -465,7 +465,7 @@
 
             var apiUrl = options.apiUrl;
             var uploadUrl = apiUrl + '/' + orgName + '/' + appName + '/chatfiles';
-
+            console.log(options,apiUrl,uploadUrl)
             if (!utils.isCanUploadFileAsync) {
                 if (utils.hasFlash && typeof options.flashUpload === 'function') {
                     options.flashUpload && options.flashUpload(uploadUrl, options);

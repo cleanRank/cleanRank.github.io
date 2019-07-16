@@ -15,7 +15,7 @@
         <el-dropdown>
           <div class="header-auth">
             <img src="../../assets/icon/default_handsome.jpg" class="default-img" alt="">
-            <span>小甘菊</span>
+            <span class="account">{{phone}}</span>
             <i class="el-icon-caret-bottom"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
@@ -65,7 +65,7 @@ export default {
   },
   mounted () {
     this.checkClientWidth()
-    this.phone = localStorage.getItem('supplierPhone')
+    this.phone = localStorage.getItem('account')
   },
   methods: {
     ...mapActions([
@@ -90,7 +90,7 @@ export default {
             path: '/login'
           })
         }
-      })
+      }).catch(async (action) => {})
     },
     checkClientWidth () {
       if (!this.isCollapse) {
@@ -111,6 +111,10 @@ export default {
 </script>
 
 <style lang="scss">
+  .el-message-box__wrapper .el-button--small.el-button--primary {
+    background-color: #FEAF27!important;
+    border-color: #FEAF27!important;
+  }
   .el-button.el-button--small {
     width: 70px !important;
   }
@@ -187,6 +191,9 @@ export default {
       height: 32px;
       width: 32px;
       border-radius: 50%;
+    }
+    .account {
+      padding:0 10px;
     }
 
     .collapseBtn {

@@ -1,10 +1,12 @@
 import {
   json
 } from 'lib/httpPlugin'
-// const domain = process.env.VUE_APP_BASE_URL
-const domain = 'http://106.14.58.213:28202'
+let domain = process.env.VUE_APP_BASE_URL
+if (process.env.NODE_ENV === "development") {
+  domain = 'http://106.14.58.213:28202'
+}
+// const domain = 'http://106.14.58.213:28202'
 // import Qs from 'qs'
-
 export default {
   // 分页获取提现记录
   findChildWithdrawLogPage (params) {

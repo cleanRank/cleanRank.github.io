@@ -93,7 +93,7 @@ export default {
       oldpwd: '',
       newpwd: '',
       againNewpwd: '',
-      walletInfo:  {},
+      walletInfo: {},
       messageList: [{
         accountNumber: '1234567489',
         unprocessNum: 162
@@ -143,7 +143,7 @@ export default {
       return true
     },
     goCashManage () {
-      this.$router.push({path: '/cashManage'})
+      this.$router.push({ path: '/cashManage' })
     },
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
@@ -163,6 +163,7 @@ export default {
         newPwd: this.againNewpwd.trim()
       }
       this.$http.updatePwd(params).then(res => {
+        this.$store.commit("ISSHOW", false)
         this.$router.push({ path: '/login' })
       })
     },

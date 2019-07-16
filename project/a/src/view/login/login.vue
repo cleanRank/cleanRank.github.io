@@ -6,7 +6,6 @@
         <img src="../../assets/img/login_logo.png" alt class="login-logo" />
         <h3 class="title">
           <div>欢迎登录陌玩聊天系统</div>
-          <div>13812345678</div>
         </h3>
         <div class="input-box">
           <img src="../../assets/img/login_account.png" alt class="input-icon" />
@@ -38,8 +37,8 @@ export default {
   name: "login",
   data () {
     return {
-      phone: "13812345678",
-      password: "123789"
+      phone: "",
+      password: ""
       // checked: false
     }
   },
@@ -50,12 +49,6 @@ export default {
       if (!this.phone) {
         this.$message({
           message: "请输入账号"
-        })
-        return false
-      } else if (!/^1[3456789]\d{9}$/.test(this.phone)) {
-        // } else if (!/^\w{11}$/.test(this.phone)) {
-        this.$message({
-          message: "手机号码格式不正确"
         })
         return false
       } else if (!this.password) {
@@ -72,18 +65,29 @@ export default {
       return true
     },
     login () {
-      if (!this.checkinput()) return
       let params = {
-        mobile: this.phone.trim(),
+        account: this.phone.trim(),
         pwd: this.password.trim(),
-        channel: "talk",
-        platform: 2
+        channel: "talk"
       }
       this.$http.login(params).then(res => {
         if (res.appCode === "S0000") {
+          let {username,password} = res.result
+          localStorage.setItem('user',username)
+          localStorage.setItem('pwd',password)
+          localStorage.setItem('account',this.phone)
           tracker.setToken(res.result.token)
           this.$router.push({ path: 'home' })
         }
+      },res=>{
+        // res.appCode = 'S0000'
+        // res.result={}
+        // res.result.token = 'd37f743c3a2b4c0fbdfacab5fe6850f6'
+        // console.log(res)
+        // if (res.appCode === "S0000") {
+        //   tracker.setToken(res.result.token)
+        //   this.$router.push({ path: 'home' })
+        // }
       })
     }
   }

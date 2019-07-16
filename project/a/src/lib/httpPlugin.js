@@ -14,9 +14,10 @@ axios.interceptors.request.use(
       load = true
       store.commit('UPDATEISTIMEING', time)
       // 请求城市不显示loading
+      console.log(config,'axios config')
       config.url.indexOf('/supplier/b/region') === -1 && store.commit('UPDATEISLOADING', true)
     }
-    config.headers.common['token'] = token
+    token && (config.headers.common['token'] = token)
     config.headers.common['platform'] = 2
     return config
   },
@@ -28,7 +29,7 @@ axios.interceptors.response.use(
   response => {
     store.commit('UPDATEISLOADING', false)
     let { appMesg, appCode } = response.data
-    if (appMesg.indexOf("用户登录过期")!==-1 || appMesg.indexOf('token不能为空')!==-1 || appMesg.indexOf('未登录')!==-1) {
+    if (appMesg.indexOf("用户登录过期")!==-1 || appMesg.indexOf('token不能为空')!==-1 || appMesg.indexOf('未登录')!==-1 || appMesg.indexOf('没有登录')!==-1) {
       // window.location.hash = '/login'
       return response
     }

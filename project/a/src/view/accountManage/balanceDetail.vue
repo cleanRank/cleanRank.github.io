@@ -24,9 +24,9 @@
         <el-form-item label="关联账号" class="mr50">
           <el-input v-model="searchForm.childUserId" placeholder="关联账号"></el-input>
         </el-form-item>
-        <el-form-item label="活动时间" class="mr50">
+        <el-form-item label="选择时间" class="mr50">
           <el-date-picker
-            v-model="searchForm.time"
+            v-model="timeList"
             type="daterange"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
@@ -41,7 +41,7 @@
       </el-form>
       <el-table :data="walletList"  >
         <el-table-column prop="id" label="交易编号" width="100"></el-table-column>
-        <el-table-column prop="gmtCreated" label="时间"></el-table-column>
+        <el-table-column prop="gmtCreated" width="180" label="时间"></el-table-column>
         <el-table-column prop="changeAmt" label="金额"></el-table-column>
         <el-table-column prop="changeText" label="事件"></el-table-column>
         <el-table-column prop="spendChildUserId" label="消费对象"></el-table-column>
@@ -50,11 +50,12 @@
       </el-table>
       <el-pagination
         :background="true"
-        layout="prev, pager, next"
+        layout="prev, pager, next, sizes, jumper"
         :page-size="pageSize"
         @current-change="selectPage"
+        @size-change="handleSizeChange"
         :total="totalPage">
-        </el-pagination>
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -105,14 +106,14 @@ export default {
       }],
       searchForm: {
         walletLogId: '',
-        time: [],
-        page: 1,
         changeEvent: 0,
         spendUserId: '',
         childUserId: ''
       },
       totalPage: 1,
       pageSize: 10,
+      page: 1,
+      timeList: [],
       walletList: [] // 钱包流水
     }
   },
@@ -121,7 +122,6 @@ export default {
   },
   methods: {
     search () {
-      // this.searchForm.page = 1
       let reg = new RegExp("^[0-9]*$")
       if (!reg.test(this.searchForm.walletLogId)) return this.$message({ message: '交易编号格式不正确' })
       if (!reg.test(this.searchForm.spendUserId)) return this.$message({ message: '消费对象格式不正确' })
@@ -129,15 +129,22 @@ export default {
       this.findChatWalletLogPage()
     },
     resert () {
-      Object.assign(this.searchForm, { walletLogId: '', childUserId: '', spendUserId: '', time: [], page: 1, changeEvent: 0, startTime: '', endTime: '' })
+      this.timeList = []
+      Object.assign(this.searchForm, { walletLogId: '', childUserId: '', spendUserId: '', changeEvent: 0, startTime: '', endTime: '' })
+      this.findChatWalletLogPage()
     },
     selectPage (e) {
-      this.searchForm.page = e
+      this.page = e
+      this.findChatWalletLogPage()
+    },
+    handleSizeChange (val) {
+      this.pageSize = val
+      this.findChatWalletLogPage()
     },
     findChatWalletLogPage () { // 订单信息列表
-      Object.assign(this.searchForm, { startTime: this.searchForm.time[0] || '', endTime: this.searchForm.time[1] || '' })
+      Object.assign(this.searchForm, { startTime: this.timeList[0] || '', endTime: this.timeList[1] || '' })
       let params = {
-        page: this.searchForm.page,
+        page: this.page,
         size: this.pageSize,
         param: this.searchForm
       }
@@ -175,7 +182,7 @@ export default {
               item.changeText = '钱包充值增加'
               break
             case 10:
-              item.changeText = '用户提现减少'
+              item.changeText = '提现减少'
               break
             case 11:
               item.changeText = '提现拒绝退回增加'

@@ -13,19 +13,19 @@
       </el-col>
     </el-row>
     <!-- 表格 -->
-    <div class="table-box">
-      <el-table :data="accountList" style="width:100%">
+    <div class="table-box" v-if="accountList.length">
+      <el-table :data="accountList.slice((currentPage-1)*pageSize,currentPage*pageSize)" style="width:100%">
         <el-table-column prop="id" label="用户ID" align="center"></el-table-column>
         <el-table-column prop="nickname" label="用户昵称" align="center"></el-table-column>
-        <el-table-column prop="accountNum" label="用户账号" align="center"></el-table-column>
+        <el-table-column prop="account" label="用户账号" align="center"></el-table-column>
         <el-table-column prop="sex" label="性别" align="center">
           <template scope="scope">
             <span v-if='scope.row.sex===1'>男</span>
             <span v-if='scope.row.sex===2'>女</span>
           </template>
         </el-table-column>
-        <el-table-column prop="height" label="年龄" align="center"></el-table-column>
-        <el-table-column prop="cityname" label="所在地" align="center"></el-table-column>
+        <el-table-column prop="age" label="年龄" align="center"></el-table-column>
+        <el-table-column prop="cityName" label="所在地" align="center"></el-table-column>
         <el-table-column prop="stealth" label="状态" align="center">
           <template scope="scope">
             <span v-if='scope.row.stealth===0'>在线</span>
@@ -41,6 +41,10 @@
           </template>
         </el-table-column>
       </el-table>
+      <div class="block">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="pageSize" layout=" prev, pager, next" :total="total">
+        </el-pagination>
+      </div>
     </div>
     <!-- 新建账号，编辑弹框 -->
     <div class="model-wrapper" v-if="isShow">
@@ -85,7 +89,7 @@
                 <el-col :span="10">
                   <div class="grid-content">
                     <el-form-item label="性别:" prop="gender">
-                      <el-select v-model="formLabelAlign.gender" placeholder="请选择" size="mini"  :disabled="disabled">
+                      <el-select v-model="formLabelAlign.gender" placeholder="请选择" size="mini"  :disabled="disabled" @change="selectSex">
                         <el-option v-for="item in genders" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                       </el-select>
@@ -123,7 +127,7 @@
                 <el-col :span="7">
                   <div class="grid-content">
                     <el-form-item label="年收入:" prop="yearMoney">
-                      <el-select v-model="formLabelAlign.yearMoney" placeholder="请选择" size="mini">
+                      <el-select v-model="formLabelAlign.yearMoney" placeholder="请选择" size="mini" :disabled="yearMoneyManOrWo">
                         <el-option v-for="(item, index) in yearMoneys" :key="index" :label="item.fieldVal" :value="item.fieldVal">
                         </el-option>
                       </el-select>
@@ -140,7 +144,7 @@
                         </el-select>
                       </el-form-item>
                       <el-form-item prop="address">
-                        <el-select v-model="formLabelAlign.address" placeholder="请选择" size="mini">
+                        <el-select v-model="formLabelAlign.address" placeholder="请选择" size="mini" @change="selectedCitySub">
                           <el-option v-for="(item, index) in addresses" :key="index" :label="item.cityName" :value="item.cityName">
                           </el-option>
                         </el-select>
@@ -153,8 +157,7 @@
                 <el-col :span="10">
                   <div class="grid-content">
                     <el-form-item label="个人介绍:">
-                      <el-input type="textarea" v-model="formLabelAlign.desc" :autosize="{ minRows: 4, maxRows: 5}"
-                        placeholder="请输入自己的个人介绍">
+                      <el-input type="textarea" v-model="formLabelAlign.desc" :autosize="{ minRows: 4, maxRows: 5}" placeholder="请输入自己的个人介绍" minlength="10" maxlength="50" show-word-limit>
                       </el-input>
                     </el-form-item>
                   </div>
@@ -176,10 +179,10 @@
                 <div class="title">相册信息</div>
                 <div class="photo-content-wrapper">
                   <div class="photo-content" v-for="(item,index) in usersImgList" :key="index">
-                    <img :src="item.mediaUrl" alt="" class="photo">
-                    <div class="del" @click="delUploadImg(item.id)">删除</div>
+                    <img :src="item.mediaUrl" alt="" class="photo" @click="changePic(item, index)">
+                    <div class="del" @click="delUploadImg(0, item.id,index)">删除</div>
                   </div>
-                  <div class="photo-content photo-content1" @click="uploadloadImgOrVideo(0)">
+                  <div class="photo-content1" @click="uploadloadImgOrVideo(0)">
                     <div class="photo-content">
                       <img src="../../assets/img/pop_pic_add.png" alt="" class="add-pic-viedo">
                       <input class="license" type="file" ref="input0" name="license0" @change="changeUploadFile($event, 0)" accept="image/*">
@@ -191,12 +194,25 @@
               <div class="photo-wrapper">
                 <div class="title">视频信息</div>
                 <div class="photo-content-wrapper">
-                  <com-video :usersVideoList="usersVideoList"></com-video>
-                  <div class="photo-content photo-content1" @click="uploadloadImgOrVideo(1)">
+                  <div class="photo-content" v-for="(item,index) in usersVideoList" :key="index">
+                      <div class="play-video-wrapper">
+                          <video :src="item.mediaUrl" alt="" class="photo video-tag" ref="video"></video>
+                          <div class="play-video-pic"  @click="changeVideo(item, index)">
+                            <img src="../../assets/img/rm_icon_bf_play.png" alt="" class="play-video">
+                          </div>
+                      </div>
+                      <div class="del" @click="delUploadImg(1, item.id,index)">删除</div>
+                  </div>
+                  <div class="photo-content1" @click="uploadloadImgOrVideo(1)">
                     <div class="photo-content">
                       <img src="../../assets/img/pop_pic_add.png" alt="" class="add-pic-viedo">
                       <input class="license" type="file" ref="input1" name="license1" @change="changeUploadFile($event, 1)">
                     </div>
+                  </div>
+                  <div class="photo-content-video">
+                      <div class="play-video-wrapper">
+                        <video  alt="" class="photo video-tag" ref="videotest"></video>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -245,24 +261,34 @@
           <div class="pic-video" v-for="(item, index) in userDynamicPicList" :key="index">
             <img :src="item" alt="">
           </div>
-          <div class="pic-video" @click="uploadloadImgOrVideo(2)" v-if="userDynamicPicList.length<=3">
+          <div class="pic-video" @click="uploadloadImgOrVideo1(2)" v-if="userDynamicPicList.length<=3">
             <img class="add-pic-viedo" src="../../assets/img/pop_pic_add.png">
-            <input class="license" type="file" ref="input2" name="license0" @change="changeUploadFile($event)" accept="image/*">
+            <input class="license" type="file" ref="input2" name="license0" @change="changeUploadFile1($event)" accept="image/*">
           </div>
         </div>
         <div class="input-box btn-wrapper">
-          <div class="confirm btn" @click="confirmPublish">确定</div>
+          <div class="confirm btn" @click="confirmPublish()">确定</div>
           <div class="cancle btn" @click="canclePublish">取消</div>
         </div>
       </div>
     </div>
+    <!-- 图片播放弹框 -->
+    <div class="video-player-wrapper" v-show="picShow" @click.stop="hidePicModel">
+        <div class="video-player" @click.stop="showpicModel" v-if="displayPicOrVideo">
+          <img :src="curPicUrl">
+        </div>
+        <div class="video-player" @click.stop="showpicModel" v-else>
+          <video :src="curVideoUrl" controls autoplay></video>
+        </div>
+    </div>
   </div>
 </template>
 <script>
-import ComVideo from '@/components/component/video.vue'
 import axios from 'axios'
 import OSS from '../../lib/aliyun-oss-sdk-4.4.4.min.js'
 import VueDataLoading from 'vue-data-loading'
+import { setTimeout } from 'timers'
+import { formatTime } from 'lib/filter'
 export default {
   name: 'standapply',
   data () {
@@ -296,7 +322,7 @@ export default {
       }, 100)
     }
     var checkAcountNum = (rule, value, callback) => {
-      const accountReg = /^[a-zA-Z0-9]{5,18}$/
+      const accountReg = /^[a-zA-Z0-9]{1,18}$/
       if (!value) {
         return callback(new Error('用户账号不能为空'))
       }
@@ -304,20 +330,23 @@ export default {
         if (accountReg.test(value) || accountReg.test(value)) {
           callback()
         } else {
-          callback(new Error('用户账号为5-18位英文数字'))
+          callback(new Error('用户账号为1-18位英文数字'))
         }
       }, 100)
     }
     return {
       accountList: [],
+      total: 0,
+      curPicUrl: '',
       curVideoUrl: '',
-      ediorOrCreate: 1,
       isShow: false,
       onShow: false,
-      videoShow: false,
+      picShow: false,
       btnShow: false,
       activeName: '1',
+      yearMoneyManOrWo: false, // 填写子账户信息男女年收入显示标志
       labelPosition: "left",
+      curEdiorOrCreatedSelect: 1, // 点击编辑或者创建用户标志
       formLabelAlign: {
         id: null,
         name: "",
@@ -349,22 +378,27 @@ export default {
       citys: [],
       addresses: [],
       yearMoneys: [],
-      disabled: false,
+      disabled: false, // 个人信息填写时部分禁止更改
+      curCityId: null,
       usersImgList: [],
       usersVideoList: [],
       mediaInfoList: [],
       userDynamicPicList: [],
       loading: false,
       completed: false,
-      curUserId: null,
-      page: 1,
+      curUserId: null, // 当前子账号id
+      page: 1, // 动态列表分页页数
       wantTalk: '',
       imgLen: null,
       videoLen: null,
+      currentPage: 1, // 子账号表格显示列表当前页数
+      pageSize: 10, // 子账号表格显示列表当前每页显示个数
+      imgAndVideoNum: null, // 图片视频总数
+      displayPicOrVideo: true, // 图片视频弹框显示img或video标签
       rules: {
         name: [
           { required: true, message: '请输入用户昵称', trigger: 'blur' },
-          { min: 1, max: 10, message: '长度在 1 到 5 个字符', trigger: 'blur' }
+          { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
         ],
         high: [
           { required: true, message: '请选择身高', trigger: 'change' }
@@ -407,14 +441,13 @@ export default {
         ],
         desc: [
           { required: false, message: '请填写个人介绍', trigger: 'blur' },
-          { min: 0, max: 50, message: '长度在50个字符以内', trigger: 'blur' }
+          { min: 10, max: 50, message: '长度在50个字符以内', trigger: 'blur' }
         ]
       }
     }
   },
   computed: {},
   components: {
-    ComVideo,
     VueDataLoading
   },
   created () {
@@ -424,9 +457,6 @@ export default {
     this.field("WEIGHT_TAG")
     this.field("INDUSTRY_TAG")
     this.field("ANNUAL_SALARY_TAG")
-    this.getUserImgOrVideo(0)
-    this.getUserImgOrVideo(1)
-    this.count()
   },
   methods: {
     checkinput () {
@@ -443,8 +473,15 @@ export default {
       }
       return true
     },
+    // 添加子账 号弹框显示
     addUsers () {
-      // 添加子账号弹框显示
+      this.curEdiorOrCreatedSelect = 1
+      if (this.accountList.length > 49) {
+        this.$message({
+          message: "最多创建 50 条子账号"
+        })
+        this.isShow = false
+      }
       this.isShow = true
       this.disabled = false
       // this.activeName = "1"
@@ -456,120 +493,263 @@ export default {
       this.usersImgList = []
       this.usersVideoList = []
       this.mediaInfoList = []
-      // this.ediorOrCreate = 1
+      // this. = 1
     },
+    // 创建编辑弹框隐藏
     cancle () {
       this.isShow = false
     },
+    // 显示发布弹框
     showPublistModel () {
-      // 显示发布弹框
       this.isShow = false
       this.onShow = true
     },
+    // 隐藏发布弹框
     canclePublish () {
-      // 隐藏发布弹框
       this.onShow = false
     },
+    // 编辑 获取当前子账号详情，展示到页面
     ediorAccount (index, rows) {
-      // 获取当前子账号详情，展示到页面
-      // 编辑
-      // 1.获取当前子账号信息，展示到页面上，同时有些是不能更改的
+      this.curEdiorOrCreatedSelect = 2
+      this.activeName = "1"
       this.curUserId = rows
-      this.mediaList(rows)
-      // 获取当前账号动态列表
+      this.page = 1
+      // this.count(0, rows)
+      // this.count(1, rows)
       this.disabled = true
-      // this.activeName = "1"
       let params = {
         userId: rows
       }
-      this.$http.profile(params).then(res => {})
-      if (this.formLabelAlign.gender == 1) {
-        this.formLabelAlign.gender = "男"
-      } else {
-        this.formLabelAlign.gender = "女"
-      }
-      this.formLabelAlign = {
-        id: 123,
-        acountNum: 123,
-        gender: this.formLabelAlign.gender
-      }
-      this.isShow = true
-    },
-    delAccount (index, rows) {
-      // 删除子账号
-      let params = {
-        userId: rows
-      }
-      this.$http.deleteAccount(params).then(res => {
-        console.log("删除子账号成功")
-      })
-    },
-    createOrEdiorConfirm (data, formName) {
-      // 创建账号或者编辑账号时的确认按钮
-      this.$refs[formName].validate((valid) => {
-        // 提交基本信息
-        if (valid) {
-          let params = {
-            annualSalary: '',
-            auditStatus: 1,
-            avatar: '',
-            birthday: this.formLabelAlign.birst,
-            height: this.formLabelAlign.high,
-            id: parseInt(this.formLabelAlign.id),
-            introduction: this.formLabelAlign.desc,
-            job: this.formLabelAlign.industryDetail,
-            mobile: '',
-            nickname: this.formLabelAlign.name,
-            parentId: null,
-            pid: null,
-            qq: this.formLabelAlign.qq,
-            realname: "",
-            regionId: parseInt(this.formLabelAlign.address),
-            sex: parseInt(this.formLabelAlign.gender),
-            token: '',
-            userType: null,
-            wechat: this.formLabelAlign.weixin,
-            weight: this.formLabelAlign.weight,
-            wxOpenId: ''
-          }
-          this.$http.subAccountCreate(params).then(res => {
-            console.log("创建子账号成功")
+      this.$http.profile(params).then(res => {
+        let x = res.result
+        this.industrys.forEach(v => {
+          v.children.forEach(z => {
+            if (z.fieldName == x.job) {
+              this.formLabelAlign.industry = v.fieldName
+              this.industryDetails = v.children
+            }
           })
+        })
+        this.citys.forEach(v => {
+          v.items.forEach(z => {
+            if (z.cityName == x.cityName) {
+              this.addresses = v.items
+            }
+          })
+        })
+        if (x.sex == 1) {
+          this.formLabelAlign.gender = "男"
         } else {
-          console.log('error submit!!')
-          return false
+          this.yearMoneyManOrWo = true
+          this.rules.yearMoney[0].required = false
+          this.formLabelAlign.gender = "女"
         }
+        this.formLabelAlign = {
+          id: x.id,
+          name: x.nickname,
+          high: x.height,
+          acountNum: x.account,
+          qq: x.qq,
+          weight: x.weight,
+          gender: this.formLabelAlign.gender,
+          weixin: x.wechat,
+          industry: this.formLabelAlign.industry,
+          industryDetail: x.job,
+          birst: formatTime((x.birthday)*1000, "yyyy-MM-dd"),
+          city: x.provinceName,
+          yearMoney: x.annualSalary,
+          address: x.cityName,
+          desc: x.introduction
+        }
+        this.isShow = true
       })
+      this.getUserImgOrVideo(0, rows)
+      this.getUserImgOrVideo(1, rows)
+      this.mediaInfoList = []
+      this.mediaList(rows)
+    },
+    // 删除子账号
+    delAccount (index, rows) {
+      let params = {
+        userId: rows
+      }
+      this.$confirm('确认删除该子账号？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true
+      }).then(async (action) => {
+        if (action == 'confirm') {
+          this.$http.deleteAccount(params).then(res => {
+            this.$message({
+              message: "删除子账号成功"
+            })
+            this.getAccountList()
+          })
+        }
+      }).catch(async (action) => {})
+    },
+    // 创建账号或者编辑账号时的确认按钮
+    createOrEdiorConfirm (data, formName) {
+      switch (data) {
+        case '1':
+          if (this.curEdiorOrCreatedSelect==1) {
+            this.$refs[formName].validate((valid) => {
+              // 提交基本信息
+              if (valid) {
+                let params = {
+                  account: this.formLabelAlign.acountNum,
+                  annualSalary: this.formLabelAlign.yearMoney,
+                  auditStatus: null,
+                  avatar: '',
+                  birthday: this.formLabelAlign.birst,
+                  height: this.formLabelAlign.high,
+                  id: parseInt(this.formLabelAlign.id),
+                  introduction: this.formLabelAlign.desc,
+                  job: this.formLabelAlign.industryDetail,
+                  mobile: '',
+                  nickname: this.formLabelAlign.name,
+                  parentId: null,
+                  pid: null,
+                  qq: this.formLabelAlign.qq,
+                  realname: "",
+                  regionId: parseInt(this.curCityId),
+                  sex: parseInt(this.formLabelAlign.gender),
+                  token: '',
+                  userType: null,
+                  wechat: this.formLabelAlign.weixin,
+                  weight: this.formLabelAlign.weight,
+                  wxOpenId: ''
+                }
+                this.$http.subAccountCreate(params).then(res => {
+                  this.isShow = false
+                  this.getAccountList()
+                })
+              } else {
+                console.log('error submit!!')
+                return false
+              }
+            })
+          } else {
+            this.$refs[formName].validate((valid) => {
+              // 提交基本信息
+              if (valid) {
+                let params = {
+                  annualSalary: this.formLabelAlign.yearMoney,
+                  auditStatus: null,
+                  avatar: '',
+                  birthday: this.formLabelAlign.birst,
+                  height: this.formLabelAlign.high,
+                  introduction: this.formLabelAlign.desc,
+                  job: this.formLabelAlign.industryDetail,
+                  mobile: '',
+                  nickname: this.formLabelAlign.name,
+                  parentId: null,
+                  pid: null,
+                  qq: this.formLabelAlign.qq,
+                  realname: "",
+                  regionId: parseInt(this.curCityId),
+                  token: '',
+                  userType: null,
+                  wechat: this.formLabelAlign.weixin,
+                  weight: this.formLabelAlign.weight,
+                  subAccountId: this.curUserId
+                }
+                this.$http.updateUserInfo(params).then(res => {
+                  this.isShow = false
+                  this.getAccountList()
+                })
+              } else {
+                console.log('error submit!!')
+                return false
+              }
+            })
+          }
+          break
+        case '2':
+          this.usersImgList.forEach((v, i) => {
+            if (v.id) {
+              this.usersImgList.splice(i, 1)
+            }
+          })
+          this.usersVideoList.forEach((v, i) => {
+            if (v.id) {
+              this.usersVideoList.splice(i, 1)
+            }
+          })
+          let getUserImgOrVideoList = this.usersImgList.concat(this.usersVideoList)
+          this.$http.upload(getUserImgOrVideoList, this.curUserId).then(res => {
+            this.getUserImgOrVideo(0, this.curUserId)
+            this.getUserImgOrVideo(1, this.curUserId)
+            // this.count(0, this.curUserId)
+            // this.count(1, this.curUserId)
+          })
+          break
+        case '3':
+          // 代码块
+          break
+      }
     },
     uploadloadImgOrVideo (data) {
       let inp = 'input' + data
       this.$refs[inp].click()
     },
+    uploadloadImgOrVideo1 (data) {
+      let inp = 'input' + data
+      this.$refs[inp].click()
+    },
+    // 上传图片点击事件 0图片 1视频
     changeUploadFile (event, data) {
-      // 上传图片点击事件 0图片 1视频
-      let _this=this
+      this.$refs.videotest.style.display='none'
       let img = event.target.files
+      var url = this.getFileURL(img[0]) //把当前的 files[0] 传进去
+      if (url) {
+        this.$refs.videotest.src = url
+        let that = this
+        setTimeout(function () {
+          let duration = that.$refs.videotest.duration
+          if (Math.floor(duration) > 15) {
+            that.$message({ message: "上传视频不能大于 15 秒" })
+          } else {
+            // this.$refs.videotest.style.display='block'
+            let type = img[0].type
+            if (!img.length) {
+              return false
+            }
+            if (data == 0) {
+              if (!type.includes('jpg') && !type.includes('jpeg') && !type.includes('png')) {
+                that.$message({ message: '请上传图片' })
+                return false
+              }
+            } else if (data == 1) {
+              if (!type.includes('mp4') && !type.includes('m2v') && !type.includes('mkv')) {
+                that.$message({ message: '请上传视频' })
+                return false
+              }
+            }
+            if (that.imgAndVideoNum < 20) {
+              that.uploadMedia(img[0], data)
+            } else {
+              that.$message({ message: "最多上传二十张图片视频" })
+            }
+            event.srcElement.value = "" // 及时清空
+          }
+        }, 1000)
+      }
+    },
+    // 上传图片点击事件 0图片 1视频
+    changeUploadFile1 (event, data) {
+      let img = event.target.files
+      let that = this
       let type = img[0].type
       if (!img.length) {
         return false
       }
-      if (data == 0) {
-        if (!type.includes('jpg') && !type.includes('jpeg') && !type.includes('png')) {
-          this.$message({ message: '请上传图片' })
-          return false
-        }
-      } else if (data == 1) {
-        if (!type.includes('mp4') && !type.includes('m2v') && !type.includes('mkv')) {
-          this.$message({ message: '请上传视频' })
-          return false
-        }
-      } else {
-        if (!type.includes('jpg') && !type.includes('jpeg') && !type.includes('png')) {
-          this.$message({ message: '只能上传图片' })
-          return false
-        }
+      if (!type.includes('jpg') && !type.includes('jpeg') && !type.includes('png')) {
+        that.$message({ message: '只能上传图片' })
+        return false
       }
-      _this.uploadMedia(img[0], data)
+      this.uploadMedia(img[0])
       event.srcElement.value = "" // 及时清空
     },
     getOSS (params) {
@@ -587,8 +767,8 @@ export default {
     },
     uploadMedia (file, data) {
       return new Promise(async (resolve, reject) => {
-        let fileSize = 5000000
-        let typeArr = 'image/png,image/jpg,image/gif,image/jpeg,video/mp4,video/MOV,video/quicktime'
+        // let fileSize = 5000000
+        // let typeArr = 'image/png,image/jpg,image/gif,image/jpeg,video/mp4,video/MOV,video/quicktime'
         let type = file.type
         let saveType
         if (type.split('/')[0]=='video') {
@@ -598,7 +778,7 @@ export default {
         }
 
         let storeAs = new Date().getTime() + '.' + saveType
-        let boolean = true
+        // let boolean = true
         // if (file.size > fileSize) {
         //     //   console.log('图片' + i + '不能超过!' + fileSize / 1000 + 'kb');
         //     //   reject({status: false, msg: '图片' + i + '不能超过!' + fileSize / 1000 + 'kb'})
@@ -615,7 +795,7 @@ export default {
           if (OSSResult.data.success) {
             OSSResult = OSSResult.data.result
           } else {
-            reject({status: false, msg: '获取OSS认证错误'})
+            reject({ status: false, msg: '获取OSS认证错误' })
           }
           this.OSSclient = new OSS.Wrapper({
             region: "oss-cn-shanghai",
@@ -636,32 +816,36 @@ export default {
         storeAs = path
         this.OSSclient.multipartUpload(storeAs, file).then((result) => {
           if (result.res.requestUrls.length) {
-            let url = '', url1 = [], url2 = '', imgOrVideo = {}
+            let url = ''
+            let url1 = []
+            let url2 = ''
+            let imgOrVideo = {}
             for (let i = 0; i < result.res.requestUrls.length; i++) {
               result.res.requestUrls[i] = result.res.requestUrls[i].split("?")[0]
               url = result.res.requestUrls[i]
               url1 =url.split(".")
               url2 = url1[url1.length-1]
             }
-            if (data) {
-              if (data == 0 && (url2 == "jpg" || url2 == "jpeg" || url2 == "png" || url2 == "gif")) {
+            if (data === 0 || data === 1) {
+              if (data === 0 && url2 == "jpg" || url2 == "jpeg" || url2 == "png" || url2 == "gif") {
                 imgOrVideo = {
                   mediaType: data,
                   mediaUrl: url
                 }
                 this.usersImgList.push(imgOrVideo)
-              } else if (data == 1 && (url2 == "mp4" || url2 == "mov" || url2 == "rmvb")) {
+              } else if (data === 1 && url2 == "mp4" || url2 == "mov" || url2 == "rmvb") {
                 imgOrVideo = {
                   mediaType: data,
                   mediaUrl: url
                 }
                 this.usersVideoList.push(imgOrVideo)
               }
+              this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
             } else {
               this.userDynamicPicList.push(url)
             }
           } else {
-            console.log(result.url)
+            // console.log(result.url)
           }
           resolve(result)
         }, result => {
@@ -671,43 +855,71 @@ export default {
         })
       })
     },
-    delUploadImg (item) {
-      // 删除上传图片
-      let params = {
-        ids: [item]
+    // 获取本地上传图片视频地址
+    getFileURL (file) {
+      var getUrl = null
+      if (window.createObjectURL != undefined) { // basic
+        getUrl = window.createObjectURL(file)
+      } else if (window.URL != undefined) { // mozilla(firefox)
+        getUrl = window.URL.createObjectURL(file)
+      } else if (window.webkitURL != undefined) { // webkit or chrome
+        getUrl = window.webkitURL.createObjectURL(file)
       }
-      this.$http.userDelete(params).then(res => {
-        console.log("删除视频，图片成功")
-      })
+      return getUrl
     },
+    // 删除上传图片
+    delUploadImg (data, item, index) {
+      if (item) {
+        this.$http.userDelete([item], this.curUserId).then(res => {
+          this.getUserImgOrVideo(data, this.curUserId)
+          // this.count(0, rows)
+          // this.count(1, rows)
+          this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
+        })
+      } else {
+        this.usersImgList.splice(index, 1)
+        this.usersVideoList.splice(index, 1)
+        this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
+      }
+    },
+    // 将缩放图片中的url更改为当前点击的url
+    changePic (item, index) {
+      this.picShow = true
+      this.curPicUrl = item.mediaUrl
+      this.displayPicOrVideo = true
+    },
+    // 将缩放视频中的url更改为当前点击的url
     changeVideo (item, index) {
-      this.videoShow = true
-      this.curVideoUrl = item.url
+      this.picShow = true
+      this.curVideoUrl = item.mediaUrl
+      this.displayPicOrVideo = false
     },
-    hideVideoModel () {
-      this.videoShow = false
+    // 隐藏缩放视频图片弹框
+    hidePicModel () {
+      this.picShow = false
     },
-    showVideoModel () {
-      this.videoShow = true
+    showpicModel () {
+      this.picShow = true
     },
+    // 删除动态
     delPublishInfo (item) {
-      // 删除动态
       let params = {
-        id: item.userId
+        id: item.id
       }
       this.$http.mediaDelete(params).then(res => {
-        console.log("成功删除动态信息")
-        this.mediaList(item)
+        this.page =1
+        this.mediaList(item.userId)
       })
     },
+    // 发布动态
     confirmPublish () {
-      // 发布动态
-      if( !this.checkinput()) return
+      if (!this.checkinput()) return
+      this.mediaInfoList = []
+      let currentTime = this.format(new Date(), "yyyy-MM-dd HH:mm:ss")
       let imgList = this.userDynamicPicList.join(",")
-
       let params = {
         content: this.wantTalk,
-        createTime: "",
+        createTime: this.parserDate(currentTime),
         id: null,
         img: imgList,
         isShow: null,
@@ -720,9 +932,37 @@ export default {
         userId: this.curUserId
       }
       this.$http.mediaCreate(params).then(res => {
+        this.page = 1
         this.mediaList(this.curUserId)
+        this.onShow = false
+        this.isShow = true
+        this.activeName = '3'
+        this.userDynamicPicList = []
+        this.wantTalk = ''
       })
     },
+    parserDate (date) {
+      var t = Date.parse(date)
+      if (!isNaN(t)) {
+        return new Date(Date.parse(date.replace(/-/g, '/')))
+      }
+    },
+    format (date, fmt) {
+      let o = {
+        "M+": date.getMonth() + 1, // 月份
+        "d+": date.getDate(), // 日
+        "H+": date.getHours(), // 小时
+        "m+": date.getMinutes(), // 分
+        "s+": date.getSeconds(), // 秒
+        "q+": Math.floor((date.getMonth() + 3) / 3), // 季度
+        "S": date.getMilliseconds() // 毫秒
+      }
+      if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length))
+      for (let k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)))
+      return fmt
+    },
+    // 获取省市区列表
     cityTree () {
       // 获取地区
       this.$http.cityTree().then(res => {
@@ -732,22 +972,39 @@ export default {
         })
       })
     },
+    // 获取陪聊账号列表
     getAccountList () {
-      // 获取陪聊账号列表
       this.$http.getAccountList().then(res => {
         this.accountList = res.result
+        this.total =this.accountList.length
       })
     },
+    handleSizeChange (val) {
+      this.pageSize = val
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange (val) {
+      this.currentPage = val
+      console.log(`当前页: ${val}`)
+    },
+    // 选择省名
     selectedCity (value) {
-      // 获取个城市区名
       this.citys.forEach(v => {
         if (v.provinceName == value) {
           this.addresses = v.items
         }
       })
     },
+    // 选择市名
+    selectedCitySub (value) {
+      this.addresses.forEach(v => {
+        if (v.cityName == value) {
+          this.curCityId = v.city
+        }
+      })
+    },
+    // 获取身高，体重，行业，年收入
     field (data) {
-      // 获取身高，体重，行业，年收入
       let params = {
         fieldTag: data
       }
@@ -767,20 +1024,21 @@ export default {
         }
       })
     },
+    // 获取各行业中的子行业
     selectedJob (value) {
-      // 获取各行业中的子行业
       this.industrys.forEach(v => {
         if (v.fieldName == value) {
           this.industryDetails = v.children
         }
       })
     },
-    getUserImgOrVideo (data) {
-      // 查询用户相册及视频信息
+    // 查询用户相册及视频信息
+    getUserImgOrVideo (data, id) {
       let params = {
         page: 1,
         param: {
-          mediaType: data
+          mediaType: data,
+          subAccountId: id
         },
         size: 20
       }
@@ -790,49 +1048,59 @@ export default {
         } else if (data == 1) {
           this.usersVideoList = res.result
         }
+        this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
       })
     },
+    // 年收入更改，为男显示，为女不显示
+    selectSex (value) {
+      this.yearMoneyManOrWo = false
+      this.rules.yearMoney[0].required = true
+      if (value == 2) {
+        this.yearMoneyManOrWo = true
+        this.rules.yearMoney[0].required = false
+      }
+    },
+    // 用户动态列表查询
     mediaList (id) {
-      // 用户动态列表查询
       let params = {
         page: this.page,
         param: {
           userId: id
         },
-        size: 10
+        size: 5
       }
-      if (params.param.userId) {
-        this.$http.mediaList(params).then(res => {
-          let imgList = []
-          if (res.result.datas.length) {
-            res.result.datas.forEach(v => {
-              v.createTime = this.$formatTimeAmt(v.createTime, "yyyy-MM-dd hh:mm:ss")
-              v.img = v.img.split(",")
-              if (!v.thumbUp) {
-                v.thumbUp = 0
-              }
-            })
-            this.mediaInfoList = [...res.result.datas, ...this.mediaInfoList]
-          } else {
-            this.completed = true
+      this.$http.mediaList(params).then(res => {
+        let x = res.result.datas
+        if (x.length) {
+          for (let i = 0; i < x.length; i++) {
+            x[i].createTime = formatTime((x[i].createTime)*1000, "yyyy-MM-dd hh:mm:ss")
+            x[i].img = x[i].img.split(",")
+            if (!x[i].thumbUp) {
+              x[i].thumbUp = 0
+            }
           }
-        })
-      }
+          this.mediaInfoList = [...this.mediaInfoList, ...res.result.datas]
+          this.completed = false
+        } else {
+          this.completed = true
+        }
+      })
     },
-    pullDown (id) {
+    pullDown () {
       this.page = 1
-      this.completed = false
-      this.mediaList(id)
+      // this.completed = false
+      this.mediaList(this.curUserId)
     },
-    infiniteScroll (id) {
-      this.mediaList(id)
+    infiniteScroll () {
       this.page++
+      this.mediaList(this.curUserId)
     },
     handleClick (tab, event) {
-      // console.log(tab, event)
     },
-    count (data) {
+    // 获取视频图片个数
+    count (data, id) {
       let params = {
+        subAccountId: id,
         type: data
       }
       this.$http.count(params).then(res => {
@@ -847,6 +1115,10 @@ export default {
 }
 </script>
 <style lang="scss">
+  .el-message-box__wrapper .el-button--small.el-button--primary {
+    background-color: #FEAF27!important;
+    border-color: #FEAF27!important;
+  }
   .page-loginlist {
     // 头部
     .top-content {
@@ -904,7 +1176,7 @@ export default {
     // 表格
     .table-box {
       // margin-top: ;
-      padding: 20px 20px 45px 20px;
+      padding: 20px 20px 20px 20px;
       margin: 20px 20px 0 20px;
       background-color: #fff;
 
@@ -924,6 +1196,73 @@ export default {
 
       .cell {
         text-align: center;
+      }
+      .block {
+
+        .el-pager li {
+          padding: 0;
+          width: 28px;
+          border-radius: 4px;
+          border: 1px solid rgba(229, 229, 229, 1);
+          min-width: 0;
+          margin: 0 4px;
+          color: #666;
+
+          &.active {
+            color: #fff;
+            border: 1px solid #FEAF27;
+
+            &:hover {
+              color: #fff !important;
+            }
+          }
+
+          &:hover {
+            color: #666 !important;
+          }
+        }
+
+        .el-pagination {
+          padding-top: 20px;
+
+          button {
+            padding: 0
+          }
+
+          .btn-next,
+          .btn-prev {
+            border-radius: 4px;
+            border: 1px solid rgba(229, 229, 229, 1);
+
+            &:hover {
+              color: #333;
+            }
+          }
+
+          .btn-next {
+            padding-left: 0;
+            margin-left: 4px;
+          }
+
+          .btn-prev {
+            padding-right: 0;
+            margin-right: 4px;
+          }
+        }
+
+        .el-pagination button,
+        .el-pagination span:not([class*=suffix]) {
+          min-width: 0;
+          width: 28px;
+        }
+
+        .el-pagination__jump {
+          margin-left: 86px;
+        }
+
+        .el-pagination__sizes {
+          margin: 0 10px 0 16px;
+        }
       }
 
       .handle-box {
@@ -1050,14 +1389,11 @@ export default {
                   justify-content: flex-start;
                   margin-top: 25px;
                   .photo-content {
-                    width: 143px;
+                    width: 144px;
                     display: flex;
                     justify-content: center;
                     flex-direction: column;
-                    margin-left: 15px;
-                    &:first-child {
-                      margin-left: 0;
-                    }
+                    margin:0 6.5px;
                     .play-video-wrapper{
                       position: relative;
                       .play-video-pic {
@@ -1097,6 +1433,11 @@ export default {
                       text-align: center;
                       margin: 18px auto;
                     }
+                  }
+                  .photo-content1{
+                    display:flex;
+                    justify-content: flex-start;
+                    flex-direction: column;
                   }
                   .photo-content1{
                     display:flex;
@@ -1378,12 +1719,11 @@ export default {
         color: #FEAF27;
       }
     }
-
     .video-player-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       left: 0;
@@ -1391,10 +1731,14 @@ export default {
       background: rgba(0, 0, 0, .7);
       z-index: 666;
       .video-player {
-        width: 500px;
-        height: 300px;
+        // width: 700px;
+        // height: 500px;
         background-color: #fff;
         z-index: 999;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

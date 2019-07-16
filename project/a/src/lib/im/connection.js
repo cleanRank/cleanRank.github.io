@@ -7,7 +7,8 @@ var _msgHash = {};
 var Queue = require('./queue').Queue;
 var CryptoJS = require('crypto-js');
 var _ = require('underscore');
-
+var websdk = require('easemob-websdk');
+console.log(websdk.default.connection,'sdk')
 // var Strophe = window.Strophe
 var isStropheLog;
 var stropheConn = null;
@@ -566,8 +567,6 @@ var _loginCallback = function (status, msg, conn) {
         conn.retry && _handleMessageQueue(conn);
         conn.heartBeat();
         conn.isAutoLogin && conn.setPresence();
-        console.log("conn",conn);
-
         try {
             if (conn.unSendMsgArr.length > 0) {
                 console.log("unSendMesArr",conn.unSendMsgArr);

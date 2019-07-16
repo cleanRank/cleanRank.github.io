@@ -80,7 +80,7 @@ const option = {
               compress: {
                 // warnings: false,
                 drop_debugger: true,
-                drop_console: true
+                // drop_console: true
               }
             }
           })
@@ -153,7 +153,7 @@ const option = {
   devServer: {
     open: process.platform === 'darwin',
     host: '0.0.0.0',
-    port: 8088,
+    port: 8089,
     hot: true,
     https: false,
     hotOnly: false,

@@ -43,7 +43,7 @@
         <el-form-item label="提现编号" class="mr50">
           <el-input v-model="searchForm.withdrawLogId" placeholder="提现编号"></el-input>
         </el-form-item>
-        <el-form-item label="活动时间" class="mr50">
+        <el-form-item label="选择时间" class="mr50">
           <el-date-picker
             v-model="searchForm.time"
             type="daterange"
@@ -74,9 +74,10 @@
       </el-table>
       <el-pagination
         :background="true"
-        layout="prev, pager, next"
-        :page-size="pageSize"
+        layout="prev, pager, next, sizes, jumper"
+        :page-size="searchForm.size"
         @current-change="selectPage"
+        @size-change="handleSizeChange"
         :total="totalPage">
         </el-pagination>
     </div>
@@ -118,8 +119,7 @@ export default {
         endTime: '',
         size: 10
       },
-      pageSize: 10,
-      totalPage: 6,
+      totalPage: 1,
       withdrawList: [], // 提现记录
       walletInfo: {},
       formValue: {
@@ -147,23 +147,19 @@ export default {
   },
   methods: {
     search () {
-      // Object.assign(this.searchForm, { startTime: this.searchForm.time[0] || '', endTime: this.searchForm.time[1] || '' })
-      let params ={
-        page: this.searchForm.page,
-        size: this.searchForm.size,
-        param: {
-          endTime: this.searchForm.time[1],
-          startTime: this.searchForm.time[0],
-          withdrawLogId: this.searchForm.withdrawLogId
-        }
-      }
-      this.findChildWithdrawLogPage(params)
+      this.findChildWithdrawLogPage()
     },
     resert () {
       Object.assign(this.searchForm, { withdrawLogId: '', time: [], page: 1, startTime: '', endTime: '' })
+      this.search()
     },
     selectPage (e) {
       this.searchForm.page = e
+      this.findChildWithdrawLogPage()
+    },
+    handleSizeChange (val) {
+      this.searchForm.size = val
+      this.findChildWithdrawLogPage()
     },
     checkInput () {
       if (!this.formValue.applyAmt&&this.formValue.applyAmt!=0) {
@@ -178,7 +174,7 @@ export default {
         })
         return false
       }
-      if (!this.formValue.applyAmt > this.walletInfo.canWithdrawBalance) {
+      if (this.formValue.applyAmt > this.walletInfo.canWithdrawBalance) {
         this.$message({
           message: "提现金额大于可提现金额，请重新输入"
         })
@@ -217,14 +213,25 @@ export default {
       this.$http.applyWithdraw(param).then(res => {
         this.showMask = false
         this.findUserWallet() // 获取钱包信息
+        this.search()
       })
     },
     // 分页获取
-    findChildWithdrawLogPage (param) {
-      this.$http.findChildWithdrawLogPage(param).then(res => {
+    findChildWithdrawLogPage () {
+      let params ={
+        page: this.searchForm.page,
+        size: this.searchForm.size,
+        param: {
+          endTime: this.searchForm.time[1],
+          startTime: this.searchForm.time[0],
+          withdrawLogId: this.searchForm.withdrawLogId
+        }
+      }
+      this.$http.findChildWithdrawLogPage(params).then(res => {
         let data = res.result
         this.withdrawList = data.datas || []
         this.totalPage = data.total
+        console.log(this.totalPage)
         this.withdrawList.forEach(item => {
           switch (item.withdrawStatus) {
             case 1:

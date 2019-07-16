@@ -10,27 +10,27 @@ cache:
 # 常量参数
 variables:
   # supplier H5 source path
-  SUPPLIER_H5_PATH: /usr/share/wenewrs/wenewrs-supplier-merge/wenewrs-supplier
+  #MOWAN_H5_PATH: /usr/share/wenewrs/wenewrs-supplier-merge/wenewrs-supplier
 
   # supplier pc source path
-  SUPPLIER_PC_PATH: /usr/share/wenewrs/wenewrs-supplier-merge/wenewrs-supplier-pc
+  MOWAN_PC_PATH: /usr/share/mowan/mowan-chat-pc
 
   # supplier-merge source path
-  SUPPLIER_MERGE_PATH: /usr/share/wenewrs/wenewrs-supplier-merge
+  #MOWAN_MERGE_PATH: /usr/share/mowan/wenewrs-pc-merge
 
 资源拉取:
   stage: 1资源拉取
   script:
     - echo "1资源拉取开始>>>"
-    - BASE_PATH=$(pwd)
-    - echo "1.1拉取供应商H5端代码开始>>>"
-    - cd $SUPPLIER_H5_PATH
-    - git pull
-    - npm install
-    - echo "1.1拉取供应商H5端代码结束<<<"
+#    - BASE_PATH=$(pwd)
+#    - echo "1.1拉取供应商H5端代码开始>>>"
+#    - cd $MOWAN_H5_PATH
+#    - git pull
+#    - npm install
+#    - echo "1.1拉取供应商H5端代码结束<<<"
     - echo "1.2拉取供应商PC端代码开始>>>"
-    - cd $SUPPLIER_PC_PATH
-    - git pull
+#    - cd $MOWAN_PC_PATH
+#    - git pull
     - npm install
     - echo "1.2拉取供应商PC端代码结束<<<"
     - echo "1资源拉取结束<<<"
@@ -40,36 +40,36 @@ variables:
   stage: 2构建代码
   script:
     - echo "2构建管理前端代码开始>>>"
-    - BASE_PATH=$(pwd)
-    - echo "2.1.1安装供应商H5端依赖开始>>>"
-    - cd $SUPPLIER_H5_PATH
-    - npm install
-    - echo "2.1.1安装供应商H5端依赖结束<<<"
-    - echo "2.1.2构建供应商H5端代码开始>>>"
-    - npm run build:test
-    - rm -rf ./docker/test/nginx
-    - cp -avr ./nginx ./docker/test/
-    - rm -rf ./docker/test/wrap
-    - cp -avr ./wrap ./docker/test/wrap/
-    - ls ./docker/test/wrap/
-    - echo "2.1.2构建供应商H5端代码结束<<<"
-    - echo "2.2.1安装供应商PC端依赖开始>>>"
-    - cd $SUPPLIER_PC_PATH
+#    - BASE_PATH=$(pwd)
+#    - echo "2.1.1安装供应商H5端依赖开始>>>"
+#    - cd $MOWAN_H5_PATH
+#    - npm install
+#    - echo "2.1.1安装供应商H5端依赖结束<<<"
+#    - echo "2.1.2构建供应商H5端代码开始>>>"
+#    - npm run build:test
+#    - rm -rf ./docker/test/nginx
+#    - cp -avr ./nginx ./docker/test/
+#    - rm -rf ./docker/test/wrap
+#    - cp -avr ./wrap ./docker/test/wrap/
+#    - ls ./docker/test/wrap/
+#    - echo "2.1.2构建供应商H5端代码结束<<<"
+    - echo "2.2.1安装陌玩PC端依赖开始>>>"
+#    - cd $MOWAN_PC_PATH
     - npm install
     - echo "2.2.1安装供应商PC端依赖结束<<<"
     - echo "2.2.2构建供应商PC端代码开始>>>"
     - npm run build:test
-    - rm -rf ./docker/test/nginx
-    - cp -avr ./nginx ./docker/test/
-    - rm -rf ./docker/test/web
-    - cp -avr ./web ./docker/test/web/
-    - ls ./docker/test/web/
-    - echo "2.2.2构建供应商PC端代码结束<<<"
-    - echo "2.2.3合并供应商H5和PC端代码开始>>>"
-    - rm -rf $SUPPLIER_MERGE_PATH/docker/test
-    - cp -avr $SUPPLIER_H5_PATH/docker/test/ $SUPPLIER_MERGE_PATH/docker/test/
-    - cp -avr $SUPPLIER_PC_PATH/docker/test/web $SUPPLIER_MERGE_PATH/docker/test/
-    - echo "2.2.3合并供应商H5和PC端代码结束<<<"
+#    - rm -rf ./docker/test/nginx
+#    - cp -avr ./nginx ./docker/test/
+#    - rm -rf ./docker/test/web
+#    - cp -avr ./web ./docker/test/web/
+#    - ls ./docker/test/web/
+#    - echo "2.2.2构建供应商PC端代码结束<<<"
+#    - echo "2.2.3合并供应商H5和PC端代码开始>>>"
+#    - rm -rf $MOWAN_MERGE_PATH/docker/test
+#    - cp -avr $MOWAN_H5_PATH/docker/test/ $MOWAN_MERGE_PATH/docker/test/
+#    - cp -avr $MOWAN_PC_PATH/docker/test/web $MOWAN_MERGE_PATH/docker/test/
+#    - echo "2.2.3合并供应商H5和PC端代码结束<<<"
     - echo "2构建管理前端代码结束<<<"
   when: manual
 
@@ -77,74 +77,74 @@ variables:
   stage: 3部署程序
   script:
     - echo "1资源拉取开始>>>"
-    - BASE_PATH=$(pwd)
-    - echo "1.1拉取供应商H5端代码开始>>>"
-    - cd $SUPPLIER_H5_PATH
-    - git pull
-    - npm install
-    - echo "1.1拉取供应商H5端代码结束<<<"
+#    - BASE_PATH=$(pwd)
+#    - echo "1.1拉取供应商H5端代码开始>>>"
+#    - cd $MOWAN_H5_PATH
+#    - git pull
+#    - npm install
+#    - echo "1.1拉取供应商H5端代码结束<<<"
     - echo "1.2拉取供应商PC端代码开始>>>"
-    - cd $SUPPLIER_PC_PATH
-    - git pull
+#    - cd $MOWAN_PC_PATH
+#    - git pull
     - npm install
-    - echo "1.2拉取供应商PC端代码结束<<<"
-    - echo "1资源拉取结束<<<"
-    - echo "2构建管理前端代码开始>>>"
-    - BASE_PATH=$(pwd)
-    - echo "2.1.1安装供应商H5端依赖开始>>>"
-    - cd $SUPPLIER_H5_PATH
-    - npm install
-    - echo "2.1.1安装供应商H5端依赖结束<<<"
-    - echo "2.1.2构建供应商H5端代码开始>>>"
+#    - echo "1.2拉取供应商PC端代码结束<<<"
+#    - echo "1资源拉取结束<<<"
+#    - echo "2构建管理前端代码开始>>>"
+#    - BASE_PATH=$(pwd)
+#    - echo "2.1.1安装供应商H5端依赖开始>>>"
+#    - cd $SUPPLIER_H5_PATH
+#    - npm install
+#    - echo "2.1.1安装供应商H5端依赖结束<<<"
+#    - echo "2.1.2构建供应商H5端代码开始>>>"
     - npm run build:test
-    - rm -rf ./docker/test/nginx
-    - cp -avr ./nginx ./docker/test/
-    - rm -rf ./docker/test/wrap
-    - cp -avr ./wrap ./docker/test/wrap/
-    - ls ./docker/test/wrap/
-    - echo "2.1.2构建供应商H5端代码结束<<<"
-    - echo "2.2.1安装供应商PC端依赖开始>>>"
-    - cd $SUPPLIER_PC_PATH
-    - npm install
-    - echo "2.2.1安装供应商PC端依赖结束<<<"
-    - echo "2.2.2构建供应商PC端代码开始>>>"
-    - npm run build:test
-    - rm -rf ./docker/test/nginx
-    - cp -avr ./nginx ./docker/test/
-    - rm -rf ./docker/test/web
-    - cp -avr ./web ./docker/test/web/
-    - ls ./docker/test/web/
-    - echo "2.2.2构建供应商PC端代码结束<<<"
-    - echo "2.2.3合并供应商H5和PC端代码开始>>>"
-    - rm -rf $SUPPLIER_MERGE_PATH/docker/test
-    - cp -avr $SUPPLIER_H5_PATH/docker/test $SUPPLIER_MERGE_PATH/docker/test
-    - cp -avr $SUPPLIER_PC_PATH/docker/test/web $SUPPLIER_MERGE_PATH/docker/test/
-    - ls $SUPPLIER_MERGE_PATH/docker/test/wrap/
-    - ls $SUPPLIER_MERGE_PATH/docker/test/web/
-    - echo "2.2.3合并供应商H5和PC端代码结束<<<"
-    - echo "2构建管理前端代码结束<<<"
-    - echo "3.1生成服务镜像开始>>>"
-    - cd $SUPPLIER_MERGE_PATH
-    - docker build -t wenewrs/wenewrs-client-supplier:latest ./docker/test
+#    - rm -rf ./docker/test/nginx
+#    - cp -avr ./nginx ./docker/test/
+#    - rm -rf ./docker/test/wrap
+#    - cp -avr ./wrap ./docker/test/wrap/
+#    - ls ./docker/test/wrap/
+#    - echo "2.1.2构建供应商H5端代码结束<<<"
+#    - echo "2.2.1安装供应商PC端依赖开始>>>"
+#    - cd $MOWAN_PC_PATH
+#    - npm install
+#    - echo "2.2.1安装供应商PC端依赖结束<<<"
+#    - echo "2.2.2构建供应商PC端代码开始>>>"
+#    - npm run build:test
+#    - rm -rf ./docker/test/nginx
+#    - cp -avr ./nginx ./docker/test/
+#    - rm -rf ./docker/test/web
+#    - cp -avr ./web ./docker/test/web/
+#    - ls ./docker/test/web/
+#    - echo "2.2.2构建供应商PC端代码结束<<<"
+#    - echo "2.2.3合并供应商H5和PC端代码开始>>>"
+#    - rm -rf $MOWAN_MERGE_PATH/docker/test
+#    - cp -avr $MOWAN_H5_PATH/docker/test $MOWAN_MERGE_PATH/docker/test
+#    - cp -avr $MOWAN_PC_PATH/docker/test/web $MOWAN_MERGE_PATH/docker/test/
+#    - ls $MOWAN_MERGE_PATH/docker/test/wrap/
+#    - ls $MOWAN_MERGE_PATH/docker/test/web/
+#    - echo "2.2.3合并供应商H5和PC端代码结束<<<"
+#    - echo "2构建管理前端代码结束<<<"
+#    - echo "3.1生成服务镜像开始>>>"
+#    - cd $MOWAN_MERGE_PATH
+    - docker build . -t mowan/mowan-chat-pc:latest
     - echo "3.1生成服务镜像结束<<<"
     - echo "3.2推送镜像到私服开始>>>"
     - echo "3.2.1推送前镜像列表-->"
     - docker image list
-    - docker tag wenewrs/wenewrs-client-supplier:latest registry-srv:5000/wenewrs-test/wenewrs-client-supplier:latest
-    - docker push registry-srv:5000/wenewrs-test/wenewrs-client-supplier:latest
+    - docker tag mowan/mowan-chat-pc:latest registry.server:5000/mowan/mowan-chat-pc:latest
+    - docker push registry.server:5000/mowan/mowan-chat-pc:latest
     - echo "3.2.1推送后镜像列表-->"
     - docker image list
     - echo "3.2推送镜像到私服结束<<<"
     - echo "4部署业务服务模块开始>>>"
     - echo "4.1部署前服务列表-->"
-    - ansible master -m shell -a "docker service list|grep 'wenewrs-client-supplier'|awk '{print \$1 }'|sort -u|xargs -r docker service rm" -u root
-    - ansible master -m command -a "sleep 5" -u root
-    - ansible client -m shell -a "docker container list -a|grep 'wenewrs-client-supplier'|awk '{print \$1 }'|sort -u|xargs -r docker container rm" -u root
-    - ansible client -m command -a "sleep 5" -u root
-    - ansible master -m shell -a "docker service list" -u root
-    - ansible master -m shell -a "docker stack deploy -c /root/docker/service/0603-wenewrs-client-supplier.yml wenewrs" -u root
+    - ssh manager "docker service list|grep 'mowan-chat-pc'|awk '{print \$1 }'|sort -u|xargs -r docker service rm"
+    - ssh manager "sleep 5" 
+    - ssh manager "docker container list -a|grep 'mowan-chat-pc'|awk '{print \$1 }'|sort -u|xargs -r docker container rm" 
+    - ssh manager "sleep 5"
+    - ssh manager "docker service list" 
+    - ssh manager "docker stack deploy -c /var/config/mowan_chat_pc.yml mowan" 
     - echo "4.1部署后服务列表-->"
-    - ansible master -m shell -a "docker service list" -u root
+    - ssh manager "docker service list" 
     - echo "4.1部署业务服务模块结束<<<"
     - echo "4部署管理前端结束<<<"
   when: manual

@@ -1,21 +1,21 @@
 <template>
 <div class="user-info-components">
   <div class="user-detail">
-    <h5>用户信息</h5>
+    <h5 class="user-title">用户信息</h5>
     <p class="line-text">
-      <span>昵称：{{datas?datas.nickname:''}}</span>
+      <span class="nick-name">昵称：{{datas?datas.nickname:''}}</span>
     </p>
     <p class="line-text">
       <span>地区：{{datas?datas.provinceName:''}}</span>
-      <span>年龄：{{datas?datas.age:''}}</span>
+      <span>年龄：{{datas?datas.age+'岁':''}}</span>
     </p>
     <p class="line-text">
-      <span>身高：{{datas?datas.height:''}}</span>
-      <span>体重：{{datas?datas.weight:''}}</span>
+      <span>身高：{{datas?datas.height+'cm':''}}</span>
+      <span>体重：{{datas?datas.weight+'kg':''}}</span>
     </p>
     <p class="line-text">
       <span>年收入：{{datas?datas.annualSalary:''}}</span>
-      <span>距离：{{datas?datas.distance:''}}</span>
+      <span>距离：{{datas&&datas.distance?(datas.distance/1000).toFixed(2)+'km':''}}</span>
     </p>
     <p class="line-text">
       <span>状态：{{datas&&datas.stealth==1?'在线':'下线'}}</span>
@@ -43,12 +43,12 @@
     </div>
     <div class="mod-user-item">
       <h5>动态</h5>
-      <div v-for="(item, index) in mediaList" :key="index">
+      <div class="moment-box" v-for="(item, index) in mediaList" :key="index">
         <p class="dt"><span>{{item.content}}</span></p>
         <p class="time"><span>{{item.time}}</span></p>
-        <img :src="item.img" alt="">
+        <img :src="item.img" @click="playVideo({mediaType:0,mediaUrl:item.img})" alt="">
       </div>
-      <p class="more" v-if="mediaList.length" @click="getMore">更多动态</p>
+      <p class="more" v-if="mediaList.length&&canMore" @click="getMore">更多动态</p>
     </div>
   </div>
   <div class="video-player-wrapper" v-show="videoShow" @click.stop="videoShow=false">
@@ -72,7 +72,8 @@ export default {
       page: 1,
       pageSize: 10,
       mediaList: [],
-      photoList: []
+      photoList: [],
+      canMore: true
       // datas: {
       //   nickname: '',
       //   provinceName: '',
@@ -84,18 +85,7 @@ export default {
       //   stealth: '',
       //   wechat: '',
       //   introduction: '',
-      //   medias: [{
-      //     showicon: true,
-      //     rId: '',
-      //     mediaType: 1,
-      //     mediaUrl: 'https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/wxfile://tmp_612e723d0c595e75b3334d7abe2f864c.mp4'
-      //   },
-      //   {
-      //     showicon: true,
-      //     rId: '',
-      //     mediaType: 0,
-      //     mediaUrl: 'https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/tmp_b53b51803a2caaa0f87afbc3a2cf3cc4.jpg'
-      //   }]
+      //   friendId: ''
       // }
     }
   },
@@ -106,10 +96,14 @@ export default {
     })
   },
   watch: {
-    'datas.friendId' (value) {
-      console.log(value)
-      this.mediaFriend()
-      this.mediaListFn()
+    'datas': {
+      handler (value) {
+        this.page = 1
+        if (!this.datas.friendId) return
+        this.mediaFriend()
+        this.mediaListFn()
+      },
+      immediate: true
     }
   },
   methods: {
@@ -135,14 +129,19 @@ export default {
           queryId: '',
           startTime: '',
           status: '',
-          userId: ''
+          userId: this.datas.friendId
         }
       }
       this.mediaList = []
       this.mediaListAjax(param)
     },
-    mediaListAjax (param) {
+    mediaListAjax (param) { // 获取好友动态
       this.$http.mediaList(param).then(res => {
+        if (res.result.datas.length < param.size) {
+          this.canMore = false
+        } else {
+          this.canMore = true
+        }
         this.mediaList = [...this.mediaList, ...res.result.datas]
         this.mediaList.forEach(item => {
           item.time = formatTime(new Date(item.createTime))
@@ -168,20 +167,19 @@ export default {
       }
       this.mediaListAjax(param)
     },
-    playVideo (item, index) {
+    playVideo (item, index) { // 点击预览图片和视频
       this.mediaType = item.mediaType
       this.curVideoUrl = item.mediaUrl
       this.videoShow = true
       if (item.mediaType != 1) return
-      let video = document.getElementById('video')
-      console.log(video.paused)
-      if (video.paused) {
-        video.play()
-        // this.datas.medias[index].showicon = false
-      } else {
-        video.pause()
-        // this.datas.medias[index].showicon = true
-      }
+      this.$nextTick(() => {
+        let video = document.getElementById('video')
+        if (video.paused) {
+          video.play()
+        } else {
+          video.pause()
+        }
+      })
     }
   }
 }
@@ -190,14 +188,17 @@ export default {
 @import '../../assets/scss/_flex.scss';
 $color: #5584FF;
 .user-info-components{
+  max-height: 630px;
+  overflow: auto;
   .user-detail{
     border-right: 1px solid #F0F0F0;
     padding: 20px;
-    // height: 787px;
-    h5{
+    .user-title{
+
       font-size: 15px;
       color: #333;
       font-weight: 600;
+      margin-bottom: 18px !important;
     }
     .line-text{
       margin-top: 10px;
@@ -207,6 +208,9 @@ $color: #5584FF;
         word-break: break-all;
         display: inline-block;
         width: 90px;
+      }
+      .nick-name{
+        width: 100%;
       }
     }
     .more{
@@ -226,13 +230,16 @@ $color: #5584FF;
         font-weight: 600;
         margin-bottom: 15px;
       }
+      .moment-box{
+        margin-bottom: 25px;
+      }
       img{
-        margin-top: 10px;
+        margin-top: 8px;
         width: 85px;
         height: 85px;
       }
       .time{
-        margin-top: 10px;
+        margin-top: 8px;
         font-size: 12px;
         color: #999;
       }
