@@ -1,0 +1,105 @@
+<!-- freeBuy.wxml -->
+<view class="freeBuyFrame {{showToast?'fixed-width-height ':''}}">
+  <view class="free-header">
+    <view class="search" bindtap="goSearch">
+      <image class="" src="../../../images/main/md_icon_search.png"></image>
+      <input type="text" class="input-search" placeholder="查找商品" placeholder-class="placeholder-search" />
+    </view>
+    <view class="store-name">{{shopInfo.shopName}}</view>
+  </view>
+  <view class="free-category">
+    <view class="outerStyle" hover-class="none" hover-stop-propagation="false">
+      <scroll-view class="left-menu" scroll-y="{{showToast?false:true}}" style="height:{{scroll_height}}"
+        scroll-top='{{scrollTop1}}'>
+        <view class="first-menu {{currentFirstIndex==firstMenu.pointer?'active1':''}}" wx:for="{{menu}}" wx:key="index"
+          wx:for-item="firstMenu" wx:for-index="fIndex">
+          <view class="menu-name fbg {{currentFirstIndex==firstMenu.pointer?'active':''}}" bindtap="selectFirstCategory"
+            data-list="{{firstMenu}}">{{firstMenu.categoryName}}</view>
+          <view class="second-menu" wx:for="{{firstMenu.children}}" wx:key="idx" wx:for-item="secondMenu"
+            wx:for-index="sIndex" hidden="{{firstMenu.pointer!=currentFirstIndex}}">
+            <view class="menu-name {{currentSecondIndex==secondMenu.pointer?'current':'noSelect'}}" hover-class="none"
+              hover-stop-propagation="false" bindtap="selectSecondCategory" data-list="{{secondMenu}}">
+              <view class="" hover-class="none" hover-stop-propagation="false"
+                style="width:8rpx;height:8rpx;background:rgba(255,59,48,1);margin: 0 4rpx;border-radius:50%"
+                wx:if="{{currentSecondIndex==secondMenu.pointer}}">
+              </view>
+              <view>{{secondMenu.categoryName}}</view>
+            </view>
+            <!-- <view class="third-menu" wx:for="{{secondMenu.children}}" wx:key="dex" wx:for-item="thirdMenu" wx:for-index="tIndex">
+              <view class="line" hover-class="none" hover-stop-propagation="false" hidden="{{currentThirdIndex!=thirdMenu.categoryId}}"></view>
+              <view class="menu-name {{currentThirdIndex==thirdMenu.categoryId?'active':''}}" bindtap="selectThirdCategory" data-list="{{thirdMenu}}">{{thirdMenu.categoryName}}</view>
+            </view> -->
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <scroll-view scroll-y='{{showToast?false:true}}' class="main-commodity" bindscrolltolower="scrollBottomLoad"
+      style="height:{{scroll_height}}" hidden="{{!currentCategoryList.length}}" scroll-top='{{scrollTop}}'>
+      <view class="showShopList" wx:for="{{currentCategoryList}}" wx:key="index" wx:for-index="index">
+        <view class="no-stock" wx:if="{{!item.stock&&shopInfo.ctrlStock&&item.materialType!=2&&!item.packageFlag}}">
+          <view class="black-model">售罄</view>
+        </view>
+        <view class="outerLi" hover-class="none" hover-stop-propagation="false">
+          <image class="shopPic" mode="aspectFit" src="{{item.pic?item.pic:'/images/icon/hp_icon_logo.png'}}" />
+          <image class="fixedLi" src="/images/shopCart/hp_icon_li@2x.png" mode="aspectFit|aspectFill|widthFix"
+            lazy-load="false" binderror="" bindload="" wx:if='{{item.packageFlag}}' />
+        </view>
+        <view class="shopDescription">
+          <view class="shopName">{{item.skuName?item.skuName:''}}</view>
+          <!-- <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+                      <view class="discount" wx:for="{{discountList}}" wx:key="index" wx:for-item="item">{{item}}</view>
+          </view> -->
+          <view class="history">
+            <view class="price">¥{{item.retailPrice}}</view>
+              <view class="disFlex disprice">
+                ¥{{item.retailPrice}}
+              </view>
+            <view class="history1">
+              <image class="commonSearch mg-r reduce-pic" src="/images/searchGoods/gw_icon_rd.png" data-list="{{item}}"
+                data-index="{{index}}" data-type="1" bindtap="cartOption" animation="{{item.moves}}" />
+              <view class="num {{currentScal==index?'scal':''}}" wx:if="{{item.num}}">{{item.num?item.num:0}}</view>
+              <view class="add-wrap">
+                <image class="commonSearch mg-l add-pic" src="/images/searchGoods/gw_icon_add.png" data-list="{{item}}"
+                  data-type="2" data-index="{{index}}" bindtap="cartOption" />
+                <view class="add-model"
+                  wx:if="{{shopInfo.ctrlStock&&item.num>=item.stock&&item.materialType!=2&&!item.packageFlag}}"
+                  bindtap="stockNone">
+                </view>
+              </view>
+            </view>
+            <view class="history1 flt" wx-if="{{!item.num}}">
+              <view class="add-wrap">
+                <image class="commonSearch mg-l add-pic" src="/images/searchGoods/gw_icon_add.png" data-list="{{item}}"
+                  data-type="2" data-index="{{index}}" bindtap="cartOption" />
+                <view class="add-model"
+                  wx:if="{{shopInfo.ctrlStock&&item.num>=item.stock&&item.materialType!=2&&!item.packageFlag}}">
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="main-commodity no-data" hover-class="none" hover-stop-propagation="false"
+      hidden="{{currentCategoryList.length}}">
+      <image class="img" src="/images/noData/zy_icon_load.png"></image>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="cart" catchtap='showToast'>
+      <image class="img" src="/images/searchGoods/shop_ion_sp.png"></image>
+      <text wx:if="{{num}}" class="em">{{num}}</text>
+    </view>
+    <view class="price">￥{{totalAmt}}</view>
+    <view class="confirm" bindtap='navigatorTo'>
+      <text>选好了</text>
+    </view>
+  </view>
+  <view class="loading" hover-class="none" hover-stop-propagation="false" hidden="{{!showToast||!cartList.length}}"
+    catchtap='hideModal'>
+  </view>
+  <view class="inner" hover-class="none" hover-stop-propagation="false" hidden="{{!showToast}}"
+    animation='{{animationData}}'>
+    <temShopCart prop-a="{{cartList}}" bindmyevent="onMyEvent" bindclear="clearShop"></temShopCart>
+  </view>
+</view>

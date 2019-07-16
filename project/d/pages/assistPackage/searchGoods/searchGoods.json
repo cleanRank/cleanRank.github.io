@@ -1,0 +1,5 @@
+{
+"usingComponents": {
+    "temShopCart": "/pages/components/temShopCart/temShopCart"
+  }
+}

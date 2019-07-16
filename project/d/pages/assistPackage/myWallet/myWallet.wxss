@@ -1,0 +1,108 @@
+/* pages/assistPackage/myWallet/myWallet.wxss */
+page {
+    background-color: #F3F3F3;
+}
+
+.my-wallet {
+    height: 100%;
+    background-color: #F4F4F4;
+    color: #333;
+}
+
+.price-write {
+    width: 100%;
+    height: 220rpx;
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 20rpx;
+    border-top: 2rpx solid #F4F4F4;
+    color: #333;
+}
+
+.price {
+    font-size: 80rpx;
+    font-family: DINAlternate-Bold;
+    font-weight: bold;
+    letter-spacing: 5rpx;
+    padding-top: 38rpx;
+    line-height: 93rpx;
+}
+
+.write {
+    font-size: 30rpx;
+    font-family: PingFang-SC-Regular;
+    font-weight: 400;
+    letter-spacing: 2rpx;
+    line-height: 42rpx;
+    margin-top: 11rpx;
+}
+
+.price-detail {}
+
+.title {
+    width: 100%;
+    height: 67rpx;
+    background-color: #FBFBFB;
+    border-radius: 1rpx;
+    font-size: 31rpx;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    letter-spacing: 2rpx;
+    text-align: center;
+    line-height: 67rpx;
+    color: #333;
+
+}
+
+.pay-detail {}
+
+.pay-detail li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 1rpx;
+    padding: 26rpx 29rpx 32rpx 24rpx;
+    border-bottom: 1rpx solid #F4F4F4;
+}
+
+.detail-l {}
+
+.detail-name {
+    font-size: 32rpx;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    letter-spacing: 2rpx;
+    line-height: 45rpx;
+    color: #333;
+}
+
+.detail-time {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 1px;
+    margin-top: 12rpx;
+    line-height: 33rpx;
+}
+
+.detail-r {
+    font-size: 40rpx;
+    font-family: DINAlternate-Bold;
+    font-weight: bold;
+}
+
+
+.no-data {
+    width: 205rpx;
+    height: 198rpx;
+}
+
+.no-data-write {
+    font-size: 36rpx;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(102, 102, 102, 1);
+    margin-top: 30rpx;
+}

@@ -1,0 +1,32 @@
+<!--pages/assistPackage/myWallet/myWallet.wxml-->
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='page'>
+    <scroll-view class="my-wallet">
+        <view class="price-write">
+            <view class="price">￥{{walletBalance}}</view>
+            <view class="write">钱包余额</view>
+        </view>
+        
+        <view class="price-detail">
+            <view class="title">余额明细</view>
+            <ul class="pay-detail" wx:if="{{banlanceList.length}}">
+                <view class="left-menu" scroll-y>
+                    <li wx:for="{{banlanceList}}" wx:key="this">
+                        <view class="detail-l">
+                            <view class="detail-name">{{item.sourceType}}</view>
+                            <view class="detail-time">{{item.gmtCreated}}</view>
+                        </view>
+                        <view class="detail-r" style="color:#2BD800" wx:if="{{item.bizType==1}}"><text>+￥{{item.chgBonus}}</text></view>
+                        <view class="detail-r" style="color:#333333" wx:else="{{item.bizType==2}}"><text>-￥{{item.chgBonus}}</text></view>
+                    </li>
+                </view>
+            </ul>
+            <view class="page-bgd" style="position:fixed;top:307rpx;bottom:0;left:0;right:0;display:flex;align-items: center;flex-direction: column;justify-content:center;" wx:else>
+                <image class="no-data" src="/images/noData/sea_icon_no.png"></image>
+                <view class="no-data-write">暂无数据</view>
+            </view>
+        </view>
+        
+        
+    </scroll-view>
+</view>

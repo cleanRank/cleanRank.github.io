@@ -1,0 +1,6 @@
+<!-- activity.wxml -->
+<view class="activityFrame">
+  <image class="pic" src="{{pic}}" mode="widthFix" bindtap="goFreeBuy">
+
+  </image>
+</view>

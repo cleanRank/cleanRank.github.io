@@ -1,0 +1,30 @@
+<view class="InvoiceInfo" hover-class="none" hover-stop-propagation="false">
+    <view class="header" hover-class="none" hover-stop-propagation="false">
+        <view class="btn" hover-class="none" hover-stop-propagation="false" bindtap='addBill'>
+            添加开票抬头
+        </view>
+    </view>
+    <view class="content" hover-class="none" hover-stop-propagation="false">
+       <view class="orderInfo" hover-class="none" hover-stop-propagation="false" wx:for="{{invoiceList}}"  wx:for-item="item"  wx:for-index="index" wx:key="index">
+           <view class="flex" hover-class="none" hover-stop-propagation="false" bindtap='selectRise' data-index='{{index}}' data-id='{{item.invoiceId}}'>
+               <image class="img" src="../../../images/my/gw_icon_xz_a@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" wx:if='{{currentIndex==index}}'/>
+               <image class="img" src="../../../images/my/gw_icon_xz@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" wx:else/>
+                <view class="" hover-class="none" hover-stop-propagation="false" style="font-size:26rpx;color:rgba(51,51,51,1);">
+                    发票抬头
+                </view>
+           </view>
+           <view class="" hover-class="none" hover-stop-propagation="false" bindtap='selectInvoiceRise' data-id='{{item.invoiceId}}'>
+               <view class="company" hover-class="none" hover-stop-propagation="false">
+                   {{item.titleName}}
+               </view>
+               <view class="number" hover-class="none" hover-stop-propagation="false">
+                   税号：{{item.netCode}}
+               </view>
+           </view>
+       </view>
+    </view>
+    <view class="submit" hover-class="none" hover-stop-propagation="false" bindtap='sureUse'>
+        确认使用
+    </view>
+</view>
+  

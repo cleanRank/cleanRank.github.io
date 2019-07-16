@@ -1,0 +1,90 @@
+<view class="receiverInfo {{titleType=='单位'?'pd_2':''}}" hover-class="none" hover-stop-propagation="false">
+    <view class="header" hover-class="none" hover-stop-propagation="false" wx:if="{{isAddInvoice==1}}">
+        <view class="btn" hover-class="none" hover-stop-propagation="false" bindtap='selectBill'>
+            选择发票抬头
+        </view>
+        <view class="btn btn1 mgl" hover-class="none" hover-stop-propagation="false" bindtap='saveInvoice'>
+            保存开票信息
+        </view> 
+    </view>
+    <view class="content" hover-class="none" hover-stop-propagation="false">
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">订单号:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">{{orderId}}</view>
+            <!-- <input type="text" class="value"  placeholder-style="color:rgba(212,212,212,1);" value="{{form.orderId}}" style="text-indent:20rpx;"/> -->
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发票类型:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">{{invoiceType}}</view>
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发票内容:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">
+                <view class="flex" hover-class="none" hover-stop-propagation="false">
+                    <view class="btn {{index==current?'btn1':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{form.billType}}" data-index='{{index}}' data-item='{{item}}' wx:key="index" wx:for-item="item" bindtap='chooseBill'>
+                        {{item}}
+                    </view>
+                    <!-- <view class="btn  mgl" hover-class="none" hover-stop-propagation="false">
+                        商品类别
+                    </view>  -->
+                </view>
+                  
+            </view>
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发票抬头:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">
+                <view class="flex" hover-class="none" hover-stop-propagation="false">
+                    <view class="btn {{index==current1?'btn1':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{form.InvoiceRise}}" data-index='{{index}}' data-item='{{item}}' wx:key="index" wx:for-item="item" bindtap='chooseInvoice'>
+                        {{item}}
+                    </view>
+                </view>
+                  
+            </view>
+        </view>
+        <view class="" hover-class="none" hover-stop-propagation="false" wx:if="{{isCompany}}">
+            <view class="orderInfo">
+                <view class="keyword" hover-class="none" hover-stop-propagation="false">单位名称:</view>
+                <input type="text" class="value" value='' data-value='company'  bindinput="getNumber" value='{{form.company}}'  placeholder="输入单位名称（必填)" placeholder-style="color:rgba(212,212,212,1);"/>
+            </view>
+            <view class="orderInfo">
+                <view class="keyword" hover-class="none" hover-stop-propagation="false">税号:</view>
+                <input type="text" class="value" value=''  data-value='dutyParagraph' maxlength="20" type='number' value='{{form.dutyParagraph}}' bindinput="getNumber"  placeholder="输入税号（必填)" placeholder-style="color:rgba(212,212,212,1);"/>
+            </view>
+            <view class="orderInfo">
+                <view class="keyword" hover-class="none" hover-stop-propagation="false">注册地址:</view>
+                <input type="text" class="value" value='' data-value='address' bindinput="getNumber"  value='{{form.address}}'/>
+            </view>
+            <view class="orderInfo">
+                <view class="keyword" hover-class="none" hover-stop-propagation="false">注册电话:</view>
+                <input type="text" class="value" value='' data-value='telphone' type='number' bindinput="getNumber" maxlength='12' value='{{form.telphone}}'/>
+            </view>
+            <view class="orderInfo">
+                <view class="keyword" hover-class="none" hover-stop-propagation="false">开户银行:</view>
+                <input type="text" class="value" value='' data-value='bankName' bindinput="getNumber"  value='{{form.bankName}}'/>
+            </view>
+            <view class="orderInfo">
+                <view class="keyword" hover-class="none" hover-stop-propagation="false">银行账号:</view>
+                <input type="text" class="value" value='' type='bankAccount' data-value='number' maxlength="19"  bindinput="getNumber" value='{{form.bankAccount}}'/>
+            </view>
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">电话:</view>
+            <input type="text" class="value"  value="{{phone}}"   disabled />
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">邮箱:</view>
+            <input type="text" class="value"   placeholder="输入邮箱（必填)" placeholder-style="color:rgba(212,212,212,1);" data-value='email' bindinput="getNumber" value='{{form.email}}'   />
+        </view>
+    </view>
+    <view class="submit" hover-class="none" hover-stop-propagation="false" bindtap='modify' wx:if="{{isAddInvoice==3}}">
+        确认修改
+    </view>
+    <view class="submit" hover-class="none" hover-stop-propagation="false" bindtap='saveInvoice' wx:if="{{isAddInvoice==2}}">
+        保存
+    </view>
+    <view class="submit" hover-class="none" hover-stop-propagation="false" bindtap='submit' wx:if="{{isAddInvoice==1}}">
+        提交
+    </view>
+      
+</view>

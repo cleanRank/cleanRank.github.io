@@ -1,0 +1,196 @@
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-search {
+  padding: 20rpx 24rpx;
+  position: relative;
+}
+
+.main-search image {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  left: 45%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-search .search {
+  height: 82rpx;
+  background: #F5F5F5;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.placeholder-search {
+  color: #999999;
+  font-size: 28rpx;
+  text-align: center;
+  margin-left: 20rpx;
+}
+
+.main-tabNav {
+  height: 82rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tabNav-item {
+  display: flex;
+  /* flex:1; */
+}
+
+.tabNav-item .item-name {
+  color: #ABABAB;
+  font-size: 30rpx;
+  font-weight: 600;
+  height: 82rpx;
+  line-height: 82rpx;
+}
+
+.tabNav-item .item-name:first-child+text {
+  margin-left: 63rpx;
+}
+
+.tabNav-item .item-name.active {
+  color: #333333;
+  /* border-bottom: 6rpx solid #FF7414; */
+}
+
+.tabNav-store {
+  flex: 1;
+  color: #333333;
+  font-size: 24rpx;
+  text-align: right;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tabNav-store .name {
+  /* flex: 1; */
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20rpx 0;
+}
+
+.tabNav-store .down {
+  width: 25rpx;
+  height: 23rpx;
+  margin-top: 4rpx;
+  margin-left: 5rpx;
+  padding: 20rpx 0;
+}
+
+.no-store {
+  text-align: center;
+}
+
+.no-store .img {
+  width: 460rpx;
+  height: 460rpx;
+}
+
+.no-store .tip {
+  margin-top: 32rpx;
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: rgba(102, 102, 102, 1);
+}
+
+.no-store .tip2 {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.searchNearShop {
+  width: 227rpx;
+  height: 56rpx;
+  border-radius: 30rpx;
+  color: #FF3333;
+  border: 2rpx solid #FF3333;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  line-height: 56rpx;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 39rpx;
+}
+
+.mask-layer {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(33, 33, 33, 0.7);
+  z-index: 20;
+}
+
+.mask-layer .mod {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.mask-layer .yhq {
+  width: 704rpx;
+  height: 971rpx;
+}
+
+.mask-layer .close {
+  width: 85rpx;
+  height: 78rpx;
+  margin-top: 20rpx;
+}
+
+.component.show {
+  display: block;
+}
+
+.component.hidden {
+  display: none;
+}
+
+.no-store.show {
+  display: block;
+}
+
+.no-store.hidden {
+  display: none;
+}
+
+.v-refresh {
+  height: 82rpx;
+  width: 82rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+
+.mainframe-wrap {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0
+}

@@ -1,0 +1,123 @@
+
+/* 附近门店 */
+.total-nearby{
+  background:rgba(246,246,246,1);
+}
+.topHalf{
+  padding-bottom: 30rpx;
+  background:#fff;
+  margin-bottom: 20rpx;
+}
+.pages {
+  width:558rpx;
+  height:60rpx;
+  background:rgba(245,245,245,1);
+  border-radius:31rpx;
+  font-size:28rpx;
+  margin: 10rpx 20rpx;
+  padding-left:  40rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.page{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.flexBtw{
+  justify-content: space-between
+}
+.leftIcon{
+  margin-right: 5rpx;
+  display:flex;
+  align-items: center;
+}
+.title{
+  /* line-height:60rpx; */
+  font-size:28rpx;
+}
+.text{
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.text1{
+  max-width: 132rpx;
+  
+}
+
+.select-img{
+  width:24rpx;
+  height:14rpx;
+  margin-left: 10rpx;
+  /* margin: 0 15rpx 0 5rpx; */
+}
+.localIcon{
+  width:28rpx;
+  height:28rpx;
+  margin: 0 4rpx 0 26rpx;
+}
+.input-wrapper{
+  display:flex;
+  align-items: center;
+}
+.commonSearch{
+  width:40rpx;
+  height:40rpx;
+}
+.search{
+  /* margin-left: 40rpx; */
+  width: 100rpx;
+  position: absolute;
+  right: 10rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.currentLocation{
+  margin:20rpx 0 30rpx 24rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.clear-ng{
+  margin:0;
+  margin-bottom:30rpx;
+}
+.localText{
+  font-size:30rpx;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+  color:rgba(51,51,51,1);
+}
+.mg-l{
+  margin:20rpx 0 0 60rpx;
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:28rpx;
+}
+.clear-l{
+  margin-left: 0;
+}
+.bottomHalf{
+  padding:30rpx 30rpx; 
+  background: #fff;
+}
+.listShop{
+  padding-bottom:30rpx;
+  margin-bottom:30rpx;
+  border-bottom: 1rpx solid rgba(238,238,238,1); 
+}
+.distance{
+  font-size:24rpx;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(51,51,51,1);
+}

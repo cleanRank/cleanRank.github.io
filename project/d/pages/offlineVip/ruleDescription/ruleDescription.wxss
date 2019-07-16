@@ -1,0 +1,33 @@
+.ruleDescription{
+    padding: 0 30rpx;
+}
+.commonTicket{
+    display: flex;
+    align-items: center
+}
+.verticalLine{
+    width:8rpx;
+height:34rpx;
+background:#FF7414;
+margin-right: 15rpx;
+}
+.topicName{
+    font-size:31rpx;
+font-family:PingFang-SC-Bold;
+font-weight:bold;
+color:rgba(51,51,51,1);
+line-height:44rpx;
+letter-spacing:2rpx;
+}
+.mgContent{
+    margin: 20rpx 0;
+}
+.vipContent{
+    margin: 5rpx 0;
+    font-size:24rpx;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(153,153,153,1);
+line-height:40rpx;
+letter-spacing:1rpx;
+}

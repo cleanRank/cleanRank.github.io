@@ -1,0 +1,28 @@
+<view class="selectCity" hover-class="none" hover-stop-propagation="false">
+  <view class="head" hover-class="none" hover-stop-propagation="false">
+    <image src="/images/nearbyStore/md_icon_lo.png" alt="" class="localIcon" />   
+    <text class="localText">{{city}}</text>
+    <text class="currentLocation">当前定位城市</text>
+  </view>
+    <scroll-view   scroll-into-view="{{toView}}" scroll-y='true'  class='scrollView'>
+      <view class="" wx:for="{{dataList}}" wx:key="index" wx:for-item="item">
+        <view class="number"   id="{{index}}">
+          {{index}}
+        </view>
+        <view class="city" hover-class="none" hover-stop-propagation="false" wx:for="{{item}}" wx:for-index="index1" data-index='{{index}}' data-index1='{{index1}}' wx:for-item="item1" wx:key='index1' bindtap='selectCity'>
+          {{item1.districtName}}
+        </view>      
+      </view>
+    </scroll-view>    
+    <scroll-view    class="numberList" >
+      <view class="" >
+        #
+      </view>
+      <view class="gapDis" style='line-height:40rpx;' wx:for="{{numberList}}"  wx:key='index2' wx:for-index="index2" wx:for-item="value" bindtap='choiceWordindex' data-wordindex="{{value}}">{{value}}</view>
+    </scroll-view>
+</view>
+  
+  
+  
+  
+  

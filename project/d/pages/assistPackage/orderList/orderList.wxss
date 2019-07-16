@@ -1,0 +1,111 @@
+page{
+  background-color: #F5F5F5;
+}
+.mod{
+  margin-bottom: 8rpx;
+}
+.mod .header{
+  background-color: #ffffff;
+  padding: 20rpx 24rpx 19rpx 20rpx;
+}
+.mod .header image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 11rpx;
+}
+.mod .header .header-name{
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.header-body{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5rpx;
+}
+.header-body .time{
+  color: #333333;
+  font-size: 24rpx;
+  padding-left: 50rpx;
+}
+.header-body .state{
+  color: #999999;
+  font-size: 28rpx;
+}
+.header-body .state.finish{
+  color: #7ED321;
+}
+.header-body .state.wait{
+  color: #F5A623;
+}
+.mod .item {
+  padding-left:30rpx;
+  height: 208rpx;
+  background:#fff;
+}
+.mod .item-img {
+  height: 208rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.item image{
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 20rpx;
+}
+.mod .foot {
+  background-color: #ffffff;
+  border-top: 1px solid #ffffff;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+  border-top:1rpx solid #efefef;
+}
+.shopInfo{
+  display: flex;
+  align-items: center;
+}
+.shopInfo .label{
+  color: #666666;
+  font-size: 30rpx;
+}
+.shopInfo .price{
+  color: #FF584B;
+  font-size: 30rpx;
+}
+.foot .pay{
+  width:144rpx;
+  height:58rpx;
+  border-radius:29rpx;
+  border:1px solid rgba(255, 48, 48, 1);
+  line-height: 58rpx;
+  text-align: center;
+  color: #FF3030;
+  font-size: 24rpx;
+}
+.outerLi .fixedLi{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.outerLi{
+  position: relative;
+}
+.no-data {
+  width: 205rpx;
+  height: 198rpx;
+}
+
+.no-data-write {
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 30rpx;
+}

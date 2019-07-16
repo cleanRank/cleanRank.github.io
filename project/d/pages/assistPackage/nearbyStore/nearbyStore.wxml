@@ -1,0 +1,42 @@
+<wxs module="filter" src='../../../utils/filter.wxs'></wxs>
+<view class="total-nearby" hover-class="none" hover-stop-propagation="false">
+  <view class="topHalf" hover-class="none" hover-stop-propagation="false">
+    <view class="page" hover-class="none" hover-stop-propagation="false">
+      <view class="pages title">
+        <view class="leftIcon page" bindtap='toSearchCity' hover-class="none" hover-stop-propagation="false">
+          <text class="text  {{city?'text1':''}}">{{city?city:'未找到'}}</text>
+          <image src="/images/nearbyStore/hp_icon_xl.png" alt="" class="select-img" />
+        </view>
+        <input class="title" placeholder="请输入您的地址" value="" auto-focus maxlength='20' type='text'
+          bindinput='searchValue' style='width:300rpx' bindconfirm='searchAddres' />
+        <view class="search" hover-class="none" hover-stop-propagation="false" bindtap='searchAddres'>
+          <image src="/images/nearbyStore/md_icon_search.png" alt="" class="commonSearch" />
+        </view>
+      </view>
+      <image src="/images/nearbyStore/md_icon_sys.png" alt="" class="commonSearch" bindtap='sanCode' />
+    </view>
+    <view class="currentLocation">当前定位</view>
+    <view class="page" hover-class="none" hover-stop-propagation="false">
+      <image src="/images/nearbyStore/md_icon_lo.png" alt="" class="localIcon" />
+      <text class="localText">{{shopInfo.shopName?shopInfo.shopName:'当前没有定位到门店'}}</text>
+    </view>
+    <view class="mg-l" hover-class="none" hover-stop-propagation="false">
+      {{shopInfo.shopAddr?shopInfo.shopAddr:'当前没有定位到门店'}}
+    </view>
+  </view>
+  <view class="bottomHalf" hover-class="none" hover-stop-propagation="false">
+    <view class="currentLocation clear-ng">附近门店{{filter.toFix(2.8)}}</view>
+    <view class="listShop" hover-class="none" hover-stop-propagation="false" wx:for="{{nearbyCity}}"
+      wx:for-index="index" wx:for-item="item" wx:key='index' bindtap='selectNearby' data-index="{{index}}">
+      <view class="page flexBtw" hover-class="none" hover-stop-propagation="false">
+        <view class="localText" selectable="false" space="false" decode="false">
+          {{item.shopName}}
+        </view>
+        <view class="distance" wx:if="{{isPower}}">距您{{item.sort}}</view>
+      </view>
+      <view class="mg-l clear-l" hover-class="none" hover-stop-propagation="false">
+        地址：{{item.storageAddr}}
+      </view>
+    </view>
+  </view>
+</view>

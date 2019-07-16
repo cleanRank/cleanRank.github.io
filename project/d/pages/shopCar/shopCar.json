@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+      "offlineShopCar": "/pages/components/offlineShopCar/offlineShopCar"
+    }
+  }

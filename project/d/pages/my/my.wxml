@@ -1,0 +1,84 @@
+<!--pages/my/my.wxml-->
+<view class="page">
+    <view class="page-content">
+        <view class="mine-t">
+            <image class="mine-bg" src="/images/my/mine_bg@2x.png"></image>
+            <open-data class="mine-head" type="userAvatarUrl"  wx:if="userAvatarUrl"></open-data>
+            <image class="mine-head" src="/images/my/user_avatar.png" wx:else></image>
+            <view class="personal-title">
+                <view class="personal-title-content">
+                    <open-data class="title" type="userNickName"></open-data>
+                    <image class="vip" src="/images/my/mine_icon_zs.png"></image>
+                </view>
+            </view>
+            <view class="tel"><text>{{telphone}}</text></view>
+        </view>
+        <view class="mine-b">
+            <ul class="mine-list">
+                <navigator url="/pages/assistPackage/myWallet/myWallet" hover-class="navigator-hover">
+                    <li>
+                        <view class="list-l">
+                            <image src="/images/my/mine_icon_wallet.png"></image>
+                            <text class="name">我的钱包</text>
+                        </view>
+                        <view class="list-r">
+                            <text class="banlance" wx:if="{{walletBalance}}">{{walletBalance}}元</text>
+                            <text class="banlance" wx:elif="{{walletBalance==0}}">0元</text>
+                            <text class="banlance" wx:else></text>
+                            <image class="right-arrow" src="/images/my/right.png"></image>
+                        </view>
+                    </li>
+                </navigator>
+                <navigator url="/pages/assistPackage/discountPage/discountPage" hover-class="navigator-hover">
+                    <li style="margin-bottom:2rpx">
+                        <view class="list-l">
+                            <image src="/images/my/mine_icon_yh.png"></image>
+                            <text class="name">我的优惠券</text>
+                        </view>
+                        <view class="list-r">
+                            <image class="right-arrow" src="/images/my/right.png"></image>
+                        </view>
+                    </li>
+                </navigator>
+                <navigator url="/pages/assistPackage/orderList/orderList" hover-class="navigator-hover">
+                    <li>
+                        <view class="list-l">
+                            <image src="/images/my/mine_list_order@2x.png"></image>
+                            <text class="name">我的订单</text>
+                        </view>
+                        <view class="list-r">
+                            <image class="right-arrow" src="/images/my/right.png"></image>
+                        </view>
+                    </li>
+                </navigator>
+                <li bindtap="showTelService">
+                    <view class="list-l">
+                        <image src="/images/my/userpg_list_service.png"></image>
+                        <text class="name">电话客服</text>
+                    </view>
+                    <view class="list-r">
+                        <image class="right-arrow" src="/images/my/right.png"></image>
+                    </view>
+                </li>
+                <!-- <navigator url="/pages/assistPackage/InvoiceCenter/InvoiceCenter" hover-class="navigator-hover">
+                <li >
+                    <view class="list-l">
+                        <image src="/images/my/mine_icon_fp@2x.png"></image>
+                        <text class="name">发票中心</text>
+                    </view>
+                    <view class="list-r">
+                        <image class="right-arrow" src="/images/my/right.png"></image>
+                    </view>
+                </li>
+                </navigator> -->
+            </ul>
+        </view>
+        <view class="popup {{isShow?'show':'hide'}}" bindtap="abrogate">
+            <view class="select">
+                <view class="service-tel">4006789999</view>
+                <view bindtap="calling" class="call">呼叫</view>
+                <view bindtap="abrogate" class="cancel">取消</view>
+            </view>
+        </view>
+    </view>
+</view>

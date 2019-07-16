@@ -1,0 +1,75 @@
+<view class="InvoiceDetail " hover-class="none" hover-stop-propagation="false">
+    <view class="content" hover-class="none" hover-stop-propagation="false">
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发货状态:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">已开票</view>
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">订单编号:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">{{invoiceDetail.orderId}}</view>
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">支付时间:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">
+                {{invoiceDetail.invoiceDate}}
+            </view>
+        </view>
+        <view class="orderInfo orderInfo1">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发票类型:</view>
+            <view class="value" hover-class="none" hover-stop-propagation="false">
+                <view class="" hover-class="none" hover-stop-propagation="false">
+                    电子普通发票
+                </view>
+
+            </view>
+        </view>
+        <view class="orderInfo" hover-class="none" hover-stop-propagation="false">
+            <view class="flex" hover-class="none" hover-stop-propagation="false">
+
+                <web-view src="{{invoiceDetail.pdfUrl}}" wx:if="{{system=='IOS'}}">
+                    <view class="btn btn1" hover-class="none" hover-stop-propagation="false">
+                        查看发票
+                    </view>
+                </web-view>
+                <view class="btn btn1" hover-class="none" hover-stop-propagation="false" bindtap='ViewInvoice'
+                    data-url="{{invoiceDetail.pdfUrl}}" wx:if="{{system!='IOS'}}">
+                    查看发票
+                </view>
+                <view class="btn  mgl btn1" hover-class="none" hover-stop-propagation="false" bindtap='sendEmail'>
+                    发送邮箱
+                </view>
+            </view>
+        </view>
+
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发票抬头:</view>
+            <view class="" hover-class="none" hover-stop-propagation="false">
+                个人
+            </view>
+        </view>
+        <view class="orderInfo">
+            <view class="keyword" hover-class="none" hover-stop-propagation="false">发票内容:</view>
+            <view class="" hover-class="none" hover-stop-propagation="false">
+                食品
+            </view>
+        </view>
+    </view>
+    <view class="modal" hover-class="none" hover-stop-propagation="false">
+        <view class="modal-content">
+
+            <view class="emailTitle" hover-class="none" hover-stop-propagation="false">
+                请输入邮箱地址
+            </view>
+            <input type="text" class="ipt" />
+            <view class="bottom_btn">
+                <view class="send modal_btn" hover-class="none" hover-stop-propagation="false">
+                    发送
+                </view>
+                <view class="close modal_btn" hover-class="none" hover-stop-propagation="false">
+                    关闭
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>

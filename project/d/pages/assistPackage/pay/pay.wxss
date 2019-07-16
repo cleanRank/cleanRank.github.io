@@ -1,0 +1,69 @@
+page{
+  background-color: #f4f4f4;
+}
+.pay-info{
+  background-color: #ffffff;
+  padding: 37rpx 0;
+  text-align: center;
+}
+.money{
+  font-size:80rpx;
+  font-weight:bold;
+  color:rgba(51, 51, 51, 1);
+  letter-spacing:5rpx;
+}
+.tip{
+  color: #333333;
+  font-size: 30rpx;
+  margin-top: 11rpx;
+  letter-spacing:2rpx;
+}
+.pay-type{
+  margin-top: 20rpx;
+  background-color: #ffffff;
+}
+.wx-pay{
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+.wx-pay.bt{
+  border-top: 1rpx solid #F3F3F3;
+}
+.wx-pay .pay-way{
+  color: #333333;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+.wx-pay .pay-way .img {
+  margin-left: 20rpx;
+  width: 38rpx;
+  height: 32rpx;
+}
+.wx-pay .pay-way .img.ye {
+  width: 36rpx;
+  height: 36rpx;
+}
+.wx-pay .check{
+  height: 40rpx;
+  width: 40rpx;
+}
+.wx-pay .active{
+  width: 40rpx;
+  height: 40rpx;
+}
+.confirm{
+  width:643rpx;
+  height:90rpx;
+  background:rgba(255, 48, 48, 1);
+  border-radius:45rpx;
+  line-height: 90rpx;
+  text-align: center;
+  margin: 324rpx auto 0;
+  color: #ffffff;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+}

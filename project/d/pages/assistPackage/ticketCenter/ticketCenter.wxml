@@ -1,0 +1,77 @@
+<!--pages/fpages/ticketCenter/ticketCenter.wxml-->
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class='page'>
+    <view class="page-bgd" wx:if="{{ticketActivityNameList.length}}"
+        style="background: #F3F3F3;position:absolute;top:0;bottom:0;left:0;right:0;">
+        <scroll-view class="left-menu" scroll-y="true" style="height:{{scroll_height}}">
+            <view class="ticket-wrapper" wx:for="{{ticketActivityNameList}}" wx:key wx:for-index="keys"
+                wx:for-item="item">
+                <view class="activety-ticket-wrap">
+                    <view class="activety-ticket-name">{{item.actionTitle}}</view>
+                </view>
+                <view class='ticket-t' wx:for="{{item.ticketGroupVoFrontList}}" wx:for-item="cell" wx:key
+                    wx:for-index="key">
+                    <view class="ticket-bg-wrap">
+                        <image src='/images/ticketCenter/yhq_bg_lq_a.png' class="ticket-bg"></image>
+                        <view class="ticket-bg-type" wx:if="{{cell.ticketType==1}}">代金券</view>
+                        <view class="ticket-bg-type" wx:elif="{{cell.ticketType==2}}">活动券</view>
+                        <view class="ticket-bg-type" wx:elif="{{cell.ticketType==9}}">折扣券</view>
+                    </view>
+                    <view class="ticket-r">
+                        <view class="ticket-content">
+                            <view class="rules-model_left_top"></view>
+                            <view class="rules-model_right_top"></view>
+                            <view class="rules-model_left_bottom"></view>
+                            <view class="rules-model_right_bottom"></view>
+                            <view class="ticket-t-price">
+                                <view class='price'>
+                                    <text
+                                        class="price-detail price-detail-red">{{cell.ticketType==9?cell.discountValue:cell.ticketValue}}</text>
+                                    <text class="price-discount price-discount-red"
+                                        wx:if="{{cell.ticketType==2}}">元(满{{cell.amtStartUse}}减{{cell.ticketValue}})</text>
+                                    <text class="price-discount price-discount-red"
+                                        wx:elif="{{cell.ticketType==9}}">折</text>
+                                    <text class="price-discount price-discount-red" wx:else>元</text>
+                                    <view class="price-write">
+                                        {{cell.ticketName}}
+                                    </view>
+                                </view>
+                                <view class='price-btn' bindtap="getTicket" data-index="{{index}}" data-id="{{key}}"
+                                    data-ddid="{{keys}}" style="background:#FF3030" wx:if="{{cell.acquireStatus==0}}">
+                                    立即领取</view>
+                                <view class='price-btn' style="background:#C5C5C5" wx:elif="{{cell.acquireStatus==1}}">
+                                    已领取
+                                </view>
+                                <view class='price-btn' style="background:#C5C5C5" wx:else="{{cell.acquireStatus==2}}">
+                                    已领完
+                                </view>
+                            </view>
+                            <view class="ticket-t-time" bindtap="modelShow" data-index="{{item}}" data-id="{{key}}"
+                                data-ddid="{{keys}}">
+                                <view class='time'>{{cell.beginDate}}-{{cell.endDate}}</view>
+                                <view class='rules'>
+                                    <text class="rules-write">优惠券使用规则</text>
+                                    <image class="rules-btn"
+                                        src="{{cell.isShow?'/images/ticketCenter/yhq_icon_xl1.png':'/images/ticketCenter/yhq_icon_xl.png'}}">
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="rules-model {{cell.isShow?'show':'hide'}}">
+                            <div class="rules-model_left_top"></div>
+                            <div class="rules-model_right_top"></div>
+                            <view wx:for="{{cell.actionMemo}}" wx:for-item="cell2" wx:key="index">
+                                {{cell2}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="page-bgd" wx:else
+        style="position:absolute;top:0;bottom:0;left:0;right:0;display:flex;align-items: center;flex-direction: column;background:#fff;justify-content:center;">
+        <image class="no-data" src="/images/noData/sea_icon_no.png"></image>
+        <view class="no-data-write">暂无数据</view>
+    </view>
+</view>

@@ -1,0 +1,398 @@
+page {
+  background-color: #fff;
+}
+
+.offlineVip {
+  padding: 0 20rpx;
+}
+.offline-wait{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.offline-wait .bg {
+  margin-top: 167rpx;
+  width: 342rpx;
+  height: 286rpx;
+}
+.offline-wait .wait {
+  margin-top: 50rpx;
+  color: #666666;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.offline-wait .will {
+  margin-top: 7rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+.headInfo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 20rpx;
+}
+
+.bgf {
+  background: #fff;
+} 
+
+.vipLogo {
+  width: 151rpx;
+  height: 44rpx;
+}
+
+.userName {
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: #fff;
+  line-height: 50rpx;
+  letter-spacing: 2rpx;
+  margin-right: 25rpx;
+
+}
+
+.headImg {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+  overflow: hidden;
+}
+
+.gradeCard {
+  margin-top: 20rpx;
+  margin-left: 5rpx;
+  position: relative;
+  color: #fff;
+}
+
+.card {
+  width: 702rpx;
+  height: 341rpx;
+  margin: 0 auto;
+}
+
+.cardInfo {
+  position: absolute;
+  top: 0;
+  left: 30rpx;
+
+}
+
+.info-wrap {
+  display: flex;
+  justify-content: flex-start;
+  height: 90rpx;
+  margin-left: -46rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -4rpx;
+
+}
+
+.vipStyle {
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  line-height: 56rpx;
+  letter-spacing: 2rpx;
+  margin: 30rpx 0;
+  height: 56rpx;
+
+}
+
+.num {
+  font-size: 48rpx;
+  font-family: DINAlternate-Bold;
+  letter-spacing: 3rpx;
+  margin: 0 50rpx;
+  height: 67rpx;
+}
+
+.word {
+  font-size: 22rpx;
+  margin: 0 50rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  line-height: 30rpx;
+  letter-spacing: 1rpx;
+}
+
+.line {
+  height: 8rpx;
+  border-radius: 7rpx;
+}
+
+.pass {
+  width: 280rpx;
+  background: rgba(255, 241, 212, 1);
+}
+
+.rest {
+  width: 340rpx;
+  background: rgba(210, 152, 31, 1);
+}
+
+.iconLogo {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.vipProgress {
+  margin: 60rpx 0 0 0rpx;
+  display: flex;
+  align-items: center;
+
+}
+
+.progressNum {
+  display: flex;
+  width: 640rpx;
+  /* margin-left:30rpx; */
+  font-size: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px 0;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(210, 152, 31, 1);
+  line-height: 28rpx;
+  letter-spacing: 1rpx;
+
+}
+
+.commonTicket {
+  display: flex;
+  align-items: center
+}
+
+.seperate {
+  justify-content: space-between;
+}
+
+.verticalLine {
+  width: 8rpx;
+  height: 34rpx;
+  background: rgba(255, 48, 48, 1);
+  margin-right: 15rpx;
+}
+
+.topicName {
+  font-size: 31rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 44rpx;
+  letter-spacing: 2rpx;
+}
+
+.select-img {
+  width: 24rpx;
+  height: 22rpx;
+  margin: 0 15rpx 0 10rpx;
+}
+
+.more {
+  font-size: 26rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(171, 171, 171, 1);
+  line-height: 37rpx;
+  letter-spacing: 1rpx;
+}
+
+.ticket-bg {
+  width: 78rpx;
+  height: 232rpx;
+}
+
+.getCouponed {
+  color: #999;
+}
+
+.ticket-t {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  width: 702rpx;
+
+}
+
+.ticket-content {
+  position: relative;
+}
+
+.ticket-r {
+  background-color: #fff;
+  width: 624rpx;
+
+}
+
+.bgColor {
+  background: #f3f3f3;
+  padding: 20rpx;
+}
+.bgFixed{
+  position: absolute;
+  height: 400rpx;
+  width: 100%;
+  top: 0;
+}
+.ticket-t-price {
+  padding: 10rpx;
+  align-items: center
+}
+
+.price {
+  color: #FF714A;
+}
+
+.ticket-t-price,
+.ticket-t-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-detail {
+  font-size: 90rpx;
+  font-family: Helvetica;
+}
+
+.price-detail1 {
+  font-size: 60rpx;
+}
+
+.price-discount {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+}
+
+.price-write {
+  font-size: 30rpx;
+  color: #333;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  text-indent: 8rpx;
+}
+
+.price-btn {
+  font-size: 30rpx;
+  color: #fff;
+  width: 173rpx;
+  height: 56rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 56rpx;
+  margin-right: 21rpx;
+  /* margin-top: 61rpx; */
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+}
+
+.price-btn-red {
+  background: rgba(255, 48, 48, 1);
+}
+
+.ticket-t-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+  width: 624rpx;
+  height: 65rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  border-top: 1px dashed rgba(204, 204, 204, 1);
+}
+
+.time {
+  margin-left: 18rpx;
+}
+
+.rules {
+  margin-right: 38rpx;
+  display: flex;
+  align-items: center;
+
+}
+
+.rules-btn {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+
+.rotateRight {
+  transform: rotate(180deg);
+}
+
+.rules-model {
+  position: relative;
+  width: 583rpx;
+  /* height: 100rpx; */
+  background-color: #fff;
+  font-size: 20rpx;
+  color: #999;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  line-height: 30rpx;
+  padding: 19rpx 19rpx 18rpx 22rpx;
+}
+
+.rules-model_left_top,
+.rules-model_right_top,
+.rules-model_right_bottom,
+.rules-model_left_bottom {
+  position: absolute;
+  width: 13rpx;
+  height: 13rpx;
+  z-index: 1;
+  background: #F3F3F3;
+}
+
+.rules-model_left_top {
+  top: -1rpx;
+  left: -1rpx;
+  border-radius: 0rpx 0rpx 13rpx 0rpx;
+}
+
+.rules-model_right_top {
+  top: -1rpx;
+  right: -1rpx;
+  border-radius: 0rpx 0rpx 0rpx 13rpx;
+}
+
+.rules-model_right_bottom {
+
+  bottom: -1rpx;
+  right: -1rpx;
+  border-radius: 13rpx 0rpx 0rpx 0rpx;
+}
+
+.rules-model_left_bottom {
+
+  bottom: -1rpx;
+  left: -1rpx;
+  border-radius: 0rpx 13rpx 0rpx 0rpx;
+}
+
+.overTime {
+  color: rgba(204, 204, 204, 1);
+}
+
+.overTime1 {
+  background: rgba(204, 204, 204, 1);
+}
+.bgFlex{
+  display: flex;
+  justify-content: center;
+}

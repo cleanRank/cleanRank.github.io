@@ -1,0 +1,178 @@
+/* pages/my/my.wxss */
+page {
+    background-color: #F3F3F3;
+}
+
+.mine-t {
+    width: 100%;
+    height: 344rpx;
+    position: relative;
+}
+
+.mine-bg {
+    width: 100%;
+    height: 344rpx;
+}
+
+.mine-head {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    position: absolute;
+    top: 50rpx;
+    left: 316rpx;
+    overflow: hidden;
+}
+
+.personal-title {
+    position: absolute;
+    top: 200rpx;
+    height: 45rpx;
+    width: 100%;
+}
+
+.personal-title-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 32rpx;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    color: rgba(51, 51, 51, 1);
+    line-height: 45rpx;
+    margin-right: 10rpx;
+}
+
+.vip {
+    width: 30rpx;
+    height: 28rpx;
+}
+
+.tel {
+    position: absolute;
+    top: 254rpx;
+    font-size: 28rpx;
+    font-family: PingFangSC-Light;
+    font-weight: 300;
+    color: rgba(51, 51, 51, 1);
+    line-height: 40rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mine-b {
+    margin-top: 10rpx;
+}
+
+.mine-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120rpx;
+    background-color: #fff;
+    padding:0 18rpx 0 30rpx;
+}
+
+
+.list-l {
+    display: flex;
+    align-items: center;
+}
+
+.list-l image {
+    width: 32rpx;
+    height: 28rpx;
+}
+
+.name {
+    font-size: 28rpx;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
+    line-height: 40rpx;
+    margin-left: 20rpx;
+}
+
+.list-r {
+    display: flex;
+    align-items: center;
+}
+
+.banlance {
+    font-size: 28rpx;
+    color: orange;
+    font-weight: 500;
+    margin-right: 18rpx;
+    line-height:40rpx;
+}
+
+.right-arrow {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+
+}
+
+.select {
+    width: 100%;
+    background: #F5F5F5;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}
+
+.service-tel,
+.call,
+.cancel {
+    line-height: 98rpx;
+    text-align: center;
+    font-size: 30rpx;
+    background: #fff;
+}
+
+.service-tel {
+    font-weight: 600;
+    color: #333;
+}
+
+.call {
+    font-weight: 400;
+    font-family: PingFangSC-Regular;
+    color: rgba(255, 90, 77, 1);
+    margin-top: 2rpx;
+}
+
+.cancel {
+    font-weight: 400;
+    color: #999;
+    margin-top: 6rpx;
+}
+
+.cancel::after {
+    border: none;
+    border-radius: 0;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

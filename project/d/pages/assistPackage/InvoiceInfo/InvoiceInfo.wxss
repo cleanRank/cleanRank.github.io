@@ -1,0 +1,78 @@
+page {
+  background:rgba(246,246,246,1);
+
+}
+.InvoiceInfo{
+  padding-bottom: 150rpx;
+}
+.InvoiceInfo .header{
+  height: 85rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fff;
+}
+.InvoiceInfo .header .btn{
+  width:182rpx;
+border-radius:8rpx;
+color:#fff;
+line-height:52rpx;
+text-align: center;
+font-size:26rpx;
+font-family:PingFangSC-Regular;
+font-weight:400;
+background: rgba(255,48,48,1);
+margin-right: 20rpx;
+}
+.InvoiceInfo .content {
+  padding: 0 25rpx;
+  
+}
+.InvoiceInfo .content .orderInfo {
+  width:612rpx;
+background:rgba(255,255,255,1);
+border-radius:8rpx;
+padding:30rpx 45rpx; 
+margin-top: 20rpx;
+}
+.InvoiceInfo .orderInfo .flex{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #EEEEEE;
+  line-height: 70rpx;
+}
+.InvoiceInfo .orderInfo .img{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 14rpx;
+}
+.company{
+font-size:26rpx;
+font-family:PingFang-SC-Bold;
+font-weight:bold;
+color:rgba(51,51,51,1);
+line-height:65rpx;
+}
+.number {
+font-size:26rpx;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(51,51,51,1);
+line-height:50rpx;
+}
+.InvoiceInfo .submit{
+  width:643rpx;
+line-height:90rpx;
+text-align: center;
+position: fixed;
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+bottom: 30rpx;
+background:rgba(255,48,48,1);
+border-radius:45px;
+color: #fff;
+letter-spacing:2rpx;
+}

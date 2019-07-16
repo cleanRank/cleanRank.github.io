@@ -1,0 +1,48 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view >
+  <!-- <view class="offline-wait" hover-class="none" hover-stop-propagation="false">
+    <image class="bg" src="/images/main/hy_icon_sx.png"></image>
+    <view class="wait" hover-class="none" hover-stop-propagation="false">会员功能即将上线</view>
+    <view class="will" hover-class="none" hover-stop-propagation="false">敬请期待</view>
+  </view> -->
+        <image class="bgFixed" src="../../images/offlineVip/hy_db_bg@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <view class="offlineVip bgf" hover-class="none" hover-stop-propagation="false">
+        <view class="headInfo" hover-class="none" hover-stop-propagation="false">
+                <open-data class="headImg" type="userAvatarUrl"></open-data>
+                <open-data class="userName" type="userNickName"></open-data>
+            <image class="vipLogo" src='/images/offlineVip/hy.png' bindtap='toRuleDes'></image>            
+        </view>
+        <view class="gradeCard">
+            <image class="card" src="/images/offlineVip/hy_bg_card_jk.png" lazy-load="false" binderror="" bindload="" />
+            <view class="cardInfo">
+                <view class="vipStyle">{{vipInfo.gradeName}}</view>
+                <view class="info-wrap">
+                    <view class="info">
+                        <view class="num">{{vipInfo.growthValue}}</view>
+                        <view class="word">成长值</view>
+                    </view>
+                    <view class="info">
+                        <view class="num" wx:if="{{vipInfo.relegationDays}}">{{vipInfo.relegationDays}}天</view>
+                        <view class="num" wx:else>{{vipInfo.relegationDays}}</view>
+                        <view class="word">保级时间</view>
+                    </view>
+                </view>
+                <view class="vipProgress">
+                    <view class="line pass" hover-class="none" hover-stop-propagation="false" style="width:{{growthValue}};background:#fff"></view>
+                    <!-- <image class="iconLogo" src="{{vipInfo.showLogoPath}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" /> -->
+                    <image class="iconLogo" src="../../images/offlineVip/hy_icon_dj.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                    <view class="line rest" hover-class="none" hover-stop-propagation="false" style="width:{{restValue}}"></view>
+                </view>
+                <view class="progressNum">
+                    <view class=""  >{{vipInfo.growthValueList[0]}}</view>
+                    <view class=""  >{{(vipInfo.growthValueList[4]-vipInfo.growthValueList[0])/2}}</view>
+                    <view class=""  >{{vipInfo.growthValueList[4]}}</view>
+                </view>
+            </view>
+        </view>       
+    </view>
+    <view class="bgFlex" hover-class="none" hover-stop-propagation="false">
+        <!-- <image class="" src="../../images/offlineVip/bg@2x.png" mode="widthFix" lazy-load="false" binderror="" bindload=""  style="width:94%"/> -->
+        <image class="" src="{{vipBanner}}" mode="widthFix" lazy-load="false" binderror="" bindload=""  style="width:94%"/>
+    </view>
+</view>

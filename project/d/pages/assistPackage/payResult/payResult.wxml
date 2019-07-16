@@ -1,0 +1,70 @@
+<!-- pay.wxml -->
+<view class="payResultFrame">
+  <icon class="icon-success" type="{{status==1?'success':'cancel'}}" size="172rpx" />
+  <view class="tip">
+    {{status==1?'支付成功':'支付失败'}}
+  </view>
+  <view class="btn btn-confirm" hover-stay-time="1500" bindtap="confirm">
+    继续购物
+  </view>
+  <view class="btn btn-cancel mt" hover-stay-time="1500" bindtap="goDetail">
+    订单详情
+  </view>
+  <!-- <view class="mask-layer" wx:if="{{vipShow}}" bindtap="goCouponCenter">
+    <view class="mod" hover-class="none" hover-stop-propagation="false">
+      <image class="yhq" src="/images/main/hp_bg_yhq.png"></image>
+      <image class="close" src="/images/main/hp_yhq_del.png" catchtap="closeLayer"></image>
+    </view>
+  </view> -->
+
+  <!-- 优惠券弹框 -->
+  <view class="ticket-model {{close?'':'hidden'}}" wx:if="{{ticketInfoNoUse.length}}">
+    <view class="ticket-wrap">
+      <view class="active-title">赶快下单使用吧</view>
+      <image class="ticket-bottom" src="/images/main/hp_bg_card_a@2x.png"></image>
+      <view class="ticket-content-wrap">
+
+        <view class='ticket-t' wx:for="{{ticketInfoNoUse}}" wx:key="this">
+          <view class="ticket-bg-wrap">
+            <image src='/images/ticketCenter/yhq_bg_lq_a.png' class="ticket-bg"></image>
+            <view class="ticket-bg-type" wx:if="{{item.ticketType==1}}">代金券</view>
+            <view class="ticket-bg-type" wx:elif="{{item.ticketType==2}}">活动券</view>
+            <view class="ticket-bg-type" wx:elif="{{item.ticketType==9}}">折扣券</view>
+          </view>
+          <view class="ticket-r">
+            <view class="ticket-content">
+              <view class="rules-model_left_top"></view>
+              <view class="rules-model_right_top"></view>
+              <view class="rules-model_left_bottom"></view>
+              <view class="rules-model_right_bottom"></view>
+              <view class="ticket-t-price">
+                <view class='price'>
+                  <view class="price-wrap">
+                    <text
+                      class="price-detail price-detail-red">{{item.ticketType==9?item.discountValue:item.ticketValue}}</text>
+                    <text class="price-discount price-discount-gray"
+                      wx:if="{{item.ticketType==2}}">元(满{{item.amtStartUse}}减{{item.ticketValue}})</text>
+                    <text class="price-discount price-discount-gray" wx:elif="{{item.ticketType==9}}">折</text>
+                    <text class="price-discount price-discount-gray" wx:else>元</text>
+                  </view>
+                  <view class="price-write">
+                    {{item.ticketName}}
+                  </view>
+                  <view class="ticket-t-time">
+                    <view class='time'>{{item.beginDate}}-{{item.endDate}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-gocenter" bindtap="goMyTicket">
+
+        <image class="ticket-top" src="/images/main/hp_bg_card_b@2x.png"></image>
+        <view class="btn-write">前往我的优惠券</view>
+      </view>
+    </view>
+    <image class="close-model" src="/images/main/hp_yhq_del.png" bindtap="closeModel"></image>
+  </view>
+</view>

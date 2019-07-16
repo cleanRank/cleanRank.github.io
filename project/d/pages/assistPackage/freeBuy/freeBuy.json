@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "自由购",
+  "usingComponents": {
+    "temShopCart": "/pages/components/temShopCart/temShopCart"
+  }
+}

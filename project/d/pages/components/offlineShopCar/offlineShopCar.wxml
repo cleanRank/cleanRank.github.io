@@ -1,0 +1,85 @@
+<view class="totalBg" hover-class="none" hover-stop-propagation="false">
+    <view class="offlineShopCar">
+        <view class="allSelect">
+            <view class="goodsName" hover-class="none" hover-stop-propagation="false">
+                {{shopName}}
+            </view>
+            <text class="edit" bindtap='edit' wx:if="{{allShopList.length}}">
+                {{edit?'编辑':'完成'}}
+            </text>
+        </view>
+        <view class="flex" hover-class="none" hover-stop-propagation="false" wx:for="{{allShopList}}" wx:key="index"
+            wx:for-index="index" wx:for-item="item" hidden="{{!allShopList.length}}">
+            <view class="" bindtap="bindCheckbox" data-index='{{index}}'>
+                <image class="select" src="/images/offlineShopCar/gw_icon_xz_a.png" wx:if="{{item.selected}}" />
+                <image class="select" src="/images/offlineShopCar/gw_icon_xz.png" wx:else />
+            </view>
+            <view class="showShopList">
+                <view class="opac" hover-class="none" hover-stop-propagation="false"
+                    wx:if="{{item.itemStatus!=1&&edit}}">
+                    <view class="opac-write">已下架</view>
+                </view>
+                <view class="opac" hover-class="none" hover-stop-propagation="false"
+                    wx:if="{{item.itemStatus==1&&item.stockNum < 1&&edit&&ctrlStock == 1&&item.materialType!=2&&!item.packageFlag}}">
+                    <view class="opac-write"> 已售磬</view>
+                </view>
+                <view class="outerLi" hover-class="none" hover-stop-propagation="false">
+                    <image
+                        class="shopPic {{item.itemStatus!=1&&edit||item.itemStatus==1&&item.stockNum < 1&&edit&&ctrlStock == 1&&item.materialType!=2&&!item.packageFlag?'opac-write1':''}}"
+                        mode="aspectFit" src="{{item.picPath?item.picPath:'/images/icon/hp_icon_logo.png'}}"
+                        lazy-load="false" binderror="" bindload="" />
+                    <image class="fixedLi" src="/images/shopCart/hp_icon_li@2x.png" mode="aspectFit|aspectFill|widthFix"
+                        lazy-load="false" binderror="" bindload="" wx:if='{{item.packageFlag}}' />
+                </view>
+                <view class="shopDescription">
+                    <view class="shopName">{{item.skuName?item.skuName:''}}</view>
+                    <!-- <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+                        <view class="discount" wx:for="{{discountList}}" wx:key="index" wx:for-item="item">{{item}}</view>
+                    </view> -->
+                    <view class="history">
+                        <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+                            <view class="price">¥{{item.salesPrice}}</view>
+                            <view class="disprice">¥{{item.salesPrice}}</view>
+                        </view>
+                        <view class="history">
+                            <image class="commonSearch mg-r" src="/images/searchGoods/gw_icon_rd.png" lazy-load="false"
+                                binderror="" bindload="" data-index="{{index}}" bindtap="cut" />
+                            <view class="num">{{item.salesQty}}</view>
+                            <image class="commonSearch mg-l" src="/images/searchGoods/gw_icon_add.png" lazy-load="false"
+                                binderror="" bindload="" data-index="{{index}}" bindtap='add' />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="noData" hover-class="none" hover-stop-propagation="false" hidden="{{allShopList.length}}">
+            <image class="img" src="/images/noData/zy_icon_load.png" lazy-load="false" binderror="" bindload="" />
+            <view class="nodata" hover-class="none" hover-stop-propagation="false">暂无数据</view>
+        </view>
+    </view>
+    <!-- <view class="delGoods" wx:if="{{!edit&&allShopList.length}}"  bindtap='deleteGoods'>删除商品</view> -->
+    <view class="bottomShopCar" wx:if="{{allShopList.length}}">
+        <view class="flexible" bindtap="bindSelectAll">
+            <image class="select no_margin" src="/images/offlineShopCar/gw_icon_xz.png"
+                wx:if="{{!selectedAllStatus}}" />
+            <image class="select no_margin" src="/images/offlineShopCar/gw_icon_xz_a.png" wx:else />
+            <view class='total'>全选</view>
+        </view>
+        <view class="flexible mg_l" hover-class="none" hover-stop-propagation="false" bindtap='clear' wx:if="{{!edit}}">
+            <image class="select no_margin select1" src="/images/offlineShopCar/gw_icon_del@2x.png" />
+            <view class='total'>清空</view>
+        </view>
+        <view class="flexible" hover-class="none" hover-stop-propagation="false" wx:if="{{!edit}}">
+            <view class="selectedBtn del" hover-class="none" hover-stop-propagation="false" bindtap='deleteGoods'>
+                删除
+            </view>
+        </view>
+        <view class="flexible" hover-class="none" hover-stop-propagation="false" wx:if="{{edit}}">
+            <view class='total total1'>合计:</view>
+            <view class="totalPrice">￥{{totalPrice}}</view>
+            <view class="selectedBtn" hover-class="none" hover-stop-propagation="false"  bindtap='toSettle'>
+                结算
+            </view>
+        </view>
+    </view>
+</view>

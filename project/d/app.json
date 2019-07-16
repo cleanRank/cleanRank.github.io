@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/my/my",
+    "pages/main/main",
+    "pages/shopCar/shopCar",
+    "pages/offlineVip/offlineVip",
+    "pages/offlineVip/ruleDescription/ruleDescription"
+  ],
+  "subPackages": [{
+    "root": "pages/assistPackage/",
+    "name": "assistPackage",
+    "pages": [
+      "freeBuy/freeBuy",
+      "scanCodeBuy/scanCodeBuy",
+      "selectCity/selectCity",
+      "nearbyStore/nearbyStore",
+      "searchGoods/searchGoods",
+      "ticketCenter/ticketCenter",
+      "discountPage/discountPage",
+      "myWallet/myWallet",
+      "confirmOrder/confirmOrder",
+      "orderDetail/orderDetail",
+      "orderList/orderList",
+      "InvoiceCenter/InvoiceCenter",
+      "InvoiceInfo/InvoiceInfo",
+      "InvoiceDetail/InvoiceDetail",
+      "receiverInfo/receiverInfo",
+      "pay/pay",
+      "payResult/payResult",
+      "activity/activity",
+      "useCoupon/useCoupon",
+      "useAction/useAction"
+    ]
+  }],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f5f5f5",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "休闲驿站",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于定位附近门店"
+    }
+  },
+  "tabBar": {
+    "list": [{
+        "pagePath": "pages/main/main",
+        "text": "首页",
+        "iconPath": "/images/tabbar/main.png",
+        "selectedIconPath": "/images/tabbar/main_a.png"
+      },
+      {
+        "pagePath": "pages/offlineVip/offlineVip",
+        "text": "会员",
+        "iconPath": "/images/tabbar/vip.png",
+        "selectedIconPath": "/images/tabbar/vip_a.png"
+      },
+      {
+        "pagePath": "pages/shopCar/shopCar",
+        "text": "购物车",
+        "iconPath": "/images/tabbar/cart.png",
+        "selectedIconPath": "/images/tabbar/cart_a.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/images/tabbar/mine.png",
+        "selectedIconPath": "/images/tabbar/mine_a.png"
+      }
+    ],
+    "color": "#B8B8B8",
+    "selectedColor": "#FF3030"
+  },
+  "sitemapLocation": "sitemap.json"
+}

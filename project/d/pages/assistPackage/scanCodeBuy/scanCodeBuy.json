@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "扫码购",
+  "usingComponents": {
+    "temShopCart": "/pages/components/temShopCart/temShopCart"
+  }
+}

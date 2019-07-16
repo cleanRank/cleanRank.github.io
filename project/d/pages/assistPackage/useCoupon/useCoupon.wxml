@@ -1,0 +1,129 @@
+<!--pages/assistPackage/useCoupon/useCoupon-->
+<view class="page1 {{ticketInfo.length||disabledTicketList.length?'':'page1-nodata'}}">
+    <view class="page1-bgd">
+        <view class="coupon-header">
+            <view class="label">
+                不使用优惠券
+            </view>
+            <image class="check" src="{{noSelectAction ? '/images/main/check.png':'/images/main/uncheck.png'}}"
+                bindtap="selectNoneCoupon">
+            </image>
+        </view>
+        <view class="ticket-list" wx:if="{{ticketInfo.length||disabledTicketList.length}}">
+            <view wx:for="{{ticketInfo}}" wx:key="index" wx:for-index="index">
+                <view class='ticket-t' bindtap="selectCoupon" data-list="{{item}}">
+                    <view class="ticket-bg-wrap">
+                        <image
+                            src='{{item.isGray?"/images/ticketCenter/yhq_bg_lq_a.png":"/images/ticketCenter/yhq_bg_lq_b.png"}}'
+                            class="ticket-bg"></image>
+                        <view class="ticket-bg-type" wx:if="{{item.ticketType==1}}">代金券</view>
+                        <view class="ticket-bg-type" wx:elif="{{item.ticketType==2}}">活动券</view>
+                        <view class="ticket-bg-type" wx:elif="{{item.ticketType==9}}">折扣券</view>
+                    </view>
+                    <view class="ticket-r">
+                        <view class="ticket-content">
+                            <view class="rules-model_left_top"></view>
+                            <view class="rules-model_right_top"></view>
+                            <view class="rules-model_left_bottom"></view>
+                            <view class="rules-model_right_bottom"></view>
+                            <view class="ticket-t-price">
+                                <view class='price'>
+                                    <text
+                                        class="price-detail {{item.isGray?'price-detail-red':'price-detail-gray'}}">{{item.ticketType==9?item.discountValue: item.ticketValue}}</text>
+                                    <text
+                                        class="price-discount {{item.isGray?'price-discount-red':'price-discount-gray'}}"
+                                        wx:if="{{item.ticketType==2}}">元(满{{item.amtStartUse}}减{{item.ticketValue}})</text>
+                                    <text
+                                        class="price-discount {{item.isGray?'price-discount-red':'price-discount-gray'}}"
+                                        wx:elif="{{item.ticketType==9}}">折{{item.discountValue?'最高抵扣'+item.discountValue:''}}</text>
+                                    <text
+                                        class="price-discount {{item.isGray?'price-discount-red':'price-discount-gray'}}"
+                                        wx:else>元</text>
+                                    <view class="price-write">{{item.ticketName}}</view>
+                                </view>
+                                <image class="check"
+                                    src="{{item.isGray?(item.ticketId===usedActionTicketId || item.ticketId===usedCashTicketId || item.ticketId===usedDiscountTicketId ? '/images/main/check.png':'/images/main/uncheck.png'):'/images/main/notcheck.png'}}">
+                                </image>
+                            </view>
+                            <view class="ticket-t-time">
+                                <view class='time'>{{item.beginDate}}-{{item.endDate}}</view>
+                                <view class='rules' catchtap="modelShow" data-index="{{index}}">
+                                    <text class="rules-write">优惠券使用规则</text>
+                                    <image class="rules-btn"
+                                        src="{{item.isShow?'/images/ticketCenter/yhq_icon_xl1.png':'/images/ticketCenter/yhq_icon_xl.png'}}">
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="rules-model {{item.isShow?'show':'hide'}}">
+                            <div class="rules-model_left_top"></div>
+                            <div class="rules-model_right_top"></div>
+                            <view wx:for="{{item.actionMemo}}" wx:for-item="cell" wx:key="index">
+                                {{cell}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 不可用活动展示 -->
+            <view wx:for="{{disabledTicketList}}" wx:key="index" wx:for-index="index">
+                <view class='ticket-t' data-list="{{item}}">
+                    <view class="ticket-bg-wrap">
+                        <image src='/images/ticketCenter/yhq_bg_lq_b.png' class="ticket-bg"></image>
+                        <view class="ticket-bg-type" wx:if="{{item.ticketType==1}}">代金券</view>
+                        <view class="ticket-bg-type" wx:elif="{{item.ticketType==2}}">活动券</view>
+                        <view class="ticket-bg-type" wx:elif="{{item.ticketType==9}}">折扣券</view>
+                    </view>
+                    <view class="ticket-r">
+                        <view class="ticket-content">
+                            <view class="rules-model_left_top"></view>
+                            <view class="rules-model_right_top"></view>
+                            <view class="rules-model_left_bottom"></view>
+                            <view class="rules-model_right_bottom"></view>
+                            <view class="ticket-t-price">
+                                <view class='price'>
+                                    <text
+                                        class="price-detail price-detail-gray">{{item.ticketType==9?item.discountValue: item.ticketValue}}</text>
+                                    <text class="price-discount price-discount-gray"
+                                        wx:if="{{item.ticketType==2}}">元(满{{item.amtStartUse}}减{{item.ticketValue}})</text>
+                                    <text class="price-discount price-discount-gray"
+                                        wx:elif="{{item.ticketType==9}}">折{{item.discountValue?'最高抵扣'+item.discountValue:''}}</text>
+                                    <text class="price-discount price-discount-gray" wx:else>元</text>
+                                    <view class="price-write">{{item.ticketName}}</view>
+                                </view>
+                                <image class="check" src="/images/main/notcheck.png">
+                                </image>
+                            </view>
+                            <view class="ticket-t-time">
+                                <view class='time'>{{item.beginDate}}-{{item.endDate}}</view>
+                                <view class='rules' catchtap="modelShow1" data-index="{{index}}">
+                                    <text class="rules-write">优惠券使用规则</text>
+                                    <image class="rules-btn"
+                                        src="{{item.isShow?'/images/ticketCenter/yhq_icon_xl1.png':'/images/ticketCenter/yhq_icon_xl.png'}}">
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="rules-model {{item.isShow?'show':'hide'}}">
+                            <div class="rules-model_left_top"></div>
+                            <div class="rules-model_right_top"></div>
+                            <view wx:for="{{item.actionMemo}}" wx:for-item="cell" wx:key="index">
+                                {{cell}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="ticket-list1" wx:else>
+            <image class="nodata" src="/images/noData/no_hd@2x.png"></image>
+            <view class="nodata-write">暂时没有可用的优惠券哦~</view>
+        </view>
+    </view>
+    <view class="confirm-wrap">
+        <view class="confirm" bindtap="confirm">
+            确认选择
+        </view>
+    </view>
+</view>

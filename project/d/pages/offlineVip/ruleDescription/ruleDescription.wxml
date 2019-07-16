@@ -1,0 +1,74 @@
+<view class="ruleDescription" hover-class="none" hover-stop-propagation="false">
+    <view class="commonTicket" hover-class="none" hover-stop-propagation="false">
+        <icon class="verticalLine"></icon>
+        <view class="topicName">会员达成条件</view>
+    </view>
+    <view class="mgContent" hover-class="none" hover-stop-propagation="false">
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            会员等级【普通会员】，达成条件【注册没有消费记录】
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            会员等级【银卡会员】，达成条件【成长值1-999】
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            会员等级【金卡会员】，达成条件【成长值1000-2999】
+        </view>
+    </view>
+    <view class="commonTicket" hover-class="none" hover-stop-propagation="false">
+        <icon class="verticalLine"></icon>
+        <view class="topicName">会员等级说明</view>
+    </view>
+    <view class="mgContent" hover-class="none" hover-stop-propagation="false">
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            1.实时计算过去180天（含当天）所获得的成长值，若达到门槛，即可获得相应会员等级
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            2.每次升级时，会员等级有效期将会刷新至180天（含当日）。 
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+          3.在有效期截止之前，不会发生会员降级的情况。 
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+          4.会员等级和水象优品合伙人计划为互斥方案，两者身份不叠加使用。
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+          5.在任何会员等级期间，若满足成为银牌合伙人的条件，将自动转为银牌合伙人且不再享有会员权益。 
+        </view>
+    </view>
+    <view class="commonTicket" hover-class="none" hover-stop-propagation="false">
+        <icon class="verticalLine"></icon>
+        <view class="topicName">成长值获得</view>
+    </view>
+    <view class="mgContent" hover-class="none" hover-stop-propagation="false">
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            1.在休闲驿站或者商城消费1元获得1成长值，部分商品（如促销商品、水象通卡）不增加成长值。
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+             2.购物成长值，以订单确认交付后发放
+        </view>
+    </view>
+    <view class="commonTicket" hover-class="none" hover-stop-propagation="false">
+        <icon class="verticalLine"></icon>
+        <view class="topicName">成长值扣减</view>
+    </view>
+    <view class="mgContent" hover-class="none" hover-stop-propagation="false">
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            1.订单完成退换货后，该笔订单的金额如有异动的情况下，将会按实际情况重新计算该笔订单的成长值 
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+             2.成长值有效期为180天，每天会自行扣减180天前的成长值
+        </view>
+    </view>
+    <!-- <view class="commonTicket" hover-class="none" hover-stop-propagation="false">
+        <icon class="verticalLine"></icon>
+        <view class="topicName">成长值扣减</view>
+    </view>
+    <view class="mgContent" hover-class="none" hover-stop-propagation="false">
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+            1.水象优品：零级会员不享受折扣，一级会员九八折，二级会员九五折，部分促销商品不享受折扣， 以产品详情为准；
+        </view>
+        <view class="vipContent" hover-class="none" hover-stop-propagation="false">
+             2.休闲驿站:会员每月根据等级，可以领取或赠送各种豆浆券，早餐券，折扣券等优惠券，消费时可以抵扣现金；
+        </view>
+    </view> -->
+</view>

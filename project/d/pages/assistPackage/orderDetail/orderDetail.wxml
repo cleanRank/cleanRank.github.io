@@ -1,0 +1,100 @@
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+<view class="totalBg" hover-class="none" hover-stop-propagation="false">
+  <view class="mod" hover-class="none" hover-stop-propagation="false">
+    <view class="commonTitle title" wx:if="{{orderInfo}}">
+      <view class="status">
+        <image class="orderIcon" src="/images/offlineShopCar/list_icon_zt.png" />
+        <view class="orderStatus">{{payStatus==2?'待付款':payStatus==3?'已完成':'已取消'}}</view>
+      </view>
+      <view class="explain" hover-class="none" hover-stop-propagation="false">
+        {{payStatus==2?'倒计时'+clock:payStatus==3?'您的订单已完成，欢迎下次惠顾':'您的订单已取消，欢迎下次惠顾'}}
+      </view>
+    </view>
+    <image class="commonTitle title1" src="../../../images/offlineShopCar/list_bg_lt.png"
+      mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+    <view class="pd" hover-class="none" hover-stop-propagation="false">
+      <view class="showShopList " wx:for="{{orderInfo}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+        <view class="outerLi" hover-class="none" hover-stop-propagation="false">
+          <image class="shopPic" mode="aspectFit" src="{{item.itemPic?item.itemPic:'/images/icon/hp_icon_logo.png'}}"
+            lazy-load="false" binderror="" bindload="" />
+          <image class="fixedLi" src="/images/shopCart/hp_icon_li@2x.png" mode="aspectFit|aspectFill|widthFix"
+            wx:if='{{item.packageId}}' />
+          <image class="fixedLi" src="/images/shopCart/hp_icon_so@2x.png" mode="aspectFit|aspectFill|widthFix"
+            wx:elif='{{item.popFlag==1}}' />
+          <image class="fixedLi" src="/images/shopCart/hp_icon_hu@2x.png" mode="aspectFit|aspectFill|widthFix"
+            wx:elif='{{item.dpromAmt>0}}' />
+        </view>
+        <view class="shopDesctiption-shop">
+          <view class="shopName">{{item.skuName?item.skuName:''}}</view>
+          <view class="history-shop">
+            <view class="disprice">¥{{item.popFlag?'0.00':item.salePrice}}</view>
+            <view class="price">¥{{item.popFlag?'0.00':item.salePrice}}</view>
+            <view class="history-num">
+              <view class="num">X {{item.saleQty}}</view>
+            </view>
+            <view class="discount" wx:if="{{item.dpromAmt>0&&item.popFlag!=1}}">-{{item.dpromAmt}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="searchGoods totalBill " hover-class="none" hover-stop-propagation="false">
+    <view class="history">
+      <view class="localText">总计</view>
+      <view class="localText">￥{{orderDetail.totalAmt}}</view>
+    </view>
+    <view class="tx-r  mg-b" hover-class="none" hover-stop-propagation="false" wx:if="{{orderDetail.promAmt}}">
+      <view class="coupon-name">活动优惠</view>
+      <view class="coupon" hover-class="none" hover-stop-propagation="false">-￥{{orderDetail.promAmt}}</view>
+    </view>
+    <view class="tx-r  mg-b" hover-class="none" hover-stop-propagation="false" wx:if="{{orderDetail.ticket}}">
+      <view class="coupon-name">优惠券</view>
+      <view class="coupon" hover-class="none" hover-stop-propagation="false">-￥{{orderDetail.ticket}}</view>
+    </view>
+    <view class="tx-r page" hover-class="none" hover-stop-propagation="false">
+      <view class="coupon" hover-class="none" hover-stop-propagation="false">实付</view>
+      <view class="realPrice" selectable="false" space="false" decode="false">
+        ￥{{orderDetail.realAmt}}
+      </view>
+    </view>
+  </view>
+  <view class="searchGoods totalBill1 " hover-class="none" hover-stop-propagation="false" wx:if="{{payStatus==3}}">
+    <view class="history">
+      <view class="localText">支付方式</view>
+      <view class="coupon">{{orderDetail.paymentTypeCn}}</view>
+    </view>
+  </view>
+  <view class="searchGoods totalBill mg-t" hover-class="none" hover-stop-propagation="false">
+    <view class="orderInfo mg-b">
+      <view class="" hover-class="none" hover-stop-propagation="false">订单号：</view>
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        {{orderDetail.orderId}}
+      </view>
+    </view>
+    <view class="orderInfo mg-b">
+      <view class="" hover-class="none" hover-stop-propagation="false">下单时间：</view>
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        {{detail.gmtCreated}}
+      </view>
+    </view>
+    <view class="orderInfo mg-b" wx:if="{{payStatus==3}}">
+      <view class="" hover-class="none" hover-stop-propagation="false">支付时间：</view>
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        {{detail.payTime}}
+      </view>
+    </view>
+    <view class="orderInfo mg-b">
+      <view class="" hover-class="none" hover-stop-propagation="false">门店：</view>
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        {{orderDetail.shopName}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class="toPaid" wx:if="{{payStatus==2}}">
+  <view class="btn" bindtap='cancelPay'>取消订单</view>
+  <navigator class="" target="" url="{{'/pages/assistPackage/pay/pay?orderId='+orderId+'&amt='+orderDetail.realAmt+'&type=1'}}" hover-class="navigator-hover" open-type="navigate" >
+    <view class="btn pay" >立即支付</view>
+  </navigator>
+    
+</view>

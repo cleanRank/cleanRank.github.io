@@ -1,0 +1,246 @@
+/* pages/fpages/ticketCenter/ticketCenter.wxss */
+.ticket-wrap {
+  position: relative;
+}
+
+page {
+  background-color: #F3F3F3;
+}
+
+.ticket-bg-wrap {
+  position: relative;
+  width: 78rpx;
+  height: 232rpx;
+}
+
+.ticket-bg-type {
+  position: absolute;
+  left: 23rpx;
+  top: 48.5rpx;
+  width: 32rpx;
+  line-height: 43rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}
+
+.ticket-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  flex: 78rpx 0;
+  width: 78rpx;
+  height: 232rpx;
+  display: block;
+}
+
+.activety-ticket-wrap {
+  width: 100%;
+  height: 76rpx;
+  background: rgba(255, 255, 255, 1);
+  padding-left: 24rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.activety-ticket-name {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(51, 51, 51, 1);
+  letter-spacing: 1rpx;
+  padding-left: 20rpx;
+  border-left: 6rpx solid #FF7414;
+}
+
+.ticket-t {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 24rpx 20rpx 24rpx;
+}
+
+.ticket-content {
+  position: relative;
+}
+
+.ticket-r {
+  background-color: #fff;
+  width: 628rpx;
+
+}
+
+.ticket-t-price {
+  padding: 10rpx;
+  align-items: center
+}
+
+.ticket-t-price,
+.ticket-t-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  width: 390rpx;
+}
+
+.price-detail {
+  font-size: 90rpx;
+  color: #FF714A;
+  font-family: Helvetica;
+}
+
+.price-discount {
+  font-size: 30rpx;
+  color: #FF714A;
+  font-family: PingFang-SC-Medium;
+}
+
+.price-detail-gray,
+.price-discount-gray {
+  color: #999;
+}
+
+.price-detail-red,
+.price-discount-red {
+  color: #FF714A;
+}
+
+.price-write {
+  font-size: 30rpx;
+  color: #333;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  margin-left: 10rpx;
+  margin-top: 2rpx;
+
+  line-height: 42rpx;
+}
+
+.price-btn {
+  font-size: 30rpx;
+  color: #fff;
+  width: 173rpx;
+  height: 56rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 56rpx;
+  margin-right: 21rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+}
+
+.price-btn-red {
+  background: rgba(255, 48, 48, 1);
+}
+
+.price-btn-gray {
+  background: #C5C5C5;
+}
+
+.ticket-t-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+  width: 624rpx;
+  height: 65rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  border-top: 1px dashed rgba(204, 204, 204, 1);
+}
+
+.time {
+  margin-left: 18rpx;
+}
+
+.rules {
+  margin-right: 38rpx;
+  display: flex;
+  align-items: center;
+
+}
+
+.rules-write {}
+
+.rules-btn {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+
+.rules-model {
+  position: relative;
+  width: 587rpx;
+  background-color: #fff;
+  font-size: 20rpx;
+  color: #999;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  line-height: 30rpx;
+  padding: 19rpx 19rpx 18rpx 22rpx;
+}
+
+.rules-model view {}
+
+.rules-model_left_top,
+.rules-model_right_top,
+.rules-model_right_bottom,
+.rules-model_left_bottom {
+  position: absolute;
+  width: 13rpx;
+  height: 13rpx;
+  z-index: 1;
+  background: #F3F3F3;
+}
+
+.rules-model_left_top {
+  top: -1rpx;
+  left: -1rpx;
+  border-radius: 0rpx 0rpx 15rpx 0rpx;
+}
+
+.rules-model_right_top {
+  top: -1rpx;
+  right: -1rpx;
+  border-radius: 0rpx 0rpx 0rpx 15rpx;
+}
+
+.rules-model_right_bottom {
+
+  bottom: -1rpx;
+  right: -1rpx;
+  border-radius: 15rpx 0rpx 0rpx 0rpx;
+}
+
+.rules-model_left_bottom {
+
+  bottom: -1rpx;
+  left: -1rpx;
+  border-radius: 0rpx 15rpx 0rpx 0rpx;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.no-data {
+  width: 205rpx;
+  height: 198rpx;
+}
+
+.no-data-write {
+  font-size: 36rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 30rpx;
+}

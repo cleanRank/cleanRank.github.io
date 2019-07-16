@@ -1,0 +1,76 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.4",
+	"appid": "wx65a7bb5d216f2495",
+	"projectname": "%E4%BC%91%E9%97%B2%E9%A9%BF%E7%AB%99",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "scene=wu002",
+					"pathName": "pages/start/start",
+					"query": "scene=wu002",
+					"scene": 1011
+				},
+				{
+					"id": 1,
+					"name": "scene=zh001",
+					"pathName": "pages/start/start",
+					"query": "scene=zh001",
+					"scene": 1011
+				},
+				{
+					"id": 2,
+					"name": "scene=xk001",
+					"pathName": "pages/start/start",
+					"query": "scene=xk001",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "scene=445566",
+					"pathName": "pages/start/start",
+					"query": "scene=445566",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,42 @@
+<!-- main.wxml -->
+<view class="mainFrame {{showToast?'mainframe-wrap':''}}">
+  <view class="main-search" bindtap="navigatorToSearch">
+    <input type="text" class="search" placeholder="搜索" placeholder-class="placeholder-search" disabled='disabled' />
+    <image class="" src="../../images/main/md_icon_search.png">
+    </image>
+  </view>
+  <view class="main-tabNav">
+    <view class="tabNav-item">
+      <block wx:for="{{nav}}" wx:key="index">
+        <text class="item-name {{currentIndex==index?'active':''}}" bindtap="changeTab"
+          data-id="{{index}}">{{item.name}}</text>
+      </block>
+    </view>
+    <view class="tabNav-store">
+      <view class="v-refresh" bindtap="reBindFresh">
+        <image class="refresh" src="/images/main/icon_refresh.png">
+        </image>
+      </view>
+      <view class="name" wx:if="{{shopInfo.shopId}}" bindtap="selectNearStore">
+        {{shopInfo.shopName}}
+      </view>
+      <view class="name" wx:else bindtap="selectNearStore">
+        未定位到门店
+      </view>
+      <image class="down" src="../../images/main/icon_down.png" bindtap="selectNearStore">
+      </image>
+    </view>
+  </view>
+  <view class="component {{shopInfo.shopId?'show':'hidden'}}">
+    <main-store bind:onLocate="onLocate" id="offlineStore" bind:showToast='showToast'></main-store>
+  </view>
+  <!-- <view class="no-store" wx:elif="{{flag&&currentIndex==0}}"> -->
+  <view class="no-store {{shopInfo.shopId?'hidden':'show'}}">
+    <image class="img" src="/images/noData/shop.png">
+    </image>
+    <view class="tip">当前没有定位到门店</view>
+    <view class="tip2">请检查是否开启定位或附近是否有门店</view>
+    <!-- <view class="tip2">或者到水象优品进行线上购物</view> -->
+    <view class="searchNearShop" bindtap="selectNearStore">搜索附近门店</view>
+  </view>
+</view>

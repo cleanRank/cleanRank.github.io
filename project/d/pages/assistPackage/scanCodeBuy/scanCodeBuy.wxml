@@ -1,0 +1,62 @@
+<!-- scanCodeBuy.wxml -->
+<view class="scanCodeFrame">
+  <view class="scan-code-header">
+    <image src="/images/main/md_icon_lo.png">
+    </image>
+    <view class="store">
+      <text class="name">{{shopInfo.shopName}}</text>
+      <text class="addr">{{shopInfo.shopAddr}}</text>
+    </view>
+  </view>
+  <image class="logo" src="/images/main/sm_icon_bg.png">
+  </image>
+  <view class="scan-code">
+    <image class="img" src="/images/main/sm_icon_smg.png" bindtap="scanCode"></image>
+  </view>
+  <view class="footer">
+    <view class="cart" catchtap='showToast'>
+      <image class="img" src="/images/searchGoods/shop_ion_sp.png"></image>
+      <text wx:if="{{num}}" class="em">{{num}}</text>
+    </view>
+    <view class="price">￥{{totalAmt}}</view>
+    <view class="confirm" bindtap='navigatorTo'><text>选好了</text></view>
+  </view>
+  <view class="mask-alyer alyer-high" wx:if="{{goodsInfo && showSort}}" bindtap="close">
+    <view class="mask-goods" catchtap="stopEvent">
+      <view class="goods-headPic">
+        <image mode="aspectFit"
+          src="{{goodsInfo[currentIndex].pic?goodsInfo[currentIndex].pic:'/images/icon/hp_icon_logo.png'}}"></image>
+      </view>
+      <view class="goods-info">
+        <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+          <view class="price">￥{{goodsInfo[currentIndex].retailPrice}}</view>
+          <view class="disprice">￥{{goodsInfo[currentIndex].retailPrice}}</view>
+        </view>
+        <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+          <view class="name">{{goodsInfo[currentIndex].itemName}}</view>       
+          <!-- <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+              <view class="discount" wx:for="{{discountList}}" wx:key="index" wx:for-item="item1">{{item1}}</view>
+          </view> -->
+        </view>
+      </view>
+      <view class="goods-cate">
+        <text class="h5">分类</text>
+        <view class="ul">
+          <block wx:for="{{goodsInfo}}" wx:key="index" wx:for-item="item">
+            <view
+              class="li  {{item.itemStatus!=1||item.stock<1&&shopInfo.ctrlStock==1&&item.materialType!=2?'activeGray':''}} {{index==currentIndex&&item.stock<1&&shopInfo.ctrlStock!=1||index==currentIndex&&item.stock>0&&item.itemStatus==1?'active': ''}}"
+              catchtap="changeItem" data-index="{{index}}">{{item.skuName}}</view>
+          </block>
+        </view>
+      </view>
+      <view class="confirm {{btnStyle}}" catchtap='confirm'>选好了</view>
+    </view>
+  </view>
+  <view class="loading" hover-class="none" hover-stop-propagation="false" hidden="{{!showToast||!cartList.length}}"
+    catchtap='hideModal'>
+  </view>
+  <view class="inner" hover-class="none" hover-stop-propagation="false" hidden="{{!showToast}}"
+    animation='{{animationData}}'>
+    <temShopCart prop-a="{{cartList}}" bindmyevent="onMyEvent" bindclear="clearShop"></temShopCart>
+  </view>
+</view>

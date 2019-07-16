@@ -1,0 +1,37 @@
+/* pages/fpages/discountPage/discountPage.wxss */
+@import "/pages/assistPackage/ticketCenter/ticketCenter.wxss";
+
+page {
+  background-color: #F3F3F3;
+}
+
+.discount-detail {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  background-color: #fff;
+}
+
+.discount-detail .swiper-tab-item {
+  margin: 0 34rpx;
+  padding: 9px 0 15rpx 0;
+}
+
+.discount-detail .active {
+  color: rgba(255, 48, 48, 1);
+  border-bottom: 4rpx solid #FF3030;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

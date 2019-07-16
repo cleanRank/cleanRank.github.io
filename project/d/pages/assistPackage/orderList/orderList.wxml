@@ -1,0 +1,52 @@
+<!-- orderList.wxml -->
+<view class="orderListFrame">
+  <view class="content-wrap" wx:if="{{orderList.length}}">
+  <scroll-view class="order-list" scroll-y>
+    <view class="mod" wx:for="{{orderList}}" wx:key="index" wx:for-index="index"  catchtap='goDetail' data-id="{{item.orderId}}">
+      <view class="header">
+        <view class="header-name">
+          <image src="/images/main/md_icon_lo.png"></image>
+          {{item.shopName}}
+        </view>
+        <view class="header-body">
+          <view class="time">
+            {{item.gmtCreated}}
+          </view>
+          <view class="state {{item.payStatus==2?'wait':''}} {{item.payStatus==3?'finish':''}}">
+            {{item.payStatus==2?'待付款':(item.payStatus==3?'已完成':'已取消')}}
+          </view>
+        </view>
+      </view>
+      <scroll-view class="item" scroll-x >
+        <view class="item-img">
+        <view class="outerLi" hover-class="none" hover-stop-propagation="false" wx:for="{{item.orderDetailList}}" wx:key="idx" wx:for-item="list" wx:for-index="idx" wx:if="{{idx<3}}">
+          <image class="" mode="aspectFit" src="{{list.itemPic?list.itemPic:'/images/icon/hp_icon_logo.png'}}" ></image>
+        <!-- <image class="shopPic" src="{{item.itemPic}}" lazy-load="false" binderror="" bindload="" /> -->
+            <image class="fixedLi" src="/images/shopCart/hp_icon_li@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" wx:if='{{list.packageId}}' />
+          </view>
+        </view>
+      </scroll-view>
+      <view class="foot">
+        <view class="shopInfo">
+          <view class="label">
+            共{{item.totalSalesCount}}件商品 {{item.payStatus==3?'实付款':'应付款'}}：
+          </view>
+          <view class="price">
+            ￥{{item.realAmt}}
+          </view>
+        </view>
+        <navigator class="" catchtap target="" url="{{'/pages/assistPackage/pay/pay?orderId='+item.orderId+'&amt='+item.realAmt+'&type=1'}}" hover-class="navigator-hover" open-type="navigate">
+          <view class="pay" wx:if="{{item.payStatus==2}}" hover-stop-propagation="true"  data-list="{{item}}">
+            立即支付
+          </view>
+        </navigator>
+          
+      </view>
+    </view>
+  </scroll-view>
+</view>
+  <view class="content-wrap" style="position:absolute;right:0;left:0;bottom:0;top:0;display:flex;align-items: center;flex-direction: column;background:#fff;justify-content:center;" wx:else>
+      <image class="no-data" src="/images/noData/sea_icon_no.png"></image>
+      <view class="no-data-write">暂无数据</view>
+    </view>
+</view>

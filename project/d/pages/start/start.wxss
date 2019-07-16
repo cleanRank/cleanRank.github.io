@@ -1,0 +1,118 @@
+/* pages/start/start.wxss */
+.page_start{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.bj_img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.position_wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.sxyp_logo{
+  width: 140rpx;
+  height: 140rpx;
+  display: block;
+  margin: 215rpx auto 21rpx;
+}
+.sxyp_txt{
+  display: block;
+  font-size: 36rpx;
+  text-align: center;
+  margin-bottom: 338rpx;
+}
+.login_btn{
+  text-align: left;
+  width: 400rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  box-shadow: none;
+  background: #4dcb32 !important;
+}
+.wx_logo{
+  width: 60rpx;
+  height: 60rpx;
+  margin: 10rpx 10rpx 0 50rpx;
+}
+/* 绑定手机号 */
+.sxyp_logo_from{
+   width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin: 142rpx auto 21rpx;
+}
+.from_txt{
+  color: #222;
+  font-size: 40rpx;
+  margin-bottom: 70rpx;
+  text-align: center;
+  display: block;
+}
+.login_from{
+  width: 100%;
+}
+.inp{
+  width: 623rpx;
+  height: 90rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+  border: 1rpx solid #DEDEDE;
+  border-radius: 45rpx;
+  overflow: hidden !important;
+}
+.inp input{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 34rpx;
+  padding-left: 40rpx;
+  
+}
+.label_box{
+  line-height:86rpx;
+  font-size:26rpx;
+  margin:0 20rpx 0 12rpx;
+  color:#777;
+}
+.getYzm_wrap{
+  width: 174rpx;
+  padding-right: 20rpx;
+}
+.getYzm{
+  padding:0;
+  color: #ff3030;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 30rpx;
+  height: 88rpx;
+  background: none;
+}
+.getYzm:after {
+  border: none;
+}
+.getYzm[disabled]{
+  background: #fff !important;
+}
+.login_btns{
+  margin-top: 70rpx;
+}
+.tips{
+  color: #FF3030;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  margin: 228rpx 30rpx 0;
+}

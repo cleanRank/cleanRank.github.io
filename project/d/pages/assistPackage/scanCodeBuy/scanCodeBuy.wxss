@@ -1,0 +1,278 @@
+page {
+  height: 100%;
+}
+
+.scan-code-header {
+  display: flex;
+  align-items: center;
+  min-height: 90rpx;
+}
+
+.scan-code-header image {
+  padding-left: 30rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.store {
+  display: flex;
+  flex-direction: column;
+}
+
+.store .name {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+  letter-spacing: 2px;
+}
+
+.store .addr {
+  font-size: 24rpx;
+  color: rgba(51, 51, 51, 1);
+  letter-spacing: 1px;
+}
+
+.logo {
+  width: 100%;
+  height: 504rpx;
+  margin-top: 20rpx;
+}
+
+.scan-code {
+  text-align: center;
+  width: 100%;
+  margin-top: 80rpx;
+}
+
+.scan-code .img {
+  width: 338rpx;
+  height: 340rpx;
+}
+
+.footer {
+  position: fixed;
+  height: 98rpx;
+  z-index: 10;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px -3rpx 12rpx 0rpx rgba(204, 204, 204, 0.5);
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer .cart {
+  position: relative;
+  width: 45rpx;
+  height: 44rpx;
+  margin-left: 20rpx;
+}
+
+.footer .cart .img {
+  width: 44rpx;
+  height: 40rpx;
+}
+
+.footer .cart .em {
+  position: absolute;
+  min-width: 32rpx;
+  height: 32rpx;
+  /* padding: 0 2rpx; */
+  line-height: 32rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+  background: #FF584B;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 20rpx;
+  right: -16rpx;
+  top: -16rpx;
+}
+
+.footer .price {
+  font-size: 34rpx;
+  margin-left: 50rpx;
+  font-weight: 600;
+  color: rgba(255, 88, 75, 1);
+}
+
+.footer .confirm {
+  flex: 1;
+  text-align: right;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.confirm text {
+  width: 280rpx;
+  height: 100%;
+  background-color: #FF3030;
+  color: #ffffff;
+  font-size: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  width: 100%;
+}
+
+.mask-alyer {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(33, 33, 33, 0.7);
+  z-index: 20;
+}
+
+.mask-alyer .alyer-high {
+  z-index: 100;
+}
+
+.mask-goods {
+  position: fixed;
+  height: 946rpx;
+  bottom: 0rpx;
+  background: #ffffff;
+  z-index: 200;
+  right: 0rpx;
+  left: 0;
+  padding: 30rpx;
+}
+
+.goods-info {
+  height: 198rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+  padding-left: 270rpx;
+}
+.goods-info .disFlex {
+  display: flex;
+  align-items: center;
+}
+.goods-info .disprice {
+  margin-left: 20rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #666;
+  text-decoration:line-through;
+}
+
+.goods-info .price {
+  color: rgba(255, 88, 75, 1);
+  font-size: 34rpx;
+  margin-top: 44rpx;
+  margin-bottom: 20rpx;
+}
+.goods-info .discount {
+  font-size: 20rpx;
+  line-height: 30rpx;
+  width: 80rpx;
+  background: #F5A623;
+  color: #fff;
+  text-align: center;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+}
+
+.goods-info .name {
+  color: #333;
+  font-size: 24rpx;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.mask-goods .goods-headPic {
+  position: absolute;
+  width: 224rpx;
+  height: 224rpx;
+  padding: 16rpx;
+  background: #ffffff;
+  left: 30rpx;
+  top: -60rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 0rpx 4rpx 0rpx #eee;
+}
+
+.mask-goods .goods-headPic image {
+  width: 208rpx;
+  height: 208rpx;
+}
+
+.goods-cate .h5 {
+  color: #333;
+  font-size: 30rpx;
+  margin-top: 13rpx;
+}
+
+.goods-cate .ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.goods-cate .ul .li {
+  margin-right: 30rpx;
+  margin-top: 40rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  padding: 0 28rpx;
+  border-radius: 8rpx;
+  color: #666;
+  font-size: 30rpx;
+  border: 2rpx solid #ddd;
+}
+
+.goods-cate .ul .li.activeGray,
+.mask-alyer .confirm.activeGray {
+  color: #fff;
+  border: 2rpx solid #ddd;
+  background: #ddd;
+}
+
+.goods-cate .ul .li.active {
+  color: #fff;
+  border: 2rpx solid #F5A623;
+  background: #F5A623;
+}
+
+.mask-alyer .confirm {
+  width: 643rpx;
+  height: 90rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  background: rgba(255, 48, 48, 1);
+  border-radius: 45rpx;
+  line-height: 90rpx;
+  text-align: center;
+  margin: 140rpx auto 0;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.inner {
+  position: fixed;
+  bottom: 100rpx;
+  width: 100%;
+  max-height: 600rpx;
+  z-index: 1;
+  /* overflow-y:scroll; */
+}

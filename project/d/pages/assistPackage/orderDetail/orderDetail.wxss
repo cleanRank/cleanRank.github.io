@@ -1,0 +1,240 @@
+@import "/pages/assistPackage/searchGoods/searchGoods.wxss";
+
+page {
+  background: #f4f4f4;
+}
+
+.totalBill {
+  padding: 20rpx 30rpx;
+  padding-bottom: 40rpx;
+  margin-bottom: 0;
+}
+
+.totalBg {
+  padding-bottom: 200rpx;
+}
+
+.totalBill1 {
+  margin: 30rpx 0;
+  padding: 20rpx 30rpx;
+}
+
+.pd {
+  padding: 0 30rpx;
+  background: #fff;
+}
+
+.tx-r {
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx 0;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 34rpx;
+}
+
+.showShopList {
+  border-bottom: 1rpx solid rgba(219, 219, 219, .3);
+}
+
+.showShopList:last-child {
+  border-bottom: none;
+}
+
+.coupon-name {}
+
+.coupon {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+  line-height: 34rpx;
+}
+
+.orderInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 37rpx;
+}
+
+.page {
+  /* justify-content: flex-end */
+}
+
+.mg-t {
+  margin-top: 20rpx;
+}
+
+.orderIcon {
+  width: 32rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
+}
+
+.explain {
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 33rpx;
+  margin-left: 73rpx;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  padding-top: 50rpx;
+  margin: 0 0 20rpx 20rpx;
+}
+
+.orderStatus {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 40rpx;
+}
+
+.realPrice {
+  font-size: 30rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 88, 75, 1);
+  line-height: 34rpx;
+}
+
+.goodsNum {
+  font-size: 20rpx;
+  font-family: Monaco;
+  color: rgba(51, 51, 51, 1);
+  line-height: 34rpx;
+  margin-left: 30rpx;
+}
+
+.total {
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 42rpx;
+}
+
+.history1 {
+  justify-content: flex-start;
+}
+
+.mg-b {
+  margin: 20rpx 0;
+}
+
+.title {
+  position: relative;
+  z-index: 999;
+}
+
+.commonTitle {
+  width: 100%;
+  height: 210rpx;
+}
+
+.title1 {
+  position: absolute;
+  top: 0;
+}
+
+.mod {
+  position: relative;
+}
+
+.toPaid {
+  position: fixed;
+  bottom: 0;
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fff;
+}
+
+.btn {
+  height: 58rpx;
+  width: 144rpx;
+  border-radius: 29rpx;
+  border: 1px solid rgba(153, 153, 153, 1);
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  text-align: center;
+  line-height: 58rpx;
+}
+
+.pay {
+  border: 1px solid rgba(255, 48, 48, 1);
+  color: rgba(255, 48, 48, 1);
+  margin: 0 20rpx;
+}
+
+.outerLi .fixedLi {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.outerLi {
+  position: relative;
+}
+
+.shopDesctiption-shop {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.history-shop,
+.history-num {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end
+}
+
+.num {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 65rpx;
+
+}
+
+.price {
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 88, 75, 1);
+  line-height: 41rpx;
+
+}
+.disprice {
+  font-size: 24rpx;
+  color: #666;
+  text-decoration:line-through;
+}
+
+.discount {
+  font-size: 24rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(245, 166, 35, 1);
+  line-height: 43rpx;
+
+}

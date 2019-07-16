@@ -1,0 +1,164 @@
+<!--components/offlineStore/offline-store.wxml-->
+<view>
+  <!-- <view class="index-store-refresh" bindtap="refreshLocation">
+    <image class="down" src="/images/main/icon_refresh.png">
+    </image>
+  </view> -->
+  <view class="main-swiper">
+    <swiper class="mainBanner" wx:if="{{banner}}" indicator-color="rgba(233,233,233,1)"
+      indicator-active-color="rgba(123,123,123,1)" autoplay="true" interval="4000" duration="500" circular="true">
+      <block wx:for="{{banner}}" wx:key="{{index}}">
+        <swiper-item>
+          <!-- <navigator url="{{item.url}}" wx:if="{{item.url}}" class="navigatorTo" open-type="navigate">
+          </navigator> -->
+          <image class="img-src" src="{{item.imagePath}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="mod">
+    <view class="mod-item" bindtap="sanCode">
+      <image class="item-img" src="/images/main/hp_icon_md.png">
+      </image>
+      <text class="item-name">
+        门店定位
+      </text>
+    </view>
+    <block wx:for="{{items}}" wx:key="index">
+      <navigator class="mod-item" url="{{item.path}}" hover-class="none">
+        <image class="item-img" src="{{item.img}}">
+        </image>
+        <text class="item-name">
+          {{item.name}}
+        </text>
+      </navigator>
+    </block>
+  </view>
+  <view class="line-split">
+  </view>
+  <view class="activity">
+    <view class="activity-img" wx:if="{{vipBanner}}">
+      <navigator url="{{vipBanner.url}}" open-type="switchTab">
+        <image class="img-src" src="{{vipBanner.imagePath}}" />
+      </navigator>
+    </view>
+    <view class="activityBanner" wx:if="{{activityBanner.length}}" wx:for="{{activityBanner}}" wx:key="key">
+      <view class="head" wx:if="{{item.isDisplay}}">
+        {{item.showcaseAlias}}
+      </view>
+      <navigator url="{{'/pages/assistPackage/activity/activity?pic='+item.url+'&showUrlAdv='+item.showUrlAdv}}"
+        wx:if="{{item.showType==1}}" class="activity-img">
+        <image class="img-src" src="{{item.imagePath}}" />
+      </navigator>
+      <navigator url="{{item.showUrl}}" wx:if="{{item.showType==2}}" class="activity-img"
+        open-type="{{(item.showUrl=='/pages/shopCar/shopCar'||item.showUrl=='/pages/main/main'||item.showUrl=='/pages/offlineVip/offlineVip'||item.showUrl=='/pages/my/my')?'switchTab':'navigate'}}">
+        <image class="img-src" src="{{item.imagePath}}" />
+      </navigator>
+      <navigator url="" wx:if="{{item.showType==3}}" class="activity-img">
+        <image class="img-src" src="{{item.imagePath}}" />
+      </navigator>
+    </view>
+  </view>
+  <view class="recommend" wx:if="{{list.length}}">
+    <view class="head">
+      每日尖货
+    </view>
+    <view class="item">
+      <block wx:for="{{list}}" wx:key="key">
+        <view class="item-zon" bindtap='toFreeBuy' data-list="{{item}}">
+          <view class="zon-list">
+            <view class="zon-image">
+              <image class="" mode="aspectFit" src="{{item.goodsPic?item.goodsPic:'/images/icon/hp_icon_logo.png'}}">
+              </image>
+            </view>
+            <view class="itemName" hover-class="none" hover-stop-propagation="false">
+              <view class="zon-name">
+                {{item.itemName}}
+              </view>
+              <!-- <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+                <view class="discount" wx:for="{{discountList}}" wx:key="index" wx:for-item="item">{{item}}</view>
+                </view> -->
+              </view>
+            <view class="zon-price">
+              <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+                <view class="realPrice"><text class="money">￥</text>{{item.goodsPrice}}</view>
+                <view class="disPrice">￥{{item.goodsPrice}}</view>
+              </view>
+              <view class="promotion">
+                <text>热卖</text></view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 优惠券弹框 -->
+  <view class="ticket-model {{close?'':'hidden'}}" wx:if="{{ticketInfoNoUse.length}}">
+    <view class="ticket-wrap" bindtap="goMyTicket">
+      <view class="active-title">赶快下单使用吧</view>
+      <image class="ticket-bottom" src="/images/main/hp_bg_card_a@2x.png"></image>
+      <view class="ticket-content-wrap">
+
+        <view class='ticket-t' wx:for="{{ticketInfoNoUse}}" wx:key="this">
+          <view class="ticket-bg-wrap">
+            <image src='/images/ticketCenter/yhq_bg_lq_a.png' class="ticket-bg"></image>
+            <view class="ticket-bg-type" wx:if="{{item.ticketType==1}}">代金券</view>
+            <view class="ticket-bg-type" wx:elif="{{item.ticketType==2}}">活动券</view>
+            <view class="ticket-bg-type" wx:elif="{{item.ticketType==9}}">折扣券</view>
+          </view>
+          <view class="ticket-r">
+            <view class="ticket-content">
+              <view class="rules-model_left_top"></view>
+              <view class="rules-model_right_top"></view>
+              <view class="rules-model_left_bottom"></view>
+              <view class="rules-model_right_bottom"></view>
+              <view class="ticket-t-price">
+                <!-- <view class='price'>
+                            <view class="price-wrap">
+                              <text class="price-detail price-detail-red" >{{item.ticketType==9?item.discountValue:item.ticketValue}}</text>
+                              <text class="price-discount price-discount-gray" wx:if="{{item.ticketType==2}}"> 元 (满{{item.amtStartUse}}减{{item.ticketValue}})</text>
+                              <text class="price-discount price-discount-gray" wx:elif="{{item.ticketType==9}}"> 折</text>
+                              <text class="price-discount price-discount-gray" wx:else> 元</text>
+                            </view>
+                              <view class="price-write">
+                                {{item.ticketName}}
+                              </view>
+                              <view class="ticket-t-time">
+                                  <view class='time'>{{item.beginDate}}-{{item.endDate}}</view>
+                              </view>
+                          </view> -->
+                <view class='price'>
+                  <view class="price-noused-wrap">
+                    <view class="price-noused">
+                      <view class="price-wrap">
+                        <text
+                          class="price-detail price-detail-red">{{item.ticketType==9?item.discountValue:item.ticketValue}}</text>
+                        <text class="price-discount price-discount-gray"
+                          wx:if="{{item.ticketType==2}}">元(满{{item.amtStartUse}}减{{item.ticketValue}})</text>
+                        <text class="price-discount price-discount-gray" wx:elif="{{item.ticketType==9}}">折</text>
+                        <text class="price-discount price-discount-gray" wx:else>元</text>
+                      </view>
+                      <view class="price-write">
+                        {{item.ticketName}}
+                      </view>
+                    </view>
+                    <view class="noused">待领取</view>
+                  </view>
+                  <view class="ticket-t-time">
+                    <view class='time'>{{item.beginDate}}-{{item.endDate}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn-gocenter">
+
+        <image class="ticket-top" src="/images/main/hp_bg_card_b@2x.png"></image>
+        <view class="btn-write">前往领券中心</view>
+      </view>
+    </view>
+    <image class="close-model" src="/images/main/hp_yhq_del.png" bindtap="closeModel"></image>
+  </view>
+</view>

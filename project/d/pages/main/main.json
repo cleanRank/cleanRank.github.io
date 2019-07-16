@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "休闲驿站",
+  "usingComponents": {
+    "main-store": "/pages/components/offlineStore/offline-store"
+  }
+}

@@ -1,0 +1,48 @@
+<!--pages/assistPackage/useAction/useAction-->
+<view class="page1 {{actionInfo.length?'':'page1-nodata'}}">
+    <view class="page1-bgd">
+        <view class="coupon-header">
+            <view class="label">
+                不参加活动
+            </view>
+            <!-- 判断不参加活动 -->
+            <image class="check" bindtap="selectNoneAction"
+                src="{{noSelectAction? '/images/main/check.png':'/images/main/uncheck.png'}}">
+            </image>
+        </view>
+        <view class="ticket-list-wrap" wx:if="{{actionInfo.length}}">
+
+            <view class="ticket-list">
+                <block wx:for="{{actionInfo}}" wx:key="this" wx:for-index="index">
+                    <view class='ticket-t ' bindtap="selectAction" data-list="{{item}}" data-index="{{index}}">
+                        <image class="useaction-bg" src="/images/useAction/yh_bg_hd@2x.png">
+                        </image>
+                        <view class="action-content">
+
+                            <view class="action-wrap">
+                                <view class="action-name">{{item.popName}}</view>
+                                <view class="action-time">有效期 <text>{{item.beginTime}} - {{item.endTime}}</text></view>
+                            </view>
+                            <view class="check-wrap">
+                                <!-- 选择 -->
+                                <image class="check"
+                                    src="{{item.isCheck? '/images/useAction/acheck.png':'/images/useAction/auncheck.png'}}">
+                                </image>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="ticket-list1" wx:else>
+            <image class="nodata" src="/images/noData/no_hd@2x.png"></image>
+            <view class="nodata-write">暂时没有参与的活动哦~</view>
+        </view>
+    </view>
+    <view class="confirm-wrap">
+
+        <view class="confirm" bindtap="confirm">
+            确认选择
+        </view>
+    </view>
+</view>

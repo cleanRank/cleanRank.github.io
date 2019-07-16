@@ -1,0 +1,183 @@
+page {
+  background-color: #F3F3F3;
+  /* height: 100%; */
+  /* width: 100%; */
+  /* overflow: scroll; */
+}
+
+.coupon-header {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 95rpx 0 33rpx;
+  background: #ffffff;
+  margin-bottom: 20rpx;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+
+}
+
+.coupon-header .label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: rgba(51, 51, 51, 1);
+}
+
+.coupon-header .check {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.check-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 26px;
+  margin-top: 16px;
+
+}
+
+.ticket-t .check {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 107rpx;
+}
+
+.ticket-list-wrap {
+  position: absolute;
+  top: 100rpx;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #fff;
+}
+
+.ticket-list {
+  margin-bottom: 122rpx;
+  background-color: #fff;
+  padding-top: 20rpx;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+.ticket-t {
+  position: relative;
+  /* padding: 20rpx 0 25rpx 26rpx; */
+  /* background-color: #fff; */
+  /* margin-top: 20rpx; */
+  width: 750rpx;
+  height: 180rpx;
+}
+
+.useaction-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 180rpx;
+  display: block;
+}
+
+.action-content {
+  position: absolute;
+  top: 0;
+  left: 16rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-wrap {
+  /* position: absolute; */
+  margin-left: 108rpx;
+  width: 442rpx;
+  color: #fff;
+  /* top: 0rpx; */
+}
+
+.action-name {
+  height: 45rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  line-height: 45rpx;
+  margin-top: 36rpx;
+}
+
+.action-time {
+  height: 40rpx;
+  font-size: 19rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  line-height: 40rpx;
+  /* margin-top: 30rpx; */
+}
+
+
+.confirm-wrap {
+  position: fixed;
+  width: 100%;
+  height: 122rpx;
+  background-color: #fff;
+  left: 0;
+  bottom: 0;
+  z-index: 66;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px -5px 10rpx 0px rgba(215, 215, 215, 0.2);
+
+}
+
+.confirm {
+  width: 643rpx;
+  height: 90rpx;
+  background: rgba(255, 48, 48, 1);
+  line-height: 90rpx;
+  /* margin: 100rpx auto 0; */
+  color: #ffffff;
+  font-size: 32rpx;
+  border-radius: 45rpx;
+  text-align: center;
+}
+
+
+.page1-nodata {
+  background-color: #fff;
+  height: 100%;
+}
+
+.ticket-list1 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 80rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+
+.nodata {
+  width: 454rpx;
+  height: 287rpx;
+  margin-top: 80rpx;
+
+}
+
+.nodata-write {
+  height: 48rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+  line-height: 48rpx;
+  margin-top: 53rpx;
+  margin-bottom: 150rpx;
+}

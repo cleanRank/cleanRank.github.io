@@ -1,0 +1,33 @@
+<!-- pay.wxml -->
+<view class="payFrame">
+  <view class="pay-info">
+    <view class="money">
+      ￥{{totalAmt}}
+    </view>
+    <view class="tip">
+      支付金额
+    </view>
+  </view>
+  <view class="pay-type">
+    <view class="wx-pay" bindtap="selectPayType" data-type="1" wx:if="{{totalAmt!=0}}">
+      <view class="pay-way">
+        微信支付
+        <image class="img" src="/images/main/pay_we.png">
+        </image>
+      </view>
+      <image class="check {{payType==1?'active':''}}" src="{{payType==1?'/images/main/check.png':'/images/main/uncheck.png'}}"></image>
+    </view>
+    <view class="wx-pay bt" bindtap="selectPayType" data-type="2">
+      <view class="pay-way">
+        余额支付
+        <image class="img ye" src="/images/main/pay_ye.png">
+        </image>
+      </view>
+      <image class="check {{payType==2?'active':''}}" src="{{payType==2?'/images/main/check.png':'/images/main/uncheck.png'}}"></image>
+    </view>
+  </view>
+  <view class="confirm" hover-stay-time="1500" bindtap="startPay">
+    确认支付
+  </view>
+  
+</view>

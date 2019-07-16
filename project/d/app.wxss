@@ -1,0 +1,161 @@
+/* 背景色 #FBFBFB
+分割线 #D8D8D8
+主色调 #ff3030  */
+page{
+  font-family: -apple-system, BlinkMacSystemFont,"PingFang SC","Helvetica Neue",STHeiti,"Microsoft Yahei",Tahoma,Simsun,sans-serif;
+}
+.page{
+  padding-top: 1px;
+}
+.page:before{
+  position: fixed;
+  top: 0;
+  content: '';
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #f5f5f5;
+  z-index: 99999;
+}
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 200rpx 0; */
+  box-sizing: border-box;
+} 
+/* flex box */
+.flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.justify-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.justify-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.vertical{
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.flex, .flex, .flex:after, .flex:before {
+  box-sizing: border-box;
+}
+.flex > .cell_0 {
+  display: block;
+  position: relative;
+}
+.flex > .cell_1 {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+.flex > .cell_2 {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+.flex > .cell_3 {
+  -webkit-box-flex: 3;
+  -moz-box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  display: block;
+  position: relative;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+}
+/* 常用字体颜色 */
+.c_red{
+  color: #FF3030;
+}
+.c_blue{
+  color: #3E9BF9;
+}
+.c_999 {
+  color: #999;
+}
+.c_666 {
+  color: #666;
+}
+.c_777 {
+  color: #777;
+}
+.c_333 {
+  color: #333;
+}
+/* 按钮样式 */
+.btnCom{
+  width: 640rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 43rpx;
+  color: #fff;
+  font-size: 34rpx;
+  background: #ff3030;
+  margin: 0 auto;
+  border: 0;
+  outline: none;
+  text-align: center;
+  box-shadow: 0 5rpx 15rpx #FA7268;
+}
+/* 暂无数据友好提示 */
+.nodata_wrap{
+  padding-top: 224rpx;
+}
+.nodata_img{
+  width: 360rpx;
+  height: 384rpx;
+  margin: 0 auto;
+  display: block;
+}
+.nodata_txt{
+  color: #333;
+  text-align: center;
+  line-height: 1;
+  /* padding-top: 20rpx; */
+}
+.nodata_wrap .go-shop-btn{
+  width: 30%;
+  margin: 50rpx auto;
+}
+.textEllipsis{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}

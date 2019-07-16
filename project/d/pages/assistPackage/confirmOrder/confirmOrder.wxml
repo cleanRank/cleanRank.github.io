@@ -1,0 +1,102 @@
+<view class="totalBg" hover-class="none" hover-stop-propagation="false">
+  <view class="scroll-height" hover-class="none" hover-stop-propagation="false">
+    <scroll-view class="scroll-height2" scroll-y>
+      <view class="searchGoods mb20" hover-class="none" hover-stop-propagation="false">
+        <view class="history">
+          <view class="localText">商品信息</view>
+        </view>
+        <view class="showShopList" wx:for="{{orderList.advanceOrderDtlList}}" wx:key="index" wx:for-index="index">
+          <view class="outerLi" hover-class="none" hover-stop-propagation="false">
+            <image class="shopPic" mode="aspectFit"
+              src="{{item.itemPic?item.itemPic:'/images/icon/hp_icon_logo.png'}}" />
+            <image class="fixedLi" src="/images/shopCart/hp_icon_li@2x.png" mode="aspectFit|aspectFill|widthFix"
+              wx:if='{{item.packageId}}' />
+            <image class="fixedLi" src="/images/shopCart/hp_icon_so@2x.png" mode="aspectFit|aspectFill|widthFix"
+              wx:elif='{{item.popFlag==1}}' />
+            <image class="fixedLi" src="/images/shopCart/hp_icon_hu@2x.png" mode="aspectFit|aspectFill|widthFix"
+              wx:elif='{{item.dpromAmt>0}}' />
+          </view>
+          <view class="shopDesctiption-shop">
+            <view class="" hover-class="none" hover-stop-propagation="false">
+              <view class="shopName">{{item.skuName?item.skuName:''}}</view>
+              <!-- <view class="disFlex" hover-class="none" hover-stop-propagation="false">
+                      <view class="discount1" wx:for="{{discountList}}" wx:key="index" wx:for-item="item">{{item}}</view>
+              </view>
+              <view class="mg_t" hover-class="none" hover-stop-propagation="false" style="font-size:22rpx;background:#000;color:#fff;margin-top:20rpx;padding:5rpx">
+                已参加 <view style='display:inline-block;color:red' selectable="false" space="false" decode="false">
+                  优惠活动</view>，点击参加更多优惠>>>
+              </view> -->
+            </view>
+            <view class="history-shop">
+              <view class="disprice">¥{{item.popFlag?'0.00':item.salePrice}}</view>
+              <view class="price">¥{{item.popFlag?'0.00':item.salePrice}}</view>
+              <view class="history-num">
+                <view class="num">X {{item.saleQty}}</view>
+              </view>
+              <view class="discount" wx:if="{{item.dpromAmt>0&&item.popFlag!=1}}">-{{item.dpromAmt}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="totalBill mb20 mt0" hover-class="none" hover-stop-propagation="false">
+        <view class="history mb2">
+          <view class="localText total-price">总计</view>
+          <view class="localText">￥{{orderList.totalAmt}}</view>
+        </view>
+        <!-- 优惠活动 -->
+        <view class="tx-r-wrap">
+          <view class="action-name">优惠活动</view>
+          <view class="tx-r" hover-class="none" hover-stop-propagation="false" bindtap="selectAction"
+            wx:if="{{usableCrmPopDefVOList.length}}">
+            <view class="coupon useTicket mb2" hover-class="none" hover-stop-propagation="false">
+              <!-- 当首次进入页面优惠力度最大的活动存在或者就为选择的优惠活动的Id -->
+              <view wx:if="{{usedCrmPopDefVOList.length}}">
+                <text style="color:#F5A623;">-￥{{orderList.promAmt}}</text>
+              </view>
+              <view wx:else>可用活动优惠</view>
+              <image class="toCoupon" src="/images/offlineShopCar/sh_icon_enter.png" bindtap='toCoupon' />
+            </view>
+          </view>
+          <view class="tx-r" hover-class="none" hover-stop-propagation="false" bindtap="selectAction" wx:else>
+            <view class="coupon useTicket mb2" hover-class="none" hover-stop-propagation="false">
+              <view>无可用活动优惠</view>
+              <image class="toCoupon" src="/images/offlineShopCar/sh_icon_enter.png" bindtap='toCoupon' />
+            </view>
+          </view>
+        </view>
+        <!-- 优惠券 -->
+        <view class="tx-r-wrap">
+          <view class="action-name">优惠券</view>
+          <view class="tx-r" hover-class="none" hover-stop-propagation="false" bindtap="selectCoupon"
+            wx:if="{{usableActionTicketList.length || usableCashTicketList.length || usableDiscountTicketList.length}}">
+            <view class="coupon useTicket1 mb2" hover-class="none" hover-stop-propagation="false">
+              <view wx:if="{{usedActionTicket||usedCashTicket||usedDiscountTicket}}"><text
+                  style="color:#F5A623;">-￥{{orderList.ticket}}</text></view>
+              <view wx:else>有<text
+                  class="much-ticket">{{(usableActionTicketList.length)+(usableCashTicketList.length)+(usableDiscountTicketList.length)}}</text>张可使用优惠券
+              </view>
+              <image class="toCoupon" src="/images/offlineShopCar/sh_icon_enter.png" bindtap='toCoupon' />
+            </view>
+          </view>
+          <view class="tx-r" hover-class="none" hover-stop-propagation="false" bindtap="selectCoupon" wx:else>
+            <view class="coupon useTicket mb2" hover-class="none" hover-stop-propagation="false">
+              <view>无可用优惠券</view>
+              <image class="toCoupon" src="/images/offlineShopCar/sh_icon_enter.png" bindtap='toCoupon' />
+            </view>
+          </view>
+        </view>
+        <view class="tx-r page mb2" hover-class="none" hover-stop-propagation="false">
+          <view class="coupon" hover-class="none" hover-stop-propagation="false">应付：</view>
+          <view class="realPrice" selectable="false" space="false" decode="false">
+            ￥{{orderList.realAmt}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="bottomShopCar">
+    <view class='total'>合计:</view>
+    <view class="totalPrice">￥{{orderList.realAmt}}</view>
+    <view class="selectedBtn" bindtap="goPay">提交订单</view>
+  </view>
+</view>

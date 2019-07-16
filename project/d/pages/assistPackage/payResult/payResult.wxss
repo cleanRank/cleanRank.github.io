@@ -1,0 +1,325 @@
+page {
+  background-color: #F2F2F2;
+}
+
+.payResultFrame {
+  text-align: center;
+}
+
+.icon-success {
+  margin-top: 134rpx;
+}
+
+.tip {
+  margin-top: 34rpx;
+  font-size: 30rpx;
+  color: rgba(102, 102, 102, 1);
+}
+
+.mask-layer {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(33, 33, 33, 0.7);
+  z-index: 20;
+}
+
+.mask-layer .mod {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.mask-layer .yhq {
+  width: 704rpx;
+  height: 971rpx;
+}
+
+.mask-layer .close {
+  width: 85rpx;
+  height: 78rpx;
+  margin-top: 20rpx;
+}
+
+.btn {
+  width: 643rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  line-height: 90rpx;
+  text-align: center;
+  margin: 324rpx auto 0;
+  color: #ffffff;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+}
+
+.btn.btn-confirm {
+  background: rgba(255, 48, 48, 1);
+}
+
+.btn.btn-cancel {
+  background: #EBEBEB;
+  color: #999999;
+  border: 1rpx solid rgba(151, 151, 151, 1);
+}
+
+.mt {
+  margin-top: 39rpx;
+}
+
+
+
+
+
+.ticket-model {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, .5);
+  z-index: 99;
+}
+
+.ticket-wrap {
+  position: relative;
+  width: 696rpx;
+  height: 836rpx;
+}
+
+.active-title {
+  font-size: 35rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(254, 95, 38, 1);
+  position: absolute;
+  top: 21rpx;
+  left: 229rpx;
+}
+
+.ticket-bottom {
+  width: 696rpx;
+  height: 836rpx;
+}
+
+.btn-gocenter {
+  width: 630rpx;
+  height: 258rpx;
+  position: absolute;
+  bottom: 0;
+  left: 30rpx;
+}
+
+.ticket-top {
+  width: 630rpx;
+  height: 258rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.btn-write {
+  position: absolute;
+  left: 202rpx;
+  top: 142rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  line-height: 42rpx;
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 5rpx;
+}
+
+.close-model {
+  width: 108rpx;
+  height: 99rpx;
+  margin-top: 40rpx;
+}
+
+.ticket-content-wrap {
+  height: 537rpx;
+  position: absolute;
+  top: 91rpx;
+  bottom: 115rpx;
+  right: 94rpx;
+  left: 89rpx;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ticket-bg-wrap {
+  position: relative;
+  width: 57rpx;
+  height: 169rpx;
+}
+
+.ticket-bg-type {
+  position: absolute;
+  left: 18.5rpx;
+  top: 36.5rpx;
+  width: 24rpx;
+  line-height: 32rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+}
+
+.ticket-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  flex: 78rpx 0;
+  width: 57rpx;
+  height: 169rpx;
+  display: block;
+}
+
+.ticket-t {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15rpx;
+}
+
+.ticket-content {
+  position: relative;
+}
+
+.ticket-r {
+  background-color: #fff;
+  width: 455rpx;
+  margin-left: -2rpx;
+
+}
+
+.ticket-t-price {
+  align-items: center;
+}
+
+.price-wrap {
+  padding-top: 5rpx;
+  margin-left: 13rpx;
+  display: flex;
+  justify-content: flex-start;
+  width: 350rpx;
+
+}
+
+.price-detail {
+  font-size: 66rpx;
+  color: #FF714A;
+  font-family: Helvetica;
+}
+
+.price-discount {
+  font-size: 22rpx;
+  color: #FF714A;
+  font-family: PingFang-SC-Medium;
+  margin-top: 34rpx;
+  margin-left: 10rpx;
+}
+
+.price-detail-gray,
+.price-discount-gray {
+  color: #999;
+}
+
+.price-detail-red,
+.price-discount-red {
+  color: #FF714A;
+}
+
+.price-write {
+  font-size: 22rpx;
+  color: #333;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  margin-left: 13rpx;
+  width: 350rpx;
+  margin-top: -2rpx;
+  line-height: 42rpx;
+  text-align: left;
+}
+
+.price-btn-red {
+  background: rgba(255, 48, 48, 1);
+}
+
+.price-btn-gray {
+  background: #C5C5C5;
+}
+
+.ticket-t-time {
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  color: #999;
+  width: 455rpx;
+  height: 47rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  border-top: 1px dashed rgba(204, 204, 204, 1);
+}
+
+.time {
+  margin-left: 13rpx;
+}
+
+.rules-write {}
+
+.rules-model {
+  position: relative;
+}
+
+.rules-model view {}
+
+.rules-model_left_top,
+.rules-model_right_top,
+.rules-model_right_bottom,
+.rules-model_left_bottom {
+  position: absolute;
+  width: 13rpx;
+  height: 13rpx;
+  z-index: 1;
+  background: #F3F3F3;
+}
+
+.rules-model_left_top {
+  top: -1rpx;
+  left: -1rpx;
+  border-radius: 0rpx 0rpx 15rpx 0rpx;
+}
+
+.rules-model_right_top {
+  top: -1rpx;
+  right: -1rpx;
+  border-radius: 0rpx 0rpx 0rpx 15rpx;
+}
+
+.rules-model_right_bottom {
+
+  bottom: -1rpx;
+  right: -1rpx;
+  border-radius: 15rpx 0rpx 0rpx 0rpx;
+}
+
+.rules-model_left_bottom {
+
+  bottom: -1rpx;
+  left: -1rpx;
+  border-radius: 0rpx 15rpx 0rpx 0rpx;
+}
+
+.hidden {
+  display: none;
+}

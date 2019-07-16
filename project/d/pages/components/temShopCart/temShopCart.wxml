@@ -1,0 +1,35 @@
+<view class="box_shadow" hover-class="none" hover-stop-propagation="false" style="background:#fff;" wx:if="{{propA.length}}">
+  <view class="flexible clear mg fixed" hover-class="none" hover-stop-propagation="false">
+    <view class="total" hover-class="none" hover-stop-propagation="false">
+      您选购的商品 
+    </view>
+    <view class="flexible pd_3" hover-class="none" hover-stop-propagation="false" bindtap='clearShopCar'>
+      <image class="select" src="/images/offlineShopCar/gw_icon_del@2x.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+      <view class="total total1" hover-class="none" hover-stop-propagation="false">
+        清空购物车       
+      </view>
+    </view>
+  </view>
+  <view >
+    <scroll-view class="showShopList-wrap" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+      scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+      bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+    <view class="showShopList" wx:for="{{propA}}" wx:key="index" wx:for-index="index"  >
+      <view class="shopDescription">
+        <view class="shopName">{{item.skuName?item.skuName:''}}</view>
+        <view class="history">
+          <view class="price">¥{{item.retailPrice}}</view>
+          <view class="disprice">¥{{item.retailPrice}}</view>
+          <view class="history">
+            <image class="commonSearch mg-r" src="/images/searchGoods/gw_icon_rd.png" lazy-load="false" binderror="" bindload="" data-list="{{item}}" data-index="{{index}}" data-type="1"  bindtap="onTap" />
+            <view class="num">{{item.salesQty?item.salesQty:0}}</view>
+            <image class="commonSearch mg-l" src="/images/searchGoods/gw_icon_add.png" lazy-load="false" binderror="" bindload="" data-list="{{item}}" data-index="{{index}}" data-type="2"  bindtap="onTap"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    </scroll-view>
+      
+  </view>
+</view>
+  
