@@ -85,7 +85,14 @@ variables:
   when: manual
   
 
-  
+
 cp 时候提示没有权限
 更改gitlab -runner 权限
    chown gitlab-runner:gitlab-runner -R ./webapp
+
+
+
+
+
+   https://my.oschina.net/u/3667677/blog/3050890
+   https://my.oschina.net/u/3667677/blog/3051522
