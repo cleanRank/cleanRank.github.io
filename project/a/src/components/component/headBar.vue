@@ -29,17 +29,15 @@
         </el-dropdown>
       </el-col>
     </el-row>
+    <mod-pwd></mod-pwd>
   </div>
 </template>
 
 <script>
 import { tracker } from 'lib/analytics'
 import { delSessionStorage } from 'lib/until'
-import {
-  mapActions,
-  mapGetters,
-  mapState
-} from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
+import ModPwd from '@/components/component/modPwd'
 export default {
   name: "headBar",
   computed: {
@@ -59,6 +57,9 @@ export default {
       phone: null,
       onShow: true
     }
+  },
+  components: {
+    ModPwd
   },
   beforeUpdate () {
     this.checkClientWidth()
@@ -129,7 +130,6 @@ export default {
     overflow: hidden;
     /*border:1px solid black;*/
     width: 100%;
-    line-height: 93px;
     padding: 0 20px;
     background: #fff;
     color: #333;
@@ -138,6 +138,8 @@ export default {
       margin-left: 55px;
       min-width: 215px;
       white-space: nowrap;
+      display: flex;
+      align-items: center;
     }
 
     .company-name {

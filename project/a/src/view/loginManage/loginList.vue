@@ -47,12 +47,12 @@
       </div>
     </div>
     <!-- 新建账号，编辑弹框 -->
-    <div class="model-wrapper" v-if="isShow">
+    <el-dialog :visible.sync="isShow" custom-class="model-wrapper" :show-close="false">
       <div class="model">
         <div class="model-header">会员信息</div>
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="基本信息" name="1">
-            <el-form :label-position="labelPosition" ref="ruleForm" :rules="rules" :model="formLabelAlign" size="small" label-width="100px" >
+            <el-form v-if="setFormShow" :label-position="labelPosition" ref="ruleForm" :rules="rules" :model="formLabelAlign" size="small" label-width="100px" >
               <el-row :gutter="50">
                 <el-col :span="7">
                   <div class="grid-content">
@@ -162,11 +162,22 @@
                     </el-form-item>
                   </div>
                 </el-col>
-                <el-col :span="7">
+                <el-col :span="12">
                   <div class="grid-content">
+                    <div class="photo-content-wrapper">
+                      <div class="photo-content">
+                        <img :src="avatar" alt="" class="photo">
+                      </div>
+                      <div class="photo-content1" @click="uploadloadImgOrVideo3(3)">
+                        <div class="photo-content">
+                          <img src="../../assets/img/pop_pic_add.png" alt="" class="add-pic-viedo">
+                          <input class="license" type="file" ref="input3" name="license3" @change="changeUploadFile3($event)" accept="image/*">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </el-col>
-                <el-col :span="7">
+                <el-col :span="2">
                   <div class="grid-content">
                   </div>
                 </el-col>
@@ -220,27 +231,24 @@
           </el-tab-pane>
           <el-tab-pane label="动态管理" name="3" v-if="disabled">
             <div class="pic-wrap" v-if="mediaInfoList.length">
-              <vue-data-loading :loading="loading" :completed="completed" :offset="-1" :listens="['infinite-scroll', 'pull-down']" :init-scroll="true" @infinite-scroll="infiniteScroll" @pull-down="pullDown">
-                <div class="pic-wrapper" v-for="(item, index) in mediaInfoList" :key="index">
-                  <div class="name">{{item.content}}</div>
-                  <div class="time">{{item.createTime}}</div>
-                  <div class="pic-content-wrapper">
-                    <div class="pic-content" v-for="(v, i) in item.img" :key="i">
-                      <div class="pic">
-                        <img :src="v" alt="">
-                      </div>
+              <div class="pic-wrapper" v-for="(item, index) in mediaInfoList" :key="index">
+                <div class="name">{{item.content}}</div>
+                <div class="time">{{item.createTime}}</div>
+                <div class="pic-content-wrapper">
+                  <div class="pic-content" v-for="(v, i) in item.img" :key="i">
+                    <div class="pic">
+                      <img :src="v" alt="">
                     </div>
                   </div>
-                  <div class="support-del">
-                    <div class="support"><img class="support-icon" src='../../assets/img/pop_icon_zan.png'><span
-                        class="num">{{item.thumbUp}}</span>人</div>
-                    <div class="del" @click="delPublishInfo(item)">删除</div>
-                  </div>
                 </div>
-                <div slot="infinite-scroll-loading">loading...</div>
-                <div slot="completed">数据加载完毕</div>
-              </vue-data-loading>
+                <div class="support-del">
+                  <div class="support"><img class="support-icon" src='../../assets/img/pop_icon_zan.png'><span
+                      class="num">{{item.thumbUp}}</span>人</div>
+                  <div class="del" @click="delPublishInfo(item)">删除</div>
+                </div>
+              </div>
             </div>
+            <div class="btn-load-more" @click="btnLoadMore" v-if="mediaListPagePoint">点击加载更多</div>
             <img src="../../assets/img/pop_icon_tj.png" alt="" class="publish" @click="showPublistModel"
           v-if="activeName == '3'">
           </el-tab-pane>
@@ -251,9 +259,9 @@
         </div>
         <div class="cancle-x el-icon-close" @click="cancle"></div>
       </div>
-    </div>
+    </el-dialog>
     <!-- 发布弹框 -->
-    <div class="publish-model-wrapper" v-if="onShow">
+    <el-dialog :visible.sync="onShow" custom-class="publish-model-wrapper" :show-close="false">
       <div class="publish-model">
         <el-input type="textarea" placeholder="输入自己想说的话" v-model="wantTalk" :autosize="{ minRows: 4, maxRows: 5}" minlength="2" maxlength="50" show-word-limit>
         </el-input>
@@ -267,11 +275,11 @@
           </div>
         </div>
         <div class="input-box btn-wrapper">
-          <div class="confirm btn" @click="confirmPublish()">确定</div>
+          <div class="confirm btn" @click="confirmPublish">确定</div>
           <div class="cancle btn" @click="canclePublish">取消</div>
         </div>
       </div>
-    </div>
+    </el-dialog>
     <!-- 图片播放弹框 -->
     <div class="video-player-wrapper" v-show="picShow" @click.stop="hidePicModel">
         <div class="video-player" @click.stop="showpicModel" v-if="displayPicOrVideo">
@@ -286,14 +294,13 @@
 <script>
 import axios from 'axios'
 import OSS from '../../lib/aliyun-oss-sdk-4.4.4.min.js'
-import VueDataLoading from 'vue-data-loading'
 import { setTimeout } from 'timers'
 import { formatTime } from 'lib/filter'
 export default {
   name: 'standapply',
   data () {
     var checkqq = (rule, value, callback) => {
-      const phoneReg = /^[1-9]\d{4,9}$/
+      const phoneReg = /^[1-9][0-9]{4,14}$/
       if (!value) {
         return callback(new Error('qq号不能为空'))
       }
@@ -340,9 +347,9 @@ export default {
       curPicUrl: '',
       curVideoUrl: '',
       isShow: false,
+      setFormShow: false, // form表单中v-if 重新渲染表单，解决点击编辑后，在点击创建，出现效验问题
       onShow: false,
       picShow: false,
-      btnShow: false,
       activeName: '1',
       yearMoneyManOrWo: false, // 填写子账户信息男女年收入显示标志
       labelPosition: "left",
@@ -364,6 +371,9 @@ export default {
         address: '',
         desc: ""
       },
+      lat: '', // 纬度
+      lng: '', // 经度
+      avatar: 'https://waterelephant.oss-cn-shanghai.aliyuncs.com/webim/2019-6-19/1563500694520.jpg', // 子账号头像
       genders: [{
         value: '1',
         label: '男'
@@ -382,12 +392,16 @@ export default {
       curCityId: null,
       usersImgList: [],
       usersVideoList: [],
+      newUsersImgList: [],
+      newUsersVideoList: [],
       mediaInfoList: [],
       userDynamicPicList: [],
       loading: false,
       completed: false,
       curUserId: null, // 当前子账号id
       page: 1, // 动态列表分页页数
+      mediaSize: 10,
+      mediaListPagePoint: false, // 点击加载更多按钮显示指针
       wantTalk: '',
       imgLen: null,
       videoLen: null,
@@ -443,13 +457,17 @@ export default {
           { required: false, message: '请填写个人介绍', trigger: 'blur' },
           { min: 10, max: 50, message: '长度在50个字符以内', trigger: 'blur' }
         ]
-      }
+      },
+      oldIndustry: '', // 接口返回用户的行业信息
+      oldIndustryDetail: '',
+      oldCityName: '',
+      oldAddress: '',
+      oldCreateIndustry: '', // 创建
+      oldCreateCityName: '',
     }
   },
   computed: {},
-  components: {
-    VueDataLoading
-  },
+  components: {},
   created () {
     this.getAccountList()
     this.cityTree()
@@ -457,6 +475,7 @@ export default {
     this.field("WEIGHT_TAG")
     this.field("INDUSTRY_TAG")
     this.field("ANNUAL_SALARY_TAG")
+    this.getLocation()
   },
   methods: {
     checkinput () {
@@ -480,9 +499,14 @@ export default {
         this.$message({
           message: "最多创建 50 条子账号"
         })
+        this.setFormShow = false
         this.isShow = false
       }
+      this.avatar = "https://waterelephant.oss-cn-shanghai.aliyuncs.com/webim/2019-6-19/1563500694520.jpg"
+      this.rules.yearMoney[0].required = true
+      this.yearMoneyManOrWo = false
       this.isShow = true
+      this.setFormShow = true
       this.disabled = false
       // this.activeName = "1"
       this.formLabelAlign = {
@@ -497,10 +521,20 @@ export default {
     },
     // 创建编辑弹框隐藏
     cancle () {
+      this.setFormShow = false
       this.isShow = false
+      this.oldIndustry =''
+      this.oldIndustryDetail =''
+      this.oldCityName =''
+      this.oldAddress =''
+      this.newUsersImgList = []
+      this.newUsersVideoList = []
+      this.oldCreateIndustry = ""
+      this.oldCreateCityName = ""
     },
     // 显示发布弹框
     showPublistModel () {
+      this.setFormShow = false
       this.isShow = false
       this.onShow = true
     },
@@ -514,18 +548,19 @@ export default {
       this.activeName = "1"
       this.curUserId = rows
       this.page = 1
-      // this.count(0, rows)
-      // this.count(1, rows)
       this.disabled = true
       let params = {
         userId: rows
       }
       this.$http.profile(params).then(res => {
         let x = res.result
+        this.avatar = x.avatar
         this.industrys.forEach(v => {
           v.children.forEach(z => {
             if (z.fieldName == x.job) {
               this.formLabelAlign.industry = v.fieldName
+              this.oldIndustry = v.fieldName
+              this.oldIndustryDetail = x.job
               this.industryDetails = v.children
             }
           })
@@ -537,6 +572,8 @@ export default {
             }
           })
         })
+        this.oldCityName = x.provinceName
+        this.oldAddress = x.cityName
         if (x.sex == 1) {
           this.formLabelAlign.gender = "男"
         } else {
@@ -544,6 +581,8 @@ export default {
           this.rules.yearMoney[0].required = false
           this.formLabelAlign.gender = "女"
         }
+        let z = formatTime((x.birthday)*1000, "yyyy-MM-dd")
+        let m = new Date(z)
         this.formLabelAlign = {
           id: x.id,
           name: x.nickname,
@@ -555,13 +594,14 @@ export default {
           weixin: x.wechat,
           industry: this.formLabelAlign.industry,
           industryDetail: x.job,
-          birst: formatTime((x.birthday)*1000, "yyyy-MM-dd"),
+          birst: m,
           city: x.provinceName,
           yearMoney: x.annualSalary,
           address: x.cityName,
           desc: x.introduction
         }
         this.isShow = true
+        this.setFormShow = true
       })
       this.getUserImgOrVideo(0, rows)
       this.getUserImgOrVideo(1, rows)
@@ -589,6 +629,24 @@ export default {
         }
       }).catch(async (action) => {})
     },
+    getLocation () { // 获取经纬度
+      let _this = this
+      var geolocation = new BMap.Geolocation()
+      geolocation.getCurrentPosition(function (r) {
+        // console.log(r,'经纬度')
+        // console.log(r.latitude)
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+          // var mk = new BMap.Marker(r.point);
+          // map.addOverlay(mk);
+          // map.panTo(r.point);
+          // alert('您的位置：'+r.point.lng+','+r.point.lat);
+          _this.lat = r.latitude * 1
+          _this.lng = r.longitude * 1
+        } else {
+          alert('failed'+this.getStatus())
+        }
+      }, { enableHighAccuracy: true })
+    },
     // 创建账号或者编辑账号时的确认按钮
     createOrEdiorConfirm (data, formName) {
       switch (data) {
@@ -600,30 +658,27 @@ export default {
                 let params = {
                   account: this.formLabelAlign.acountNum,
                   annualSalary: this.formLabelAlign.yearMoney,
-                  auditStatus: null,
-                  avatar: '',
+                  avatar: this.avatar,
                   birthday: this.formLabelAlign.birst,
                   height: this.formLabelAlign.high,
                   id: parseInt(this.formLabelAlign.id),
                   introduction: this.formLabelAlign.desc,
                   job: this.formLabelAlign.industryDetail,
-                  mobile: '',
                   nickname: this.formLabelAlign.name,
-                  parentId: null,
-                  pid: null,
                   qq: this.formLabelAlign.qq,
-                  realname: "",
                   regionId: parseInt(this.curCityId),
                   sex: parseInt(this.formLabelAlign.gender),
-                  token: '',
-                  userType: null,
                   wechat: this.formLabelAlign.weixin,
                   weight: this.formLabelAlign.weight,
-                  wxOpenId: ''
+                  lat: this.lat,
+                  lng: this.lng
                 }
                 this.$http.subAccountCreate(params).then(res => {
+                  this.setFormShow = false
                   this.isShow = false
                   this.getAccountList()
+                  this.oldCreateIndustry = ""
+                  this.oldCreateCityName = ""
                 })
               } else {
                 console.log('error submit!!')
@@ -636,26 +691,22 @@ export default {
               if (valid) {
                 let params = {
                   annualSalary: this.formLabelAlign.yearMoney,
-                  auditStatus: null,
-                  avatar: '',
+                  avatar: this.avatar,
                   birthday: this.formLabelAlign.birst,
                   height: this.formLabelAlign.high,
                   introduction: this.formLabelAlign.desc,
                   job: this.formLabelAlign.industryDetail,
-                  mobile: '',
                   nickname: this.formLabelAlign.name,
-                  parentId: null,
-                  pid: null,
                   qq: this.formLabelAlign.qq,
-                  realname: "",
                   regionId: parseInt(this.curCityId),
-                  token: '',
-                  userType: null,
+                  lat: this.lat,
+                  lng: this.lng,
                   wechat: this.formLabelAlign.weixin,
                   weight: this.formLabelAlign.weight,
                   subAccountId: this.curUserId
                 }
                 this.$http.updateUserInfo(params).then(res => {
+                  this.setFormShow = false
                   this.isShow = false
                   this.getAccountList()
                 })
@@ -667,23 +718,19 @@ export default {
           }
           break
         case '2':
-          this.usersImgList.forEach((v, i) => {
-            if (v.id) {
-              this.usersImgList.splice(i, 1)
-            }
-          })
-          this.usersVideoList.forEach((v, i) => {
-            if (v.id) {
-              this.usersVideoList.splice(i, 1)
-            }
-          })
-          let getUserImgOrVideoList = this.usersImgList.concat(this.usersVideoList)
-          this.$http.upload(getUserImgOrVideoList, this.curUserId).then(res => {
-            this.getUserImgOrVideo(0, this.curUserId)
-            this.getUserImgOrVideo(1, this.curUserId)
-            // this.count(0, this.curUserId)
-            // this.count(1, this.curUserId)
-          })
+          let getUserImgOrVideoList = this.newUsersImgList.concat(this.newUsersVideoList)
+          if (getUserImgOrVideoList.length) {
+            this.$http.upload(getUserImgOrVideoList, this.curUserId).then(res => {
+              this.getUserImgOrVideo(0, this.curUserId)
+              this.getUserImgOrVideo(1, this.curUserId)
+              this.newUsersImgList = []
+              this.newUsersVideoList = []
+            })
+          } else {
+            this.$message({
+              message: "请上传图片或视频"
+            })
+          }
           break
         case '3':
           // 代码块
@@ -698,11 +745,15 @@ export default {
       let inp = 'input' + data
       this.$refs[inp].click()
     },
+    uploadloadImgOrVideo3 (data) {
+      let inp = 'input' + data
+      this.$refs[inp].click()
+    },
     // 上传图片点击事件 0图片 1视频
     changeUploadFile (event, data) {
       this.$refs.videotest.style.display='none'
       let img = event.target.files
-      var url = this.getFileURL(img[0]) //把当前的 files[0] 传进去
+      var url = this.getFileURL(img[0]) // 把当前的 files[0] 传进去
       if (url) {
         this.$refs.videotest.src = url
         let that = this
@@ -737,7 +788,7 @@ export default {
         }, 1000)
       }
     },
-    // 上传图片点击事件 0图片 1视频
+    // 上传动态图片
     changeUploadFile1 (event, data) {
       let img = event.target.files
       let that = this
@@ -752,9 +803,24 @@ export default {
       this.uploadMedia(img[0])
       event.srcElement.value = "" // 及时清空
     },
+    // 上传头像
+    changeUploadFile3 (event, data) {
+      let img = event.target.files
+      let that = this
+      let type = img[0].type
+      if (!img.length) {
+        return false
+      }
+      if (!type.includes('jpg') && !type.includes('jpeg') && !type.includes('png')) {
+        that.$message({ message: '只能上传图片' })
+        return false
+      }
+      this.uploadMedia(img[0], 3)
+      event.srcElement.value = "" // 及时清空
+    },
     getOSS (params) {
       return new Promise((resolve, reject) => {
-        axios('http://106.14.58.213:28201/media/oss/token', JSON.stringify(params), 'get').then(res => {
+        axios.get('media/oss/token', JSON.stringify(params)).then(res => {
           if (res) {
             resolve(res)
           } else {
@@ -791,28 +857,28 @@ export default {
         //   reject({status: false, msg: '图片' + '格式不支持!请选择' + typeArr})
         // }
         if (!this.OSSclient) {
-          let OSSResult = await this.getOSS()
-          if (OSSResult.data.success) {
-            OSSResult = OSSResult.data.result
+          let OSSResult = await this.$http.getOssToken({})
+          if (OSSResult.success) {
+            OSSResult = OSSResult.result
           } else {
             reject({ status: false, msg: '获取OSS认证错误' })
           }
           this.OSSclient = new OSS.Wrapper({
             region: "oss-cn-shanghai",
             // secure: true,//https
-            // endpoint: 'https://oss-cn-shanghai.aliyuncs.com/webim',
+            endpoint: 'https://oss-cn-shanghai.aliyuncs.com',
             accessKeyId: OSSResult.AccessKeyId,
             // accessKeyId,accessKeySecret两者到阿里云控制台获得
             accessKeySecret: OSSResult.AccessKeySecret,
             stsToken: OSSResult.SecurityToken,
-            bucket: 'waterelephant' // 装图片的桶名
+            bucket:  process.env.NODE_ENV === 'production' ? 'we-mowan':  'waterelephant' // 装图片的桶名
           })
         }
         let d = new Date()
         let y = d.getFullYear()
         let m = d.getMonth()
         let dd = d.getDate()
-        let path = 'webim/' + y + '-' + m + '-' + dd + '/' + storeAs
+        let path = 'mowan/' + y + '-' + m + '-' + dd + '/' + storeAs
         storeAs = path
         this.OSSclient.multipartUpload(storeAs, file).then((result) => {
           if (result.res.requestUrls.length) {
@@ -833,14 +899,18 @@ export default {
                   mediaUrl: url
                 }
                 this.usersImgList.push(imgOrVideo)
+                this.newUsersImgList.push(imgOrVideo)
               } else if (data === 1 && url2 == "mp4" || url2 == "mov" || url2 == "rmvb") {
                 imgOrVideo = {
                   mediaType: data,
                   mediaUrl: url
                 }
                 this.usersVideoList.push(imgOrVideo)
+                this.newUsersVideoList.push(imgOrVideo)
               }
               this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
+            } else if (data == 3) {
+              this.avatar = url
             } else {
               this.userDynamicPicList.push(url)
             }
@@ -872,13 +942,16 @@ export default {
       if (item) {
         this.$http.userDelete([item], this.curUserId).then(res => {
           this.getUserImgOrVideo(data, this.curUserId)
-          // this.count(0, rows)
-          // this.count(1, rows)
           this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
         })
       } else {
-        this.usersImgList.splice(index, 1)
-        this.usersVideoList.splice(index, 1)
+        if (data == 0) {
+          this.newUsersImgList.splice(index-(this.usersImgList.length-this.newUsersImgList.length), 1)
+          this.usersImgList.splice(index, 1)
+        } else {
+          this.newUsersVideoList.splice(index-(this.usersVideoList.length-this.newUsersVideoList.length), 1)
+          this.usersVideoList.splice(index, 1) // 展示数组
+        }
         this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
       }
     },
@@ -907,6 +980,7 @@ export default {
         id: item.id
       }
       this.$http.mediaDelete(params).then(res => {
+        this.mediaInfoList = []
         this.page =1
         this.mediaList(item.userId)
       })
@@ -936,6 +1010,7 @@ export default {
         this.mediaList(this.curUserId)
         this.onShow = false
         this.isShow = true
+        this.setFormShow = true
         this.activeName = '3'
         this.userDynamicPicList = []
         this.wantTalk = ''
@@ -994,6 +1069,20 @@ export default {
           this.addresses = v.items
         }
       })
+      if (this.curEdiorOrCreatedSelect ==2) {
+        if (this.oldCityName != value) {
+          this.formLabelAlign.address = ''
+        } else {
+          this.formLabelAlign.address = this.oldAddress
+        }
+      } else if (this.curEdiorOrCreatedSelect == 1) {
+          if(this.oldCreateCityName && this.oldCreateCityName != value && this.formLabelAlign.address){
+            this.formLabelAlign.address = ""
+          }
+        }
+        this.oldCreateCityName = value
+      
+      
     },
     // 选择市名
     selectedCitySub (value) {
@@ -1026,11 +1115,24 @@ export default {
     },
     // 获取各行业中的子行业
     selectedJob (value) {
+
       this.industrys.forEach(v => {
         if (v.fieldName == value) {
           this.industryDetails = v.children
         }
       })
+      if (this.curEdiorOrCreatedSelect ==2) {
+        if (this.oldIndustry != value) {
+          this.formLabelAlign.industryDetail = ''
+        } else {
+          this.formLabelAlign.industryDetail = this.oldIndustryDetail
+        }
+      } else if (this.curEdiorOrCreatedSelect = 1) {
+          if(this.oldCreateIndustry && this.oldCreateIndustry != value && this.formLabelAlign.industryDetail){
+            this.formLabelAlign.industryDetail = ""
+          }
+        }
+        this.oldCreateIndustry = value
     },
     // 查询用户相册及视频信息
     getUserImgOrVideo (data, id) {
@@ -1044,9 +1146,9 @@ export default {
       }
       this.$http.my(params).then(res => {
         if (data == 0) {
-          this.usersImgList = res.result
+          this.usersImgList = res.result.concat(this.newUsersImgList)
         } else if (data == 1) {
-          this.usersVideoList = res.result
+          this.usersVideoList = res.result.concat(this.newUsersVideoList)
         }
         this.imgAndVideoNum = this.usersImgList.length + this.usersVideoList.length
       })
@@ -1058,7 +1160,10 @@ export default {
       if (value == 2) {
         this.yearMoneyManOrWo = true
         this.rules.yearMoney[0].required = false
+        this.formLabelAlign.yearMoney = ''
       }
+    },
+    handleClick (tab, event) {
     },
     // 用户动态列表查询
     mediaList (id) {
@@ -1067,35 +1172,30 @@ export default {
         param: {
           userId: id
         },
-        size: 5
+        size: this.mediaSize
       }
       this.$http.mediaList(params).then(res => {
         let x = res.result.datas
-        if (x.length) {
-          for (let i = 0; i < x.length; i++) {
-            x[i].createTime = formatTime((x[i].createTime)*1000, "yyyy-MM-dd hh:mm:ss")
-            x[i].img = x[i].img.split(",")
-            if (!x[i].thumbUp) {
-              x[i].thumbUp = 0
-            }
+        let y = res.result.total
+        for (let i = 0; i < x.length; i++) {
+          x[i].createTime = formatTime((x[i].createTime)*1000, "yyyy-MM-dd hh:mm:ss")
+          x[i].img = x[i].img.split(",")
+          if (!x[i].thumbUp) {
+            x[i].thumbUp = 0
           }
-          this.mediaInfoList = [...this.mediaInfoList, ...res.result.datas]
-          this.completed = false
+        }
+        this.mediaInfoList = [ ...this.mediaInfoList, ...res.result.datas ]
+        if (x.length < this.mediaSize || y == this.mediaInfoList.length) {
+          this.mediaListPagePoint = false
         } else {
-          this.completed = true
+          this.mediaListPagePoint = true
         }
       })
     },
-    pullDown () {
-      this.page = 1
-      // this.completed = false
-      this.mediaList(this.curUserId)
-    },
-    infiniteScroll () {
+    // 点击加载更多
+    btnLoadMore () {
       this.page++
       this.mediaList(this.curUserId)
-    },
-    handleClick (tab, event) {
     },
     // 获取视频图片个数
     count (data, id) {
@@ -1161,6 +1261,7 @@ export default {
         text-align: center;
         line-height: 28px;
         border-radius: 3px;
+        cursor: pointer;
 
         &.active {
           color: #929292;
@@ -1275,6 +1376,7 @@ export default {
           font-size: 12px;
           color: #FF5E4B !important;
           border-radius: 4px;
+          cursor: pointer;
 
           &.change {
             color: #FFC455 !important;
@@ -1286,16 +1388,15 @@ export default {
     }
     // 新建账号，编辑弹框
     .model-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      min-height: 100%;
-      background: rgba(0, 0, 0, .7);
-      z-index: 666;
+      &.el-dialog {
+        width: 1036px;
+      }
+      .el-dialog__header {
+        padding: 0;
+      }
+      .el-dialog__body {
+        padding: 0
+      }
       .model {
         position: relative;
         width: 1036px;
@@ -1338,6 +1439,67 @@ export default {
             box-sizing: border-box;
             .el-form {
               margin-top: 12px;
+              .photo-content-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                margin-top: 25px;
+                .photo-content {
+                  width: 120px;
+                  display: flex;
+                  justify-content: center;
+                  flex-direction: column;
+                  margin:0 6.5px;
+                  .play-video-wrapper{
+                    position: relative;
+                    .play-video-pic {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                    }
+                  }
+                  .photo {
+                    display: block;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 5px;
+                    background-color: #E5E5E5;
+                  }
+                  .video-tag {
+                    position: relative;
+                  }
+                  .license {
+                    display: none;
+                  }
+                  .del {
+                    width: 66px;
+                    height: 24px;
+                    line-height: 24px;
+                    background: rgba(255, 94, 75, 1);
+                    border-radius: 4px;
+                    font-size: 12px;
+                    font-family: PingFangSC-Regular;
+                    font-weight: 400;
+                    color: rgba(255, 255, 255, 1);
+                    text-align: center;
+                    margin: 18px auto;
+                  }
+                }
+                .photo-content1{
+                  display:flex;
+                  justify-content: flex-start;
+                  flex-direction: column;
+                  .add-pic-viedo {
+                    width: 120px;
+                    height: 120px;
+                  }
+                }
+              }
             }
             .el-form-item--mini.el-form-item,
             .el-form-item--small.el-form-item {
@@ -1563,6 +1725,26 @@ export default {
             }
             #pane-3 {
               width: 100%;
+              .btn-load-more {
+                width: 120px;
+                height: 34px;
+                font-size: 14px;
+                line-height: 34px;
+                background-color: #FEAF27;
+                text-align: center;
+                color: #fff;
+                letter-spacing: 1px;
+                margin:0 auto;
+                margin-bottom: 10px;
+                border-radius: 5px;
+              }
+              .btn-load-down {
+                width: 120px;
+                text-align: center;
+                font-size: 14px;
+                color:#666;
+                margin:0 auto;
+              }
 
               .publish {
                 width: 90px;
@@ -1588,7 +1770,7 @@ export default {
         .btn-wrapper {
           display: flex;
           justify-content: center;
-          margin: 60px 0 45px 0;
+          padding: 60px 0 45px 0;
 
           .btn {
             width: 117px;
@@ -1599,6 +1781,7 @@ export default {
             font-family: PingFangSC-Semibold;
             font-weight: 600;
             border-radius: 4px;
+            cursor: pointer;
           }
 
           .confirm {
@@ -1629,16 +1812,15 @@ export default {
 
     // 发布模块弹框
     .publish-model-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, .7);
-      z-index: 666;
+      &.el-dialog {
+        width: 565px;
+      }
+      .el-dialog__header {
+        padding: 0;
+      }
+      .el-dialog__body {
+        padding: 0
+      }
 
       .publish-model {
         width: 565px;
@@ -1684,7 +1866,7 @@ export default {
         .btn-wrapper {
           display: flex;
           justify-content: center;
-          margin: 60px 0 45px 0;
+          padding: 60px 0 45px 0;
 
           .btn {
             width: 117px;
@@ -1695,6 +1877,7 @@ export default {
             font-family: PingFangSC-Semibold;
             font-weight: 600;
             border-radius: 4px;
+            cursor: pointer;
           }
 
           .confirm {
@@ -1729,7 +1912,7 @@ export default {
       left: 0;
       bottom: 0;
       background: rgba(0, 0, 0, .7);
-      z-index: 666;
+      z-index: 3000;
       .video-player {
         // width: 700px;
         // height: 500px;
@@ -1742,5 +1925,4 @@ export default {
       }
     }
   }
-
 </style>

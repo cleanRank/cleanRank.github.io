@@ -14,7 +14,7 @@ export default {
   getCity (params) { // 获取省市区
     return get(`${domain}/user/region/child`, params)
   },
-  getProfile (params) { // 获取省市区
+  getProfile (params) {
     console.log(params, 'params')
     return post(`${domain}/user/friend/profile?friendId=${params.friendId}`, params)
   }

@@ -27,5 +27,10 @@ export default {
   // 获取用户钱包信息
   findUserWallet (params = {}) {
     return json(`${domain}/pay/chatWallet/findUserWallet`, params)
-  }
+  },
+  // 接收钱包
+  receiveRedEnvelope (params = {}) {
+    return json(`${domain}/pay/userRedEnvelope/receiveRedEnvelope?redEnvelopeId=${params.id}`, params)
+  },
+
 }

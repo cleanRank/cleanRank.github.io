@@ -31,6 +31,7 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             value-format="timestamp"
+            @change="dateChange"
             :default-time="['00:00:00', '23:59:59']">
           </el-date-picker>
         </el-form-item>
@@ -44,7 +45,7 @@
         <el-table-column prop="gmtCreated" width="180" label="时间"></el-table-column>
         <el-table-column prop="changeAmt" label="金额"></el-table-column>
         <el-table-column prop="changeText" label="事件"></el-table-column>
-        <el-table-column prop="spendChildUserId" label="消费对象"></el-table-column>
+        <el-table-column prop="spendUserId" label="消费对象"></el-table-column>
         <el-table-column prop="childUserId" label="关联账号"></el-table-column>
         <el-table-column prop="changeAfterBalance" label="余额"></el-table-column>
       </el-table>
@@ -65,7 +66,7 @@ export default {
   data () {
     return {
       orderType: [{
-        changeEvent: 0,
+        changeEvent: '',
         name: '全部'
       }, {
         changeEvent: 1,
@@ -106,7 +107,7 @@ export default {
       }],
       searchForm: {
         walletLogId: '',
-        changeEvent: 0,
+        changeEvent: '',
         spendUserId: '',
         childUserId: ''
       },
@@ -121,6 +122,12 @@ export default {
     this.findChatWalletLogPage()
   },
   methods: {
+    dateChange (e) {
+      console.log(e)
+      if (!e) {
+        this.timeList = []
+      }
+    },
     search () {
       let reg = new RegExp("^[0-9]*$")
       if (!reg.test(this.searchForm.walletLogId)) return this.$message({ message: '交易编号格式不正确' })
@@ -130,7 +137,7 @@ export default {
     },
     resert () {
       this.timeList = []
-      Object.assign(this.searchForm, { walletLogId: '', childUserId: '', spendUserId: '', changeEvent: 0, startTime: '', endTime: '' })
+      Object.assign(this.searchForm, { walletLogId: '', childUserId: '', spendUserId: '', changeEvent: '', startTime: '', endTime: '' })
       this.findChatWalletLogPage()
     },
     selectPage (e) {
@@ -142,7 +149,7 @@ export default {
       this.findChatWalletLogPage()
     },
     findChatWalletLogPage () { // 订单信息列表
-      Object.assign(this.searchForm, { startTime: this.timeList[0] || '', endTime: this.timeList[1] || '' })
+      Object.assign(this.searchForm, { startTime: this.timeList ? this.timeList[0] : '', endTime: this.timeList ? this.timeList[1] : '' })
       let params = {
         page: this.page,
         size: this.pageSize,
@@ -153,6 +160,8 @@ export default {
         this.walletList = data.datas || []
         this.totalPage = data.total
         this.walletList.forEach(item => {
+          item.changeAmt = item.changeAmt.toFixed(2)
+          item.changeAfterBalance = item.changeAfterBalance.toFixed(2)
           switch (item.changeEvent) {
             case 1:
               item.changeText = '会员付费减少'

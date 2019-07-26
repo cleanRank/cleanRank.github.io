@@ -18,8 +18,8 @@ let config = {
     /*
      * Application AppKey
      */
-    // appkey: '1189181015146248#mowan', // 测试
-    appkey: '1153180620253600#mowantest', // 测试
+    appkey: '1189181015146248#mowan', // 开发
+    // appkey: '1153180620253600#mowantest', // 测试
     // appkey: '1153180620253600#yuewantest', // 线上
 
     /*

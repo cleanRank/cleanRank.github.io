@@ -12,7 +12,7 @@
       <el-form :inline="true" :model="searchForm" class="demo-form-inline">
         <el-form-item label="当前账号" class="mr50">
           <el-select v-model="searchForm.subAccountId" placeholder="当前账号">
-            <el-option v-for="list in accountList" :key="list.id" :label="list.nickname" :value="list.id"></el-option>
+            <el-option v-for="list in accountList" :key="list.id" :label="list.nickname" :value="list.id" :disabled="list.status==0"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="当前位置" class="mr50">
@@ -46,7 +46,7 @@
           <el-col :span="16">
             <div class="item-mod" v-for="(item, index) in fansList" :key="index">
               <div class="item-img-info">
-                <img :src="item.avatar?item.avatar:'https://waterelephant.oss-cn-shanghai.aliyuncs.com/images/wxfile://tmp_0cd3fd948e550550d09e279f8b803aab.jpg'" alt="">
+                <img :src="item.avatar?item.avatar:'http://waterelephant.oss-cn-shanghai.aliyuncs.com/webim/2019-6-18/1563435063498.png'" alt="">
               </div>
               <div class="item-user-info">
                 <div class="info-basic">
@@ -54,10 +54,10 @@
                   <span>用户ID：{{item.friendId}}</span>
                 </div>
                 <div class="info-label">
-                  <span class="label oranger" v-if="item.age||item.job">{{item.age?item.age+'岁':''}}{{item.age?' · '+item.job:item.job}}</span>
-                  <span class="label oranger" v-if="item.height||item.weight">{{item.height?item.height+'cm':''}}{{item.height?' · '+item.weight:item.weight}}{{item.weight?'kg':''}}</span>
+                  <span class="label oranger" v-if="item.age||item.job">{{item.age?item.age+'岁':''}}{{item.age&&item.job?' · '+item.job:item.job}}</span>
+                  <span class="label oranger" v-if="item.height||item.weight">{{item.height?item.height+'cm':''}}{{item.height&&item.weight?' · '+item.weight:item.weight}}{{item.weight?'kg':''}}</span>
                   <span class="label red" v-if="item.annualSalary">年收入{{item.annualSalary}}</span>
-                  <span class="label gray" v-if="item.distance">{{item.distance}}km</span>
+                  <span class="label gray" v-if="item.distance">{{(item.distance/1000).toFixed(2)}}km</span>
                   <span class="label green" v-if="item.stealth==0||item.stealth==1">{{item.stealth==1?'在线':'下线'}}</span>
                   <span class="label red" v-if="item.wechat">微信:{{item.wechat}}</span>
                   <span class="label red" v-if="item.qq">QQ:{{item.qq}}</span>
@@ -67,8 +67,8 @@
                   <span>查看过我&nbsp;&nbsp;</span>
                 </div> -->
                 <div class="info-opertor">
-                  <span class="btn btn-oranger" @click="$router.push({path:'/privateLetter',query:{chatUserId:item.friendId}})">私信</span>
-                  <span class="btn btn-oranger-plain" @click="$router.push({path:'/privateLetter',query:{chatUserId:item.friendId}})">连麦</span>
+                  <span class="btn btn-oranger" @click="$router.push({path:'/privateLetter',query:{chatUserId:item.friendId,currentId:searchForm.subAccountId}})">私信</span>
+                  <span class="btn btn-oranger-plain" @click="$router.push({path:'/privateLetter',query:{chatUserId:item.friendId,currentId:searchForm.subAccountId}})">连麦</span>
                   <span class="btn btn-pray" @click="checkDetail(item)">详情</span>
                 </div>
               </div>
@@ -132,7 +132,9 @@ export default {
       searchForm: {
         subAccountId: '', // 子账号id
         stealth: '', // 是否在线
-        regionId: ''
+        regionId: '',
+        lat: '', // 纬度
+        lng: '' // 经度
       },
       accountList: [], // 账号列表
       fansList: [], // 聊天列表
@@ -150,8 +152,8 @@ export default {
   },
   created () {
     this.page = 1
+    this.getLocation()
     this.getAccountList() // 获取陪聊账号
-    this.getLinkPersonList() // 获取联系人列表
     this.getCity() // 获取省市区
   },
   mounted () {
@@ -161,6 +163,34 @@ export default {
     })
   },
   methods: {
+    getLocation () { // 获取经纬度
+      let _this = this
+      let position = JSON.parse(localStorage.getItem('position'))
+      if (position) {
+        this.searchForm.lat = position.lat * 1
+        this.searchForm.lng = position.lng * 1
+        this.getLinkPersonList()
+      }
+      var geolocation = new BMap.Geolocation();
+      geolocation.getCurrentPosition(function(r){
+        console.log(r,'经纬度')
+        console.log(r.latitude)
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+          if (position && position.lat == r.latitude && position.lng == r.longitude) return
+          _this.searchForm.lat = r.latitude * 1
+          _this.searchForm.lng = r.longitude * 1
+          let obj = {
+            lat: _this.searchForm.lat,
+            lng: _this.searchForm.lng
+          }
+          localStorage.setItem('position', JSON.stringify(obj))
+          _this.getLinkPersonList() // 获取联系人列表
+        }
+        else {
+          alert('failed'+this.getStatus());
+        }
+      },{enableHighAccuracy: true})
+    },
     checkDetail (item) { // 查看用户详细信息
       this.userinfo = item
     },
@@ -170,6 +200,7 @@ export default {
       this.provinceName = ''
       this.searchForm.subAccountId = ''
       this.searchForm.stealth = ''
+      this.getLocation()
     },
     selectCity (e) {
       console.log(e)
@@ -203,7 +234,7 @@ export default {
           this.provinceList.unshift({ provinceName: '全部', province: '' })
         } else {
           this.cityList = data
-          this.cityList.unshift({ cityName: '全部', city: '' })
+          // this.cityList.unshift({ cityName: '全部', city: '' })
         }
       }).catch(e => {})
     },
@@ -217,12 +248,16 @@ export default {
       }).catch(e => {})
     },
     getLinkPersonList () { // 获取联系人列表
+      if (this.provinceName && !this.cityName) return this.$message({message: '请选择城市'})
       this.searchForm.regionId = this.cityName
       Object.assign(this.searchForm, { actionTypes: this.linkTypesChecked })
       let param = {
         page: this.page,
         size: this.pageSize,
-        param: this.searchForm
+        param: Object.assign({}, this.searchForm)
+      }
+      if (!this.linkTypesChecked.length) {
+        param.param.subAccountId = ''
       }
       this.$http.getLinkPersonList(param).then(res => {
         this.fansList = res.result

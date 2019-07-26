@@ -7,27 +7,30 @@
     </p>
     <p class="line-text">
       <span>地区：{{datas?datas.provinceName:''}}</span>
-      <span>年龄：{{datas?datas.age+'岁':''}}</span>
+      <span>年龄：{{datas&&datas.age?datas.age+'岁':''}}</span>
     </p>
     <p class="line-text">
-      <span>身高：{{datas?datas.height+'cm':''}}</span>
-      <span>体重：{{datas?datas.weight+'kg':''}}</span>
+      <span>身高：{{datas&&datas.height?datas.height+'cm':''}}</span>
+      <span>体重：{{datas&&datas.weight?datas.weight+'kg':''}}</span>
     </p>
     <p class="line-text">
       <span>年收入：{{datas?datas.annualSalary:''}}</span>
-      <span>距离：{{datas&&datas.distance?(datas.distance/1000).toFixed(2)+'km':''}}</span>
+      <span>距离：{{datas&&datas.distance?(datas.distance/1000).toFixed(2)+'km':'保密'}}</span>
     </p>
     <p class="line-text">
       <span>状态：{{datas&&datas.stealth==1?'在线':'下线'}}</span>
     </p>
     <p class="line-text">
-      <span>微信：{{datas?datas.wechat:''}}</span>
+      <span class="nick-name">微信：{{datas?datas.wechat:''}}</span>
+    </p>
+    <p class="line-text">
+      <span class="nick-name">QQ：{{datas?datas.qq:''}}</span>
     </p>
     <p class="line-text">
       <span>个人介绍：</span>
     </p>
     <p class="line-text">
-      <span>{{datas?datas.introduction:''}}</span>
+      <span class="nick-name">{{datas?datas.introduction:''}}</span>
     </p>
     <div class="mod-user-item">
       <h5>相册视频</h5>
@@ -71,6 +74,7 @@ export default {
       mediaType: null,
       page: 1,
       pageSize: 10,
+      total: '',
       mediaList: [],
       photoList: [],
       canMore: true
@@ -119,7 +123,7 @@ export default {
     mediaListFn () { // 获取好友动态
       let param = {
         page: this.page,
-        size: 1,
+        size: this.pageSize,
         param: {
           endTime: '',
           id: '',
@@ -137,14 +141,14 @@ export default {
     },
     mediaListAjax (param) { // 获取好友动态
       this.$http.mediaList(param).then(res => {
-        if (res.result.datas.length < param.size) {
-          this.canMore = false
-        } else {
-          this.canMore = true
-        }
         this.mediaList = [...this.mediaList, ...res.result.datas]
+        if (this.mediaList.length < res.result.total) {
+          this.canMore = true
+        } else {
+          this.canMore = false
+        }
         this.mediaList.forEach(item => {
-          item.time = formatTime(new Date(item.createTime))
+          item.time = formatTime(new Date(item.createTime*1000))
         })
       })
     },
@@ -152,7 +156,7 @@ export default {
       this.page++
       let param = {
         page: this.page,
-        size: 10,
+        size: this.pageSize,
         param: {
           endTime: '',
           id: '',
@@ -162,7 +166,7 @@ export default {
           queryId: '',
           startTime: '',
           status: '',
-          userId: ''
+          userId: this.datas.friendId
         }
       }
       this.mediaListAjax(param)
@@ -289,10 +293,16 @@ $color: #5584FF;
     z-index: 666;
     .video-player {
       width: 500px;
-      height: 300px;
+      height: 500px;
       background-color: #fff;
       z-index: 999;
+      video{
+        height: 550px;
+      }
     }
   }
+   video{
+      object-fit:fill;
+    }
 }
 </style>

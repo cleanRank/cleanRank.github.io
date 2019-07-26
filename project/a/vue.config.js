@@ -28,7 +28,7 @@ const option = {
   filenameHashing: filenameHashing,
   // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码 (在生产构建时禁用 eslint-loader)
   // lintOnSave: process.env.NODE_ENV !== 'production',
-  lintOnSave: true,
+  lintOnSave: false,
   publicPath: IS_PROD ? './' : './',
   // 是否使用包含运行时编译器的 Vue 构建版本
   runtimeCompiler: false,
@@ -80,7 +80,7 @@ const option = {
               compress: {
                 // warnings: false,
                 drop_debugger: true,
-                // drop_console: true
+                drop_console: false
               }
             }
           })

@@ -5,6 +5,9 @@ const domain = process.env.VUE_APP_BASE_URL
 // let baseUrl = (`${domain}/`)
 // let api = 'supplier/pubUser/'
 export default {
+  getOssToken (params) { // 获取OSS STS Token
+    return get(`${domain}/media/oss/token`, params)
+  },
   cityTree (params) { // 获取城市区域信息
     return get(`${domain}/user/region/tree`, params)
   },

@@ -1,4 +1,4 @@
-import { post, json } from 'lib/httpPlugin'
+import { post, json, get } from 'lib/httpPlugin'
 let domain = process.env.VUE_APP_BASE_URL
 if (process.env.NODE_ENV === "development") {
   domain = 'http://106.14.58.213:28206'
@@ -11,5 +11,8 @@ export default {
   },
   registerIm (params) { // 注册环信账号
     return json(`${domain}/message/integration/huanxin/register`, params)
+  },
+  getChatDialogueList (params) { // 获取列表
+    return get(`${domain}/message/getChatDialogueList`, params)
   }
 }

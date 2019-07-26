@@ -49,7 +49,7 @@
             type="daterange"
             start-placeholder="开始日期"
             end-placeholder="结束日期"
-            value-format="yyyy-MM-dd"
+            value-format="timestamp"
             :default-time="['00:00:00', '23:59:59']">
           </el-date-picker>
         </el-form-item>
@@ -146,7 +146,14 @@ export default {
     }
   },
   methods: {
+    dateChange (e) {
+      if (!e) {
+        this.searchForm.time = []
+      }
+    },
     search () {
+      let reg = new RegExp("^[0-9]*$")
+      if (this.searchForm.withdrawLogId && !reg.test(this.searchForm.withdrawLogId)) return this.$message({ message: '提现编号格式不正确' })
       this.findChildWithdrawLogPage()
     },
     resert () {
@@ -162,19 +169,19 @@ export default {
       this.findChildWithdrawLogPage()
     },
     checkInput () {
-      if (!this.formValue.applyAmt&&this.formValue.applyAmt!=0) {
+      if (!this.formValue.applyAmt) {
         this.$message({
           message: "请输入提现金额"
         })
         return false
       }
-      if (this.formValue.applyAmt <= 0) {
+      if (this.formValue.applyAmt * 1 <= 0) {
         this.$message({
           message: "提现金额不能小于等于0元"
         })
         return false
       }
-      if (this.formValue.applyAmt > this.walletInfo.canWithdrawBalance) {
+      if (this.formValue.applyAmt * 1 > this.walletInfo.canWithdrawBalance * 1) {
         this.$message({
           message: "提现金额大于可提现金额，请重新输入"
         })
@@ -183,11 +190,6 @@ export default {
       if (!this.formValue.alipayId) {
         this.$message({
           message: "请输入支付宝账号"
-        })
-        return false
-      } else if (!/^1[3456789]\d{9}$/.test(this.formValue.alipayId)) {
-        this.$message({
-          message: "支付宝账号格式不正确"
         })
         return false
       } else if (!this.formValue.realName) {
@@ -222,8 +224,8 @@ export default {
         page: this.searchForm.page,
         size: this.searchForm.size,
         param: {
-          endTime: this.searchForm.time[1],
-          startTime: this.searchForm.time[0],
+          endTime: this.searchForm.time ? this.searchForm.time[1] : '',
+          startTime: this.searchForm.time ? this.searchForm.time[0] : '',
           withdrawLogId: this.searchForm.withdrawLogId
         }
       }
@@ -233,6 +235,9 @@ export default {
         this.totalPage = data.total
         console.log(this.totalPage)
         this.withdrawList.forEach(item => {
+          item.applyAmt = item.applyAmt.toFixed(2)
+          item.handlingFeeAmt = item.handlingFeeAmt.toFixed(2)
+          item.realAmt = item.realAmt.toFixed(2)
           switch (item.withdrawStatus) {
             case 1:
               item.status = '已申请'
@@ -261,6 +266,8 @@ export default {
     findUserWallet () {
       this.$http.findUserWallet().then(res => {
         this.walletInfo = Object.assign({}, { balance: 0, canWithdrawBalance: 0 }, res.result || {})
+        this.walletInfo.balance = this.walletInfo.balance.toFixed(2)
+        this.walletInfo.canWithdrawBalance = this.walletInfo.canWithdrawBalance.toFixed(2)
       }).catch(e => {})
     }
   }

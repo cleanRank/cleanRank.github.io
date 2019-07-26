@@ -9,7 +9,7 @@
         </h3>
         <div class="input-box">
           <img src="../../assets/img/login_account.png" alt class="input-icon" />
-          <el-input onmousewheel="return false" placeholder="请输入账号" maxlength="11" v-model="phone"></el-input>
+          <el-input onmousewheel="return false" placeholder="请输入账号" maxlength="20" v-model="phone"></el-input>
         </div>
         <div class="input-box">
           <img src="../../assets/img/login_password.png" alt class="input-icon" />
