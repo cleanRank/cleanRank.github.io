@@ -292,8 +292,8 @@ export var tracker = {
     }
 
     if (XHR) {
-      const url = process.env.NODE_ENV !== 'production' ? 'https://112.126.68.226' : 'https://dcp.9fbank.com/'
-      XHR.open('POST', url, true)//  http://112.126.68.226:8181   --测试地址   http://action.9fbank.com --生产地址
+      const url = process.env.NODE_ENV !== 'production' ? '' : ''
+      XHR.open('POST', url, true)
       XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
       XHR.onreadystatechange = function () {
         if (XHR.readyState == 4 && XHR.status == 200) {
