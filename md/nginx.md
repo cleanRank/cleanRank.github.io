@@ -4,3 +4,4 @@ netstat -anp | grep :80 //Nginx监听的是80端口，那么就可以查看80端
 /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 /usr/local/nginx/sbin/nginx -s reload
 ./nginx -s reload // nginx 重启
+
