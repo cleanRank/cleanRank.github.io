@@ -12,7 +12,7 @@
     "test": "vue-cli-service build --mode test"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "eruda": "^1.5.4",
     "mock": "^0.1.1",
     "mockjs": "^1.0.1-beta3",
