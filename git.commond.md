@@ -137,7 +137,8 @@
 	git checkout -b branch_name origin/master
 	上述命令会在本地创建一个新分支，名为branch_name，并跟踪远程指定仓库origin的指定master分支
 
-
+# git cherry-pick commitId 
+合并每次提交id到当前分支
 # git merge
 	
 	git merge origin/master
